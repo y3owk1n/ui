@@ -41,7 +41,18 @@ const ToggleButton = React.forwardRef<
 >(({ className, variant, size, ...props }, ref) => (
 	<_ToggleButton
 		ref={ref}
-		className={cn(toggleButtonVariants({ variant, size, className }))}
+		className={(values) =>
+			cn(
+				toggleButtonVariants({
+					variant,
+					size,
+					className:
+						typeof className === "function"
+							? className(values)
+							: className,
+				}),
+			)
+		}
 		{...props}
 	/>
 ));

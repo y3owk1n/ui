@@ -49,7 +49,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	({ className, variant, size, ...props }, ref) => {
 		return (
 			<_Button
-				className={cn(buttonVariants({ variant, size, className }))}
+				className={(values) =>
+					cn(
+						buttonVariants({
+							variant,
+							size,
+							className:
+								typeof className === "function"
+									? className(values)
+									: className,
+						}),
+					)
+				}
 				ref={ref}
 				{...props}
 			/>
