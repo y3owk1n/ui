@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { TextArea } from "@/components/ui/textarea";
-import { TextField } from "@/components/ui/textfield";
+import { TextArea } from "@/components/ui/text-area";
+import { TextField } from "@/components/ui/text-field";
 
 export default function CheckboxPage() {
 	return (
