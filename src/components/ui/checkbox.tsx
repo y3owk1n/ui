@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { Check, Minus } from "lucide-react";
+import * as React from "react";
 
 import {
 	Checkbox as _Checkbox,

@@ -1,14 +1,14 @@
 "use client";
 import * as React from "react";
 
+import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
 import {
 	SearchField as _SearchField,
 	type SearchFieldProps as _SearchFieldProps,
 } from "react-aria-components";
-import { Input, type InputProps } from "./input";
-import { cn } from "@/lib/utils";
 import { Button } from "./button";
-import { X } from "lucide-react";
+import { Input, type InputProps } from "./input";
 
 export interface SearchFieldProps extends _SearchFieldProps {}
 
