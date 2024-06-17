@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import {
 	DialogContent,
+	DialogDescription,
 	DialogFooter,
 	DialogHeader,
 	DialogOverlay,
@@ -9,7 +10,6 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import {
-	Drawer,
 	DrawerContent,
 	DrawerFooter,
 	DrawerHeader,
@@ -18,47 +18,23 @@ import {
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Copy } from "lucide-react";
+import { ResponsiveDialogDrawer } from "@/components/ui/responsive-dialog-drawer";
 
 export default function CheckboxPage() {
 	return (
-		<div className="flex gap-4">
+		<div className="flex flex-wrap gap-4">
 			<DialogTrigger>
 				<Button variant="outline">Normal Dialog</Button>
 				<DialogOverlay>
 					<DialogContent className="sm:max-w-[425px]">
 						<DialogHeader>
 							<DialogTitle>Edit profile</DialogTitle>
-							<p className="text-sm text-muted-foreground">
+							<DialogDescription>
 								Make changes to your profile here. Click save
 								when you&apos;re done.
-							</p>
+							</DialogDescription>
 						</DialogHeader>
-						<div className="grid gap-4 py-4">
-							<div className="grid grid-cols-4 items-center gap-4">
-								<Label htmlFor="name" className="text-right">
-									Name
-								</Label>
-								<Input
-									id="name"
-									defaultValue="Pedro Duarte"
-									className="col-span-3"
-								/>
-							</div>
-							<div className="grid grid-cols-4 items-center gap-4">
-								<Label
-									htmlFor="username"
-									className="text-right"
-								>
-									Username
-								</Label>
-								<Input
-									id="username"
-									defaultValue="@peduarte"
-									className="col-span-3"
-								/>
-							</div>
-						</div>
+						<Content />
 						<DialogFooter>
 							<Button type="submit">Save changes</Button>
 						</DialogFooter>
@@ -75,12 +51,12 @@ export default function CheckboxPage() {
 									<DialogTitle>
 										Are you absolutely sure?
 									</DialogTitle>
+									<DialogDescription>
+										This action cannot be undone. This will
+										permanently delete your account and
+										remove your data from our servers.
+									</DialogDescription>
 								</DialogHeader>
-								<p className="text-sm text-muted-foreground">
-									This action cannot be undone. This will
-									permanently delete your account and remove
-									your data from our servers.
-								</p>
 								<DialogFooter>
 									<Button
 										variant="outline"
@@ -113,31 +89,7 @@ export default function CheckboxPage() {
 								when you&apos;re done.
 							</p>
 						</DialogHeader>
-						<div className="grid gap-4 py-4">
-							<div className="grid grid-cols-4 items-center gap-4">
-								<Label htmlFor="name" className="text-right">
-									Name
-								</Label>
-								<Input
-									id="name"
-									defaultValue="Pedro Duarte"
-									className="col-span-3"
-								/>
-							</div>
-							<div className="grid grid-cols-4 items-center gap-4">
-								<Label
-									htmlFor="username"
-									className="text-right"
-								>
-									Username
-								</Label>
-								<Input
-									id="username"
-									defaultValue="@peduarte"
-									className="col-span-3"
-								/>
-							</div>
-						</div>
+						<Content />
 						<DialogFooter>
 							<Button type="submit">Save changes</Button>
 						</DialogFooter>
@@ -145,45 +97,18 @@ export default function CheckboxPage() {
 				</DialogOverlay>
 			</DialogTrigger>
 			<DrawerTrigger>
-				<Button variant="outline">Sheet</Button>
+				<Button variant="outline">Drawer</Button>
 				<DrawerOverlay>
 					<DrawerContent>
 						<div className="mx-auto max-w-[425px]">
 							<DrawerHeader>
 								<DialogTitle>Edit profile</DialogTitle>
-								<p className="text-sm text-muted-foreground">
+								<DialogDescription>
 									Make changes to your profile here. Click
 									save when you&apos;re done.
-								</p>
+								</DialogDescription>
 							</DrawerHeader>
-							<div className="grid gap-4 py-4">
-								<div className="grid grid-cols-4 items-center gap-4">
-									<Label
-										htmlFor="name"
-										className="text-right"
-									>
-										Name
-									</Label>
-									<Input
-										id="name"
-										defaultValue="Pedro Duarte"
-										className="col-span-3"
-									/>
-								</div>
-								<div className="grid grid-cols-4 items-center gap-4">
-									<Label
-										htmlFor="username"
-										className="text-right"
-									>
-										Username
-									</Label>
-									<Input
-										id="username"
-										defaultValue="@peduarte"
-										className="col-span-3"
-									/>
-								</div>
-							</div>
+							<Content />
 							<DrawerFooter>
 								<Button type="submit">Save changes</Button>
 							</DrawerFooter>
@@ -191,6 +116,42 @@ export default function CheckboxPage() {
 					</DrawerContent>
 				</DrawerOverlay>
 			</DrawerTrigger>
+
+			<ResponsiveDialogDrawer
+				title="Responsive Dialog"
+				description="Resize and see the magic"
+				buttonText="Responsive"
+				buttonStyle="outline"
+			>
+				<Content />
+			</ResponsiveDialogDrawer>
+		</div>
+	);
+}
+
+function Content() {
+	return (
+		<div className="grid gap-4 py-4">
+			<div className="grid grid-cols-4 items-center gap-4">
+				<Label htmlFor="name" className="text-right">
+					Name
+				</Label>
+				<Input
+					id="name"
+					defaultValue="Pedro Duarte"
+					className="col-span-3"
+				/>
+			</div>
+			<div className="grid grid-cols-4 items-center gap-4">
+				<Label htmlFor="username" className="text-right">
+					Username
+				</Label>
+				<Input
+					id="username"
+					defaultValue="@peduarte"
+					className="col-span-3"
+				/>
+			</div>
 		</div>
 	);
 }

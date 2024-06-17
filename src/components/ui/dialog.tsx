@@ -153,6 +153,18 @@ function DialogTitle({ className, ...props }: HeadingProps) {
 	);
 }
 
+function DialogDescription({
+	className,
+	...props
+}: React.HTMLAttributes<HTMLParagraphElement>) {
+	return (
+		<p
+			className={cn("text-sm text-muted-foreground", className)}
+			{...props}
+		/>
+	);
+}
+
 export {
 	DialogOverlay,
 	DialogTrigger,
@@ -160,5 +172,6 @@ export {
 	DialogHeader,
 	DialogFooter,
 	DialogTitle,
+	DialogDescription,
 	Dialog,
 };

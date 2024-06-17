@@ -3,7 +3,6 @@ import {
 	AnimatePresence,
 	animate,
 	motion,
-	useMotionTemplate,
 	useMotionValue,
 	useMotionValueEvent,
 	useTransform,
@@ -19,10 +18,14 @@ import {
 	Dialog as _Dialog,
 	type DialogProps as _DialogProps,
 	DialogTrigger as _DialogTrigger,
-	useContextProps,
 } from "react-aria-components";
 import { Button } from "./button";
-import { DialogFooter, DialogHeader, DialogTitle } from "./dialog";
+import {
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from "./dialog";
 
 // Wrap React Aria modal components so they support framer-motion values.
 const MotionModal = motion(Modal);
@@ -173,8 +176,8 @@ const DrawerContent = React.forwardRef<
 			{...props}
 		>
 			{/* drag affordance */}
-			<div className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-gray-400" />
-			<Dialog className="px-4 pb-4 outline-none">
+			<div className="mx-auto my-8 mt-2 h-1.5 w-12 rounded-full bg-gray-400" />
+			<Drawer className="px-4 pb-4 outline-none">
 				{(values) => (
 					<>
 						{typeof children === "function"
@@ -193,7 +196,7 @@ const DrawerContent = React.forwardRef<
 						)}
 					</>
 				)}
-			</Dialog>
+			</Drawer>
 		</MotionModal>
 	);
 });
@@ -203,13 +206,14 @@ DrawerContent.displayName = MotionModal.name;
 const DrawerTitle = DialogTitle;
 const DrawerHeader = DialogHeader;
 const DrawerFooter = DialogFooter;
+const DrawerDescription = DialogDescription;
 
 export {
-	Drawer,
 	DrawerTrigger,
 	DrawerOverlay,
 	DrawerContent,
 	DrawerTitle,
 	DrawerHeader,
 	DrawerFooter,
+	DrawerDescription,
 };
