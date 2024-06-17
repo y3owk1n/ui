@@ -40,9 +40,11 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
 							{values.isSelected && <Check className="h-4 w-4" />}
 						</div>
 					</div>
-					{typeof children === "function"
-						? children(values)
-						: children}
+					<span className="text-sm">
+						{typeof children === "function"
+							? children(values)
+							: children}
+					</span>
 				</>
 			)}
 		</_Checkbox>
