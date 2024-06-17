@@ -25,13 +25,14 @@ const buttonVariants = cva(
 					"bg-secondary text-secondary-foreground data-[hovered]:bg-secondary/80 data-[pressed]:bg-secondary/70",
 				ghost: "data-[hovered]:bg-accent data-[pressed]:bg-accent/70 data-[hovered]:text-accent-foreground",
 				link: "text-primary underline-offset-4 data-[hovered]:underline",
+				unstyled: "text-primary data-[hovered]:text-primary/50",
 			},
 			size: {
 				default: "h-10 px-4 py-2",
 				sm: "h-9 rounded-md px-3",
 				lg: "h-11 rounded-md px-8",
 				icon: "h-10 w-10",
-				link: "h-auto p-0",
+				unstyled: "h-auto p-0",
 			},
 		},
 		defaultVariants: {

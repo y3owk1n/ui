@@ -49,13 +49,11 @@ const SearchFieldInput = React.forwardRef<HTMLInputElement, InputProps>(
 					{...props}
 				/>
 
-				<Button
-					className="absolute right-0 top-0"
-					variant="ghost"
-					size="icon"
-				>
-					<X className="size-4" />
-				</Button>
+				<div className="absolute right-0 top-0 h-10">
+					<Button variant="unstyled" size="icon">
+						<X className="size-4" />
+					</Button>
+				</div>
 			</div>
 		);
 	},
