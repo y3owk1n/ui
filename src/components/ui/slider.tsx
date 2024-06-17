@@ -3,14 +3,14 @@
 import * as React from "react";
 
 import {
+	SliderStateContext,
 	Slider as _Slider,
 	SliderOutput as _SliderOutput,
-	SliderTrack as _SliderTrack,
-	SliderThumb as _SliderThumb,
 	type SliderProps as _SliderProps,
-	type SliderTrackProps as _SliderTrackProps,
+	SliderThumb as _SliderThumb,
 	type SliderThumbProps as _SliderThumbProps,
-	SliderStateContext,
+	SliderTrack as _SliderTrack,
+	type SliderTrackProps as _SliderTrackProps,
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";

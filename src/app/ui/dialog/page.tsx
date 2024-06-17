@@ -8,6 +8,14 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+	Drawer,
+	DrawerContent,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerOverlay,
+	DrawerTrigger,
+} from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Copy } from "lucide-react";
@@ -136,6 +144,53 @@ export default function CheckboxPage() {
 					</DialogContent>
 				</DialogOverlay>
 			</DialogTrigger>
+			<DrawerTrigger>
+				<Button variant="outline">Sheet</Button>
+				<DrawerOverlay>
+					<DrawerContent>
+						<div className="mx-auto max-w-[425px]">
+							<DrawerHeader>
+								<DialogTitle>Edit profile</DialogTitle>
+								<p className="text-sm text-muted-foreground">
+									Make changes to your profile here. Click
+									save when you&apos;re done.
+								</p>
+							</DrawerHeader>
+							<div className="grid gap-4 py-4">
+								<div className="grid grid-cols-4 items-center gap-4">
+									<Label
+										htmlFor="name"
+										className="text-right"
+									>
+										Name
+									</Label>
+									<Input
+										id="name"
+										defaultValue="Pedro Duarte"
+										className="col-span-3"
+									/>
+								</div>
+								<div className="grid grid-cols-4 items-center gap-4">
+									<Label
+										htmlFor="username"
+										className="text-right"
+									>
+										Username
+									</Label>
+									<Input
+										id="username"
+										defaultValue="@peduarte"
+										className="col-span-3"
+									/>
+								</div>
+							</div>
+							<DrawerFooter>
+								<Button type="submit">Save changes</Button>
+							</DrawerFooter>
+						</div>
+					</DrawerContent>
+				</DrawerOverlay>
+			</DrawerTrigger>
 		</div>
 	);
 }

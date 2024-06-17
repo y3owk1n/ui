@@ -3,19 +3,19 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+import { type VariantProps, cva } from "class-variance-authority";
+import { X } from "lucide-react";
 import {
-	DialogTrigger as _DialogTrigger,
-	Dialog as _Dialog,
-	type DialogProps as _DialogProps,
+	Heading,
+	type HeadingProps,
 	Modal,
 	ModalOverlay,
 	type ModalOverlayProps,
-	Heading,
-	type HeadingProps,
+	Dialog as _Dialog,
+	type DialogProps as _DialogProps,
+	DialogTrigger as _DialogTrigger,
 } from "react-aria-components";
-import { type VariantProps, cva } from "class-variance-authority";
 import { Button } from "./button";
-import { X } from "lucide-react";
 
 const Dialog = _Dialog;
 
