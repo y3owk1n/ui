@@ -24,8 +24,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
 			className={(values) =>
 				cn(
 					"relative flex touch-none select-none items-center",
-					orientation === "vertical" ? "h-full w-2" : "",
-					orientation === "horizontal" ? "w-full h-2" : "",
+					orientation === "vertical" ? "h-full" : "",
+					orientation === "horizontal" ? "w-full" : "",
 					typeof className === "function"
 						? className(values)
 						: className,
