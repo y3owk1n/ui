@@ -177,7 +177,10 @@ const DrawerContent = React.forwardRef<
 		>
 			{/* drag affordance */}
 			<div className="mx-auto my-8 mt-2 h-1.5 w-12 rounded-full bg-gray-400" />
-			<Drawer className="px-4 pb-4 outline-none">
+			<Drawer
+				style={{ maxHeight: h - SHEET_MARGIN - 28 }}
+				className="overflow-y-auto px-4 pb-4 outline-none"
+			>
 				{(values) => (
 					<>
 						{typeof children === "function"

@@ -84,10 +84,10 @@ export default function CheckboxPage() {
 					<DialogContent side="right" className="sm:max-w-[425px]">
 						<DialogHeader>
 							<DialogTitle>Edit profile</DialogTitle>
-							<p className="text-sm text-muted-foreground">
+							<DialogDescription>
 								Make changes to your profile here. Click save
 								when you&apos;re done.
-							</p>
+							</DialogDescription>
 						</DialogHeader>
 						<Content />
 						<DialogFooter>
