@@ -74,3 +74,22 @@
       @apply bg-background text-foreground;
     }
   }
+
+@layer components {
+  @supports selector(:has(.foo)) {
+    .gap-0-supported {
+      gap: 0;
+    }
+
+    .react-aria-GridListItem[data-selected]:has(+ [data-selected]),
+    .react-aria-GridListItem[data-selected]:has(+ .react-aria-DropIndicator + [data-selected]) {
+      @apply rounded-b-none;
+    }
+
+    .react-aria-GridListItem[data-selected] + [data-selected],
+    .react-aria-GridListItem[data-selected] + .react-aria-DropIndicator + [data-selected] {
+      @apply rounded-t-none;
+    }
+  }
+
+}
