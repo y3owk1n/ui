@@ -82,10 +82,20 @@ SelectTrigger.displayName = "SelectTrigger";
 
 const SelectHeader = ({
 	className,
+	offset = false,
+	separator = true,
 	...props
-}: React.ComponentProps<typeof Header>) => (
+}: React.ComponentProps<typeof Header> & {
+	separator?: boolean;
+	offset?: boolean;
+}) => (
 	<Header
-		className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
+		className={cn(
+			"py-1.5 pr-2 text-sm font-semibold",
+			separator && "border-b border-b-border",
+			offset && "pl-8",
+			className,
+		)}
 		{...props}
 	/>
 );
