@@ -1,0 +1,78 @@
+"use client";
+import {
+	ComboBox,
+	ComboBoxCollection,
+	ComboBoxContent,
+	ComboBoxHeader,
+	ComboBoxItem,
+	ComboBoxLabel,
+	ComboBoxPopover,
+	ComboBoxSection,
+	ComboBoxTrigger,
+} from "@/components/ui/combo-box";
+
+const rows = [
+	{ id: 1, name: "Chocolate" },
+	{ id: 2, name: "Mint" },
+	{ id: 3, name: "Strawberry" },
+	{ id: 4, name: "Vanilla" },
+];
+
+const rows2 = [
+	{
+		name: "Australian",
+		children: [
+			{ id: 2, name: "Koala" },
+			{ id: 3, name: "Kangaroo" },
+			{ id: 4, name: "Platypus" },
+		],
+	},
+	{
+		name: "American",
+		children: [
+			{ id: 6, name: "Bald Eagle" },
+			{ id: 7, name: "Bison" },
+			{ id: 8, name: "Skunk" },
+		],
+	},
+];
+
+export default function ComboBoxPage() {
+	return (
+		<div className="grid gap-4">
+			<ComboBox defaultItems={rows} defaultInputValue="Koala">
+				<ComboBoxLabel>Label</ComboBoxLabel>
+				<ComboBoxTrigger />
+				<ComboBoxPopover>
+					<ComboBoxContent<(typeof rows)[number]>>
+						{(item) => (
+							<ComboBoxItem textValue={item.name}>
+								{item.name}
+							</ComboBoxItem>
+						)}
+					</ComboBoxContent>
+				</ComboBoxPopover>
+			</ComboBox>
+			<ComboBox defaultItems={rows2} defaultInputValue="Koala">
+				<ComboBoxLabel>Label</ComboBoxLabel>
+				<ComboBoxTrigger />
+				<ComboBoxPopover>
+					<ComboBoxContent<(typeof rows2)[number]>>
+						{(section) => (
+							<ComboBoxSection id={section.name}>
+								<ComboBoxHeader>{section.name}</ComboBoxHeader>
+								<ComboBoxCollection items={section.children}>
+									{(item) => (
+										<ComboBoxItem textValue={item.name}>
+											{item.name}
+										</ComboBoxItem>
+									)}
+								</ComboBoxCollection>
+							</ComboBoxSection>
+						)}
+					</ComboBoxContent>
+				</ComboBoxPopover>
+			</ComboBox>
+		</div>
+	);
+}
