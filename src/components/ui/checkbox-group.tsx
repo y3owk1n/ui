@@ -9,7 +9,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-export interface CheckboxGroupProps extends _CheckboxGroupProps {}
+interface CheckboxGroupProps extends _CheckboxGroupProps {}
 
 const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>(
 	({ className, ...props }, ref) => (
@@ -27,6 +27,6 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>(
 		/>
 	),
 );
-CheckboxGroup.displayName = _CheckboxGroup.name;
+CheckboxGroup.displayName = "CheckboxGroup";
 
-export { CheckboxGroup };
+export { CheckboxGroup, type CheckboxGroupProps };

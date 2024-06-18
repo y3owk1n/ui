@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
-export interface BorderGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+interface BorderGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 	orientation?: "horizontal" | "vertical";
 }
 
@@ -26,6 +26,6 @@ const BorderGroup = React.forwardRef<HTMLDivElement, BorderGroupProps>(
 	},
 );
 
-BorderGroup.displayName = "ButtonGroup";
+BorderGroup.displayName = "BorderGroup";
 
-export { BorderGroup };
+export { BorderGroup, type BorderGroupProps };

@@ -42,7 +42,7 @@ const buttonVariants = cva(
 	},
 );
 
-export interface ButtonProps
+interface ButtonProps
 	extends _ButtonProps,
 		VariantProps<typeof buttonVariants> {}
 
@@ -70,4 +70,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-export { Button, buttonVariants };
+export { Button, buttonVariants, type ButtonProps };

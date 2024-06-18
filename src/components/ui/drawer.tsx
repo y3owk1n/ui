@@ -78,7 +78,7 @@ const DrawerOverlay = React.forwardRef<
 		</AnimatePresence>
 	);
 });
-DrawerOverlay.displayName = MotionModalOverlay.name;
+DrawerOverlay.displayName = "DrawerOverlay";
 
 const DrawerContent = React.forwardRef<
 	React.ElementRef<typeof MotionModal>,
@@ -203,7 +203,7 @@ const DrawerContent = React.forwardRef<
 	);
 });
 
-DrawerContent.displayName = MotionModal.name;
+DrawerContent.displayName = "DrawerContent";
 
 const DrawerTitle = DialogTitle;
 const DrawerHeader = DialogHeader;

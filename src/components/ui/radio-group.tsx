@@ -12,10 +12,9 @@ import {
 
 import { cn } from "@/lib/utils";
 
-// (alias) const _RadioGroup: (props: RadioGroupProps & React.RefAttributes<HTMLDivElement>) => React.ReactElement<any, string | React.JSXElementConstructor<any>>
-// (alias) const _Radio: (props: RadioProps & React.RefAttributes<HTMLLabelElement>) => React.ReactElement<any, string | React.JSXElementConstructor<any>>
+interface RadioGroupProps extends _RadioGroupProps {}
 
-const RadioGroup = React.forwardRef<HTMLDivElement, _RadioGroupProps>(
+const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
 	({ className, ...props }, ref) => {
 		return (
 			<_RadioGroup
@@ -33,9 +32,11 @@ const RadioGroup = React.forwardRef<HTMLDivElement, _RadioGroupProps>(
 		);
 	},
 );
-RadioGroup.displayName = _RadioGroup.name;
+RadioGroup.displayName = "RadioGroup";
 
-const RadioGroupItem = React.forwardRef<HTMLLabelElement, _RadioProps>(
+interface RadioGroupItemProps extends _RadioProps {}
+
+const RadioGroupItem = React.forwardRef<HTMLLabelElement, RadioGroupItemProps>(
 	({ className, children, ...props }, ref) => {
 		return (
 			<_Radio
@@ -74,6 +75,11 @@ const RadioGroupItem = React.forwardRef<HTMLLabelElement, _RadioProps>(
 		);
 	},
 );
-RadioGroupItem.displayName = _Radio.name;
+RadioGroupItem.displayName = "RadioGroupItem";
 
-export { RadioGroup, RadioGroupItem };
+export {
+	RadioGroup,
+	type RadioGroupProps,
+	RadioGroupItem,
+	type RadioGroupItemProps,
+};

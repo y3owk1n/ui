@@ -8,7 +8,7 @@ import {
 	type SeparatorProps as _SeparatorProps,
 } from "react-aria-components";
 
-export interface SeparatorProps extends _SeparatorProps {}
+interface SeparatorProps extends _SeparatorProps {}
 
 const Separator = React.forwardRef<HTMLElement, SeparatorProps>(
 	({ className, orientation = "horizontal", ...props }, ref) => {
@@ -28,6 +28,6 @@ const Separator = React.forwardRef<HTMLElement, SeparatorProps>(
 		);
 	},
 );
-Separator.displayName = _Separator.name;
+Separator.displayName = "Separator";
 
-export { Separator };
+export { Separator, type SeparatorProps };

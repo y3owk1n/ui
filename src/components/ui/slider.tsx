@@ -40,7 +40,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
 		</_Slider>
 	),
 );
-Slider.displayName = _Slider.name;
+Slider.displayName = "Slider";
 
 const SliderOutput = _SliderOutput;
 
@@ -71,7 +71,7 @@ const SliderTrack = React.forwardRef<HTMLDivElement, _SliderTrackProps>(
 		</_SliderTrack>
 	),
 );
-SliderTrack.displayName = _SliderTrack.name;
+SliderTrack.displayName = "SliderTrack";
 
 const SliderTrackFill = React.forwardRef<
 	HTMLDivElement,
@@ -91,7 +91,7 @@ const SliderTrackFill = React.forwardRef<
 					? { [orientation]: state.getThumbPercent(0) * 100 + "%" }
 					: {
 							[directionStart]: state.values![0] + "%",
-							[directionEnd]: 100 - state.values![1] + "%",
+							[directionEnd]: 100 - state.values![1]! + "%",
 						}
 			}
 			className={cn(
@@ -123,6 +123,13 @@ const SliderThumb = React.forwardRef<HTMLDivElement, _SliderThumbProps>(
 		/>
 	),
 );
-SliderThumb.displayName = _SliderThumb.name;
+SliderThumb.displayName = "SliderThumb";
 
-export { Slider, SliderOutput, SliderTrack, SliderTrackFill, SliderThumb };
+export {
+	Slider,
+	type SliderProps,
+	SliderOutput,
+	SliderTrack,
+	SliderTrackFill,
+	SliderThumb,
+};

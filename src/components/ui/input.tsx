@@ -8,7 +8,7 @@ import {
 	type InputProps as _InputProps,
 } from "react-aria-components";
 
-export interface InputProps extends _InputProps {}
+interface InputProps extends _InputProps {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
 	({ className, type, ...props }, ref) => {
@@ -29,6 +29,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 		);
 	},
 );
-Input.displayName = Input.name;
+Input.displayName = "Input";
 
-export { Input };
+export { Input, type InputProps };

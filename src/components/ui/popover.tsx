@@ -11,7 +11,7 @@ import {
 
 const PopoverTrigger = _DialogTrigger;
 
-export interface PopoverProps extends _PopoverProps {}
+interface PopoverProps extends _PopoverProps {}
 
 const Popover = React.forwardRef<HTMLElement, PopoverProps>(
 	({ className, ...props }, ref) => {
@@ -31,6 +31,6 @@ const Popover = React.forwardRef<HTMLElement, PopoverProps>(
 		);
 	},
 );
-Popover.displayName = Popover.name;
+Popover.displayName = "Popover";
 
-export { Popover, PopoverTrigger };
+export { Popover, type PopoverProps, PopoverTrigger };

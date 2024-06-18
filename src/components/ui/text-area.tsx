@@ -8,7 +8,7 @@ import {
 	type TextAreaProps as _TextAreaProps,
 } from "react-aria-components";
 
-export interface TextAreaProps extends _TextAreaProps {}
+interface TextAreaProps extends _TextAreaProps {}
 
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	({ className, ...props }, ref) => {
@@ -28,6 +28,6 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 		);
 	},
 );
-TextArea.displayName = TextArea.name;
+TextArea.displayName = "TextArea";
 
-export { TextArea };
+export { TextArea, type TextAreaProps };

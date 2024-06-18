@@ -11,7 +11,9 @@ import {
 
 const TooltipTrigger = _TooltipTrigger;
 
-const Tooltip = React.forwardRef<HTMLDivElement, _TooltipProps>(
+interface TooltipProps extends _TooltipProps {}
+
+const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
 	({ className, offset = 4, ...props }, ref) => {
 		return (
 			<_Tooltip
@@ -30,6 +32,6 @@ const Tooltip = React.forwardRef<HTMLDivElement, _TooltipProps>(
 		);
 	},
 );
-Tooltip.displayName = _Tooltip.name;
+Tooltip.displayName = "Tooltip";
 
-export { Tooltip, TooltipTrigger };
+export { Tooltip, type TooltipProps, TooltipTrigger };

@@ -135,7 +135,7 @@ const SelectSeparator = React.forwardRef<HTMLElement, SeparatorProps>(
 		);
 	},
 );
-SelectSeparator.displayName = Separator.displayName;
+SelectSeparator.displayName = "SelectSeparator";
 
 function SelectContent<T extends object>({
 	className,
@@ -175,7 +175,7 @@ const SelectPopover = React.forwardRef<HTMLElement, PopoverProps>(
 		);
 	},
 );
-SelectPopover.displayName = Popover.displayName;
+SelectPopover.displayName = "SelectPopover";
 
 export {
 	Select,

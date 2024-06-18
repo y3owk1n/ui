@@ -42,6 +42,6 @@ const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
 		</_Switch>
 	),
 );
-Switch.displayName = _Switch.name;
+Switch.displayName = "Switch";
 
-export { Switch };
+export { Switch, type SwitchProps };

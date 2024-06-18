@@ -10,7 +10,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-type CheckboxProps = _CheckboxProps;
+interface CheckboxProps extends _CheckboxProps {}
 
 const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
 	({ className, children, ...props }, ref) => (
@@ -50,6 +50,6 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
 		</_Checkbox>
 	),
 );
-Checkbox.displayName = _Checkbox.name;
+Checkbox.displayName = "Checkbox";
 
 export { Checkbox, type CheckboxProps };

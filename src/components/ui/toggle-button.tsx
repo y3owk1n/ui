@@ -31,32 +31,31 @@ const toggleButtonVariants = cva(
 	},
 );
 
-export interface ToggleButtonProps
+interface ToggleButtonProps
 	extends _ToggleButtonProps,
 		VariantProps<typeof toggleButtonVariants> {}
 
-const ToggleButton = React.forwardRef<
-	React.ElementRef<typeof _ToggleButton>,
-	ToggleButtonProps
->(({ className, variant, size, ...props }, ref) => (
-	<_ToggleButton
-		ref={ref}
-		className={(values) =>
-			cn(
-				toggleButtonVariants({
-					variant,
-					size,
-					className:
-						typeof className === "function"
-							? className(values)
-							: className,
-				}),
-			)
-		}
-		{...props}
-	/>
-));
+const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(
+	({ className, variant, size, ...props }, ref) => (
+		<_ToggleButton
+			ref={ref}
+			className={(values) =>
+				cn(
+					toggleButtonVariants({
+						variant,
+						size,
+						className:
+							typeof className === "function"
+								? className(values)
+								: className,
+					}),
+				)
+			}
+			{...props}
+		/>
+	),
+);
 
-ToggleButton.displayName = _ToggleButton.name;
+ToggleButton.displayName = "ToggleButton";
 
-export { ToggleButton, toggleButtonVariants };
+export { ToggleButton, type ToggleButtonProps, toggleButtonVariants };

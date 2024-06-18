@@ -10,7 +10,7 @@ import {
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
 
-export interface SearchFieldProps extends _SearchFieldProps {}
+interface SearchFieldProps extends _SearchFieldProps {}
 
 const SearchField = React.forwardRef<HTMLDivElement, SearchFieldProps>(
 	({ className, ...props }, ref) => {
@@ -30,7 +30,7 @@ const SearchField = React.forwardRef<HTMLDivElement, SearchFieldProps>(
 		);
 	},
 );
-SearchField.displayName = SearchField.name;
+SearchField.displayName = "SearchField";
 
 const SearchFieldInput = React.forwardRef<HTMLInputElement, InputProps>(
 	({ className, ...props }, ref) => {
@@ -58,6 +58,6 @@ const SearchFieldInput = React.forwardRef<HTMLInputElement, InputProps>(
 		);
 	},
 );
-SearchFieldInput.displayName = SearchFieldInput.name;
+SearchFieldInput.displayName = "SearchFieldInput";
 
-export { SearchField, SearchFieldInput };
+export { SearchField, type SearchFieldProps, SearchFieldInput };

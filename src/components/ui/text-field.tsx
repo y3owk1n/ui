@@ -6,13 +6,13 @@ import {
 	type TextFieldProps as _TextFieldProps,
 } from "react-aria-components";
 
-export interface TextFieldProps extends _TextFieldProps {}
+interface TextFieldProps extends _TextFieldProps {}
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, ref) => {
 		return <_TextField ref={ref} {...props} />;
 	},
 );
-TextField.displayName = TextField.name;
+TextField.displayName = "TextField";
 
-export { TextField };
+export { TextField, type TextFieldProps };

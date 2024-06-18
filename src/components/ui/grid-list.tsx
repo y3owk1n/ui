@@ -32,7 +32,7 @@ function GridList<T extends object>({
 	);
 }
 
-export interface GridListItemProps extends _GridListItemProps {}
+interface GridListItemProps extends _GridListItemProps {}
 
 const GridListItem = React.forwardRef<HTMLDivElement, GridListItemProps>(
 	({ className, children, ...props }, ref) => {
@@ -73,6 +73,6 @@ const GridListItem = React.forwardRef<HTMLDivElement, GridListItemProps>(
 		);
 	},
 );
-GridListItem.displayName = _GridListItem.name;
+GridListItem.displayName = "GridListItem";
 
-export { GridList, GridListItem };
+export { GridList, GridListItem, type GridListItemProps };
