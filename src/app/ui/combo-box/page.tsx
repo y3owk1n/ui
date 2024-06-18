@@ -40,9 +40,9 @@ const rows2 = [
 export default function ComboBoxPage() {
 	return (
 		<div className="grid gap-4">
-			<ComboBox defaultItems={rows} defaultInputValue="Koala">
+			<ComboBox defaultItems={rows}>
 				<ComboBoxLabel>Label</ComboBoxLabel>
-				<ComboBoxTrigger />
+				<ComboBoxTrigger placeholder="Select something" />
 				<ComboBoxPopover>
 					<ComboBoxContent<(typeof rows)[number]>>
 						{(item) => (
@@ -53,9 +53,9 @@ export default function ComboBoxPage() {
 					</ComboBoxContent>
 				</ComboBoxPopover>
 			</ComboBox>
-			<ComboBox defaultItems={rows2} defaultInputValue="Koala">
+			<ComboBox defaultItems={rows2}>
 				<ComboBoxLabel>Label</ComboBoxLabel>
-				<ComboBoxTrigger />
+				<ComboBoxTrigger placeholder="Select something" />
 				<ComboBoxPopover>
 					<ComboBoxContent<(typeof rows2)[number]>>
 						{(section) => (

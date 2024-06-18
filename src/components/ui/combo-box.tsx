@@ -8,7 +8,6 @@ import {
 	Collection,
 	Group,
 	Header,
-	ListBoxContext,
 	Section,
 	ComboBox as _ComboBox,
 } from "react-aria-components";
@@ -51,7 +50,7 @@ const ComboBoxTrigger = React.forwardRef<HTMLInputElement, InputProps>(
 
 				<div className="absolute right-0 top-0 h-10">
 					<Button variant="unstyled" size="icon">
-						<ChevronsUpDown className="size-4" />
+						<ChevronsUpDown aria-hidden="true" className="size-4" />
 					</Button>
 				</div>
 			</Group>
@@ -62,10 +61,20 @@ ComboBoxTrigger.displayName = "ComboBoxTrigger";
 
 const ComboBoxHeader = ({
 	className,
+	offset = false,
+	separator = true,
 	...props
-}: React.ComponentProps<typeof Header>) => (
+}: React.ComponentProps<typeof Header> & {
+	separator?: boolean;
+	offset?: boolean;
+}) => (
 	<Header
-		className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
+		className={cn(
+			"py-1.5 pr-2 text-sm font-semibold",
+			separator && "border-b border-b-border",
+			offset && "pl-8",
+			className,
+		)}
 		{...props}
 	/>
 );
