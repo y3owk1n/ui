@@ -15,6 +15,7 @@ export default function GridListPage() {
 				aria-label="Ice cream flavors (Multiple)"
 				selectionMode="multiple"
 				items={rows}
+				renderEmptyState={() => "No results found."}
 			>
 				{(item) => (
 					<GridListItem key={item.id}>

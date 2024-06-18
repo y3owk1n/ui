@@ -19,7 +19,7 @@ function GridList<T extends object>({
 	...props
 }: _GridListProps<T>) {
 	return (
-		<Card className={cn("p-2", className)}>
+		<Card className={cn("p-2 text-sm", className)}>
 			<_GridList {...props} />
 		</Card>
 	);

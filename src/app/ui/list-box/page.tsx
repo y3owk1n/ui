@@ -40,6 +40,7 @@ export default function ListBoxPage() {
 				aria-label="Ice cream flavors (Multiple)"
 				selectionMode="multiple"
 				items={rows}
+				renderEmptyState={() => "No results found."}
 			>
 				{(item) => <ListBoxItem key={item.id}>{item.name}</ListBoxItem>}
 			</ListBox>
@@ -47,6 +48,7 @@ export default function ListBoxPage() {
 				aria-label="Ice cream flavors (Single)"
 				selectionMode="single"
 				items={rows2}
+				renderEmptyState={() => "No results found."}
 			>
 				{(section) => (
 					<ListBoxSection id={section.name}>

@@ -7,7 +7,6 @@ import {
 	Collection,
 	Header,
 	Section,
-	SectionProps,
 	ListBox as _ListBox,
 	ListBoxItem as _ListBoxItem,
 	type ListBoxItemProps as _ListBoxItemProps,
@@ -17,7 +16,7 @@ import { Card } from "./card";
 
 function ListBox<T extends object>({ className, ...props }: _ListBoxProps<T>) {
 	return (
-		<Card className={cn("p-2", className)}>
+		<Card className={cn("p-2 text-sm", className)}>
 			<_ListBox className="grid gap-1" {...props} />
 		</Card>
 	);
