@@ -12,13 +12,22 @@ import {
 	type ListBoxItemProps as _ListBoxItemProps,
 	type ListBoxProps as _ListBoxProps,
 } from "react-aria-components";
-import { Card } from "./card";
 
-function ListBox<T extends object>({ className, ...props }: _ListBoxProps<T>) {
+export interface ListBoxProps<T> extends _ListBoxProps<T> {}
+
+function ListBox<T extends object>({ className, ...props }: ListBoxProps<T>) {
 	return (
-		<Card className={cn("p-2 text-sm", className)}>
-			<_ListBox className="grid gap-1" {...props} />
-		</Card>
+		<_ListBox
+			className={(values) =>
+				cn(
+					"grid gap-1 text-sm",
+					typeof className === "function"
+						? className(values)
+						: className,
+				)
+			}
+			{...props}
+		/>
 	);
 }
 

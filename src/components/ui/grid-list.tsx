@@ -11,7 +11,6 @@ import {
 	type GridListProps as _GridListProps,
 } from "react-aria-components";
 import { Button } from "./button";
-import { Card } from "./card";
 import { Checkbox } from "./checkbox";
 
 function GridList<T extends object>({
@@ -19,9 +18,17 @@ function GridList<T extends object>({
 	...props
 }: _GridListProps<T>) {
 	return (
-		<Card className={cn("p-2 text-sm", className)}>
-			<_GridList {...props} />
-		</Card>
+		<_GridList
+			className={(values) =>
+				cn(
+					"grid text-sm",
+					typeof className === "function"
+						? className(values)
+						: className,
+				)
+			}
+			{...props}
+		/>
 	);
 }
 

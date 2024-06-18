@@ -1,4 +1,5 @@
 "use client";
+import { Card } from "@/components/ui/card";
 import { GridList, GridListItem } from "@/components/ui/grid-list";
 
 const rows = [
@@ -11,20 +12,22 @@ const rows = [
 export default function GridListPage() {
 	return (
 		<div className="grid gap-4">
-			<GridList
-				aria-label="Ice cream flavors (Multiple)"
-				selectionMode="multiple"
-				items={rows}
-				renderEmptyState={() => "No results found."}
-			>
-				{(item) => (
-					<GridListItem key={item.id}>
-						<div className="flex w-full items-center justify-between">
-							{item.name}
-						</div>
-					</GridListItem>
-				)}
-			</GridList>
+			<Card className="p-2">
+				<GridList
+					aria-label="Ice cream flavors (Multiple)"
+					selectionMode="multiple"
+					items={rows}
+					renderEmptyState={() => "No results found."}
+				>
+					{(item) => (
+						<GridListItem key={item.id}>
+							<div className="flex w-full items-center justify-between">
+								{item.name}
+							</div>
+						</GridListItem>
+					)}
+				</GridList>
+			</Card>
 		</div>
 	);
 }
