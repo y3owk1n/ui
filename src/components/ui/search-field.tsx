@@ -4,6 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 import {
+	Group,
 	SearchField as _SearchField,
 	type SearchFieldProps as _SearchFieldProps,
 } from "react-aria-components";
@@ -35,7 +36,7 @@ SearchField.displayName = "SearchField";
 const SearchFieldInput = React.forwardRef<HTMLInputElement, InputProps>(
 	({ className, ...props }, ref) => {
 		return (
-			<div className="relative">
+			<Group className="relative">
 				<Input
 					className={(values) =>
 						cn(
@@ -54,7 +55,7 @@ const SearchFieldInput = React.forwardRef<HTMLInputElement, InputProps>(
 						<X className="size-4" />
 					</Button>
 				</div>
-			</div>
+			</Group>
 		);
 	},
 );
