@@ -57,7 +57,7 @@ export default function CheckboxPage() {
 										remove your data from our servers.
 									</DialogDescription>
 								</DialogHeader>
-								<DialogFooter>
+								<DialogFooter className="pt-4">
 									<Button
 										variant="outline"
 										autoFocus
@@ -75,24 +75,6 @@ export default function CheckboxPage() {
 								</DialogFooter>
 							</>
 						)}
-					</DialogContent>
-				</DialogOverlay>
-			</DialogTrigger>
-			<DialogTrigger>
-				<Button variant="outline">Sheet</Button>
-				<DialogOverlay>
-					<DialogContent side="right" className="sm:max-w-[425px]">
-						<DialogHeader>
-							<DialogTitle>Edit profile</DialogTitle>
-							<DialogDescription>
-								Make changes to your profile here. Click save
-								when you&apos;re done.
-							</DialogDescription>
-						</DialogHeader>
-						<Content />
-						<DialogFooter>
-							<Button type="submit">Save changes</Button>
-						</DialogFooter>
 					</DialogContent>
 				</DialogOverlay>
 			</DialogTrigger>
