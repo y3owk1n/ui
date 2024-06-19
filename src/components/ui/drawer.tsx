@@ -52,7 +52,7 @@ const DrawerTrigger = _DialogTrigger;
 const DrawerOverlay = React.forwardRef<
 	React.ElementRef<typeof MotionModalOverlay>,
 	React.ComponentPropsWithoutRef<typeof MotionModalOverlay>
->(({ className, ...props }, ref) => {
+>(({ className, isDismissable = true, ...props }, ref) => {
 	const state = useContext(OverlayTriggerStateContext);
 
 	return (
@@ -72,6 +72,7 @@ const DrawerOverlay = React.forwardRef<
 						)
 					}
 					ref={ref}
+					isDismissable={isDismissable}
 					{...props}
 				/>
 			)}
