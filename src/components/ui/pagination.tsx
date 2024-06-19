@@ -1,14 +1,14 @@
 "use client";
-import * as React from "react";
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import * as React from "react";
 
-import { cn } from "@/lib/utils";
-import { type ButtonProps, Button } from "@/components/ui/button";
+import { Button, type ButtonProps } from "@/components/ui/button";
 import {
 	type UsePaginationParams,
 	type UsePaginationResult,
 	usePagination,
 } from "@/hooks/use-pagination";
+import { cn } from "@/lib/utils";
 
 interface PaginationContextType extends UsePaginationResult {}
 

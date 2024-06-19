@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import { RouterProvider } from "@/components/router-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import { RouterProvider } from "@/components/router-provider";
 
 const fontSans = FontSans({
 	subsets: ["latin"],
