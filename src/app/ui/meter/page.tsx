@@ -18,15 +18,13 @@ export default function CheckboxPage() {
 	return (
 		<div className="grid gap-4">
 			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
-				{(meterProps) => (
+				{({ valueText, percentage }) => (
 					<>
 						<div className="mb-2">
-							<MeterLabel>
-								Progress: {meterProps.valueText}
-							</MeterLabel>
+							<MeterLabel>Progress: {valueText}</MeterLabel>
 						</div>
 						<MeterTrack>
-							<MeterTrackFill {...meterProps} />
+							<MeterTrackFill percentage={percentage} />
 						</MeterTrack>
 					</>
 				)}
@@ -37,15 +35,13 @@ export default function CheckboxPage() {
 				className="w-[60%]"
 				formatOptions={{ style: "currency", currency: "JPY" }}
 			>
-				{(meterProps) => (
+				{({ valueText, percentage }) => (
 					<>
 						<div className="mb-2">
-							<MeterLabel>
-								Currency: {meterProps.valueText}
-							</MeterLabel>
+							<MeterLabel>Currency: {valueText}</MeterLabel>
 						</div>
 						<MeterTrack>
-							<MeterTrackFill {...meterProps} />
+							<MeterTrackFill percentage={percentage} />
 						</MeterTrack>
 					</>
 				)}
@@ -58,15 +54,13 @@ export default function CheckboxPage() {
 				maxValue={1000}
 				valueLabel={`${progress} of 1000GB`}
 			>
-				{(meterProps) => (
+				{({ valueText, percentage }) => (
 					<>
 						<div className="mb-2">
-							<MeterLabel>
-								Storage: {meterProps.valueText}
-							</MeterLabel>
+							<MeterLabel>Storage: {valueText}</MeterLabel>
 						</div>
 						<MeterTrack>
-							<MeterTrackFill {...meterProps} />
+							<MeterTrackFill percentage={percentage} />
 						</MeterTrack>
 					</>
 				)}

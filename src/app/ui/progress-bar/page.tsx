@@ -33,15 +33,18 @@ export default function CheckboxPage() {
 				className="w-[60%]"
 				isIndeterminate
 			>
-				{(progressBarProps) => (
+				{({ percentage, isIndeterminate, valueText }) => (
 					<>
 						<div className="mb-2">
 							<ProgressBarLabel>
-								Progress: {progressBarProps.valueText}
+								Progress: {valueText}
 							</ProgressBarLabel>
 						</div>
 						<ProgressBarTrack>
-							<ProgressBarTrackFill {...progressBarProps} />
+							<ProgressBarTrackFill
+								percentage={percentage}
+								isIndeterminate={isIndeterminate}
+							/>
 						</ProgressBarTrack>
 					</>
 				)}
@@ -51,15 +54,18 @@ export default function CheckboxPage() {
 				value={progress}
 				className="w-[60%]"
 			>
-				{(progressBarProps) => (
+				{({ percentage, isIndeterminate, valueText }) => (
 					<>
 						<div className="mb-2">
 							<ProgressBarLabel>
-								Progress: {progressBarProps.valueText}
+								Progress: {valueText}
 							</ProgressBarLabel>
 						</div>
 						<ProgressBarTrack>
-							<ProgressBarTrackFill {...progressBarProps} />
+							<ProgressBarTrackFill
+								percentage={percentage}
+								isIndeterminate={isIndeterminate}
+							/>
 						</ProgressBarTrack>
 					</>
 				)}
@@ -72,15 +78,18 @@ export default function CheckboxPage() {
 				maxValue={1000}
 				valueLabel={`${progress} of 1000GB`}
 			>
-				{(progressBarProps) => (
+				{({ percentage, isIndeterminate, valueText }) => (
 					<>
 						<div className="mb-2">
 							<ProgressBarLabel>
-								Storage: {progressBarProps.valueText}
+								Storage: {valueText}
 							</ProgressBarLabel>
 						</div>
 						<ProgressBarTrack>
-							<ProgressBarTrackFill {...progressBarProps} />
+							<ProgressBarTrackFill
+								percentage={percentage}
+								isIndeterminate={isIndeterminate}
+							/>
 						</ProgressBarTrack>
 					</>
 				)}
