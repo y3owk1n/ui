@@ -9,16 +9,8 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-	DrawerContent,
-	DrawerFooter,
-	DrawerHeader,
-	DrawerOverlay,
-	DrawerTrigger,
-} from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ResponsiveDialogDrawer } from "@/components/ui/responsive-dialog-drawer";
 
 export default function CheckboxPage() {
 	return (
@@ -78,35 +70,6 @@ export default function CheckboxPage() {
 					</DialogContent>
 				</DialogOverlay>
 			</DialogTrigger>
-			<DrawerTrigger>
-				<Button variant="outline">Drawer</Button>
-				<DrawerOverlay>
-					<DrawerContent>
-						<div className="mx-auto max-w-[425px]">
-							<DrawerHeader>
-								<DialogTitle>Edit profile</DialogTitle>
-								<DialogDescription>
-									Make changes to your profile here. Click
-									save when you&apos;re done.
-								</DialogDescription>
-							</DrawerHeader>
-							<Content />
-							<DrawerFooter>
-								<Button type="submit">Save changes</Button>
-							</DrawerFooter>
-						</div>
-					</DrawerContent>
-				</DrawerOverlay>
-			</DrawerTrigger>
-
-			<ResponsiveDialogDrawer
-				title="Responsive Dialog"
-				description="Resize and see the magic"
-				buttonText="Responsive"
-				buttonStyle="outline"
-			>
-				<Content />
-			</ResponsiveDialogDrawer>
 		</div>
 	);
 }
