@@ -92,7 +92,8 @@ const SelectHeader = ({
 	<Header
 		className={cn(
 			"py-1.5 pr-2 text-sm font-semibold",
-			separator && "border-b border-b-border",
+			separator &&
+				"-mx-1 mb-1 border-b border-b-border px-3 pb-[0.625rem]",
 			offset && "pl-8",
 			className,
 		)}

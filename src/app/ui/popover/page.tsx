@@ -9,7 +9,7 @@ export default function CheckboxPage() {
 			<PopoverTrigger>
 				<Button variant="outline">Open popover</Button>
 				<Popover className="w-80">
-					<div className="grid gap-4">
+					<div className="grid gap-4 p-4">
 						<div className="space-y-2">
 							<h4 className="font-medium leading-none">
 								Dimensions

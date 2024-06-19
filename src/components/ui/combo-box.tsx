@@ -71,7 +71,8 @@ const ComboBoxHeader = ({
 	<Header
 		className={cn(
 			"py-1.5 pr-2 text-sm font-semibold",
-			separator && "border-b border-b-border",
+			separator &&
+				"-mx-1 mb-1 border-b border-b-border px-3 pb-[0.625rem]",
 			offset && "pl-8",
 			className,
 		)}
@@ -153,7 +154,7 @@ const ComboBoxPopover = React.forwardRef<HTMLElement, PopoverProps>(
 				offset={offset}
 				className={(values) =>
 					cn(
-						"relative z-50 w-[--trigger-width] min-w-[8rem] p-2",
+						"relative w-[--trigger-width] min-w-[8rem]",
 						typeof className === "function"
 							? className(values)
 							: className,
