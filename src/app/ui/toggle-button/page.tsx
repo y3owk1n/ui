@@ -10,6 +10,13 @@ export default function ToggleButtonPage() {
 			<ToggleButton variant="outline" aria-label="Toggle Bold">
 				<Bold className="h-4 w-4" />
 			</ToggleButton>
+			<ToggleButton
+				defaultSelected
+				variant="outline"
+				aria-label="Toggle Bold"
+			>
+				<Bold className="h-4 w-4" />
+			</ToggleButton>
 			<ToggleButton isDisabled aria-label="Toggle Bold">
 				<Bold className="h-4 w-4" />
 			</ToggleButton>
