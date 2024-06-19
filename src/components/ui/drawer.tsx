@@ -86,8 +86,8 @@ const DrawerContent = React.forwardRef<
 		children?: _DialogProps["children"];
 		closeButton?: boolean;
 	}
->(({ className, children, closeButton = true, ...props }, ref) => {
-	const drawerContentRef = React.useRef<HTMLElement>(null);
+>(({ className, children, closeButton = false, ...props }, ref) => {
+	const modalRef = React.useRef<HTMLElement>(null);
 	const state = useContext(OverlayTriggerStateContext);
 
 	const h = window.innerHeight - SHEET_MARGIN;
@@ -110,11 +110,8 @@ const DrawerContent = React.forwardRef<
 	const bgOpacity = useTransform(y, [0, h], [0.8, 0]);
 
 	useMotionValueEvent(bgOpacity, "change", (v) => {
-		if (
-			drawerContentRef.current &&
-			drawerContentRef.current.parentElement
-		) {
-			drawerContentRef.current.parentElement.style.backgroundColor = `rgba(0, 0, 0, ${v})`;
+		if (modalRef.current && modalRef.current.parentElement) {
+			modalRef.current.parentElement.style.backgroundColor = `rgba(0, 0, 0, ${v})`;
 		}
 	});
 
@@ -144,9 +141,9 @@ const DrawerContent = React.forwardRef<
 
 	return (
 		<MotionModal
-			ref={drawerContentRef}
+			ref={modalRef}
 			className={cn(
-				"absolute bottom-0 w-full rounded-t-xl bg-background shadow-lg will-change-transform",
+				"fixed inset-x-0 bottom-0 max-h-fit w-full rounded-t-xl bg-background shadow-lg will-change-transform",
 				className,
 			)}
 			initial={{ y: h }}
@@ -155,9 +152,9 @@ const DrawerContent = React.forwardRef<
 			transition={staticTransition}
 			style={{
 				y,
-				top: SHEET_MARGIN,
+				// top: SHEET_MARGIN,
 				// Extra padding at the bottom to account for rubber band scrolling.
-				paddingBottom: window.screen.height,
+				// paddingBottom: window.screen.height,
 			}}
 			drag="y"
 			dragConstraints={{ top: 0 }}
