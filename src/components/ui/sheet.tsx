@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 import { type VariantProps, cva } from "class-variance-authority";
 import { X } from "lucide-react";
 import {
+	DialogTrigger,
 	Heading,
 	type HeadingProps,
 	Modal,
 	type ModalOverlayProps,
-	DialogTrigger,
 } from "react-aria-components";
 import { Button } from "./button";
 import { Dialog, DialogOverlay, type DialogProps } from "./dialog";
