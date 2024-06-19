@@ -48,7 +48,7 @@ const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
 			<Modal
 				className={cn(
 					props.side && sheetVariants({ side: props.side }),
-					props.side && "h-full p-4",
+					props.side && "h-full",
 					className,
 				)}
 				ref={ref}
@@ -56,7 +56,7 @@ const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
 			>
 				<Sheet
 					className={cn(
-						"h-full max-h-[calc(100vh-10rem)] overflow-y-auto outline-none",
+						"h-full max-h-[calc(100vh-10rem)] overflow-y-auto p-4 outline-none",
 					)}
 				>
 					{(values) => (
