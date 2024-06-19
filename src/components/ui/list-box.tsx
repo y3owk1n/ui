@@ -39,8 +39,8 @@ const ListBoxItem = React.forwardRef<HTMLDivElement, ListBoxItemProps>(
 			<_ListBoxItem
 				className={(values) =>
 					cn(
-						"flex w-full items-center whitespace-nowrap rounded-md p-2 text-sm font-medium ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2 group-data-[empty]:hidden",
-						"bg-background text-foreground data-[hovered]:bg-primary/10 data-[pressed]:bg-primary/50 data-[selected]:bg-primary data-[selected]:data-[hovered]:bg-primary data-[selected]:text-primary-foreground",
+						"flex w-full cursor-default select-none items-center whitespace-nowrap rounded-md p-2 text-sm font-medium outline-none ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[focus-visible]:bg-accent data-[focus-visible]:text-accent-foreground data-[disabled]:opacity-50 data-[focused]:outline-none group-data-[empty]:hidden",
+						"bg-background text-foreground data-[hovered]:bg-primary/10 data-[pressed]:bg-primary/50 data-[selected]:bg-primary data-[selected]:data-[focus-visible]:bg-primary data-[selected]:data-[hovered]:bg-primary data-[selected]:data-[focus-visible]:text-primary-foreground data-[selected]:text-primary-foreground",
 						typeof className === "function"
 							? className(values)
 							: className,

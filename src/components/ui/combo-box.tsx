@@ -86,7 +86,7 @@ const ComboBoxItem = React.forwardRef<HTMLDivElement, ListBoxItemProps>(
 			<ListBoxItem
 				className={(values) =>
 					cn(
-						"flex gap-2",
+						"gap-2",
 						typeof className === "function"
 							? className(values)
 							: className,

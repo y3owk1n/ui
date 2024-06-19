@@ -107,7 +107,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, ListBoxItemProps>(
 			<ListBoxItem
 				className={(values) =>
 					cn(
-						"flex gap-2",
+						"gap-2",
 						typeof className === "function"
 							? className(values)
 							: className,
@@ -175,7 +175,7 @@ const SelectPopover = React.forwardRef<HTMLElement, PopoverProps>(
 				offset={offset}
 				className={(values) =>
 					cn(
-						"relative z-50 w-[--trigger-width] min-w-[8rem] p-2",
+						"relative z-50 w-[--trigger-width] min-w-[8rem]",
 						typeof className === "function"
 							? className(values)
 							: className,
