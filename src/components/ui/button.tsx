@@ -9,13 +9,17 @@ import {
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
-import { baseVariant } from "@/lib/variants";
+import { baseVariant, linkVariant, unstyledVariant } from "@/lib/variants";
 
 const buttonVariants = cva(
 	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2 group-data-[empty]:hidden",
 	{
 		variants: {
-			variant: baseVariant,
+			variant: {
+				...baseVariant,
+				...linkVariant,
+				...unstyledVariant,
+			},
 			size: {
 				default: "h-10 px-4 py-2",
 				sm: "h-9 rounded-md px-3",

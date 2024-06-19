@@ -8,13 +8,16 @@ import {
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
-import { baseVariant } from "@/lib/variants";
+import { baseVariant, unstyledVariant } from "@/lib/variants";
 
 const toggleButtonVariants = cva(
 	"inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[hovered]:bg-muted data-[selected]:bg-accent data-[hovered]:text-muted-foreground data-[selected]:text-accent-foreground data-[disabled]:opacity-50 data-[focus-visible]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2",
 	{
 		variants: {
-			variant: baseVariant,
+			variant: {
+				...baseVariant,
+				...unstyledVariant,
+			},
 			size: {
 				default: "h-10 px-3",
 				sm: "h-9 px-2.5",

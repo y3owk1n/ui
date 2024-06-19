@@ -8,8 +8,14 @@ const baseVariant = {
 	secondary:
 		"bg-secondary text-secondary-foreground data-[hovered]:bg-secondary/80 data-[pressed]:bg-secondary/70",
 	ghost: "data-[hovered]:bg-accent data-[pressed]:bg-accent/70 data-[hovered]:text-accent-foreground",
+};
+
+const linkVariant = {
 	link: "text-primary underline-offset-4 data-[hovered]:underline",
+};
+
+const unstyledVariant = {
 	unstyled: "text-primary data-[hovered]:text-primary/50",
 };
 
-export { baseVariant };
+export { baseVariant, linkVariant, unstyledVariant };
