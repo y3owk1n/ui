@@ -1,15 +1,27 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import {
+	Pagination,
+	PaginationContent,
+	PaginationEllipsis,
+	PaginationItem,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious,
+} from "@/components/ui/pagination";
 import {
 	Table,
 	TableBody,
 	TableBodyEmptyState,
 	TableCell,
 	TableColumn,
-	TableColumnDefs,
+	type TableColumnDefs,
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { useDragAndDrop } from "react-aria-components";
 
 import { useAsyncList } from "react-stately";
@@ -50,10 +62,16 @@ const columns: TableColumnDefs<Character>[] = [
 ];
 
 export default function CheckboxPage() {
+	const router = useRouter();
+	const searchParams = useSearchParams();
+	const params = new URLSearchParams(searchParams.toString());
+	const currentPage = params.get("page");
+	const [totalPages, setTotalPages] = useState(0);
+
 	const list = useAsyncList<Character>({
-		async load({ signal }) {
+		async load({ signal, filterText }) {
 			const res = await fetch(
-				`https://swapi.py4e.com/api/people/?search`,
+				`https://swapi.py4e.com/api/people/?search=${filterText}&page=${currentPage}`,
 				{
 					signal,
 				},
@@ -65,6 +83,7 @@ export default function CheckboxPage() {
 				height: Number(item.height),
 				mass: Number(item.mass),
 			}));
+			setTotalPages(Math.ceil(json.count / 10));
 			return {
 				items: updatedRes,
 			};
@@ -115,47 +134,106 @@ export default function CheckboxPage() {
 	});
 
 	return (
-		<div className="rounded-md border">
-			<Table
-				aria-label="Files"
-				selectionMode="multiple"
-				sortDescriptor={list.sortDescriptor}
-				onSortChange={(e) => {
-					list.sort(e);
-				}}
-				dragAndDropHooks={dragAndDropHooks}
-			>
-				<TableHeader columns={columns}>
-					{(column) => (
-						<TableColumn
-							isRowHeader={column.isRowHeader}
-							allowsSorting={column.allowsSorting}
-						>
-							{column.header}
-						</TableColumn>
-					)}
-				</TableHeader>
-				<TableBody
-					items={list.items}
-					renderEmptyState={() => (
-						<TableBodyEmptyState>
-							No results found
-						</TableBodyEmptyState>
-					)}
+		<div>
+			<div className="flex items-center py-4">
+				<Input
+					placeholder="Filter emails..."
+					value={list.filterText}
+					onChange={(event) => list.setFilterText(event.target.value)}
+					className="max-w-sm"
+				/>
+			</div>
+
+			<div className="rounded-md border">
+				<Table
+					aria-label="Files"
+					selectionMode="multiple"
+					sortDescriptor={list.sortDescriptor}
+					onSortChange={(e) => {
+						list.sort(e);
+					}}
+					dragAndDropHooks={dragAndDropHooks}
 				>
-					{(item) => (
-						<TableRow columns={columns}>
-							{(column) => (
-								<TableCell>
-									{column.cell
-										? column.cell(item)
-										: item[column.id]}
-								</TableCell>
-							)}
-						</TableRow>
-					)}
-				</TableBody>
-			</Table>
+					<TableHeader columns={columns}>
+						{(column) => (
+							<TableColumn
+								isRowHeader={column.isRowHeader}
+								allowsSorting={column.allowsSorting}
+							>
+								{column.header}
+							</TableColumn>
+						)}
+					</TableHeader>
+					<TableBody
+						items={list.items}
+						renderEmptyState={() => (
+							<TableBodyEmptyState>
+								No results found
+							</TableBodyEmptyState>
+						)}
+					>
+						{(item) => (
+							<TableRow columns={columns}>
+								{(column) => (
+									<TableCell>
+										{column.cell
+											? column.cell(item)
+											: item[column.id]}
+									</TableCell>
+								)}
+							</TableRow>
+						)}
+					</TableBody>
+				</Table>
+			</div>
+
+			<Pagination
+				total={totalPages}
+				boundaries={1}
+				initialPage={currentPage}
+				onChange={(page) => {
+					params.set("page", page.toString());
+					router.push(`?${params.toString()}`);
+					list.reload();
+				}}
+			>
+				{(pagination) => (
+					<PaginationContent>
+						<PaginationItem>
+							<PaginationPrevious
+								isDisabled={pagination.isFirstPage}
+								onPress={() => {
+									pagination.previous();
+								}}
+							/>
+						</PaginationItem>
+						{pagination.range.map((page, index) => (
+							<PaginationItem key={index}>
+								{page === "dots" ? (
+									<PaginationEllipsis />
+								) : (
+									<PaginationLink
+										isActive={pagination.active === page}
+										onPress={() => {
+											pagination.setPage(page);
+										}}
+									>
+										{page}
+									</PaginationLink>
+								)}
+							</PaginationItem>
+						))}
+						<PaginationItem>
+							<PaginationNext
+								isDisabled={pagination.isLastPage}
+								onPress={() => {
+									pagination.next();
+								}}
+							/>
+						</PaginationItem>
+					</PaginationContent>
+				)}
+			</Pagination>
 		</div>
 	);
 }
