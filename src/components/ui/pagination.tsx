@@ -146,6 +146,18 @@ const PaginationEllipsis = ({
 );
 PaginationEllipsis.displayName = "PaginationEllipsis";
 
+const PaginationText = React.forwardRef<
+	HTMLSpanElement,
+	React.HTMLAttributes<HTMLSpanElement>
+>(({ className, ...props }, ref) => (
+	<span
+		ref={ref}
+		className={cn("px-2 text-sm [&_p]:leading-relaxed", className)}
+		{...props}
+	/>
+));
+PaginationText.displayName = "PaginationText";
+
 export {
 	Pagination,
 	PaginationContent,
@@ -154,4 +166,5 @@ export {
 	PaginationLink,
 	PaginationNext,
 	PaginationPrevious,
+	PaginationText,
 };
