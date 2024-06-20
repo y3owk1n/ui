@@ -20,7 +20,8 @@ import {
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
-import { ArrowUpDown } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, GripVertical } from "lucide-react";
+import { useTableState } from "react-stately";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
 
@@ -78,6 +79,7 @@ const TableColumn = React.forwardRef<HTMLTableCellElement, ColumnProps>(
 	({ className, children, ...props }, ref) => {
 		const { selectionBehavior } = useTableOptions();
 		const hasSelect = selectionBehavior === "toggle";
+
 		return (
 			<Column
 				ref={ref}
@@ -112,7 +114,15 @@ const TableColumn = React.forwardRef<HTMLTableCellElement, ColumnProps>(
 								{typeof children === "function"
 									? children(values)
 									: children}
-								<ArrowUpDown className="ml-2 h-4 w-4" />
+								{values.sortDirection === "ascending" && (
+									<ArrowUp className="ml-2 size-4" />
+								)}
+								{values.sortDirection === "descending" && (
+									<ArrowDown className="ml-2 size-4" />
+								)}
+								{!values.sortDirection && (
+									<ArrowUpDown className="ml-2 size-4" />
+								)}
 							</Button>
 						) : typeof children === "function" ? (
 							children(values)
@@ -135,7 +145,10 @@ function TableBody<T extends object>({
 }: TableBodyProps<T>) {
 	return (
 		<_TableBody
-			className={cn("[&_tr:last-child]:border-0", className)}
+			className={cn(
+				"[&>.react-aria-DropIndicator]:border-2 [&>.react-aria-DropIndicator]:border-black [&_tr:last-child]:border-0",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -155,7 +168,8 @@ function TableRow<T extends object>({
 			id={id}
 			className={(values) =>
 				cn(
-					"border-b transition-colors data-[hovered]:bg-muted/50 data-[selected]:bg-muted",
+					"border-b transition-all data-[hovered]:bg-muted/50 data-[selected]:bg-muted",
+					values.isDragging && "opacity-20",
 					values.isDisabled && "text-primary/50",
 					(values.isFocused || values.isFocusVisible) &&
 						"outline-none ring-2 ring-ring ring-offset-2",
@@ -168,7 +182,14 @@ function TableRow<T extends object>({
 		>
 			{allowsDragging && (
 				<TableCell>
-					<Button slot="drag">≡</Button>
+					<Button
+						variant="ghost"
+						slot="drag"
+						size="icon"
+						className=""
+					>
+						<GripVertical className="size-4" />
+					</Button>
 				</TableCell>
 			)}
 			{selectionBehavior === "toggle" && (
