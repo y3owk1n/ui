@@ -76,7 +76,7 @@ function TableHeader<T extends object>({
 
 interface TableColumnDefs<T extends object>
 	extends Pick<ColumnProps, "isRowHeader" | "allowsSorting"> {
-	id: keyof T;
+	id: keyof T | "actions";
 	header: string | (() => React.ReactNode);
 	cell?: (item: T) => React.ReactNode;
 }
