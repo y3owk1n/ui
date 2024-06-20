@@ -6,6 +6,7 @@ import {
 	TableBodyEmptyState,
 	TableCell,
 	TableColumn,
+	TableColumnDefs,
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
@@ -27,11 +28,25 @@ interface Character {
 	birth_year: string;
 }
 
-const columns = [
-	{ name: "Name", id: "name", isRowHeader: true },
-	{ name: "Height", id: "height" },
-	{ name: "Mass", id: "mass" },
-	{ name: "Birth Year", id: "birth_year" },
+const columns: TableColumnDefs<Character>[] = [
+	{
+		header: "Name",
+		id: "name",
+		isRowHeader: true,
+	},
+	{
+		header: "Height",
+		allowsSorting: true,
+		id: "height",
+		cell: (item) => <span>{item.height} cm</span>,
+	},
+	{
+		header: "Mass",
+		id: "mass",
+		allowsSorting: true,
+		cell: (item) => <span>{item.mass} kg</span>,
+	},
+	{ header: "Birth Year", id: "birth_year" },
 ];
 
 export default function CheckboxPage() {
@@ -114,9 +129,9 @@ export default function CheckboxPage() {
 					{(column) => (
 						<TableColumn
 							isRowHeader={column.isRowHeader}
-							allowsSorting
+							allowsSorting={column.allowsSorting}
 						>
-							{column.name}
+							{column.header}
 						</TableColumn>
 					)}
 				</TableHeader>
@@ -132,7 +147,9 @@ export default function CheckboxPage() {
 						<TableRow columns={columns}>
 							{(column) => (
 								<TableCell>
-									{item[column.id as keyof Character]}
+									{column.cell
+										? column.cell(item)
+										: item[column.id]}
 								</TableCell>
 							)}
 						</TableRow>

@@ -21,7 +21,6 @@ import {
 
 import { cn } from "@/lib/utils";
 import { ArrowDown, ArrowUp, ArrowUpDown, GripVertical } from "lucide-react";
-import { useTableState } from "react-stately";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
 
@@ -73,6 +72,13 @@ function TableHeader<T extends object>({
 			<Collection items={columns}>{children}</Collection>
 		</_TableHeader>
 	);
+}
+
+interface TableColumnDefs<T extends object>
+	extends Pick<ColumnProps, "isRowHeader" | "allowsSorting"> {
+	id: keyof T;
+	header: string | (() => React.ReactNode);
+	cell?: (item: T) => React.ReactNode;
 }
 
 const TableColumn = React.forwardRef<HTMLTableCellElement, ColumnProps>(
@@ -251,4 +257,5 @@ export {
 	TableRow,
 	TableCell,
 	TableBodyEmptyState,
+	type TableColumnDefs,
 };
