@@ -18,7 +18,7 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
 			ref={ref}
 			className={(values) =>
 				cn(
-					"group flex items-center gap-x-2 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+					"group flex items-center gap-x-2",
 					typeof className === "function"
 						? className(values)
 						: className,
@@ -31,6 +31,8 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
 					<div
 						className={cn(
 							"h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background group-data-[invalid]:border-destructive group-data-[indeterminate]:bg-primary group-data-[selected]:bg-primary group-data-[selected]:group-data-[invalid]:bg-destructive group-data-[indeterminate]:text-primary-foreground group-data-[selected]:group-data-[invalid]:text-destructive-foreground group-data-[selected]:text-primary-foreground group-data-[focus-visible]:outline-none group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-ring group-data-[focus-visible]:ring-offset-2",
+							values.isDisabled &&
+								"opacity-20 border-primary border cursor-not-allowed",
 						)}
 					>
 						<div className="flex h-full w-full items-center justify-center text-current">
