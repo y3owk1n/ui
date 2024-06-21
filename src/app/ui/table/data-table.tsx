@@ -22,12 +22,12 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { type DropPosition, useDragAndDrop } from "react-aria-components";
 
+import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
 import { useDebouncedValue } from "@/hooks/use-debounce-value";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { type Key, type SortDescriptor } from "react-stately";
 import { type Character, type CharacterWithId, columns } from "./column-defs";
-import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
 
 interface DataTableProps {
 	items: CharacterWithId[];
