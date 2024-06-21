@@ -10,6 +10,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { baseVariant, linkVariant, unstyledVariant } from "@/lib/variants";
+import { Loader2 } from "lucide-react";
 
 const buttonVariants = cva(
 	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2 group-data-[empty]:hidden",
@@ -38,10 +39,23 @@ const buttonVariants = cva(
 
 interface ButtonProps
 	extends _ButtonProps,
-		VariantProps<typeof buttonVariants> {}
+		VariantProps<typeof buttonVariants> {
+	isLoading?: boolean;
+}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-	({ className, variant, size, ...props }, ref) => {
+	(
+		{
+			className,
+			isLoading = false,
+			isDisabled = false,
+			variant,
+			size,
+			children,
+			...props
+		},
+		ref,
+	) => {
 		return (
 			<_Button
 				className={(values) =>
@@ -57,8 +71,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 					)
 				}
 				ref={ref}
+				isDisabled={isLoading || isDisabled}
 				{...props}
-			/>
+			>
+				{(values) => (
+					<>
+						{isLoading && (
+							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+						)}
+						{typeof children === "function"
+							? children(values)
+							: children}
+					</>
+				)}
+			</_Button>
 		);
 	},
 );

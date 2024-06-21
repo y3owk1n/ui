@@ -11,6 +11,7 @@ export default function ButtonPage() {
 			<Button variant="link">Link</Button>
 			<Button>Destructive</Button>
 			<Button isDisabled>disabled</Button>
+			<Button isLoading>loading</Button>
 		</div>
 	);
 }
