@@ -3,14 +3,11 @@
 import {
 	Pagination,
 	PaginationContent,
-	PaginationEllipsis,
 	PaginationFirst,
 	PaginationItem,
 	PaginationLast,
-	PaginationLink,
 	PaginationNext,
 	PaginationPrevious,
-	PaginationText,
 } from "@/components/ui/pagination";
 import {
 	Table,
@@ -23,12 +20,11 @@ import {
 } from "@/components/ui/table";
 import { type DropPosition, useDragAndDrop } from "react-aria-components";
 
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { GridList, GridListItem } from "@/components/ui/grid-list";
+import { Popover, PopoverTrigger } from "@/components/ui/popover";
 import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
-import { useCallback, useMemo, useState } from "react";
-import { Selection, type Key, type SortDescriptor } from "react-stately";
-import { type User, columns, statuses } from "./column-defs";
-import { users } from "./data";
-import { useMediaQuery } from "@/hooks/use-media-query";
 import {
 	Select,
 	SelectContent,
@@ -37,10 +33,10 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { Popover, PopoverTrigger } from "@/components/ui/popover";
-import { GridList, GridListItem } from "@/components/ui/grid-list";
-import { Card } from "@/components/ui/card";
+import { useCallback, useMemo, useState } from "react";
+import { type Key, type Selection, type SortDescriptor } from "react-stately";
+import { type User, columns, statuses } from "./column-defs";
+import { users } from "./data";
 
 function getPaginatedItems(page: number, rowsPerPage: number) {
 	const start = (page - 1) * rowsPerPage;
