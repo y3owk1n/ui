@@ -41,14 +41,19 @@ const pageSize = 10;
 export default function DataTable(props: DataTableProps) {
 	const router = useRouter();
 	const searchParams = useSearchParams();
-	const params = new URLSearchParams(searchParams.toString());
+	const params = useMemo(() => {
+		return new URLSearchParams(searchParams.toString());
+	}, [searchParams]);
 
 	const isDesktop = useMediaQuery("(min-width: 768px)");
 
 	const [items, setItems] = useState<CharacterWithId[]>(props.items);
 
+	const [isLoading, setIsLoading] = useState(false);
+
 	useEffect(() => {
 		setItems(props.items);
+		setIsLoading(false);
 	}, [props.items]);
 
 	const [currentSearchTerm, setCurrentSearchTerm] = useState(
@@ -166,15 +171,17 @@ export default function DataTable(props: DataTableProps) {
 				<Input
 					placeholder="Search for name"
 					value={currentSearchTerm}
-					onChange={(event) =>
-						setCurrentSearchTerm(event.target.value)
-					}
+					onChange={(event) => {
+						setCurrentSearchTerm(event.target.value);
+						setIsLoading(true);
+					}}
 					className="max-w-sm"
 				/>
 			</div>
 
-			<div className="w-full rounded-md border">
+			<div className="relative w-full rounded-md border">
 				<Table
+					isLoading={true}
 					aria-label="Files"
 					selectionMode="multiple"
 					sortDescriptor={sortDescriptor}
@@ -225,6 +232,7 @@ export default function DataTable(props: DataTableProps) {
 				siblings={1}
 				initialPage={props.currentPage}
 				onChange={(page) => {
+					setIsLoading(true);
 					params.set("page", page.toString());
 					router.push(`?${params.toString()}`);
 				}}

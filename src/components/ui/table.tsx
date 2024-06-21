@@ -20,16 +20,34 @@ import {
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
-import { ArrowDown, ArrowUp, ArrowUpDown, GripVertical } from "lucide-react";
+import {
+	ArrowDown,
+	ArrowUp,
+	ArrowUpDown,
+	GripVertical,
+	Loader2,
+} from "lucide-react";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
 
-interface TableProps extends _TableProps {}
+interface TableProps extends _TableProps {
+	/** Loading State */
+	isLoading?: boolean;
+	/** To render custom loading component */
+	renderLoadingComponent?: React.ReactNode;
+}
 
 const Table = React.forwardRef<HTMLTableElement, TableProps>(
-	({ className, ...props }, ref) => {
+	({ className, isLoading, renderLoadingComponent, ...props }, ref) => {
 		return (
 			<div className="relative w-full overflow-auto">
+				{isLoading && (
+					<div className="absolute bottom-0 left-0 right-0 top-0 z-50 grid place-items-center bg-background/80 backdrop-blur-sm">
+						{renderLoadingComponent ?? (
+							<Loader2 className="h-4 w-4 animate-spin" />
+						)}
+					</div>
+				)}
 				<_Table
 					ref={ref}
 					className={(values) =>
@@ -147,6 +165,7 @@ interface TableBodyProps<T> extends _TableBodyProps<T> {}
 
 function TableBody<T extends object>({
 	className,
+	children,
 	...props
 }: TableBodyProps<T>) {
 	return (
@@ -156,7 +175,9 @@ function TableBody<T extends object>({
 				className,
 			)}
 			{...props}
-		/>
+		>
+			{children}
+		</_TableBody>
 	);
 }
 

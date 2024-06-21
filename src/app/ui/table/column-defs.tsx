@@ -29,19 +29,27 @@ export const columns: TableColumnDefs<CharacterWithId>[] = [
 	},
 	{
 		header: "Height",
+		isRowHeader: true,
 		allowsSorting: true,
 		id: "height",
 		cell: (item) => <span>{item.height} cm</span>,
 	},
 	{
 		header: "Mass",
+		isRowHeader: true,
 		id: "mass",
 		allowsSorting: true,
 		cell: (item) => <span>{item.mass} kg</span>,
 	},
-	{ header: "Birth Year", id: "birth_year" },
+	{
+		header: "Birth Year",
+		id: "birth_year",
+
+		isRowHeader: true,
+	},
 	{
 		header: "Actions",
+		isRowHeader: true,
 		id: "actions",
 		cell: (item) => (
 			<MenuTrigger>
