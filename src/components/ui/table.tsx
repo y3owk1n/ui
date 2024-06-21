@@ -38,7 +38,10 @@ interface TableProps extends _TableProps {
 }
 
 const Table = React.forwardRef<HTMLTableElement, TableProps>(
-	({ className, isLoading, renderLoadingComponent, ...props }, ref) => {
+	(
+		{ className, isLoading = false, renderLoadingComponent, ...props },
+		ref,
+	) => {
 		return (
 			<div className="relative w-full overflow-auto">
 				{isLoading && (

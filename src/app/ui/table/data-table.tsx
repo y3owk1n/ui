@@ -1,6 +1,5 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import {
 	Pagination,
 	PaginationContent,
@@ -28,6 +27,7 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { type Key, type SortDescriptor } from "react-stately";
 import { type Character, type CharacterWithId, columns } from "./column-defs";
+import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
 
 interface DataTableProps {
 	items: CharacterWithId[];
@@ -168,20 +168,23 @@ export default function DataTable(props: DataTableProps) {
 	return (
 		<div className="space-y-4">
 			<div className="flex items-center">
-				<Input
-					placeholder="Search for name"
+				<SearchField
 					value={currentSearchTerm}
-					onChange={(event) => {
-						setCurrentSearchTerm(event.target.value);
+					onChange={(value) => {
+						setCurrentSearchTerm(value);
 						setIsLoading(true);
 					}}
-					className="max-w-sm"
-				/>
+				>
+					<SearchFieldInput
+						placeholder="Search for name"
+						className="max-w-sm"
+					/>
+				</SearchField>
 			</div>
 
 			<div className="relative w-full rounded-md border">
 				<Table
-					isLoading={true}
+					isLoading={isLoading}
 					aria-label="Files"
 					selectionMode="multiple"
 					sortDescriptor={sortDescriptor}
