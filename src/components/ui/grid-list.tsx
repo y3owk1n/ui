@@ -46,7 +46,7 @@ const GridListItem = React.forwardRef<HTMLDivElement, GridListItemProps>(
 				textValue={textValue}
 				className={(values) =>
 					cn(
-						"flex w-full items-center whitespace-nowrap rounded-md p-2 text-sm font-medium ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2 group-data-[empty]:hidden",
+						"flex w-full cursor-pointer items-center whitespace-nowrap rounded-md p-2 text-sm font-medium ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2 group-data-[empty]:hidden",
 						"bg-background text-foreground data-[hovered]:bg-accent data-[pressed]:bg-accent/50",
 						highlightSelected &&
 							"react-aria-GridListItem data-[selected]:bg-primary data-[selected]:data-[hovered]:bg-primary data-[selected]:text-primary-foreground",
