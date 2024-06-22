@@ -3,6 +3,8 @@ import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/components/ui/menu";
 import { type TableColumnDefs } from "@/components/ui/table";
 import { MoreHorizontal } from "lucide-react";
 
+export type StatusOption = "active" | "paused" | "vacation";
+
 export interface User {
 	id: number;
 	name: string;
@@ -14,7 +16,10 @@ export interface User {
 	email: string;
 }
 
-export const statuses = [
+export const statuses: {
+	id: StatusOption;
+	name: string;
+}[] = [
 	{ id: "active", name: "Active" },
 	{ id: "paused", name: "Paused" },
 	{ id: "vacation", name: "Vacation" },
@@ -60,6 +65,8 @@ export const columns: TableColumnDefs<User>[] = [
 		isRowHeader: true,
 		id: "status",
 		allowsSorting: true,
+		cell: (item) =>
+			statuses.find((status) => status.id === item.status)?.name,
 	},
 	{
 		header: "Actions",

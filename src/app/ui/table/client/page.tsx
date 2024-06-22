@@ -37,75 +37,90 @@ import { useCallback, useMemo, useState } from "react";
 import { type Key, type Selection, type SortDescriptor } from "react-stately";
 import { type User, columns, statuses } from "./column-defs";
 import { users } from "./data";
-
-function getPaginatedItems(page: number, rowsPerPage: number) {
-	const start = (page - 1) * rowsPerPage;
-	const end = start + rowsPerPage;
-
-	return users.slice(start, end);
-}
-
-function getSearchItem(searchTerm: string) {
-	return users.filter((user) =>
-		user.name.toLowerCase().includes(searchTerm.toLowerCase()),
-	);
-}
+import { PlusCircle, Settings2 } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 
 export default function DataTable() {
 	const [page, setPage] = useState(1);
 
-	const [rowsPerPage, setRowsPerPage] = useState(5);
+	const [rawItems, setRawItems] = useState<User[]>(users);
 
-	const [items, setItems] = useState<User[]>(
-		getPaginatedItems(page, rowsPerPage),
-	);
+	const [rowsPerPage, setRowsPerPage] = useState(5);
 
 	const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
 
 	const [statusFilter, setStatusFilter] = useState<Selection>("all");
 
+	const [visibleColumns, setVisibleColumns] = useState<Selection>("all");
+
 	const [currentSearchTerm, setCurrentSearchTerm] = useState("");
 
+	const hasSearchFilter = Boolean(currentSearchTerm);
+
+	const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({});
+
+	const headerColumns = useMemo(() => {
+		if (visibleColumns === "all") return columns;
+
+		return columns.filter((column) =>
+			Array.from(visibleColumns).includes(column.id),
+		);
+	}, [visibleColumns]);
+
+	const filteredItems = useMemo(() => {
+		let filteredUsers = [...rawItems];
+
+		if (hasSearchFilter) {
+			filteredUsers = filteredUsers.filter((user) =>
+				user.name
+					.toLowerCase()
+					.includes(currentSearchTerm.toLowerCase()),
+			);
+		}
+
+		if (
+			statusFilter !== "all" &&
+			Array.from(statusFilter).length !== statuses.length
+		) {
+			filteredUsers = filteredUsers.filter((user) =>
+				Array.from(statusFilter).includes(user.status),
+			);
+		}
+
+		return filteredUsers;
+	}, [currentSearchTerm, hasSearchFilter, rawItems, statusFilter]);
+
 	const pages = useMemo(() => {
-		return Math.ceil(users.length / rowsPerPage);
-	}, [rowsPerPage]);
+		return Math.ceil(filteredItems.length / rowsPerPage);
+	}, [filteredItems.length, rowsPerPage]);
 
-	const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>();
+	const selectedStatusValues = useMemo(() => {
+		return Array.from(statusFilter);
+	}, [statusFilter]);
 
-	const sortItem = useCallback(
-		(e: SortDescriptor) => {
-			const sortedItems = [...items].sort((a, b) => {
-				const first = a[e.column as keyof User];
-				const second = b[e.column as keyof User];
+	const items = useMemo(() => {
+		const start = (page - 1) * rowsPerPage;
+		const end = start + rowsPerPage;
 
-				let cmp: number;
+		return filteredItems.slice(start, end);
+	}, [page, filteredItems, rowsPerPage]);
 
-				if (typeof first === "number" && typeof second === "number") {
-					cmp = first - second; // Numeric comparison
-				} else if (
-					typeof first === "string" &&
-					typeof second === "string"
-				) {
-					cmp = first.localeCompare(second); // Alphabetical comparison
-				} else {
-					cmp = 0; // Default case, although this should never be reached
-				}
+	const sortedItems = useMemo(() => {
+		return [...items].sort((a, b) => {
+			const first = a[sortDescriptor?.column as keyof User];
+			const second = b[sortDescriptor?.column as keyof User];
+			const cmp = first < second ? -1 : first > second ? 1 : 0;
 
-				if (e.direction === "descending") {
-					cmp *= -1;
-				}
-				return cmp;
-			});
-			setItems(sortedItems);
-		},
-		[items],
-	);
+			return sortDescriptor?.direction === "descending" ? -cmp : cmp;
+		});
+	}, [sortDescriptor, items]);
 
 	const getItem = useCallback(
 		(key: Key) => {
-			return items.find((item) => item.id === key)!;
+			return rawItems.find((item) => item.id === key)!;
 		},
-		[items],
+		[rawItems],
 	);
 
 	const moveItems = useCallback(
@@ -115,9 +130,6 @@ export default function DataTable() {
 			keysToMove: Key[],
 			position: DropPosition,
 		) => {
-			const targetIndex = array.findIndex(
-				(item) => item.id === targetKey,
-			);
 			const itemsToMove = keysToMove.map(
 				(key) => array.find((item) => item.id === key)!,
 			);
@@ -125,6 +137,10 @@ export default function DataTable() {
 			// Remove items to move from the array
 			const filteredArray = array.filter(
 				(item) => !keysToMove.includes(item.id),
+			);
+
+			const targetIndex = filteredArray.findIndex(
+				(item) => item.id === targetKey,
 			);
 
 			// Determine the new index for insertion
@@ -145,7 +161,7 @@ export default function DataTable() {
 				"text/plain": getItem(key).name,
 			})),
 		onReorder(e) {
-			const itemsArray = [...items]; // Create a copy of listData
+			const itemsArray = [...rawItems]; // Create a copy of listData
 
 			if (e.target.dropPosition === "before") {
 				const newListData = moveItems(
@@ -154,7 +170,7 @@ export default function DataTable() {
 					[...e.keys],
 					"before",
 				);
-				setItems(newListData);
+				setRawItems(newListData);
 			} else if (e.target.dropPosition === "after") {
 				const newListData = moveItems(
 					itemsArray,
@@ -162,44 +178,33 @@ export default function DataTable() {
 					[...e.keys],
 					"after",
 				);
-				setItems(newListData);
+				setRawItems(newListData);
 			}
 		},
 	});
 
-	const hasSearchFilter = Boolean(currentSearchTerm);
-
-	const onPageChange = useCallback(
-		(currentPage: number) => {
-			setPage(currentPage);
-			setItems(getPaginatedItems(currentPage, rowsPerPage));
-		},
-		[rowsPerPage],
-	);
+	const onPageChange = useCallback((currentPage: number) => {
+		setPage(currentPage);
+	}, []);
 
 	const onRowsPerPageChange = useCallback((page: Key) => {
 		setRowsPerPage(Number(page));
 		setPage(1);
 	}, []);
 
-	const onSearchChange = useCallback(
-		(value: string) => {
-			if (value) {
-				setCurrentSearchTerm(value);
-				setPage(1);
-				setItems(getSearchItem(value));
-			} else {
-				setCurrentSearchTerm("");
-				setItems(getPaginatedItems(page, rowsPerPage));
-			}
-		},
-		[page, rowsPerPage],
-	);
+	const onSearchChange = useCallback((value: string) => {
+		if (value) {
+			setCurrentSearchTerm(value);
+			setPage(1);
+		} else {
+			setCurrentSearchTerm("");
+		}
+	}, []);
 
-	// const onClear = React.useCallback(()=>{
-	//   setFilterValue("")
-	//   setPage(1)
-	// },[])
+	const onSearchClear = useCallback(() => {
+		setCurrentSearchTerm("");
+		setPage(1);
+	}, []);
 
 	return (
 		<div className="space-y-4">
@@ -208,6 +213,7 @@ export default function DataTable() {
 					<SearchField
 						value={currentSearchTerm}
 						onChange={onSearchChange}
+						onClear={onSearchClear}
 					>
 						<SearchFieldInput
 							placeholder="Search for name"
@@ -216,7 +222,24 @@ export default function DataTable() {
 					</SearchField>
 
 					<PopoverTrigger>
-						<Button variant="outline">Status</Button>
+						<Button variant="outline" className="border-dashed">
+							<PlusCircle className="mr-2 size-4" />
+							Status
+							{selectedStatusValues.length > 0 && (
+								<>
+									<Separator
+										orientation="vertical"
+										className="mx-2 h-4"
+									/>
+									<Badge
+										variant="secondary"
+										className="rounded-sm px-1 font-normal"
+									>
+										{selectedStatusValues.length} selected
+									</Badge>
+								</>
+							)}
+						</Button>
 						<Popover>
 							<Card className="p-2">
 								<GridList
@@ -238,7 +261,33 @@ export default function DataTable() {
 						</Popover>
 					</PopoverTrigger>
 				</div>
-				<Button variant="outline">View</Button>
+				<PopoverTrigger>
+					<Button variant="outline">
+						<Settings2 className="mr-2 h-4 w-4" />
+						View
+					</Button>
+
+					<Popover>
+						<Card className="p-2">
+							<GridList
+								aria-label="Views"
+								selectionMode="multiple"
+								disallowEmptySelection
+								items={columns}
+								selectedKeys={visibleColumns}
+								onSelectionChange={setVisibleColumns}
+							>
+								{(item) => (
+									<GridListItem key={item.id}>
+										<div className="flex w-full items-center justify-between">
+											{item.header}
+										</div>
+									</GridListItem>
+								)}
+							</GridList>
+						</Card>
+					</Popover>
+				</PopoverTrigger>
 			</div>
 
 			<div className="relative w-full rounded-md border">
@@ -248,13 +297,10 @@ export default function DataTable() {
 					selectedKeys={selectedKeys}
 					onSelectionChange={setSelectedKeys}
 					sortDescriptor={sortDescriptor}
-					onSortChange={(e) => {
-						setSortDescriptor(e);
-						sortItem(e);
-					}}
+					onSortChange={setSortDescriptor}
 					dragAndDropHooks={dragAndDropHooks}
 				>
-					<TableHeader columns={columns}>
+					<TableHeader columns={headerColumns}>
 						{(column) => (
 							<TableColumn
 								isRowHeader={column.isRowHeader}
@@ -265,7 +311,8 @@ export default function DataTable() {
 						)}
 					</TableHeader>
 					<TableBody
-						items={items}
+						dependencies={[sortedItems, visibleColumns]}
+						items={sortedItems}
 						renderEmptyState={() => (
 							<TableBodyEmptyState>
 								No results found
@@ -273,7 +320,7 @@ export default function DataTable() {
 						)}
 					>
 						{(item) => (
-							<TableRow columns={columns}>
+							<TableRow columns={headerColumns}>
 								{(column) => (
 									<TableCell>
 										{column.cell
