@@ -28,6 +28,22 @@ export default function GridListPage() {
 					)}
 				</GridList>
 			</Card>
+			<Card className="p-2">
+				<GridList
+					aria-label="Ice cream flavors (Multiple)"
+					selectionMode="multiple"
+					items={rows}
+					renderEmptyState={() => "No results found."}
+				>
+					{(item) => (
+						<GridListItem highlightSelected key={item.id}>
+							<div className="flex w-full items-center justify-between">
+								{item.name}
+							</div>
+						</GridListItem>
+					)}
+				</GridList>
+			</Card>
 		</div>
 	);
 }

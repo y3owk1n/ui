@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 import { Grip } from "lucide-react";
 import {
+	GridListContext,
 	GridList as _GridList,
 	GridListItem as _GridListItem,
 	type GridListItemProps as _GridListItemProps,
@@ -32,10 +33,12 @@ function GridList<T extends object>({
 	);
 }
 
-interface GridListItemProps extends _GridListItemProps {}
+interface GridListItemProps extends _GridListItemProps {
+	highlightSelected?: boolean;
+}
 
 const GridListItem = React.forwardRef<HTMLDivElement, GridListItemProps>(
-	({ className, children, ...props }, ref) => {
+	({ className, children, highlightSelected = false, ...props }, ref) => {
 		const textValue = typeof children === "string" ? children : undefined;
 
 		return (
@@ -43,9 +46,10 @@ const GridListItem = React.forwardRef<HTMLDivElement, GridListItemProps>(
 				textValue={textValue}
 				className={(values) =>
 					cn(
-						"react-aria-GridListItem", // join selected items if :has selector is supported, refer to css file
 						"flex w-full items-center whitespace-nowrap rounded-md p-2 text-sm font-medium ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2 group-data-[empty]:hidden",
-						"bg-background text-foreground data-[hovered]:bg-primary/10 data-[pressed]:bg-primary/50 data-[selected]:bg-primary data-[selected]:data-[hovered]:bg-primary data-[selected]:text-primary-foreground",
+						"bg-background text-foreground data-[hovered]:bg-accent data-[pressed]:bg-accent/50",
+						highlightSelected &&
+							"react-aria-GridListItem data-[selected]:bg-primary data-[selected]:data-[hovered]:bg-primary data-[selected]:text-primary-foreground",
 						typeof className === "function"
 							? className(values)
 							: className,
