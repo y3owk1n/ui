@@ -52,7 +52,7 @@ const SliderTrack = React.forwardRef<HTMLDivElement, _SliderTrackProps>(
 				cn(
 					"relative grow rounded-full bg-secondary",
 					values.orientation === "vertical" ? "h-full w-2" : "",
-					values.orientation === "horizontal" ? "w-full h-2" : "",
+					values.orientation === "horizontal" ? "h-2 w-full" : "",
 					typeof className === "function"
 						? className(values)
 						: className,
