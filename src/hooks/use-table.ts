@@ -1,6 +1,6 @@
-import { type Key, type Selection, type SortDescriptor } from "react-stately";
-import { useState, useMemo, useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { type DropPosition, useDragAndDrop } from "react-aria-components";
+import { type Key, type Selection, type SortDescriptor } from "react-stately";
 
 interface UseTableFilter<T> {
 	/** Name of the filter in string */

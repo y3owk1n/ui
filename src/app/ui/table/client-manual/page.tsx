@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/table";
 import { type DropPosition, useDragAndDrop } from "react-aria-components";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { GridList, GridListItem } from "@/components/ui/grid-list";
@@ -33,13 +34,12 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { PlusCircle, Settings2 } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 import { type Key, type Selection, type SortDescriptor } from "react-stately";
 import { type User, columns, statuses } from "./column-defs";
 import { users } from "./data";
-import { PlusCircle, Settings2 } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
 
 export default function DataTable() {
 	const [page, setPage] = useState(1);
