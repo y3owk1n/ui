@@ -38,20 +38,39 @@ import { useTable } from "@/hooks/use-table";
 import { PlusCircle, Settings2 } from "lucide-react";
 import { type User, columns, statuses } from "./column-defs";
 import { users } from "./data";
+import { PlusCircle, Settings2 } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { useTable } from "@/hooks/use-table";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useMemo } from "react";
+import { parseParamsToSet } from "@/lib/utils";
 
 export default function DataTable() {
+	const router = useRouter();
+	const searchParams = useSearchParams();
+	const params = useMemo(() => {
+		return new URLSearchParams(searchParams.toString());
+	}, [searchParams]);
+
 	const table = useTable({
 		data: users,
 		columns: columns,
 		defaults: {},
-		searchFilterFn: (data, term) =>
-			data.filter((user) =>
-				user.name.toLowerCase().includes(term.toLowerCase()),
-			),
+		options: {
+			search: {
+				type: "client",
+				searchFilterFn: (data, term) =>
+					data.filter((user) =>
+						user.name.toLowerCase().includes(term.toLowerCase()),
+					),
+			},
+		},
 		filters: [
 			{
+				type: "client",
 				name: "status",
-				selection: "all",
+				selection: parseParamsToSet(params.get("status")) ?? "all",
 				filterFn: (data, selection) => {
 					if (
 						selection !== "all" &&
@@ -62,6 +81,10 @@ export default function DataTable() {
 						);
 					}
 					return data;
+				},
+				onFilterSuccess: (data) => {
+					params.set("status", data.toString());
+					router.push(`?${params.toString()}`);
 				},
 			},
 		],

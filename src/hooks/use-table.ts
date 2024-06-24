@@ -1,17 +1,27 @@
-import { useCallback, useMemo, useState } from "react";
+import { type Key, type Selection, type SortDescriptor } from "react-stately";
+import {
+	useState,
+	useMemo,
+	useCallback,
+	useEffect,
+	type Dispatch,
+	type SetStateAction,
+} from "react";
 import { type DropPosition, useDragAndDrop } from "react-aria-components";
 import { type Key, type Selection, type SortDescriptor } from "react-stately";
 
 interface UseTableFilter<T> {
+	type: "client" | "server";
 	/** Name of the filter in string */
 	name: string;
 	/** Selection of the filter state */
 	selection: Selection;
 	/** Function to run for this filter */
-	filterFn: (data: T[], selection: Selection) => T[];
+	filterFn?: (data: T[], selection: Selection) => T[];
+	onFilterSuccess?: (array: Key[]) => void;
 }
 
-interface UseTableDefaults {
+interface UseTableDefault {
 	/** Search term, defaults to "" */
 	searchTerm?: string;
 	/** Search term, defaults to undefined */
@@ -24,14 +34,40 @@ interface UseTableDefaults {
 	visibleColumns?: Selection;
 	/** Selected keys, defaults to new Set([]) */
 	selectedKeys?: Selection;
+	/** Total items count, if empty, total pages will be counted automatically */
+	totalItemsCount?: number;
+}
+
+type UseTableOptionsSearchClient<T> = {
+	type: "client";
+	searchFilterFn: (data: T[], currentSearchTerm: string) => T[];
+};
+
+type UseTableOptionsSearchServer = {
+	type: "server";
+	searchFilterFn?: never;
+};
+
+type UseTableOptionsSearch<T> =
+	| UseTableOptionsSearchClient<T>
+	| UseTableOptionsSearchServer;
+
+type UseTableOptionsDrag<T> = {
+	/** If not provided, it will set the data automatically */
+	onDragSuccess?: (data: T[], setter: Dispatch<SetStateAction<T[]>>) => void;
+};
+
+interface UseTableOption<T> {
+	search?: UseTableOptionsSearch<T>;
+	drag?: UseTableOptionsDrag<T>;
 }
 
 interface UseTableProps<T, U> {
 	data: T[];
 	columns: U[];
-	defaults: UseTableDefaults;
+	defaults: UseTableDefault;
 	filters?: UseTableFilter<T>[];
-	searchFilterFn?: (data: T[], currentSearchTerm: string) => T[];
+	options?: UseTableOption<T>;
 }
 
 export function useTable<
@@ -48,9 +84,11 @@ export function useTable<
 		page: initialPage = 1,
 		visibleColumns: initialVisibleColumns = "all",
 		selectedKeys: initialSelectedKeys = new Set([]),
+		totalItemsCount: initialTotalItemsCount,
 	},
-	searchFilterFn,
+	options,
 }: UseTableProps<T, U>) {
+	const [isLoading, setIsLoading] = useState(false);
 	const [page, setPage] = useState(initialPage);
 	const [rawData, setRawData] = useState<T[]>(data);
 	const [rowsPerPage, setRowsPerPage] = useState(initialRowsPerPage);
@@ -75,26 +113,49 @@ export function useTable<
 		);
 	}, [visibleColumns, columns]);
 
+	const searchType = options?.search?.type ?? "client";
+	const searchFn = options?.search?.searchFilterFn;
+
+	useEffect(() => {
+		setRawData(data);
+		setIsLoading(false);
+	}, [data]);
+
 	const filteredData = useMemo(() => {
 		let filteredData = [...rawData];
-		if (hasSearchFilter && searchFilterFn) {
-			filteredData = searchFilterFn(filteredData, currentSearchTerm);
+		if (hasSearchFilter && searchType === "client" && searchFn) {
+			filteredData = searchFn(filteredData, currentSearchTerm);
 		}
 		for (const filter of filters) {
-			filteredData = filter.filterFn(filteredData, filter.selection);
+			if (filter.filterFn && filter.type === "client") {
+				filteredData = filter.filterFn(filteredData, filter.selection);
+			}
 		}
 		return filteredData;
-	}, [rawData, hasSearchFilter, searchFilterFn, currentSearchTerm, filters]);
+	}, [
+		rawData,
+		hasSearchFilter,
+		searchType,
+		searchFn,
+		currentSearchTerm,
+		filters,
+	]);
 
 	const totalPages = useMemo(() => {
+		if (initialTotalItemsCount) {
+			return Math.ceil(initialTotalItemsCount / rowsPerPage);
+		}
 		return Math.ceil(filteredData.length / rowsPerPage);
-	}, [filteredData.length, rowsPerPage]);
+	}, [filteredData.length, initialTotalItemsCount, rowsPerPage]);
 
 	const items = useMemo(() => {
+		if (initialTotalItemsCount) {
+			return filteredData;
+		}
 		const start = (page - 1) * rowsPerPage;
 		const end = start + rowsPerPage;
 		return filteredData.slice(start, end);
-	}, [page, filteredData, rowsPerPage]);
+	}, [initialTotalItemsCount, page, rowsPerPage, filteredData]);
 
 	const sortedItems = useMemo(() => {
 		return [...items].sort((a, b) => {
@@ -153,7 +214,11 @@ export function useTable<
 					[...e.keys],
 					"before",
 				);
-				setRawData(newListData);
+				if (options?.drag?.onDragSuccess) {
+					options.drag.onDragSuccess(newListData, setRawData);
+				} else {
+					setRawData(newListData);
+				}
 			} else if (e.target.dropPosition === "after") {
 				const newListData = moveItems(
 					itemsArray,
@@ -161,21 +226,28 @@ export function useTable<
 					[...e.keys],
 					"after",
 				);
-				setRawData(newListData);
+				if (options?.drag?.onDragSuccess) {
+					options.drag.onDragSuccess(newListData, setRawData);
+				} else {
+					setRawData(newListData);
+				}
 			}
 		},
 	});
 
 	const onPageChange = useCallback((currentPage: number) => {
+		setIsLoading(true);
 		setPage(currentPage);
 	}, []);
 
 	const onRowsPerPageChange = useCallback((page: Key) => {
+		setIsLoading(true);
 		setRowsPerPage(Number(page));
 		setPage(1);
 	}, []);
 
 	const onSearchChange = useCallback((value: string) => {
+		setIsLoading(true);
 		if (value) {
 			setCurrentSearchTerm(value);
 			setPage(1);
@@ -185,6 +257,7 @@ export function useTable<
 	}, []);
 
 	const onSearchClear = useCallback(() => {
+		setIsLoading(true);
 		setCurrentSearchTerm("");
 		setPage(1);
 	}, []);
@@ -203,7 +276,7 @@ export function useTable<
 				length: data?.selection
 					? Array.from(data?.selection).length
 					: 0,
-				setFilter: (selection: Selection) =>
+				setFilter: (selection: Selection) => {
 					setFilters((previousFilter) => {
 						const cleanFilter = previousFilter.filter(
 							(f) => f.name !== name,
@@ -216,7 +289,15 @@ export function useTable<
 								selection,
 							},
 						];
-					}),
+					});
+					if (data.onFilterSuccess) {
+						const set = new Set(selection);
+						const values = set.values();
+						const array = Array.from(values);
+
+						data.onFilterSuccess(array);
+					}
+				},
 			};
 		},
 		[filters],
@@ -224,6 +305,7 @@ export function useTable<
 
 	return {
 		state: {
+			isLoading,
 			page,
 			rowsPerPage,
 			selectedKeys,
@@ -235,6 +317,8 @@ export function useTable<
 			filters,
 		},
 		setter: {
+			setRawData,
+			setIsLoading,
 			setPage,
 			setRowsPerPage,
 			setSelectedKeys,

@@ -11,7 +11,6 @@ export default async function TablePage({ searchParams }: TablePageProps) {
 
 	const res = await fetch(
 		`https://swapi.py4e.com/api/people/?search=${searchTerm}&page=${page}`,
-		{ cache: "no-store" },
 	);
 	const json = (await res.json()) as CharacterRes;
 	const items = json.results.map((item, index) => ({

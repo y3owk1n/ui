@@ -20,14 +20,17 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { useRouter, useSearchParams } from "next/navigation";
-import { type DropPosition, useDragAndDrop } from "react-aria-components";
 
 import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
-import { useDebouncedValue } from "@/hooks/use-debounce-value";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { type Key, type SortDescriptor } from "react-stately";
-import { type Character, type CharacterWithId, columns } from "./column-defs";
+import { useMemo } from "react";
+import { type CharacterWithId, columns } from "./column-defs";
+import { useTable } from "@/hooks/use-table";
+import { Popover, PopoverTrigger } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Settings2 } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { GridList, GridListItem } from "@/components/ui/grid-list";
 
 interface DataTableProps {
 	items: CharacterWithId[];
@@ -36,8 +39,6 @@ interface DataTableProps {
 	searchTerm: string;
 }
 
-const pageSize = 10;
-
 export default function DataTable(props: DataTableProps) {
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -45,156 +46,98 @@ export default function DataTable(props: DataTableProps) {
 		return new URLSearchParams(searchParams.toString());
 	}, [searchParams]);
 
+	const table = useTable({
+		data: props.items,
+		columns: columns,
+		defaults: {
+			totalItemsCount: props.totalPages,
+			searchTerm: props.searchTerm,
+			rowsPerPage: 10,
+			page: props.currentPage,
+		},
+		options: {
+			search: {
+				type: "server",
+			},
+			drag: {
+				onDragSuccess: (data, setter) => {
+					alert("hello");
+					setter(data);
+				},
+			},
+		},
+		filters: [],
+	});
+
 	const isDesktop = useMediaQuery("(min-width: 768px)");
-
-	const [items, setItems] = useState<CharacterWithId[]>(props.items);
-
-	const [isLoading, setIsLoading] = useState(false);
-
-	useEffect(() => {
-		setItems(props.items);
-		setIsLoading(false);
-	}, [props.items]);
-
-	const [currentSearchTerm, setCurrentSearchTerm] = useState(
-		props.searchTerm,
-	);
-	useDebouncedValue(currentSearchTerm, 1000, {}, (value) => {
-		params.set("s", value);
-		router.push(`?${params.toString()}`);
-	});
-
-	const pages = useMemo(() => {
-		return Math.ceil(props.totalPages / pageSize);
-	}, [props.totalPages]);
-
-	const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>();
-
-	const sortItem = useCallback(
-		(e: SortDescriptor) => {
-			const sortedItems = [...items].sort((a, b) => {
-				const first = a[e.column as keyof Character];
-				const second = b[e.column as keyof Character];
-
-				let cmp: number;
-
-				if (typeof first === "number" && typeof second === "number") {
-					cmp = first - second; // Numeric comparison
-				} else if (
-					typeof first === "string" &&
-					typeof second === "string"
-				) {
-					cmp = first.localeCompare(second); // Alphabetical comparison
-				} else {
-					cmp = 0; // Default case, although this should never be reached
-				}
-
-				if (e.direction === "descending") {
-					cmp *= -1;
-				}
-				return cmp;
-			});
-			setItems(sortedItems);
-		},
-		[items],
-	);
-
-	const getItem = useCallback(
-		(key: Key) => {
-			return items.find((item) => item.id === key)!;
-		},
-		[items],
-	);
-
-	const moveItems = useCallback(
-		<T extends CharacterWithId>(
-			array: T[],
-			targetKey: Key,
-			keysToMove: Key[],
-			position: DropPosition,
-		) => {
-			const targetIndex = array.findIndex(
-				(item) => item.id === targetKey,
-			);
-			const itemsToMove = keysToMove.map(
-				(key) => array.find((item) => item.id === key)!,
-			);
-
-			// Remove items to move from the array
-			const filteredArray = array.filter(
-				(item) => !keysToMove.includes(item.id),
-			);
-
-			// Determine the new index for insertion
-			const insertIndex =
-				position === "before" ? targetIndex : targetIndex + 1;
-
-			// Insert items to move at the determined index
-			filteredArray.splice(insertIndex, 0, ...itemsToMove);
-
-			return filteredArray;
-		},
-		[],
-	);
-
-	const { dragAndDropHooks } = useDragAndDrop({
-		getItems: (keys) =>
-			[...keys].map((key) => ({
-				"text/plain": getItem(key).name,
-			})),
-		onReorder(e) {
-			const itemsArray = [...items]; // Create a copy of listData
-
-			if (e.target.dropPosition === "before") {
-				const newListData = moveItems(
-					itemsArray,
-					e.target.key,
-					[...e.keys],
-					"before",
-				);
-				setItems(newListData);
-			} else if (e.target.dropPosition === "after") {
-				const newListData = moveItems(
-					itemsArray,
-					e.target.key,
-					[...e.keys],
-					"after",
-				);
-				setItems(newListData);
-			}
-		},
-	});
 
 	return (
 		<div className="space-y-4">
-			<div className="flex items-center">
-				<SearchField
-					value={currentSearchTerm}
-					onChange={(value) => {
-						setCurrentSearchTerm(value);
-						setIsLoading(true);
-					}}
-				>
-					<SearchFieldInput
-						placeholder="Search for name"
-						className="max-w-sm"
-					/>
-				</SearchField>
+			<div className="flex items-center justify-between">
+				<div className="flex items-center">
+					<SearchField
+						value={table.state.searchTerm}
+						onChange={(value) => {
+							table.handler.onSearchChange(value);
+							params.set("s", value);
+							router.push(`?${params.toString()}`);
+						}}
+						onClear={() => {
+							table.handler.onSearchClear();
+							params.set("s", "");
+							router.push(`?${params.toString()}`);
+						}}
+					>
+						<SearchFieldInput
+							placeholder="Search for name"
+							className="max-w-sm"
+						/>
+					</SearchField>
+				</div>
+
+				<PopoverTrigger>
+					<Button variant="outline">
+						<Settings2 className="mr-2 h-4 w-4" />
+						View
+					</Button>
+
+					<Popover>
+						<Card className="p-2">
+							<GridList
+								aria-label="Views"
+								selectionMode="multiple"
+								disallowEmptySelection
+								items={columns}
+								selectedKeys={table.state.visibleColumns}
+								onSelectionChange={
+									table.setter.setVisibleColumns
+								}
+							>
+								{(item) => (
+									<GridListItem key={item.id}>
+										<div className="flex w-full items-center justify-between">
+											{item.header}
+										</div>
+									</GridListItem>
+								)}
+							</GridList>
+						</Card>
+					</Popover>
+				</PopoverTrigger>
 			</div>
 
 			<div className="relative w-full rounded-md border">
 				<Table
-					isLoading={isLoading}
+					isLoading={table.state.isLoading}
 					aria-label="Files"
 					selectionMode="multiple"
-					sortDescriptor={sortDescriptor}
-					onSortChange={(e) => {
-						setSortDescriptor(e);
-						sortItem(e);
-					}}
-					dragAndDropHooks={dragAndDropHooks}
+					selectedKeys={table.state.selectedKeys}
+					onSelectionChange={table.setter.setSelectedKeys}
+					sortDescriptor={table.state.sortDescriptor}
+					onSortChange={table.setter.setSortDescriptor}
+					dragAndDropHooks={table.state.dragAndDropHooks}
 				>
-					<TableHeader columns={columns}>
+					<TableHeader columns={table.data.columns}>
 						{(column) => (
 							<TableColumn
 								isRowHeader={column.isRowHeader}
@@ -205,7 +148,11 @@ export default function DataTable(props: DataTableProps) {
 						)}
 					</TableHeader>
 					<TableBody
-						items={items}
+						dependencies={[
+							table.data.items,
+							table.state.visibleColumns,
+						]}
+						items={table.data.items}
 						renderEmptyState={() => (
 							<TableBodyEmptyState>
 								No results found
@@ -213,7 +160,7 @@ export default function DataTable(props: DataTableProps) {
 						)}
 					>
 						{(item) => (
-							<TableRow columns={columns}>
+							<TableRow columns={table.data.columns}>
 								{(column) => (
 									<TableCell>
 										{column.cell
@@ -230,14 +177,14 @@ export default function DataTable(props: DataTableProps) {
 			</div>
 
 			<Pagination
-				total={pages}
+				total={table.state.totalPages}
 				boundaries={1}
 				siblings={1}
-				initialPage={props.currentPage}
+				initialPage={table.state.page}
 				onChange={(page) => {
-					setIsLoading(true);
 					params.set("page", page.toString());
 					router.push(`?${params.toString()}`);
+					table.handler.onPageChange(page);
 				}}
 			>
 				{(pagination) => (
