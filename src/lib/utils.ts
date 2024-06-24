@@ -8,5 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function parseParamsToSet(param: string | null) {
 	if (param) {
 		const array = decodeURI(param).split(",");
+
+		return new Set(array);
 	}
 }

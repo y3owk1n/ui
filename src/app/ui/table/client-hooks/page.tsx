@@ -19,7 +19,6 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { GridList, GridListItem } from "@/components/ui/grid-list";
@@ -33,9 +32,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { useTable } from "@/hooks/use-table";
-import { PlusCircle, Settings2 } from "lucide-react";
 import { type User, columns, statuses } from "./column-defs";
 import { users } from "./data";
 import { PlusCircle, Settings2 } from "lucide-react";
