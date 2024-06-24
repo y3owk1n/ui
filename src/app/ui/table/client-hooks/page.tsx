@@ -19,6 +19,7 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { GridList, GridListItem } from "@/components/ui/grid-list";
@@ -32,15 +33,14 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { type User, columns, statuses } from "./column-defs";
-import { users } from "./data";
-import { PlusCircle, Settings2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
 import { useTable } from "@/hooks/use-table";
+import { parseParamsToSet } from "@/lib/utils";
+import { PlusCircle, Settings2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-import { parseParamsToSet } from "@/lib/utils";
+import { type User, columns, statuses } from "./column-defs";
+import { users } from "./data";
 
 export default function DataTable() {
 	const router = useRouter();

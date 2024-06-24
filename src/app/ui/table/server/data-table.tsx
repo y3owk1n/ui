@@ -21,16 +21,16 @@ import {
 } from "@/components/ui/table";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
-import { useMediaQuery } from "@/hooks/use-media-query";
-import { useMemo } from "react";
-import { type CharacterWithId, columns } from "./column-defs";
-import { useTable } from "@/hooks/use-table";
-import { Popover, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { Settings2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { GridList, GridListItem } from "@/components/ui/grid-list";
+import { Popover, PopoverTrigger } from "@/components/ui/popover";
+import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { useTable } from "@/hooks/use-table";
+import { Settings2 } from "lucide-react";
+import { useMemo } from "react";
+import { type CharacterWithId, columns } from "./column-defs";
 
 interface DataTableProps {
 	items: CharacterWithId[];
