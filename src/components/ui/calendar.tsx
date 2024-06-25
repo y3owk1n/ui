@@ -4,11 +4,11 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 import { getLocalTimeZone, today } from "@internationalized/date";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
-	DateValue,
+	type DateValue,
 	Heading,
-	HeadingProps,
+	type HeadingProps,
 	RangeCalendarStateContext,
 	Calendar as _Calendar,
 	CalendarCell as _CalendarCell,
@@ -22,6 +22,8 @@ import {
 	CalendarHeaderCell as _CalendarHeaderCell,
 	type CalendarHeaderCellProps as _CalendarHeaderCellProps,
 	type CalendarProps as _CalendarProps,
+	RangeCalendar as _RangeCalendar,
+	type RangeCalendarProps as _RangeCalendarProps,
 } from "react-aria-components";
 import { Button } from "./button";
 
@@ -33,6 +35,28 @@ function Calendar<T extends DateValue>({
 }: CalendarProps<T>) {
 	return (
 		<_Calendar
+			className={(values) =>
+				cn(
+					"grid w-fit gap-1 text-sm",
+					typeof className === "function"
+						? className(values)
+						: className,
+				)
+			}
+			{...props}
+		/>
+	);
+}
+
+interface RangeCalendarProps<T extends DateValue>
+	extends _RangeCalendarProps<T> {}
+
+function RangeCalendar<T extends DateValue>({
+	className,
+	...props
+}: RangeCalendarProps<T>) {
+	return (
+		<_RangeCalendar
 			className={(values) =>
 				cn(
 					"grid w-fit gap-1 text-sm",
@@ -239,4 +263,5 @@ export {
 	CalendarHeading,
 	CalendarPreviousButton,
 	CalendarNextButton,
+	RangeCalendar,
 };
