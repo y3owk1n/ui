@@ -15,7 +15,7 @@ import {
 interface DateFieldProps<T extends DateValue> extends _DateFieldProps<T> {}
 
 function DateField<T extends DateValue>(props: DateFieldProps<T>) {
-	return <_DateField {...props} />;
+	return <_DateField className="group flex flex-col gap-2" {...props} />;
 }
 
 interface DateInputProps extends _DateInputProps {}
@@ -26,7 +26,12 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
 			<_DateInput
 				className={(values) =>
 					cn(
-						"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[focus-within]:outline-none data-[focus-within]:ring-2 data-[focus-within]:ring-ring data-[focus-within]:ring-offset-2",
+						"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background",
+						values.isDisabled && "cursor-not-allowed opacity-50",
+						values.isFocusWithin &&
+							"outline-none ring-2 ring-ring ring-offset-2",
+						values.isInvalid &&
+							"outline-none ring-2 ring-destructive ring-offset-2",
 						typeof className === "function"
 							? className(values)
 							: className,
@@ -48,10 +53,12 @@ const DateSegment = React.forwardRef<HTMLDivElement, DateSegmentProps>(
 			<_DateSegment
 				className={(values) =>
 					cn(
-						"rounded-md py-px text-center text-muted-foreground data-[focused]:bg-accent data-[focused]:outline-none",
+						"rounded-md p-px text-center text-foreground",
 						values.type === "literal" && "p-0",
-						values.isPlaceholder && "text-muted-foreground",
-						values.isFocused && "bg-accent outline-none",
+						values.isPlaceholder && "italic text-muted-foreground",
+						values.isFocused &&
+							"bg-primary text-primary-foreground outline-none",
+						values.isInvalid && "text-destructive",
 						typeof className === "function"
 							? className(values)
 							: className,

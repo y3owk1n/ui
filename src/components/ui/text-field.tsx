@@ -10,7 +10,13 @@ interface TextFieldProps extends _TextFieldProps {}
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, ref) => {
-		return <_TextField ref={ref} {...props} />;
+		return (
+			<_TextField
+				className="group flex flex-col gap-2"
+				ref={ref}
+				{...props}
+			/>
+		);
 	},
 );
 TextField.displayName = "TextField";

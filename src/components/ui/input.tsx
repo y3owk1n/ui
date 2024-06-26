@@ -17,7 +17,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 				type={type}
 				className={(values) =>
 					cn(
-						"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[focused]:outline-none data-[focused]:ring-2 data-[focused]:ring-ring data-[focused]:ring-offset-2",
+						"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground",
+						values.isDisabled && "cursor-not-allowed opacity-50",
+						values.isFocused &&
+							"outline-none ring-2 ring-ring ring-offset-2",
+						values.isInvalid &&
+							"outline-none ring-2 ring-destructive ring-offset-2",
 						typeof className === "function"
 							? className(values)
 							: className,

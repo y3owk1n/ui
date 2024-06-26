@@ -20,7 +20,7 @@ const SearchField = React.forwardRef<HTMLDivElement, SearchFieldProps>(
 				ref={ref}
 				className={(values) =>
 					cn(
-						"group",
+						"group flex flex-col gap-2",
 						typeof className === "function"
 							? className(values)
 							: className,
