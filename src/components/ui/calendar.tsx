@@ -164,15 +164,22 @@ const CalendarGridBodyCell = React.forwardRef<
 					date.compare(today(getLocalTimeZone())) === 0 &&
 						"bg-accent text-accent-foreground",
 					values.isDisabled && "text-muted-foreground opacity-50",
-					values.isUnavailable && "text-destructive opacity-50",
+					values.isUnavailable &&
+						"text-destructive-foreground line-through opacity-50",
 					values.isInvalid &&
 						"bg-destructive text-destructive-foreground",
 					values.isFocusVisible &&
 						values.isFocused &&
 						"outline-none ring-2 ring-ring ring-offset-2",
+					values.isSelected && isRange && "rounded-none",
 					values.isSelected &&
 						isRange &&
-						"rounded-none bg-accent text-accent-foreground",
+						!values.isInvalid &&
+						"bg-accent text-accent-foreground",
+					values.isSelected &&
+						isRange &&
+						values.isInvalid &&
+						"bg-destructive/40 text-destructive-foreground",
 					((values.isSelected && !isRange) ||
 						values.isSelectionStart ||
 						values.isSelectionEnd) &&

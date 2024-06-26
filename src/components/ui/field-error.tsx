@@ -15,7 +15,7 @@ const FieldError = React.forwardRef<HTMLElement, FieldErrorProps>(
 			<_FieldError
 				className={(values) =>
 					cn(
-						"text-sm font-medium text-destructive",
+						"text-sm font-medium text-destructive-foreground",
 						typeof className === "function"
 							? className(values)
 							: className,

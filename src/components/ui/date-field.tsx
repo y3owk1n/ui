@@ -31,7 +31,7 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
 						values.isFocusWithin &&
 							"outline-none ring-2 ring-ring ring-offset-2",
 						values.isInvalid &&
-							"outline-none ring-2 ring-destructive ring-offset-2",
+							"outline-none ring-2 ring-destructive-foreground ring-offset-2",
 						typeof className === "function"
 							? className(values)
 							: className,
@@ -58,7 +58,8 @@ const DateSegment = React.forwardRef<HTMLDivElement, DateSegmentProps>(
 						values.isPlaceholder && "italic text-muted-foreground",
 						values.isFocused &&
 							"bg-primary text-primary-foreground outline-none",
-						values.isInvalid && "text-destructive",
+						values.isInvalid &&
+							"bg-destructive text-destructive-foreground",
 						typeof className === "function"
 							? className(values)
 							: className,

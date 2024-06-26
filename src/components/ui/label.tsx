@@ -17,7 +17,7 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
 			ref={ref}
 			className={cn(
 				"text-sm font-medium leading-none",
-				"group-data-[invalid=true]:text-destructive",
+				"group-data-[invalid=true]:text-destructive-foreground",
 				"group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=true]:opacity-70",
 				className,
 			)}

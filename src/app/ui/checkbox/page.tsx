@@ -25,6 +25,20 @@ export default function CheckboxPage() {
 				<Checkbox value="baseball">Baseball</Checkbox>
 				<Checkbox value="basketball">Basketball</Checkbox>
 			</CheckboxGroup>
+
+			<CheckboxGroup isInvalid>
+				<Label>Favorite sports</Label>
+				<Checkbox value="soccer">Soccer</Checkbox>
+				<Checkbox value="baseball">Baseball</Checkbox>
+				<Checkbox value="basketball">Basketball</Checkbox>
+			</CheckboxGroup>
+
+			<CheckboxGroup isDisabled>
+				<Label>Favorite sports</Label>
+				<Checkbox value="soccer">Soccer</Checkbox>
+				<Checkbox value="baseball">Baseball</Checkbox>
+				<Checkbox value="basketball">Basketball</Checkbox>
+			</CheckboxGroup>
 		</div>
 	);
 }

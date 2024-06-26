@@ -94,7 +94,7 @@ const DatePickerButton = ({
 					"flex gap-2",
 					!date && "text-muted-foreground",
 					isInvalid &&
-						"outline-none ring-2 ring-destructive ring-offset-2",
+						"outline-none ring-2 ring-destructive-foreground ring-offset-2",
 					className,
 				)}
 				{...props}
@@ -139,7 +139,7 @@ const DateRangePickerButton = ({
 					"flex gap-2",
 					!date?.end && "text-muted-foreground",
 					isInvalid &&
-						"outline-none ring-2 ring-destructive ring-offset-2",
+						"outline-none ring-2 ring-destructive-foreground ring-offset-2",
 					className,
 				)}
 				{...props}

@@ -20,7 +20,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
 			<_RadioGroup
 				className={(values) =>
 					cn(
-						"grid gap-2",
+						"group grid gap-2",
 						typeof className === "function"
 							? className(values)
 							: className,
@@ -53,11 +53,19 @@ const RadioGroupItem = React.forwardRef<HTMLLabelElement, RadioGroupItemProps>(
 			>
 				{(values) => (
 					<>
-						<span className="flex aspect-square h-4 w-4 items-center justify-center rounded-full border border-primary text-primary ring-offset-background group-data-[disabled]:opacity-50 group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-ring group-data-[focus-visible]:ring-offset-2">
+						<span
+							className={cn(
+								"flex aspect-square h-4 w-4 items-center justify-center rounded-full border border-primary text-primary ring-offset-background group-data-[disabled]:opacity-50 group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-ring group-data-[focus-visible]:ring-offset-2",
+								values.isInvalid &&
+									"border-destructive-foreground",
+							)}
+						>
 							<Circle
 								className={cn(
 									"size-0 fill-current text-current transition-all duration-75",
 									values.isSelected ? "size-2.5" : "",
+									values.isInvalid &&
+										"fill-destructive-foreground text-destructive",
 									values.isPressed && !values.isSelected
 										? "size-1.5"
 										: "",

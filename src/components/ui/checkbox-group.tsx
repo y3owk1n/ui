@@ -17,7 +17,7 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			ref={ref}
 			className={(values) =>
 				cn(
-					"grid gap-2",
+					"group grid gap-2",
 					typeof className === "function"
 						? className(values)
 						: className,

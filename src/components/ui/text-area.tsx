@@ -21,7 +21,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 						values.isFocused &&
 							"outline-none ring-2 ring-ring ring-offset-2",
 						values.isInvalid &&
-							"outline-none ring-2 ring-destructive ring-offset-2",
+							"outline-none ring-2 ring-destructive-foreground ring-offset-2",
 						typeof className === "function"
 							? className(values)
 							: className,
