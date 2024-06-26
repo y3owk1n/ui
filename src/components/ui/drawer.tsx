@@ -120,15 +120,16 @@ const DrawerContent = React.forwardRef<
 		bodyScale,
 		"change",
 		(v) =>
-			((document.querySelector("body > div") as HTMLElement).style.scale =
-				`${v}`),
+			((
+				document.querySelector("body > main") as HTMLElement
+			).style.scale = `${v}`),
 	);
 	useMotionValueEvent(
 		bodyTranslate,
 		"change",
 		(v) =>
 			((
-				document.querySelector("body > div") as HTMLElement
+				document.querySelector("body > main") as HTMLElement
 			).style.translate = `0 ${v}px`),
 	);
 	useMotionValueEvent(
@@ -136,7 +137,7 @@ const DrawerContent = React.forwardRef<
 		"change",
 		(v) =>
 			((
-				document.querySelector("body > div") as HTMLElement
+				document.querySelector("body > main") as HTMLElement
 			).style.borderRadius = `${v}px`),
 	);
 

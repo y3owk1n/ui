@@ -4,6 +4,7 @@ import "./globals.css";
 import { RouterProvider } from "@/components/router-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/components/dark-mode-toggle";
 
 const fontSans = FontSans({
 	subsets: ["latin"],
@@ -34,7 +35,14 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<RouterProvider>{children}</RouterProvider>
+					<RouterProvider>
+						<main>
+							<div className="container pt-8">
+								<ModeToggle />
+							</div>
+							{children}
+						</main>
+					</RouterProvider>
 				</ThemeProvider>
 			</body>
 		</html>
