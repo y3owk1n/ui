@@ -19,7 +19,7 @@ import { TimeField, TimeInput, TimeSegment } from "@/components/ui/time-field";
 export default function CheckboxPage() {
 	return (
 		<div className="grid gap-4">
-			<TextField>
+			<TextField isDisabled>
 				<Label>Email</Label>
 				<Input type="email" placeholder="Email..." />
 				<FieldDescription>This is your public email</FieldDescription>
