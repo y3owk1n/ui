@@ -10,6 +10,7 @@ import {
 	type DatePickerRenderProps,
 	type DateRangePickerRenderProps,
 	Group,
+	GroupProps,
 	DatePicker as _DatePicker,
 	type DatePickerProps as _DatePickerProps,
 	DateRangePicker as _DateRangePicker,
@@ -151,6 +152,47 @@ const DateRangePickerButton = ({
 };
 DateRangePickerButton.displayName = "DateRangePickerButton";
 
+interface DatePickerPresetProps extends Omit<GroupProps, "children"> {
+	children: React.ReactNode;
+}
+
+const DatePickerPreset = ({
+	className,
+	children,
+	...props
+}: DatePickerPresetProps) => {
+	return (
+		<Group
+			slot={null}
+			className={cn(
+				"mt-4 flex w-full min-w-[200px] flex-col gap-2",
+				className,
+			)}
+			{...props}
+		>
+			<span className="text-sm font-bold">Presets</span>
+			{children}
+		</Group>
+	);
+};
+DatePickerPreset.displayName = "DatePickerPreset";
+
+const DatePickerPresetButton = ({
+	className,
+	variant = "outline",
+	...props
+}: React.ComponentProps<typeof Button>) => {
+	return (
+		<Button
+			slot={null}
+			variant={variant}
+			className={cn("w-full", className)}
+			{...props}
+		/>
+	);
+};
+DatePickerPresetButton.displayName = "DatePickerPresetButton";
+
 export {
 	DatePicker,
 	DateRangePicker,
@@ -158,4 +200,6 @@ export {
 	DatePickerDialog,
 	DatePickerButton,
 	DateRangePickerButton,
+	DatePickerPreset,
+	DatePickerPresetButton,
 };

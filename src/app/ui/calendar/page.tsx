@@ -10,14 +10,22 @@ import {
 	CalendarHeading,
 	CalendarNextButton,
 	CalendarPreviousButton,
+	CalendarTextError,
 	RangeCalendar,
 } from "@/components/ui/calendar";
+import { getLocalTimeZone, isWeekend, today } from "@internationalized/date";
+import { useState } from "react";
+import { useLocale } from "react-aria-components";
 
 export default function CheckboxPage() {
+	const [date, setDate] = useState(today(getLocalTimeZone()));
+	const { locale } = useLocale();
+	const isInvalid = isWeekend(date, locale);
+
 	return (
 		<div className="grid gap-4">
 			<div className="w-fit rounded-md border p-4">
-				<Calendar>
+				<Calendar value={date} onChange={setDate} isInvalid={isInvalid}>
 					<CalendarHeader>
 						<CalendarPreviousButton iconOnly />
 						<CalendarHeading />
@@ -40,6 +48,7 @@ export default function CheckboxPage() {
 							)}
 						</CalendarGridBody>
 					</CalendarGrid>
+					<CalendarTextError />
 				</Calendar>
 			</div>
 			<div className="w-fit rounded-md border p-4">

@@ -1,6 +1,5 @@
 "use client";
 import {
-	Calendar,
 	CalendarGrid,
 	CalendarGridBody,
 	CalendarGridBodyCell,
@@ -10,45 +9,47 @@ import {
 	CalendarHeading,
 	CalendarNextButton,
 	CalendarPreviousButton,
+	RangeCalendar,
 } from "@/components/ui/calendar";
 import {
-	DatePicker,
-	DatePickerButton,
 	DatePickerDialog,
 	DatePickerPopover,
 	DatePickerPreset,
 	DatePickerPresetButton,
+	DateRangePicker,
+	DateRangePickerButton,
 } from "@/components/ui/date-picker";
 import { Label } from "@/components/ui/label";
 import { getLocalTimeZone, isWeekend, today } from "@internationalized/date";
 import { useState } from "react";
-import { useLocale } from "react-aria-components";
+import { FieldError, useLocale } from "react-aria-components";
 
 export default function CheckboxPage() {
-	const [selectedDate, setSelectedDate] = useState(today(getLocalTimeZone()));
-
-	const [focusedDate, setFocusedDate] = useState(selectedDate);
 	const { locale } = useLocale();
-	const isInvalid = isWeekend(selectedDate, locale);
+	const [selectedRange, setSelectedRange] = useState({
+		start: today(getLocalTimeZone()),
+		end: today(getLocalTimeZone()).add({ weeks: 1, days: 3 }),
+	});
+
+	const isInvalid = selectedRange.end.compare(selectedRange.start) > 7;
 
 	return (
 		<div className="grid gap-4">
-			<DatePicker
+			<DateRangePicker
 				isInvalid={isInvalid}
-				value={selectedDate}
-				onChange={setSelectedDate}
+				value={selectedRange}
+				onChange={setSelectedRange}
+				isDateUnavailable={(date) => isWeekend(date, locale)}
+				allowsNonContiguousRanges
 			>
 				{(date) => (
 					<>
-						<Label>Date Picker</Label>
-						<DatePickerButton {...date} />
+						<Label>Date Range Picker</Label>
+						<DateRangePickerButton {...date} />
 						<DatePickerPopover>
 							<DatePickerDialog>
 								<div className="w-fit rounded-md border p-4">
-									<Calendar
-										focusedValue={focusedDate}
-										onFocusChange={setFocusedDate}
-									>
+									<RangeCalendar>
 										<CalendarHeader>
 											<CalendarPreviousButton iconOnly />
 											<CalendarHeading />
@@ -78,89 +79,56 @@ export default function CheckboxPage() {
 											<DatePickerPreset>
 												<DatePickerPresetButton
 													onPress={() => {
-														setSelectedDate(
-															today(
+														setSelectedRange({
+															start: today(
 																getLocalTimeZone(),
 															),
-														);
-														setFocusedDate(
-															today(
+															end: today(
+																getLocalTimeZone(),
+															).add({ days: 3 }),
+														});
+													}}
+												>
+													Next 3 Days
+												</DatePickerPresetButton>
+												<DatePickerPresetButton
+													onPress={() => {
+														setSelectedRange({
+															start: today(
 																getLocalTimeZone(),
 															),
-														);
+															end: today(
+																getLocalTimeZone(),
+															).add({ days: 7 }),
+														});
 													}}
 												>
-													Today
+													Next 7 Days
 												</DatePickerPresetButton>
 												<DatePickerPresetButton
 													onPress={() => {
-														setSelectedDate(
-															today(
+														setSelectedRange({
+															start: today(
 																getLocalTimeZone(),
-															).add({
-																days: 1,
-															}),
-														);
-														setFocusedDate(
-															today(
+															),
+															end: today(
 																getLocalTimeZone(),
-															).add({
-																days: 1,
-															}),
-														);
+															).add({ days: 30 }),
+														});
 													}}
 												>
-													Tomorrow
-												</DatePickerPresetButton>
-												<DatePickerPresetButton
-													onPress={() => {
-														setSelectedDate(
-															today(
-																getLocalTimeZone(),
-															).add({
-																days: 3,
-															}),
-														);
-														setFocusedDate(
-															today(
-																getLocalTimeZone(),
-															).add({
-																days: 3,
-															}),
-														);
-													}}
-												>
-													Next 3 days
-												</DatePickerPresetButton>
-												<DatePickerPresetButton
-													onPress={() => {
-														setSelectedDate(
-															today(
-																getLocalTimeZone(),
-															).add({
-																days: 7,
-															}),
-														);
-														setFocusedDate(
-															today(
-																getLocalTimeZone(),
-															).add({
-																days: 7,
-															}),
-														);
-													}}
-												>
-													In a week
+													Next 30 Days
 												</DatePickerPresetButton>
 											</DatePickerPreset>
 										</div>
-									</Calendar>
+									</RangeCalendar>
 								</div>
 							</DatePickerDialog>
 						</DatePickerPopover>
+						<FieldError />
 					</>
 				)}
-			</DatePicker>
+			</DateRangePicker>
 		</div>
 	);
 }

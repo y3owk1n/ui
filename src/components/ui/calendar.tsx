@@ -10,6 +10,8 @@ import {
 	Heading,
 	type HeadingProps,
 	RangeCalendarStateContext,
+	Text,
+	type TextProps,
 	Calendar as _Calendar,
 	CalendarCell as _CalendarCell,
 	type CalendarCellProps as _CalendarCellProps,
@@ -155,10 +157,16 @@ const CalendarGridBodyCell = React.forwardRef<
 		<_CalendarCell
 			className={(values) =>
 				cn(
-					"inline-flex h-9 w-9 items-center justify-center whitespace-nowrap rounded-md p-0 text-sm font-normal ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[hovered]:bg-accent data-[hovered]:text-accent-foreground data-[disabled]:opacity-50 data-[selected]:opacity-100",
+					"inline-flex h-9 w-9 items-center justify-center whitespace-nowrap rounded-md p-0 text-sm font-normal ring-offset-background transition-colors",
+					values.isSelected && "opacity-100",
+					values.isDisabled && "pointer-events-none opacity-50",
+					values.isHovered && "bg-accent text-accent-foreground",
 					date.compare(today(getLocalTimeZone())) === 0 &&
 						"bg-accent text-accent-foreground",
 					values.isDisabled && "text-muted-foreground opacity-50",
+					values.isUnavailable && "text-destructive opacity-50",
+					values.isInvalid &&
+						"bg-destructive text-destructive-foreground",
 					values.isFocusVisible &&
 						values.isFocused &&
 						"outline-none ring-2 ring-ring ring-offset-2",
@@ -168,7 +176,7 @@ const CalendarGridBodyCell = React.forwardRef<
 					((values.isSelected && !isRange) ||
 						values.isSelectionStart ||
 						values.isSelectionEnd) &&
-						"rounded-md bg-primary text-primary-foreground data-[focused]:bg-primary data-[hovered]:bg-primary data-[focused]:text-primary-foreground data-[hovered]:text-primary-foreground",
+						"rounded-md bg-primary text-primary-foreground data-[focused]:bg-primary data-[hovered]:bg-primary data-[invalid]:bg-destructive data-[focused]:text-primary-foreground data-[hovered]:text-primary-foreground data-[invalid]:text-destructive-foreground",
 					values.isOutsideMonth &&
 						"text-muted-foreground opacity-50 data-[selected]:bg-accent/50 data-[selected]:text-muted-foreground data-[selected]:opacity-30",
 					typeof className === "function"
@@ -252,6 +260,23 @@ const CalendarNextButton = ({
 );
 CalendarNextButton.displayName = "CalendarNextButton";
 
+const CalendarTextError = React.forwardRef<HTMLElement, TextProps>(
+	({ className, ...props }, ref) => {
+		return (
+			<Text
+				slot="errorMessage"
+				className={cn(
+					"text-sm font-medium text-destructive",
+					className,
+				)}
+				ref={ref}
+				{...props}
+			/>
+		);
+	},
+);
+CalendarTextError.displayName = "CalendarTextError";
+
 export {
 	Calendar,
 	CalendarGrid,
@@ -264,4 +289,5 @@ export {
 	CalendarPreviousButton,
 	CalendarNextButton,
 	RangeCalendar,
+	CalendarTextError,
 };
