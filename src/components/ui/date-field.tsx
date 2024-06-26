@@ -26,7 +26,7 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
 			<_DateInput
 				className={(values) =>
 					cn(
-						"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[focused]:outline-none data-[focused]:ring-2 data-[focused]:ring-ring data-[focused]:ring-offset-2",
+						"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[focus-within]:outline-none data-[focus-within]:ring-2 data-[focus-within]:ring-ring data-[focus-within]:ring-offset-2",
 						typeof className === "function"
 							? className(values)
 							: className,
@@ -48,7 +48,10 @@ const DateSegment = React.forwardRef<HTMLDivElement, DateSegmentProps>(
 			<_DateSegment
 				className={(values) =>
 					cn(
+						"rounded-md py-px text-center text-muted-foreground data-[focused]:bg-accent data-[focused]:outline-none",
+						values.type === "literal" && "p-0",
 						values.isPlaceholder && "text-muted-foreground",
+						values.isFocused && "bg-accent outline-none",
 						typeof className === "function"
 							? className(values)
 							: className,

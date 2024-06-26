@@ -17,7 +17,7 @@ export default function CheckboxPage() {
 				<Input type="email" placeholder="Email..." />
 			</TextField>
 			<DateField>
-				<Label>Email</Label>
+				<Label>Date</Label>
 				<DateInput>
 					{(segment) => <DateSegment segment={segment} />}
 				</DateInput>
