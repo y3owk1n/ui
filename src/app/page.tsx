@@ -128,6 +128,10 @@ const navData: { id: string; name: string }[] = [
 		name: "Tabs",
 	},
 	{
+		id: "toast",
+		name: "Toast",
+	},
+	{
 		id: "toggle-button",
 		name: "Toggle Button",
 	},

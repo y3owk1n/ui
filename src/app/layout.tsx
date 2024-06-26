@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import { ModeToggle } from "@/components/dark-mode-toggle";
 import { RouterProvider } from "@/components/router-provider";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ToastProvider } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/dark-mode-toggle";
 
 const fontSans = FontSans({
 	subsets: ["latin"],
@@ -36,12 +37,14 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<RouterProvider>
-						<main>
-							<div className="container pt-8">
-								<ModeToggle />
-							</div>
-							{children}
-						</main>
+						<ToastProvider>
+							<main>
+								<div className="container pt-8">
+									<ModeToggle />
+								</div>
+								{children}
+							</main>
+						</ToastProvider>
 					</RouterProvider>
 				</ThemeProvider>
 			</body>

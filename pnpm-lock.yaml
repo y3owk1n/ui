@@ -14,6 +14,12 @@ importers:
       '@internationalized/date':
         specifier: ^3.5.4
         version: 3.5.4
+      '@react-aria/toast':
+        specifier: 3.0.0-beta.12
+        version: 3.0.0-beta.12(react@18.3.1)
+      '@react-stately/toast':
+        specifier: 3.0.0-beta.4
+        version: 3.0.0-beta.4(react@18.3.1)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -415,6 +421,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
 
+  '@react-aria/landmark@3.0.0-beta.12':
+    resolution: {integrity: sha512-xCAYw0cxn115ZaTXyGXALW2Jebm56s7oX/R0/REubiHwkuDSRxRnYXbaaHxGXNsJWex5LGIZbUYaumGjGrzOnw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+
   '@react-aria/link@3.7.1':
     resolution: {integrity: sha512-a4IaV50P3fXc7DQvEIPYkJJv26JknFbRzFT5MJOMgtzuhyJoQdILEUK6XHYjcSSNCA7uLgzpojArVk5Hz3lCpw==}
     peerDependencies:
@@ -526,6 +537,11 @@ packages:
 
   '@react-aria/textfield@3.14.5':
     resolution: {integrity: sha512-hj7H+66BjB1iTKKaFXwSZBZg88YT+wZboEXZ0DNdQB2ytzoz/g045wBItUuNi4ZjXI3P+0AOZznVMYadWBAmiA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+
+  '@react-aria/toast@3.0.0-beta.12':
+    resolution: {integrity: sha512-cNchqcvK+WJ+CTMzXBk8GzlsqEUUtbyLxz4BUgKHzysac50uhpbjdYbb+5cKetEaU6/wJ75VECk35wiLYkc16w==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
 
@@ -665,6 +681,11 @@ packages:
 
   '@react-stately/tabs@3.6.6':
     resolution: {integrity: sha512-sOLxorH2uqjAA+v1ppkMCc2YyjgqvSGeBDgtR/lyPSDd4CVMoTExszROX2dqG0c8il9RQvzFuufUtQWMY6PgSA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+
+  '@react-stately/toast@3.0.0-beta.4':
+    resolution: {integrity: sha512-YzEyFNAAQqZ+7pZpRiejotxDzp5CHagN21btVGGwU2jHu/oQRR+todtB3wADAp7EF5lfAlAsLABiD9ZNWQeDTw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
 
@@ -2721,6 +2742,14 @@ snapshots:
       '@swc/helpers': 0.5.5
       react: 18.3.1
 
+  '@react-aria/landmark@3.0.0-beta.12(react@18.3.1)':
+    dependencies:
+      '@react-aria/utils': 3.24.1(react@18.3.1)
+      '@react-types/shared': 3.23.1(react@18.3.1)
+      '@swc/helpers': 0.5.5
+      react: 18.3.1
+      use-sync-external-store: 1.2.2(react@18.3.1)
+
   '@react-aria/link@3.7.1(react@18.3.1)':
     dependencies:
       '@react-aria/focus': 3.17.1(react@18.3.1)
@@ -2980,6 +3009,18 @@ snapshots:
       '@swc/helpers': 0.5.5
       react: 18.3.1
 
+  '@react-aria/toast@3.0.0-beta.12(react@18.3.1)':
+    dependencies:
+      '@react-aria/i18n': 3.11.1(react@18.3.1)
+      '@react-aria/interactions': 3.21.3(react@18.3.1)
+      '@react-aria/landmark': 3.0.0-beta.12(react@18.3.1)
+      '@react-aria/utils': 3.24.1(react@18.3.1)
+      '@react-stately/toast': 3.0.0-beta.4(react@18.3.1)
+      '@react-types/button': 3.9.4(react@18.3.1)
+      '@react-types/shared': 3.23.1(react@18.3.1)
+      '@swc/helpers': 0.5.5
+      react: 18.3.1
+
   '@react-aria/toggle@3.10.4(react@18.3.1)':
     dependencies:
       '@react-aria/focus': 3.17.1(react@18.3.1)
@@ -3230,6 +3271,12 @@ snapshots:
       '@react-types/tabs': 3.3.7(react@18.3.1)
       '@swc/helpers': 0.5.5
       react: 18.3.1
+
+  '@react-stately/toast@3.0.0-beta.4(react@18.3.1)':
+    dependencies:
+      '@swc/helpers': 0.5.5
+      react: 18.3.1
+      use-sync-external-store: 1.2.2(react@18.3.1)
 
   '@react-stately/toggle@3.7.4(react@18.3.1)':
     dependencies:
