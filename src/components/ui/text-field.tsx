@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 
 import {
@@ -9,10 +10,10 @@ import {
 interface TextFieldProps extends _TextFieldProps {}
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-	(props, ref) => {
+	({ className, ...props }, ref) => {
 		return (
 			<_TextField
-				className="group flex flex-col gap-2"
+				className={cn("group flex flex-col gap-2", className)}
 				ref={ref}
 				{...props}
 			/>

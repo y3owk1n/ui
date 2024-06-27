@@ -14,8 +14,16 @@ import {
 
 interface DateFieldProps<T extends DateValue> extends _DateFieldProps<T> {}
 
-function DateField<T extends DateValue>(props: DateFieldProps<T>) {
-	return <_DateField className="group flex flex-col gap-2" {...props} />;
+function DateField<T extends DateValue>({
+	className,
+	...props
+}: DateFieldProps<T>) {
+	return (
+		<_DateField
+			className={cn("group flex flex-col gap-2", className)}
+			{...props}
+		/>
+	);
 }
 
 interface DateInputProps extends _DateInputProps {}

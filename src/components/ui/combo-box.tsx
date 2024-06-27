@@ -10,6 +10,7 @@ import {
 	Header,
 	Section,
 	ComboBox as _ComboBox,
+	type ComboBoxProps as _ComboBoxProps,
 } from "react-aria-components";
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
@@ -23,7 +24,16 @@ import {
 import { Popover, type PopoverProps } from "./popover";
 import { Separator, type SeparatorProps } from "./separator";
 
-const ComboBox = _ComboBox;
+interface ComboBoxProps<T extends object> extends _ComboBoxProps<T> {}
+
+function ComboBox<T extends object>({ className, ...props }: ComboBoxProps<T>) {
+	return (
+		<_ComboBox
+			className={cn("group flex flex-col gap-2", className)}
+			{...props}
+		/>
+	);
+}
 
 const ComboBoxSection = Section;
 
