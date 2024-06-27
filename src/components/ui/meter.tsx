@@ -8,6 +8,7 @@ import {
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
+import { type VariantProps, cva } from "class-variance-authority";
 import { Label } from "./label";
 
 const MeterLabel = Label;
@@ -55,19 +56,32 @@ const MeterTrack = React.forwardRef<
 });
 MeterTrack.displayName = "MeterTrack";
 
+const meterVariants = cva("h-full w-full flex-1 transition-all", {
+	variants: {
+		variant: {
+			default: "bg-primary",
+			success: "bg-success-foreground",
+			info: "bg-info-foreground",
+			warning: "bg-warning-foreground",
+			destructive: "bg-destructive-foreground",
+		},
+	},
+	defaultVariants: {
+		variant: "default",
+	},
+});
+
 const MeterTrackFill = React.forwardRef<
 	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement> & {
-		percentage: number;
-	}
->(({ className, percentage, ...props }, ref) => {
+	React.HTMLAttributes<HTMLDivElement> &
+		VariantProps<typeof meterVariants> & {
+			percentage: number;
+		}
+>(({ className, percentage, variant, ...props }, ref) => {
 	return (
 		<div
 			ref={ref}
-			className={cn(
-				"h-full w-full flex-1 bg-primary transition-all",
-				className,
-			)}
+			className={cn(meterVariants({ variant, className }))}
 			style={{
 				transform: `translateX(-${100 - (percentage || 0)}%)`,
 			}}

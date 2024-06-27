@@ -29,6 +29,66 @@ export default function CheckboxPage() {
 					</>
 				)}
 			</Meter>
+			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+				{({ valueText, percentage }) => (
+					<>
+						<div className="mb-2">
+							<MeterLabel>Info: {valueText}</MeterLabel>
+						</div>
+						<MeterTrack>
+							<MeterTrackFill
+								variant="info"
+								percentage={percentage}
+							/>
+						</MeterTrack>
+					</>
+				)}
+			</Meter>
+			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+				{({ valueText, percentage }) => (
+					<>
+						<div className="mb-2">
+							<MeterLabel>Warning: {valueText}</MeterLabel>
+						</div>
+						<MeterTrack>
+							<MeterTrackFill
+								variant="warning"
+								percentage={percentage}
+							/>
+						</MeterTrack>
+					</>
+				)}
+			</Meter>
+			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+				{({ valueText, percentage }) => (
+					<>
+						<div className="mb-2">
+							<MeterLabel>Success: {valueText}</MeterLabel>
+						</div>
+						<MeterTrack>
+							<MeterTrackFill
+								variant="success"
+								percentage={percentage}
+							/>
+						</MeterTrack>
+					</>
+				)}
+			</Meter>
+			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+				{({ valueText, percentage }) => (
+					<>
+						<div className="mb-2">
+							<MeterLabel>Destructive: {valueText}</MeterLabel>
+						</div>
+						<MeterTrack>
+							<MeterTrackFill
+								variant="destructive"
+								percentage={percentage}
+							/>
+						</MeterTrack>
+					</>
+				)}
+			</Meter>
 			<Meter
 				aria-label="meter bar"
 				value={progress}
