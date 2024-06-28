@@ -15,7 +15,7 @@ import { TextField } from "@/components/ui/text-field";
 export default function CheckboxPage() {
 	return (
 		<div className="">
-			<Tabs defaultSelectedKey="account" className="w-[400px]">
+			<Tabs defaultSelectedKey="account" className="w-full max-w-[400px]">
 				<TabList
 					aria-label="account selector"
 					className="grid w-full grid-cols-2"
