@@ -22,7 +22,7 @@ import {
 	AlertCircle,
 	AlertTriangle,
 	CheckCircle2,
-	Loader2,
+	Loader,
 	X,
 } from "lucide-react";
 import { createPortal } from "react-dom";
@@ -296,7 +296,7 @@ function Toast<T extends ToastContent>({
 				return {
 					title: props.toast.content.loading ?? "Loading...",
 					type: "default" as ToastType,
-					icon: <Loader2 className="size-4 animate-spin" />,
+					icon: <Loader className="size-4 animate-spin" />,
 				};
 			}
 			if (query.isError) {

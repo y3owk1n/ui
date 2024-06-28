@@ -25,7 +25,7 @@ import {
 	ArrowUp,
 	ArrowUpDown,
 	GripVertical,
-	Loader2,
+	Loader,
 } from "lucide-react";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
@@ -47,7 +47,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
 				{isLoading && (
 					<div className="absolute bottom-0 left-0 right-0 top-0 z-50 grid place-items-center bg-background/80 backdrop-blur-sm">
 						{renderLoadingComponent ?? (
-							<Loader2 className="h-4 w-4 animate-spin" />
+							<Loader className="h-4 w-4 animate-spin" />
 						)}
 					</div>
 				)}
