@@ -53,14 +53,18 @@ const ToastProviderContext = React.createContext<
 	ToastProviderContextType<any> | undefined
 >(undefined);
 
+type ToastPlacement = "tl" | "tc" | "tr" | "bl" | "bc" | "br";
+
 interface ToastProviderProps extends ToastStateProps {
 	children: React.ReactNode;
+	placement?: ToastPlacement;
 }
 
 function ToastProvider<T extends ToastContent>({
 	children,
 	maxVisibleToasts = 5,
 	hasExitAnimation = true,
+	placement = "br",
 	...props
 }: ToastProviderProps) {
 	const state = useToastState<T>({
@@ -68,12 +72,17 @@ function ToastProvider<T extends ToastContent>({
 		hasExitAnimation,
 	});
 
+	const stateWithPlacement = {
+		...state,
+		placement,
+	};
+
 	return (
-		<ToastProviderContext.Provider value={state}>
+		<ToastProviderContext.Provider value={stateWithPlacement}>
 			{children}
 			{state.visibleToasts.length > 0 &&
 				createPortal(
-					<ToastRegion {...props} state={state} />,
+					<ToastRegion {...props} state={stateWithPlacement} />,
 					document.body,
 				)}
 		</ToastProviderContext.Provider>
@@ -197,7 +206,7 @@ function useToast() {
 }
 
 interface ToastRegionProps<T> extends AriaToastRegionProps {
-	state: ToastState<T>;
+	state: ToastState<T> & { placement: ToastPlacement };
 }
 
 function ToastRegion<T extends ToastContent>({
@@ -207,11 +216,23 @@ function ToastRegion<T extends ToastContent>({
 	const ref = React.useRef<HTMLDivElement>(null);
 	const { regionProps } = useToastRegion(props, state, ref);
 
+	const { placement } = state;
+
 	return (
 		<div
 			{...regionProps}
 			ref={ref}
-			className="fixed bottom-0 right-0 m-8 grid gap-4"
+			className={cn(
+				"fixed flex w-full flex-col gap-4 p-4 md:max-w-[350px]",
+				placement === "br" && "bottom-0 right-0",
+				placement === "bc" &&
+					"bottom-0 left-1/2 -translate-x-1/2 transform",
+				placement === "bl" && "bottom-0 left-0",
+				placement === "tr" && "right-0 top-0",
+				placement === "tc" &&
+					"right-1/2 top-0 translate-x-1/2 transform",
+				placement === "tl" && "left-0 top-0",
+			)}
 		>
 			{state.visibleToasts.map((toast) => (
 				<Toast key={toast.key} toast={toast} state={state} />
@@ -224,11 +245,11 @@ interface ToastProps<T extends ToastContent>
 	extends AriaToastProps<T>,
 		VariantProps<typeof toastVariants> {
 	className?: string;
-	state: ToastState<T>;
+	state: ToastState<T> & { placement: ToastPlacement };
 }
 
 const toastVariants = cva(
-	"relative w-full rounded-lg border p-4 shadow-md duration-200 data-[animation=exiting]:duration-300 data-[animation=entering]:animate-in data-[animation=exiting]:animate-out data-[animation=entering]:fade-in-0 data-[animation=exiting]:fade-out-0 data-[animation=entering]:zoom-in-95 data-[animation=exiting]:zoom-out-95 data-[animation=entering]:slide-in-from-bottom data-[animation=exiting]:slide-out-to-bottom md:w-[350px] [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg~*:not(button)]:pl-7",
+	"relative w-full rounded-lg border p-4 shadow-md duration-200 data-[animation=exiting]:duration-300 data-[animation=entering]:animate-in data-[animation=exiting]:animate-out data-[animation=entering]:fade-in-0 data-[animation=exiting]:fade-out-0 data-[animation=entering]:zoom-in-95 data-[animation=exiting]:zoom-out-95 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg~*:not(button)]:pl-7",
 	{
 		variants: {
 			variant: {
@@ -257,6 +278,8 @@ function Toast<T extends ToastContent>({
 	const ref = React.useRef<HTMLDivElement>(null);
 	const { toastProps, titleProps, descriptionProps, closeButtonProps } =
 		_useToast(props, state, ref);
+
+	const { placement } = state;
 
 	const promise = props.toast.content.promise;
 
@@ -312,7 +335,13 @@ function Toast<T extends ToastContent>({
 		<div
 			{...toastProps}
 			ref={ref}
-			className={cn(toastVariants({ variant: content.type, className }))}
+			className={cn(
+				toastVariants({ variant: content.type, className }),
+				placement.startsWith("b") &&
+					"data-[animation=entering]:slide-in-from-bottom data-[animation=exiting]:slide-out-to-bottom",
+				placement.startsWith("t") &&
+					"data-[animation=entering]:slide-in-from-top data-[animation=exiting]:slide-out-to-top",
+			)}
 			data-animation={props.toast.animation}
 			onAnimationEnd={() => {
 				// Remove the toast when the exiting animation completes.
