@@ -52,7 +52,8 @@ const ProgressRingOuter = React.forwardRef<
 	return (
 		<svg
 			ref={ref}
-			className={cn("size-72 -rotate-90 transform", className)}
+			className={cn("size-24 -rotate-90 transform", className)}
+			viewBox="0 0 290 290"
 			{...props}
 		/>
 	);

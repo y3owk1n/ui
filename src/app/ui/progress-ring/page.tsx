@@ -27,7 +27,7 @@ export default function ProgressRingPage() {
 	}, []);
 
 	return (
-		<div className="grid gap-4">
+		<div className="flex flex-wrap gap-4">
 			<ProgressRing
 				aria-label="progress ring"
 				isIndeterminate
@@ -64,7 +64,7 @@ export default function ProgressRingPage() {
 				value={progress}
 				minValue={0}
 				maxValue={1000}
-				valueLabel={`${progress} of 1000GB`}
+				valueLabel={`${progress / 1000}/1TB`}
 			>
 				{({ percentage, isIndeterminate, valueText }) => (
 					<>
