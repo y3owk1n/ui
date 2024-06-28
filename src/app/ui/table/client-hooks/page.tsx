@@ -88,16 +88,17 @@ export default function DataTable() {
 
 	return (
 		<div className="space-y-4">
-			<div className="flex items-center justify-between">
-				<div className="flex flex-1 items-center space-x-2">
+			<div className="flex flex-col flex-wrap gap-2 md:flex-row md:items-center md:justify-between">
+				<div className="flex flex-1 flex-wrap items-center gap-2">
 					<SearchField
+						className="w-full"
 						value={table.state.searchTerm}
 						onChange={table.handler.onSearchChange}
 						onClear={table.handler.onSearchClear}
 					>
 						<SearchFieldInput
 							placeholder="Search for name"
-							className="max-w-sm"
+							className="w-full flex-1 md:max-w-sm"
 						/>
 					</SearchField>
 
@@ -148,35 +149,37 @@ export default function DataTable() {
 						</Popover>
 					</PopoverTrigger>
 				</div>
-				<PopoverTrigger>
-					<Button variant="outline">
-						<Settings2 className="mr-2 h-4 w-4" />
-						View
-					</Button>
+				<div>
+					<PopoverTrigger>
+						<Button variant="outline">
+							<Settings2 className="mr-2 h-4 w-4" />
+							View
+						</Button>
 
-					<Popover>
-						<Card className="p-2">
-							<GridList
-								aria-label="Views"
-								selectionMode="multiple"
-								disallowEmptySelection
-								items={columns}
-								selectedKeys={table.state.visibleColumns}
-								onSelectionChange={
-									table.setter.setVisibleColumns
-								}
-							>
-								{(item) => (
-									<GridListItem key={item.id}>
-										<div className="flex w-full items-center justify-between">
-											{item.header}
-										</div>
-									</GridListItem>
-								)}
-							</GridList>
-						</Card>
-					</Popover>
-				</PopoverTrigger>
+						<Popover>
+							<Card className="p-2">
+								<GridList
+									aria-label="Views"
+									selectionMode="multiple"
+									disallowEmptySelection
+									items={columns}
+									selectedKeys={table.state.visibleColumns}
+									onSelectionChange={
+										table.setter.setVisibleColumns
+									}
+								>
+									{(item) => (
+										<GridListItem key={item.id}>
+											<div className="flex w-full items-center justify-between">
+												{item.header}
+											</div>
+										</GridListItem>
+									)}
+								</GridList>
+							</Card>
+						</Popover>
+					</PopoverTrigger>
+				</div>
 			</div>
 
 			<div className="relative w-full rounded-md border">
@@ -226,13 +229,13 @@ export default function DataTable() {
 				</Table>
 			</div>
 
-			<div className="flex items-center justify-between px-2">
+			<div className="flex flex-col items-center justify-between gap-2 px-2 md:flex-row">
 				<span className="flex-1 text-sm text-muted-foreground">
 					{table.state.selectedKeys === "all"
 						? "All items selected"
 						: `${table.state.selectedKeys.size} of ${table.data.raw.length} selected`}
 				</span>
-				<div className="flex items-center space-x-6 lg:space-x-8">
+				<div className="flex flex-col items-center gap-2 md:flex-row lg:gap-8">
 					<div className="flex items-center space-x-2">
 						<span className="text-sm font-medium">
 							Rows per page
