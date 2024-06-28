@@ -18,13 +18,24 @@ import {
 
 import { cn } from "@/lib/utils";
 import { type VariantProps, cva } from "class-variance-authority";
-import { AlertCircle, AlertTriangle, CheckCircle2, X } from "lucide-react";
+import {
+	AlertCircle,
+	AlertTriangle,
+	CheckCircle2,
+	Loader2,
+	X,
+} from "lucide-react";
 import { createPortal } from "react-dom";
+import { useQuery } from "react-query";
 import { Button } from "./button";
 
 type ToastType = "default" | "success" | "destructive" | "info" | "warning";
 
 type ToastContent = {
+	promise?: () => Promise<void>;
+	loading?: string;
+	error?: string | ((data: Error) => string);
+	success?: string | ((data: object) => string);
 	title: string;
 	description?: string;
 	type: ToastType;
@@ -35,7 +46,6 @@ type ToastContent = {
 		label: React.ReactNode;
 	};
 };
-// | string;
 
 interface ToastProviderContextType<T> extends ToastState<T> {}
 
@@ -79,6 +89,12 @@ type ToastOptionsExt = Omit<ToastOptions, "timeout"> & {
 		cb: () => void;
 		label: React.ReactNode;
 	};
+};
+
+type ToastPromiseOptions<T> = ToastOptionsExt & {
+	loading: string;
+	error: string | ((data: Error) => string);
+	success: string | ((data: T) => string);
 };
 
 function getDefaultIcons(type: ToastType) {
@@ -128,7 +144,38 @@ function useToast() {
 		[state],
 	);
 
+	const promiseAction = React.useCallback(
+		<T extends object>(
+			promise: () => Promise<T>,
+			options?: ToastPromiseOptions<T>,
+		) => {
+			return state?.add(
+				{
+					type: "default",
+					icon: getDefaultIcons("default"),
+					action: options?.action,
+					allowDismiss: options?.allowDismiss ?? true,
+					promise: promise,
+					loading: options?.loading,
+					error: options?.error,
+					success: options?.success,
+				},
+				{
+					priority: options?.priority,
+					timeout:
+						options?.timeout === null
+							? undefined
+							: options?.timeout ?? 5000,
+					onClose: options?.onClose,
+				},
+			);
+		},
+		[state],
+	);
+
 	const { add, ...rest } = state;
+
+	// promise: <ToastData>(promise: PromiseT<ToastData>, data?: PromiseData<ToastData>) => string | number;
 
 	const _state = {
 		default: (title: string, options?: ToastOptionsExt) =>
@@ -141,6 +188,10 @@ function useToast() {
 			action("warning", title, options),
 		destructive: (title: string, options?: ToastOptionsExt) =>
 			action("destructive", title, options),
+		promise: <T extends object>(
+			promise: () => Promise<T>,
+			options?: ToastPromiseOptions<T>,
+		) => promiseAction(promise, options),
 		...rest,
 	};
 
@@ -209,7 +260,46 @@ function Toast<T extends ToastContent>({
 	const { toastProps, titleProps, descriptionProps, closeButtonProps } =
 		_useToast(props, state, ref);
 
+	const promise = props.toast.content.promise;
+
+	const id = React.useId();
+
+	const query = useQuery(`toast-promise-${id}`, promise!, {
+		enabled: !!promise,
+		retry: false,
+	});
+
 	const content = React.useMemo(() => {
+		if (!!promise) {
+			if (query.isLoading) {
+				return {
+					title: props.toast.content.loading ?? "Loading...",
+					type: "default" as ToastType,
+					icon: <Loader2 className="size-4 animate-spin" />,
+				};
+			}
+			if (query.isError) {
+				return {
+					title:
+						typeof props.toast.content.error === "function"
+							? props.toast.content.error(query.error as Error)
+							: props.toast.content.error ?? "Error",
+					type: "destructive" as ToastType,
+					icon: <AlertCircle className="size-4" />,
+				};
+			}
+			return {
+				title:
+					typeof props.toast.content.success === "function"
+						? props.toast.content.success(
+								query.data as unknown as object,
+							)!
+						: props.toast.content.success,
+				type: "success" as ToastType,
+				icon: <CheckCircle2 className="size-4" />,
+			};
+		}
+
 		return {
 			title: props.toast.content.title,
 			description: props.toast.content.description,
@@ -218,7 +308,7 @@ function Toast<T extends ToastContent>({
 			action: props.toast.content.action,
 			allowDismiss: props.toast.content.allowDismiss,
 		};
-	}, [props.toast.content]);
+	}, [props.toast.content, query, promise]);
 
 	return (
 		<div
@@ -236,7 +326,7 @@ function Toast<T extends ToastContent>({
 			{content.icon}
 			<div className="flex items-center gap-2">
 				<div className="flex-1">
-					<div {...titleProps} className="text-sm font-semibold">
+					<div {...titleProps} className="h-4 text-sm font-semibold">
 						{content.title}
 					</div>
 					{content.description && (

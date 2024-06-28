@@ -3,11 +3,39 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { Sun } from "lucide-react";
 
+const promise: () => Promise<{ name: string }> = () =>
+	new Promise((resolve, reject) => {
+		const shouldReject = Math.random() < 0.5; // 50% chance to reject the promise
+		setTimeout(() => {
+			if (shouldReject) {
+				reject({ name: "Promise" });
+			} else {
+				resolve({ name: "Promise" });
+			}
+		}, 2000);
+	});
+
 export default function CheckboxPage() {
 	const toast = useToast();
 
 	return (
 		<div className="flex flex-wrap gap-4">
+			<Button
+				onPress={() =>
+					toast.promise(promise, {
+						loading: "Loading...",
+						success: (data) => {
+							return `${data.name} toast has been added`;
+						},
+						error: (data) => {
+							return `${data.name} failed`;
+						},
+						timeout: null,
+					})
+				}
+			>
+				Promise
+			</Button>
 			<Button
 				onPress={() =>
 					toast.default("Toast is done!", {

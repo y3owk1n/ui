@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { ModeToggle } from "@/components/dark-mode-toggle";
+import { QueryClientProvider } from "@/components/query-client-provider";
 import { RouterProvider } from "@/components/router-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ToastProvider } from "@/components/ui/toast";
@@ -30,23 +31,25 @@ export default function RootLayout({
 					fontSans.variable,
 				)}
 			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
-					<RouterProvider>
-						<ToastProvider>
-							<main>
-								<div className="container pt-8">
-									<ModeToggle />
-								</div>
-								{children}
-							</main>
-						</ToastProvider>
-					</RouterProvider>
-				</ThemeProvider>
+				<QueryClientProvider>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange
+					>
+						<RouterProvider>
+							<ToastProvider>
+								<main>
+									<div className="container pt-8">
+										<ModeToggle />
+									</div>
+									{children}
+								</main>
+							</ToastProvider>
+						</RouterProvider>
+					</ThemeProvider>
+				</QueryClientProvider>
 			</body>
 		</html>
 	);
