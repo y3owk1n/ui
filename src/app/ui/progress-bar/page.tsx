@@ -30,7 +30,7 @@ export default function CheckboxPage() {
 			<ProgressBar
 				aria-label="progress bar"
 				value={progress}
-				className="w-[60%]"
+				className="md:w-[60%]"
 				isIndeterminate
 			>
 				{({ percentage, isIndeterminate, valueText }) => (
@@ -52,7 +52,7 @@ export default function CheckboxPage() {
 			<ProgressBar
 				aria-label="progress bar"
 				value={progress}
-				className="w-[60%]"
+				className="md:w-[60%]"
 			>
 				{({ percentage, isIndeterminate, valueText }) => (
 					<>
@@ -73,7 +73,7 @@ export default function CheckboxPage() {
 			<ProgressBar
 				aria-label="progress bar"
 				value={progress}
-				className="w-[60%]"
+				className="md:w-[60%]"
 				minValue={0}
 				maxValue={1000}
 				valueLabel={`${progress} of 1000GB`}

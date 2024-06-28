@@ -147,7 +147,7 @@ export default function Home() {
 			<h1 className="font-heading mb-4 scroll-m-20 text-2xl font-semibold tracking-tight">
 				UI Navigations
 			</h1>
-			<Card className="max-w-[300px] p-2">
+			<Card className="w-full p-2 sm:max-w-[300px]">
 				<ListBox
 					aria-label="Links"
 					// selectionMode="multiple"

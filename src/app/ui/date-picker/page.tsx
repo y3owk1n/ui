@@ -55,7 +55,7 @@ export default function CheckboxPage() {
 											<CalendarNextButton iconOnly />
 										</CalendarHeader>
 
-										<div className="flex gap-4">
+										<div className="flex flex-col gap-4 md:flex-row">
 											<CalendarGrid>
 												<CalendarGridHeader>
 													{(day) => (

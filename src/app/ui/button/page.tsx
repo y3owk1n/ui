@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ButtonPage() {
 	return (
-		<div className="flex gap-4">
+		<div className="flex flex-wrap gap-4">
 			<Button>Default</Button>
 			<Button variant="destructive">Destructive</Button>
 			<Button variant="success">Success</Button>

@@ -17,7 +17,11 @@ export default function CheckboxPage() {
 
 	return (
 		<div className="grid gap-4">
-			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+			<Meter
+				aria-label="meter bar"
+				value={progress}
+				className="md:w-[60%]"
+			>
 				{({ valueText, percentage }) => (
 					<>
 						<div className="mb-2">
@@ -29,7 +33,11 @@ export default function CheckboxPage() {
 					</>
 				)}
 			</Meter>
-			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+			<Meter
+				aria-label="meter bar"
+				value={progress}
+				className="md:w-[60%]"
+			>
 				{({ valueText, percentage }) => (
 					<>
 						<div className="mb-2">
@@ -44,7 +52,11 @@ export default function CheckboxPage() {
 					</>
 				)}
 			</Meter>
-			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+			<Meter
+				aria-label="meter bar"
+				value={progress}
+				className="md:w-[60%]"
+			>
 				{({ valueText, percentage }) => (
 					<>
 						<div className="mb-2">
@@ -59,7 +71,11 @@ export default function CheckboxPage() {
 					</>
 				)}
 			</Meter>
-			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+			<Meter
+				aria-label="meter bar"
+				value={progress}
+				className="md:w-[60%]"
+			>
 				{({ valueText, percentage }) => (
 					<>
 						<div className="mb-2">
@@ -74,7 +90,11 @@ export default function CheckboxPage() {
 					</>
 				)}
 			</Meter>
-			<Meter aria-label="meter bar" value={progress} className="w-[60%]">
+			<Meter
+				aria-label="meter bar"
+				value={progress}
+				className="md:w-[60%]"
+			>
 				{({ valueText, percentage }) => (
 					<>
 						<div className="mb-2">
@@ -92,7 +112,7 @@ export default function CheckboxPage() {
 			<Meter
 				aria-label="meter bar"
 				value={progress}
-				className="w-[60%]"
+				className="md:w-[60%]"
 				formatOptions={{ style: "currency", currency: "JPY" }}
 			>
 				{({ valueText, percentage }) => (
@@ -109,7 +129,7 @@ export default function CheckboxPage() {
 			<Meter
 				aria-label="meter bar"
 				value={progress}
-				className="w-[60%]"
+				className="md:w-[60%]"
 				minValue={0}
 				maxValue={1000}
 				valueLabel={`${progress} of 1000GB`}
