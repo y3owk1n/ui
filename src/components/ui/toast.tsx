@@ -151,11 +151,9 @@ function useToast() {
 		) => {
 			return state?.add(
 				{
-					type: "default",
-					icon: getDefaultIcons("default"),
 					action: options?.action,
 					allowDismiss: options?.allowDismiss ?? true,
-					promise: promise,
+					promise,
 					loading: options?.loading,
 					error: options?.error,
 					success: options?.success,
@@ -265,7 +263,7 @@ function Toast<T extends ToastContent>({
 	const id = React.useId();
 
 	const query = useQuery(`toast-promise-${id}`, promise!, {
-		enabled: !!promise,
+		enabled: promise && typeof promise === "function",
 		retry: false,
 	});
 

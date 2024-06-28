@@ -30,7 +30,6 @@ export default function CheckboxPage() {
 						error: (data) => {
 							return `${data.name} failed`;
 						},
-						timeout: null,
 					})
 				}
 			>
