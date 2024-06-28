@@ -8,7 +8,6 @@ import {
 } from "react";
 import { type DropPosition, useDragAndDrop } from "react-aria-components";
 import { type Key, type Selection, type SortDescriptor } from "react-stately";
-import { type Key, type Selection, type SortDescriptor } from "react-stately";
 
 interface UseTableFilter<T> {
 	type: "client" | "server";
