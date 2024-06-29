@@ -93,8 +93,7 @@ const DatePickerButton = ({
 				className={cn(
 					"flex gap-2",
 					!date && "text-muted-foreground",
-					isInvalid &&
-						"outline-none ring-2 ring-destructive-foreground ring-offset-2",
+					isInvalid && "border-destructive-foreground outline-none",
 					className,
 				)}
 				{...props}
@@ -138,8 +137,7 @@ const DateRangePickerButton = ({
 				className={cn(
 					"flex gap-2",
 					!date?.end && "text-muted-foreground",
-					isInvalid &&
-						"outline-none ring-2 ring-destructive-foreground ring-offset-2",
+					isInvalid && "border-destructive-foreground outline-none",
 					className,
 				)}
 				{...props}

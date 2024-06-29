@@ -39,7 +39,7 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
 						values.isFocusWithin &&
 							"outline-none ring-2 ring-ring ring-offset-2",
 						values.isInvalid &&
-							"outline-none ring-2 ring-destructive-foreground ring-offset-2",
+							"border-destructive-foreground outline-none",
 						typeof className === "function"
 							? className(values)
 							: className,
