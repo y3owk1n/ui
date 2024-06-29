@@ -12,6 +12,10 @@ import {
 	NumberPlusButton,
 } from "@/components/ui/number-field";
 import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
+import {
+	PasswordField,
+	PasswordFieldInput,
+} from "@/components/ui/password-field";
 import { TextArea } from "@/components/ui/text-area";
 import { TextField } from "@/components/ui/text-field";
 import { TimeField, TimeInput, TimeSegment } from "@/components/ui/time-field";
@@ -25,6 +29,12 @@ export default function CheckboxPage() {
 				<FieldDescription>This is your public email</FieldDescription>
 				<FieldError />
 			</TextField>
+			<PasswordField>
+				<Label>Password</Label>
+				<PasswordFieldInput />
+				<FieldDescription>This is your password</FieldDescription>
+				<FieldError />
+			</PasswordField>
 			<DateField>
 				<Label>Date</Label>
 				<DateInput>
