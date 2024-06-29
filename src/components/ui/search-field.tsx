@@ -2,7 +2,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import {
 	Group,
 	SearchField as _SearchField,
@@ -37,10 +37,13 @@ const SearchFieldInput = React.forwardRef<HTMLInputElement, InputProps>(
 	({ className, ...props }, ref) => {
 		return (
 			<Group className="relative">
+				<div className="absolute left-0 top-0 grid h-full w-10 place-items-center">
+					<Search className="size-4 stroke-input" />
+				</div>
 				<Input
 					className={(values) =>
 						cn(
-							"pr-10 [&::-webkit-search-cancel-button]:hidden",
+							"px-10 [&::-webkit-search-cancel-button]:hidden",
 							typeof className === "function"
 								? className(values)
 								: className,
