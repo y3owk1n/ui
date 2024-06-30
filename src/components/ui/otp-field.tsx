@@ -269,10 +269,8 @@ const OtpFieldInput = React.forwardRef<
 
 	const showFocus = React.useMemo(() => {
 		if (context.cursorPosition < context.value.length) {
-			console.log("true");
 			return context.cursorPosition - 1 === index && context.isFocused;
 		}
-		console.log("false");
 
 		return context.cursorPosition === index && context.isFocused;
 	}, [
@@ -297,6 +295,8 @@ const OtpFieldInput = React.forwardRef<
 				"relative flex h-10 w-10 items-center justify-center border border-input text-sm transition-all",
 				showFocus && "outline-none ring-2 ring-ring ring-offset-2",
 				isLast && "outline-none ring-2 ring-ring ring-offset-2",
+				"group-data-[invalid]:border-destructive-foreground",
+				"group-data-[disabled]:cursor-not-allowed group-data-[disabled]:opacity-50",
 				className,
 			)}
 			data-index={index}
