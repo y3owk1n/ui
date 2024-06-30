@@ -30,6 +30,12 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+	OtpField,
+	OtpFieldGroup,
+	OtpFieldGroupRoot,
+	OtpFieldInput,
+} from "@/components/ui/otp-field";
 import { TextField } from "@/components/ui/text-field";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -43,6 +49,7 @@ import { z } from "zod";
 const formSchema = z.object({
 	username: z.string().min(2).max(50),
 	email: z.string().email(),
+	otp: z.string().length(6),
 	date: z
 		.custom<DateValue>()
 		.nullish()
@@ -139,6 +146,38 @@ export default function CheckboxPage() {
 									</FieldDescription>
 									<FormMessage />
 								</TextField>
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="otp"
+						render={({ field, fieldState }) => (
+							<FormItem>
+								<OtpField
+									type="numeric"
+									{...field}
+									isDisabled={field.disabled}
+									isInvalid={fieldState.invalid}
+								>
+									<FormLabel>OTP Number</FormLabel>
+									<FormControl>
+										<OtpFieldGroupRoot>
+											<OtpFieldGroup>
+												<OtpFieldInput index={0} />
+												<OtpFieldInput index={1} />
+												<OtpFieldInput index={2} />
+												<OtpFieldInput index={3} />
+												<OtpFieldInput index={4} />
+												<OtpFieldInput index={5} />
+											</OtpFieldGroup>
+										</OtpFieldGroupRoot>
+									</FormControl>
+									<FieldDescription>
+										Make sure it is correct
+									</FieldDescription>
+									<FormMessage />
+								</OtpField>
 							</FormItem>
 						)}
 					/>

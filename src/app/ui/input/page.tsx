@@ -11,11 +11,17 @@ import {
 	NumberMinusButton,
 	NumberPlusButton,
 } from "@/components/ui/number-field";
-import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
+import {
+	OtpField,
+	OtpFieldGroup,
+	OtpFieldGroupRoot,
+	OtpFieldInput,
+} from "@/components/ui/otp-field";
 import {
 	PasswordField,
 	PasswordFieldInput,
 } from "@/components/ui/password-field";
+import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
 import { TextArea } from "@/components/ui/text-area";
 import { TextField } from "@/components/ui/text-field";
 import { TimeField, TimeInput, TimeSegment } from "@/components/ui/time-field";
@@ -29,6 +35,51 @@ export default function CheckboxPage() {
 				<FieldDescription>This is your public email</FieldDescription>
 				<FieldError />
 			</TextField>
+			<OtpField type="text">
+				<Label>OTP text</Label>
+				<OtpFieldGroupRoot>
+					<OtpFieldGroup>
+						<OtpFieldInput index={0} />
+						<OtpFieldInput index={1} />
+						<OtpFieldInput index={2} />
+						<OtpFieldInput index={3} />
+						<OtpFieldInput index={4} />
+						<OtpFieldInput index={5} />
+					</OtpFieldGroup>
+				</OtpFieldGroupRoot>
+				<FieldDescription>Fill in the code you got</FieldDescription>
+				<FieldError />
+			</OtpField>
+			<OtpField type="numeric">
+				<Label>OTP number</Label>
+				<OtpFieldGroupRoot>
+					<OtpFieldGroup>
+						<OtpFieldInput index={0} />
+						<OtpFieldInput index={1} />
+						<OtpFieldInput index={2} />
+						<OtpFieldInput index={3} />
+						<OtpFieldInput index={4} />
+						<OtpFieldInput index={5} />
+					</OtpFieldGroup>
+				</OtpFieldGroupRoot>
+				<FieldDescription>Fill in the code you got</FieldDescription>
+				<FieldError />
+			</OtpField>
+			<OtpField type="both">
+				<Label>OTP Both</Label>
+				<OtpFieldGroupRoot>
+					<OtpFieldGroup>
+						<OtpFieldInput index={0} />
+						<OtpFieldInput index={1} />
+						<OtpFieldInput index={2} />
+						<OtpFieldInput index={3} />
+						<OtpFieldInput index={4} />
+						<OtpFieldInput index={5} />
+					</OtpFieldGroup>
+				</OtpFieldGroupRoot>
+				<FieldDescription>Fill in the code you got</FieldDescription>
+				<FieldError />
+			</OtpField>
 			<PasswordField>
 				<Label>Password</Label>
 				<PasswordFieldInput />
