@@ -8,6 +8,7 @@ import {
 } from "react-aria-components";
 import { BorderGroup } from "./border-group";
 import { Input } from "./input";
+import { Dot } from "lucide-react";
 
 interface OtpFieldContextType {
 	maxLength?: number;
@@ -49,7 +50,9 @@ const OtpField = React.forwardRef<HTMLInputElement, OtpFieldProps>(
 
 		const [isOtpFocused, setIsOtpFocused] = React.useState(isFocused);
 
-		const [cursorPosition, setCursorPosition] = React.useState(0);
+		const [cursorPosition, setCursorPosition] = React.useState(
+			value.length,
+		);
 
 		const filter = React.useMemo(() => {
 			let filter: RegExp;
@@ -178,18 +181,18 @@ const OtpField = React.forwardRef<HTMLInputElement, OtpFieldProps>(
 		const contextValue = React.useMemo(
 			() => ({
 				maxLength,
-				value: value ?? otpValue,
+				value: otpValue,
 				cursorPosition,
 				isFocused: isOtpFocused,
 				type,
 			}),
-			[maxLength, value, otpValue, cursorPosition, isOtpFocused, type],
+			[maxLength, otpValue, cursorPosition, isOtpFocused, type],
 		);
 
 		return (
 			<OtpFieldContext.Provider value={contextValue}>
 				<_OtpField
-					value={value ?? otpValue}
+					value={otpValue}
 					inputMode={inputMode}
 					onChange={handleChange}
 					onSelect={handleSelect}
@@ -224,7 +227,7 @@ const OtpFieldGroupRoot = React.forwardRef<
 
 	return (
 		<div ref={ref} className={cn("relative", className)} {...props}>
-			{children}
+			<div className="flex flex-wrap items-center gap-2">{children}</div>
 
 			<Input
 				className="pointer-events-auto absolute inset-0 top-0 h-full w-full text-left font-mono leading-none tracking-[-0.5em] opacity-0 shadow-none outline-0 [clip-path:inset(0px_40px_0px_0px)] [font-variant-numeric:tabular-nums]"
@@ -313,10 +316,21 @@ const OtpFieldInput = React.forwardRef<
 });
 OtpFieldInput.displayName = "OtpFieldInput";
 
+const OtpFieldGroupSeparator = React.forwardRef<
+	React.ElementRef<"div">,
+	React.ComponentPropsWithoutRef<"div">
+>(({ ...props }, ref) => (
+	<div ref={ref} role="separator" {...props}>
+		<Dot />
+	</div>
+));
+OtpFieldGroupSeparator.displayName = "OtpFieldGroupSeparator";
+
 export {
 	OtpField,
 	OtpFieldGroupRoot,
 	OtpFieldGroup,
+	OtpFieldGroupSeparator,
 	OtpFieldInput,
 	type OtpFieldProps,
 };

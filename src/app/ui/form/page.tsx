@@ -84,6 +84,7 @@ export default function CheckboxPage() {
 			email: "",
 			date: null,
 			datePick: null,
+			otp: "38",
 		},
 	});
 

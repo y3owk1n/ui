@@ -15,6 +15,7 @@ import {
 	OtpField,
 	OtpFieldGroup,
 	OtpFieldGroupRoot,
+	OtpFieldGroupSeparator,
 	OtpFieldInput,
 } from "@/components/ui/otp-field";
 import {
@@ -42,6 +43,9 @@ export default function CheckboxPage() {
 						<OtpFieldInput index={0} />
 						<OtpFieldInput index={1} />
 						<OtpFieldInput index={2} />
+					</OtpFieldGroup>
+					<OtpFieldGroupSeparator />
+					<OtpFieldGroup>
 						<OtpFieldInput index={3} />
 						<OtpFieldInput index={4} />
 						<OtpFieldInput index={5} />
