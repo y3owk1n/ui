@@ -221,7 +221,7 @@ const OtpFieldGroupRoot = React.forwardRef<
 			{children}
 
 			<Input
-				// className="pointer-events-auto absolute inset-0 top-0 h-full w-full text-left font-mono leading-none tracking-[-0.5em] opacity-0 shadow-none outline-0 [clip-path:inset(0px_40px_0px_0px)] [font-variant-numeric:tabular-nums]"
+				className="pointer-events-auto absolute inset-0 top-0 h-full w-full text-left font-mono leading-none tracking-[-0.5em] opacity-0 shadow-none outline-0 [clip-path:inset(0px_40px_0px_0px)] [font-variant-numeric:tabular-nums]"
 				maxLength={context.maxLength}
 			/>
 		</div>
