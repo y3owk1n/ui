@@ -25,6 +25,7 @@ interface OtpFieldProps
 	extends Omit<_OtpFieldProps, "children" | "type">,
 		Pick<OtpFieldContextType, "maxLength" | "type"> {
 	children: React.ReactNode;
+	isFocused?: boolean;
 }
 
 const OtpField = React.forwardRef<HTMLInputElement, OtpFieldProps>(
@@ -35,17 +36,18 @@ const OtpField = React.forwardRef<HTMLInputElement, OtpFieldProps>(
 			onSelect,
 			onFocus,
 			onBlur,
-			value,
+			value = "",
 			onChange,
 			children,
+			isFocused = false,
 			type = "numeric",
 			...props
 		},
 		ref,
 	) => {
-		const [otpValue, setOtpValue] = React.useState("");
+		const [otpValue, setOtpValue] = React.useState(value);
 
-		const [isFocused, setIsFocused] = React.useState(false);
+		const [isOtpFocused, setIsOtpFocused] = React.useState(isFocused);
 
 		const [cursorPosition, setCursorPosition] = React.useState(0);
 
@@ -78,6 +80,7 @@ const OtpField = React.forwardRef<HTMLInputElement, OtpFieldProps>(
 					.join("");
 				if (replacedValue.length > maxLength) return;
 				setOtpValue(replacedValue);
+				setCursorPosition(replacedValue.length);
 				if (onChange) onChange(replacedValue);
 			},
 			[filter, maxLength, onChange],
@@ -113,7 +116,7 @@ const OtpField = React.forwardRef<HTMLInputElement, OtpFieldProps>(
 					target.selectionEnd = maxLength;
 				});
 
-				setIsFocused(true);
+				setIsOtpFocused(true);
 				if (onFocus) onFocus(e);
 			},
 			[maxLength, onFocus],
@@ -121,7 +124,7 @@ const OtpField = React.forwardRef<HTMLInputElement, OtpFieldProps>(
 
 		const handleBlur = React.useCallback(
 			(e: React.FocusEvent<Element, Element>) => {
-				setIsFocused(false);
+				setIsOtpFocused(false);
 				if (onBlur) onBlur(e);
 			},
 			[onBlur],
@@ -172,16 +175,19 @@ const OtpField = React.forwardRef<HTMLInputElement, OtpFieldProps>(
 			return "numeric";
 		}, [type]);
 
+		const contextValue = React.useMemo(
+			() => ({
+				maxLength,
+				value: value ?? otpValue,
+				cursorPosition,
+				isFocused: isOtpFocused,
+				type,
+			}),
+			[maxLength, value, otpValue, cursorPosition, isOtpFocused, type],
+		);
+
 		return (
-			<OtpFieldContext.Provider
-				value={{
-					maxLength,
-					value: value ?? otpValue,
-					cursorPosition,
-					isFocused,
-					type,
-				}}
-			>
+			<OtpFieldContext.Provider value={contextValue}>
 				<_OtpField
 					value={value ?? otpValue}
 					inputMode={inputMode}
@@ -263,8 +269,10 @@ const OtpFieldInput = React.forwardRef<
 
 	const showFocus = React.useMemo(() => {
 		if (context.cursorPosition < context.value.length) {
+			console.log("true");
 			return context.cursorPosition - 1 === index && context.isFocused;
 		}
+		console.log("false");
 
 		return context.cursorPosition === index && context.isFocused;
 	}, [
@@ -278,7 +286,7 @@ const OtpFieldInput = React.forwardRef<
 		return (
 			context.isFocused &&
 			context.cursorPosition === context.maxLength! &&
-			index + 1 === context.maxLength!
+			index + 1 === context.maxLength
 		);
 	}, [context.cursorPosition, context.isFocused, context.maxLength, index]);
 
