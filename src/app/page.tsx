@@ -104,6 +104,10 @@ const navData: { id: string; name: string }[] = [
 		name: "Radio",
 	},
 	{
+		id: "scroll-shadow",
+		name: "Scroll Shadow",
+	},
+	{
 		id: "select",
 		name: "Select",
 	},

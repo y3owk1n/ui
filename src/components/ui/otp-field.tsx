@@ -2,13 +2,13 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
+import { Dot } from "lucide-react";
 import {
 	TextField as _OtpField,
 	type TextFieldProps as _OtpFieldProps,
 } from "react-aria-components";
 import { BorderGroup } from "./border-group";
 import { Input } from "./input";
-import { Dot } from "lucide-react";
 
 interface OtpFieldContextType {
 	maxLength?: number;
