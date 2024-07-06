@@ -15,7 +15,7 @@ const promise: () => Promise<{ name: string }> = () =>
 		}, 2000);
 	});
 
-export default function CheckboxPage() {
+export default function ToastPage() {
 	const toast = useToast();
 
 	return (

@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ResponsiveDialogDrawer } from "@/components/ui/responsive-dialog-drawer";
 
-export default function CheckboxPage() {
+export default function DrawerPage() {
 	return (
 		<div className="flex flex-wrap gap-4">
 			<DrawerTrigger>

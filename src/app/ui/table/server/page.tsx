@@ -5,7 +5,9 @@ interface TablePageProps {
 	searchParams?: Record<string, string | string[] | undefined>;
 }
 
-export default async function TablePage({ searchParams }: TablePageProps) {
+export default async function TableServerPage({
+	searchParams,
+}: TablePageProps) {
 	const page = searchParams?.page ? Number(searchParams.page) : 1;
 	const searchTerm = (searchParams?.s ?? "") as string;
 

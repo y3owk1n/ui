@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Tab, TabList, TabPanel, Tabs } from "@/components/ui/tabs";
 import { TextField } from "@/components/ui/text-field";
 
-export default function CheckboxPage() {
+export default function TabsPage() {
 	return (
 		<div className="">
 			<Tabs defaultSelectedKey="account" className="w-full max-w-[400px]">

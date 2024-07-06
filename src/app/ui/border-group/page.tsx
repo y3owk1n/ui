@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/components/ui/menu";
 import { ChevronDown } from "lucide-react";
 
-export default function ButtonPage() {
+export default function BorderGroupPage() {
 	return (
 		<div className="flex flex-col gap-4">
 			<BorderGroup>

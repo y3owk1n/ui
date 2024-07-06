@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/progress-bar";
 import { useEffect, useState } from "react";
 
-export default function CheckboxPage() {
+export default function ProgressBarPage() {
 	const [progress, setProgress] = useState(0);
 
 	useEffect(() => {

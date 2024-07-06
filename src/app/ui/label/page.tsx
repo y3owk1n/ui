@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 
-export default function CheckboxPage() {
+export default function LabelPage() {
 	return (
 		<div className="">
 			<Label>This is a label</Label>

@@ -17,7 +17,7 @@ import { getLocalTimeZone, isWeekend, today } from "@internationalized/date";
 import { useState } from "react";
 import { useLocale } from "react-aria-components";
 
-export default function CheckboxPage() {
+export default function CalendarPage() {
 	const [date, setDate] = useState(today(getLocalTimeZone()));
 	const { locale } = useLocale();
 	const isInvalid = isWeekend(date, locale);

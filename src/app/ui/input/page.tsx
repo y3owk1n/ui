@@ -27,7 +27,7 @@ import { TextArea } from "@/components/ui/text-area";
 import { TextField } from "@/components/ui/text-field";
 import { TimeField, TimeInput, TimeSegment } from "@/components/ui/time-field";
 
-export default function CheckboxPage() {
+export default function InputPage() {
 	return (
 		<div className="grid gap-4">
 			<TextField isDisabled>

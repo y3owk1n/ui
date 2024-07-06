@@ -24,7 +24,7 @@ import { getLocalTimeZone, isWeekend, today } from "@internationalized/date";
 import { useState } from "react";
 import { FieldError, useLocale } from "react-aria-components";
 
-export default function CheckboxPage() {
+export default function DateRangePickerPage() {
 	const { locale } = useLocale();
 	const [selectedRange, setSelectedRange] = useState({
 		start: today(getLocalTimeZone()),

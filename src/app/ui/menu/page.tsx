@@ -74,7 +74,7 @@ const dynamicSubmenuData = [
 	},
 ];
 
-export default function CheckboxPage() {
+export default function MenuPage() {
 	const [selected, setSelected] = useState<Selection>(new Set(["status"]));
 
 	return (

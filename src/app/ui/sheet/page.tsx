@@ -12,7 +12,7 @@ import {
 	SheetTrigger,
 } from "@/components/ui/sheet";
 
-export default function CheckboxPage() {
+export default function SheetPage() {
 	return (
 		<div className="flex flex-wrap gap-4">
 			<SheetTrigger>

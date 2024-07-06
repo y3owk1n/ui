@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 
-export default function CheckboxPage() {
+export default function BadgePage() {
 	return (
 		<div className="flex flex-wrap gap-4">
 			<Badge>Badge</Badge>

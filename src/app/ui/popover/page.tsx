@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Popover, PopoverTrigger } from "@/components/ui/popover";
 
-export default function CheckboxPage() {
+export default function PopoverPage() {
 	return (
 		<div className="">
 			<PopoverTrigger>

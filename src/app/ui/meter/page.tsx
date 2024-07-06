@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/meter";
 import { useEffect, useState } from "react";
 
-export default function CheckboxPage() {
+export default function MeterPage() {
 	const [progress, setProgress] = useState(13);
 
 	useEffect(() => {

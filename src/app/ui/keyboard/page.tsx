@@ -1,6 +1,6 @@
 import { Keyboard } from "@/components/ui/keyboard";
 
-export default function CheckboxPage() {
+export default function KeyboardPage() {
 	return (
 		<div className="">
 			<Keyboard>⇧⌘Q</Keyboard>

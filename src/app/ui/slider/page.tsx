@@ -7,7 +7,7 @@ import {
 	SliderTrack,
 } from "@/components/ui/slider";
 
-export default function CheckboxPage() {
+export default function SliderPage() {
 	return (
 		<div className="grid gap-8">
 			<Slider defaultValue={[30, 60]}>

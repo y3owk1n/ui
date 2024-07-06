@@ -22,7 +22,7 @@ function Content(props: React.HTMLAttributes<HTMLDivElement>) {
 	);
 }
 
-export default function CheckboxPage() {
+export default function ScrollShadowPage() {
 	return (
 		<div className="grid gap-4">
 			<ScrollShadow

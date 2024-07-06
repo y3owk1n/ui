@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { FileItems, FileTrigger } from "@/components/ui/file-trigger";
 
-export default function ButtonPage() {
+export default function FileTriggerPage() {
 	return (
 		<div className="grid gap-4">
 			<FileTrigger acceptedFileTypes={["image/*"]}>

@@ -1,7 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, Terminal } from "lucide-react";
 
-export default function CheckboxPage() {
+export default function AlertPage() {
 	return (
 		<div className="grid gap-4">
 			<Alert>
