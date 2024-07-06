@@ -24,6 +24,10 @@ const navData: { id: string; name: string }[] = [
 		name: "Calendar",
 	},
 	{
+		id: "carousel",
+		name: "Carousel",
+	},
+	{
 		id: "checkbox",
 		name: "Checkbox",
 	},
