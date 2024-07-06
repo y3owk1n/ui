@@ -56,6 +56,10 @@ const navData: { id: string; name: string }[] = [
 		name: "Form",
 	},
 	{
+		id: "gallery",
+		name: "Gallery",
+	},
+	{
 		id: "grid-list",
 		name: "Grid List",
 	},
