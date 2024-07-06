@@ -163,7 +163,7 @@ export default function CarouselBottomThumb({
 								src={image}
 								alt=""
 								className={cn(
-									"aspect-square rounded-md border-2 border-transparent bg-gray-100",
+									"aspect-square rounded-md border-2 border-transparent bg-muted object-contain",
 									selectedIndex === index &&
 										"border-destructive-foreground",
 								)}
@@ -187,7 +187,7 @@ export default function CarouselBottomThumb({
 								src={image}
 								alt=""
 								className={cn(
-									"aspect-square h-full w-full rounded-md border bg-gray-100 transition-all duration-200",
+									"aspect-square h-full w-full rounded-md border bg-muted object-contain transition-all duration-200",
 									fakeLoading && "opacity-0",
 								)}
 							/>

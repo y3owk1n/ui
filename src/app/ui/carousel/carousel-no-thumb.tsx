@@ -48,7 +48,7 @@ export default function CarouselNoThumb({ images }: CarouselLeftThumbProps) {
 								src={image}
 								alt=""
 								className={cn(
-									"aspect-square h-full w-full rounded-md border bg-gray-100 transition-all duration-200",
+									"aspect-square h-full w-full rounded-md border bg-gray-100 bg-muted object-contain transition-all duration-200",
 								)}
 							/>
 						</CarouselItem>
