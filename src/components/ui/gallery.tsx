@@ -7,21 +7,21 @@ function groupStrings<T extends object | string>(
 	arr: T[],
 	columns: number,
 ): T[][] {
-	const groups: T[][] = [];
+	const groups = new Map<number, T[]>();
 
 	for (let i = 0; i < columns; i++) {
-		groups[i] = [];
+		groups.set(i, []);
 	}
 
 	for (let i = 0; i < arr.length; i++) {
-		const currentGroup = groups[i % columns];
+		const currentGroup = groups.get(i % columns);
 		const item = arr[i];
-		if (item) {
-			currentGroup?.push(item);
+		if (item && currentGroup) {
+			currentGroup.push(item);
 		}
 	}
 
-	return groups;
+	return Array.from(groups.values());
 }
 
 interface UseGalleryOpts {
