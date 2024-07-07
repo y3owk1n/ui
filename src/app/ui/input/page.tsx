@@ -1,6 +1,7 @@
 "use client";
 import Preview from "@/components/preview";
 import { BorderGroup } from "@/components/ui/border-group";
+import { ColorField } from "@/components/ui/color-field";
 import { DateField, DateInput, DateSegment } from "@/components/ui/date-field";
 import { FieldDescription } from "@/components/ui/field-description";
 import { FieldError } from "@/components/ui/field-error";
@@ -154,6 +155,47 @@ export default function InputPage() {
 					<FieldDescription>Any more info</FieldDescription>
 					<FieldError />
 				</NumberField>
+			</Preview>
+			<Preview>
+				<div className="grid gap-2">
+					<ColorField className="w-full max-w-lg">
+						<Label>Background Color</Label>
+						<Input placeholder="#000" />
+						<FieldDescription>
+							Any color that you like
+						</FieldDescription>
+						<FieldError />
+					</ColorField>
+					<div className="flex gap-2">
+						<ColorField
+							colorSpace="hsl"
+							channel="hue"
+							className="w-full max-w-lg"
+						>
+							<Label>Hue</Label>
+							<Input />
+							<FieldError />
+						</ColorField>
+						<ColorField
+							colorSpace="hsl"
+							channel="saturation"
+							className="w-full max-w-lg"
+						>
+							<Label>Saturation</Label>
+							<Input />
+							<FieldError />
+						</ColorField>
+						<ColorField
+							colorSpace="hsl"
+							channel="lightness"
+							className="w-full max-w-lg"
+						>
+							<Label>Lightness</Label>
+							<Input />
+							<FieldError />
+						</ColorField>
+					</div>
+				</div>
 			</Preview>
 		</div>
 	);
