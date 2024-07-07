@@ -1,3 +1,4 @@
+import Preview from "@/components/preview";
 import { type CharacterRes } from "./column-defs";
 import DataTable from "./data-table";
 
@@ -25,11 +26,15 @@ export default async function TableServerPage({
 	const totalPages = json.count;
 
 	return (
-		<DataTable
-			items={items}
-			totalPages={totalPages}
-			currentPage={page}
-			searchTerm={searchTerm}
-		/>
+		<Preview>
+			<div className="w-full max-w-2xl">
+				<DataTable
+					items={items}
+					totalPages={totalPages}
+					currentPage={page}
+					searchTerm={searchTerm}
+				/>
+			</div>
+		</Preview>
 	);
 }

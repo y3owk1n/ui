@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import {
 	ComboBox,
 	ComboBoxCollection,
@@ -40,39 +41,47 @@ const rows2 = [
 export default function ComboBoxPage() {
 	return (
 		<div className="grid gap-4">
-			<ComboBox defaultItems={rows}>
-				<ComboBoxLabel>Label</ComboBoxLabel>
-				<ComboBoxTrigger placeholder="Select something" />
-				<ComboBoxPopover>
-					<ComboBoxContent<(typeof rows)[number]>>
-						{(item) => (
-							<ComboBoxItem textValue={item.name}>
-								{item.name}
-							</ComboBoxItem>
-						)}
-					</ComboBoxContent>
-				</ComboBoxPopover>
-			</ComboBox>
-			<ComboBox defaultItems={rows2}>
-				<ComboBoxLabel>Label</ComboBoxLabel>
-				<ComboBoxTrigger placeholder="Select something" />
-				<ComboBoxPopover>
-					<ComboBoxContent<(typeof rows2)[number]>>
-						{(section) => (
-							<ComboBoxSection id={section.name}>
-								<ComboBoxHeader>{section.name}</ComboBoxHeader>
-								<ComboBoxCollection items={section.children}>
-									{(item) => (
-										<ComboBoxItem textValue={item.name}>
-											{item.name}
-										</ComboBoxItem>
-									)}
-								</ComboBoxCollection>
-							</ComboBoxSection>
-						)}
-					</ComboBoxContent>
-				</ComboBoxPopover>
-			</ComboBox>
+			<Preview>
+				<ComboBox className="w-full max-w-lg" defaultItems={rows}>
+					<ComboBoxLabel>Label</ComboBoxLabel>
+					<ComboBoxTrigger placeholder="Select something" />
+					<ComboBoxPopover>
+						<ComboBoxContent<(typeof rows)[number]>>
+							{(item) => (
+								<ComboBoxItem textValue={item.name}>
+									{item.name}
+								</ComboBoxItem>
+							)}
+						</ComboBoxContent>
+					</ComboBoxPopover>
+				</ComboBox>
+			</Preview>
+			<Preview>
+				<ComboBox className="w-full max-w-lg" defaultItems={rows2}>
+					<ComboBoxLabel>Label</ComboBoxLabel>
+					<ComboBoxTrigger placeholder="Select something" />
+					<ComboBoxPopover>
+						<ComboBoxContent<(typeof rows2)[number]>>
+							{(section) => (
+								<ComboBoxSection id={section.name}>
+									<ComboBoxHeader>
+										{section.name}
+									</ComboBoxHeader>
+									<ComboBoxCollection
+										items={section.children}
+									>
+										{(item) => (
+											<ComboBoxItem textValue={item.name}>
+												{item.name}
+											</ComboBoxItem>
+										)}
+									</ComboBoxCollection>
+								</ComboBoxSection>
+							)}
+						</ComboBoxContent>
+					</ComboBoxPopover>
+				</ComboBox>
+			</Preview>
 		</div>
 	);
 }

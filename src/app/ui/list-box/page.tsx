@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import { Card } from "@/components/ui/card";
 import {
 	ListBox,
@@ -37,37 +38,41 @@ const rows2 = [
 export default function ListBoxPage() {
 	return (
 		<div className="grid gap-4">
-			<Card className="p-2">
-				<ListBox
-					aria-label="Ice cream flavors (Multiple)"
-					selectionMode="multiple"
-					items={rows}
-					renderEmptyState={() => "No results found."}
-				>
-					{(item) => (
-						<ListBoxItem key={item.id}>{item.name}</ListBoxItem>
-					)}
-				</ListBox>
-			</Card>
-			<Card className="p-2">
-				<ListBox
-					aria-label="Ice cream flavors (Single)"
-					selectionMode="single"
-					items={rows2}
-					renderEmptyState={() => "No results found."}
-				>
-					{(section) => (
-						<ListBoxSection id={section.name}>
-							<ListBoxHeader>{section.name}</ListBoxHeader>
-							<ListBoxCollection items={section.children}>
-								{(item) => (
-									<ListBoxItem>{item.name}</ListBoxItem>
-								)}
-							</ListBoxCollection>
-						</ListBoxSection>
-					)}
-				</ListBox>
-			</Card>
+			<Preview>
+				<Card className="w-full max-w-lg p-2">
+					<ListBox
+						aria-label="Ice cream flavors (Multiple)"
+						selectionMode="multiple"
+						items={rows}
+						renderEmptyState={() => "No results found."}
+					>
+						{(item) => (
+							<ListBoxItem key={item.id}>{item.name}</ListBoxItem>
+						)}
+					</ListBox>
+				</Card>
+			</Preview>
+			<Preview>
+				<Card className="w-full max-w-lg p-2">
+					<ListBox
+						aria-label="Ice cream flavors (Single)"
+						selectionMode="single"
+						items={rows2}
+						renderEmptyState={() => "No results found."}
+					>
+						{(section) => (
+							<ListBoxSection id={section.name}>
+								<ListBoxHeader>{section.name}</ListBoxHeader>
+								<ListBoxCollection items={section.children}>
+									{(item) => (
+										<ListBoxItem>{item.name}</ListBoxItem>
+									)}
+								</ListBoxCollection>
+							</ListBoxSection>
+						)}
+					</ListBox>
+				</Card>
+			</Preview>
 		</div>
 	);
 }

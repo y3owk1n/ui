@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import {
 	Select,
 	SelectCollection,
@@ -40,41 +41,51 @@ const rows2 = [
 export default function SelectPage() {
 	return (
 		<div className="grid gap-4">
-			<Select placeholder="Select an item" aria-label="item selection">
-				<SelectTrigger className="w-[180px]">
-					<SelectValue />
-				</SelectTrigger>
-				<SelectPopover>
-					<SelectContent aria-label="items" items={rows}>
-						{(item) => (
-							<SelectItem textValue={item.name} key={item.id}>
-								{item.name}
-							</SelectItem>
-						)}
-					</SelectContent>
-				</SelectPopover>
-			</Select>
-			<Select placeholder="Select an item" aria-label="item selection">
-				<SelectTrigger className="w-[180px]">
-					<SelectValue />
-				</SelectTrigger>
-				<SelectPopover>
-					<SelectContent aria-label="items" items={rows2}>
-						{(section) => (
-							<SelectSection id={section.name}>
-								<SelectHeader>{section.name}</SelectHeader>
-								<SelectCollection items={section.children}>
-									{(item) => (
-										<SelectItem textValue={item.name}>
-											{item.name}
-										</SelectItem>
-									)}
-								</SelectCollection>
-							</SelectSection>
-						)}
-					</SelectContent>
-				</SelectPopover>
-			</Select>
+			<Preview>
+				<Select
+					placeholder="Select an item"
+					aria-label="item selection"
+				>
+					<SelectTrigger className="w-[180px]">
+						<SelectValue />
+					</SelectTrigger>
+					<SelectPopover>
+						<SelectContent aria-label="items" items={rows}>
+							{(item) => (
+								<SelectItem textValue={item.name} key={item.id}>
+									{item.name}
+								</SelectItem>
+							)}
+						</SelectContent>
+					</SelectPopover>
+				</Select>
+			</Preview>
+			<Preview>
+				<Select
+					placeholder="Select an item"
+					aria-label="item selection"
+				>
+					<SelectTrigger className="w-[180px]">
+						<SelectValue />
+					</SelectTrigger>
+					<SelectPopover>
+						<SelectContent aria-label="items" items={rows2}>
+							{(section) => (
+								<SelectSection id={section.name}>
+									<SelectHeader>{section.name}</SelectHeader>
+									<SelectCollection items={section.children}>
+										{(item) => (
+											<SelectItem textValue={item.name}>
+												{item.name}
+											</SelectItem>
+										)}
+									</SelectCollection>
+								</SelectSection>
+							)}
+						</SelectContent>
+					</SelectPopover>
+				</Select>
+			</Preview>
 		</div>
 	);
 }

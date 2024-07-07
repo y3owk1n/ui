@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import {
 	Calendar,
 	CalendarGrid,
@@ -24,68 +25,19 @@ export default function CalendarPage() {
 
 	return (
 		<div className="grid gap-4">
-			<div className="w-fit rounded-md border p-4">
-				<Calendar value={date} onChange={setDate} isInvalid={isInvalid}>
-					<CalendarHeader>
-						<CalendarPreviousButton iconOnly />
-						<CalendarHeading />
-						<CalendarNextButton iconOnly />
-					</CalendarHeader>
+			<Preview>
+				<div className="w-fit rounded-md border p-4">
+					<Calendar
+						value={date}
+						onChange={setDate}
+						isInvalid={isInvalid}
+					>
+						<CalendarHeader>
+							<CalendarPreviousButton iconOnly />
+							<CalendarHeading />
+							<CalendarNextButton iconOnly />
+						</CalendarHeader>
 
-					<CalendarGrid>
-						<CalendarGridHeader>
-							{(day) => (
-								<CalendarGridHeaderCell>
-									{day}
-								</CalendarGridHeaderCell>
-							)}
-						</CalendarGridHeader>
-						<CalendarGridBody>
-							{(date) => (
-								<>
-									<CalendarGridBodyCell date={date} />
-								</>
-							)}
-						</CalendarGridBody>
-					</CalendarGrid>
-					<CalendarTextError />
-				</Calendar>
-			</div>
-			<div className="w-fit rounded-md border p-4">
-				<RangeCalendar>
-					<CalendarHeader>
-						<CalendarPreviousButton iconOnly />
-						<CalendarHeading />
-						<CalendarNextButton iconOnly />
-					</CalendarHeader>
-
-					<CalendarGrid>
-						<CalendarGridHeader>
-							{(day) => (
-								<CalendarGridHeaderCell>
-									{day}
-								</CalendarGridHeaderCell>
-							)}
-						</CalendarGridHeader>
-						<CalendarGridBody>
-							{(date) => (
-								<>
-									<CalendarGridBodyCell date={date} />
-								</>
-							)}
-						</CalendarGridBody>
-					</CalendarGrid>
-				</RangeCalendar>
-			</div>
-			<div className="w-fit rounded-md border p-4">
-				<Calendar visibleDuration={{ months: 3 }}>
-					<CalendarHeader>
-						<CalendarPreviousButton iconOnly />
-						<CalendarHeading />
-						<CalendarNextButton iconOnly />
-					</CalendarHeader>
-
-					<div className="flex gap-4">
 						<CalendarGrid>
 							<CalendarGridHeader>
 								{(day) => (
@@ -102,8 +54,20 @@ export default function CalendarPage() {
 								)}
 							</CalendarGridBody>
 						</CalendarGrid>
+						<CalendarTextError />
+					</Calendar>
+				</div>
+			</Preview>
+			<Preview>
+				<div className="w-fit rounded-md border p-4">
+					<RangeCalendar>
+						<CalendarHeader>
+							<CalendarPreviousButton iconOnly />
+							<CalendarHeading />
+							<CalendarNextButton iconOnly />
+						</CalendarHeader>
 
-						<CalendarGrid offset={{ months: 1 }}>
+						<CalendarGrid>
 							<CalendarGridHeader>
 								{(day) => (
 									<CalendarGridHeaderCell>
@@ -119,26 +83,73 @@ export default function CalendarPage() {
 								)}
 							</CalendarGridBody>
 						</CalendarGrid>
+					</RangeCalendar>
+				</div>
+			</Preview>
+			<Preview>
+				<div className="w-fit rounded-md border p-4">
+					<Calendar visibleDuration={{ months: 3 }}>
+						<CalendarHeader>
+							<CalendarPreviousButton iconOnly />
+							<CalendarHeading />
+							<CalendarNextButton iconOnly />
+						</CalendarHeader>
 
-						<CalendarGrid offset={{ months: 2 }}>
-							<CalendarGridHeader>
-								{(day) => (
-									<CalendarGridHeaderCell>
-										{day}
-									</CalendarGridHeaderCell>
-								)}
-							</CalendarGridHeader>
-							<CalendarGridBody>
-								{(date) => (
-									<>
-										<CalendarGridBodyCell date={date} />
-									</>
-								)}
-							</CalendarGridBody>
-						</CalendarGrid>
-					</div>
-				</Calendar>
-			</div>
+						<div className="flex gap-4">
+							<CalendarGrid>
+								<CalendarGridHeader>
+									{(day) => (
+										<CalendarGridHeaderCell>
+											{day}
+										</CalendarGridHeaderCell>
+									)}
+								</CalendarGridHeader>
+								<CalendarGridBody>
+									{(date) => (
+										<>
+											<CalendarGridBodyCell date={date} />
+										</>
+									)}
+								</CalendarGridBody>
+							</CalendarGrid>
+
+							<CalendarGrid offset={{ months: 1 }}>
+								<CalendarGridHeader>
+									{(day) => (
+										<CalendarGridHeaderCell>
+											{day}
+										</CalendarGridHeaderCell>
+									)}
+								</CalendarGridHeader>
+								<CalendarGridBody>
+									{(date) => (
+										<>
+											<CalendarGridBodyCell date={date} />
+										</>
+									)}
+								</CalendarGridBody>
+							</CalendarGrid>
+
+							<CalendarGrid offset={{ months: 2 }}>
+								<CalendarGridHeader>
+									{(day) => (
+										<CalendarGridHeaderCell>
+											{day}
+										</CalendarGridHeaderCell>
+									)}
+								</CalendarGridHeader>
+								<CalendarGridBody>
+									{(date) => (
+										<>
+											<CalendarGridBodyCell date={date} />
+										</>
+									)}
+								</CalendarGridBody>
+							</CalendarGrid>
+						</div>
+					</Calendar>
+				</div>
+			</Preview>
 		</div>
 	);
 }

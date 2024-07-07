@@ -1,5 +1,6 @@
 "use client";
 
+import Preview from "@/components/preview";
 import { Button } from "@/components/ui/button";
 import {
 	Calendar,
@@ -97,194 +98,200 @@ export default function FormPage() {
 
 	return (
 		<div className="grid gap-4">
-			<Form {...form}>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className="space-y-8"
-				>
-					<FormField
-						control={form.control}
-						name="username"
-						render={({ field, fieldState }) => (
-							<FormItem>
-								<TextField
-									{...field}
-									isDisabled={field.disabled}
-									isInvalid={fieldState.invalid}
-								>
-									<FormLabel>Username</FormLabel>
+			<Preview>
+				<Form {...form}>
+					<form
+						onSubmit={form.handleSubmit(onSubmit)}
+						className="w-full max-w-lg space-y-8"
+					>
+						<FormField
+							control={form.control}
+							name="username"
+							render={({ field, fieldState }) => (
+								<FormItem>
+									<TextField
+										{...field}
+										isDisabled={field.disabled}
+										isInvalid={fieldState.invalid}
+									>
+										<FormLabel>Username</FormLabel>
 
-									<FormControl>
-										<Input placeholder="shadcn" />
-									</FormControl>
-									<FieldDescription>
-										This is your public display name.
-									</FieldDescription>
-									<FormMessage />
-								</TextField>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field, fieldState }) => (
-							<FormItem>
-								<TextField
-									{...field}
-									isDisabled={field.disabled}
-									isInvalid={fieldState.invalid}
-								>
-									<FormLabel>Email</FormLabel>
-									<FormControl>
-										<Input
-											type="email"
-											placeholder="shadcn"
-										/>
-									</FormControl>
-									<FieldDescription>
-										Your Email
-									</FieldDescription>
-									<FormMessage />
-								</TextField>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="otp"
-						render={({ field, fieldState }) => (
-							<FormItem>
-								<OtpField
-									type="numeric"
-									{...field}
-									isDisabled={field.disabled}
-									isInvalid={fieldState.invalid}
-								>
-									<FormLabel>OTP Number</FormLabel>
-									<FormControl>
-										<OtpFieldGroupRoot>
-											<OtpFieldGroup>
-												<OtpFieldInput index={0} />
-												<OtpFieldInput index={1} />
-												<OtpFieldInput index={2} />
-												<OtpFieldInput index={3} />
-												<OtpFieldInput index={4} />
-												<OtpFieldInput index={5} />
-											</OtpFieldGroup>
-										</OtpFieldGroupRoot>
-									</FormControl>
-									<FieldDescription>
-										Make sure it is correct
-									</FieldDescription>
-									<FormMessage />
-								</OtpField>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="date"
-						render={({ field, fieldState }) => (
-							<FormItem>
-								<DateField
-									{...field}
-									isDisabled={field.disabled}
-									isInvalid={fieldState.invalid}
-								>
-									<FormLabel>Date</FormLabel>
-									<FormControl>
-										<DateInput>
-											{(segment) => (
-												<DateSegment
-													segment={segment}
-												/>
-											)}
-										</DateInput>
-									</FormControl>
-									<FieldDescription>
-										Date of your choice
-									</FieldDescription>
-									<FormMessage />
-								</DateField>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="datePick"
-						render={({ field, fieldState }) => (
-							<FormItem>
-								<DatePicker
-									{...field}
-									isDisabled={field.disabled}
-									isInvalid={fieldState.invalid}
-								>
-									{(date) => (
-										<>
-											<FormLabel>Date Picker</FormLabel>
-											<FormControl>
-												<DatePickerButton {...date} />
-												<DatePickerPopover>
-													<DatePickerDialog>
-														<div className="w-fit rounded-md border p-4">
-															<Calendar>
-																<CalendarHeader>
-																	<CalendarPreviousButton
-																		iconOnly
-																	/>
-																	<CalendarHeading />
-																	<CalendarNextButton
-																		iconOnly
-																	/>
-																</CalendarHeader>
+										<FormControl>
+											<Input placeholder="shadcn" />
+										</FormControl>
+										<FieldDescription>
+											This is your public display name.
+										</FieldDescription>
+										<FormMessage />
+									</TextField>
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="email"
+							render={({ field, fieldState }) => (
+								<FormItem>
+									<TextField
+										{...field}
+										isDisabled={field.disabled}
+										isInvalid={fieldState.invalid}
+									>
+										<FormLabel>Email</FormLabel>
+										<FormControl>
+											<Input
+												type="email"
+												placeholder="shadcn"
+											/>
+										</FormControl>
+										<FieldDescription>
+											Your Email
+										</FieldDescription>
+										<FormMessage />
+									</TextField>
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="otp"
+							render={({ field, fieldState }) => (
+								<FormItem>
+									<OtpField
+										type="numeric"
+										{...field}
+										isDisabled={field.disabled}
+										isInvalid={fieldState.invalid}
+									>
+										<FormLabel>OTP Number</FormLabel>
+										<FormControl>
+											<OtpFieldGroupRoot>
+												<OtpFieldGroup>
+													<OtpFieldInput index={0} />
+													<OtpFieldInput index={1} />
+													<OtpFieldInput index={2} />
+													<OtpFieldInput index={3} />
+													<OtpFieldInput index={4} />
+													<OtpFieldInput index={5} />
+												</OtpFieldGroup>
+											</OtpFieldGroupRoot>
+										</FormControl>
+										<FieldDescription>
+											Make sure it is correct
+										</FieldDescription>
+										<FormMessage />
+									</OtpField>
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="date"
+							render={({ field, fieldState }) => (
+								<FormItem>
+									<DateField
+										{...field}
+										isDisabled={field.disabled}
+										isInvalid={fieldState.invalid}
+									>
+										<FormLabel>Date</FormLabel>
+										<FormControl>
+											<DateInput>
+												{(segment) => (
+													<DateSegment
+														segment={segment}
+													/>
+												)}
+											</DateInput>
+										</FormControl>
+										<FieldDescription>
+											Date of your choice
+										</FieldDescription>
+										<FormMessage />
+									</DateField>
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="datePick"
+							render={({ field, fieldState }) => (
+								<FormItem>
+									<DatePicker
+										{...field}
+										isDisabled={field.disabled}
+										isInvalid={fieldState.invalid}
+									>
+										{(date) => (
+											<>
+												<FormLabel>
+													Date Picker
+												</FormLabel>
+												<FormControl>
+													<DatePickerButton
+														{...date}
+													/>
+													<DatePickerPopover>
+														<DatePickerDialog>
+															<div className="w-fit rounded-md border p-4">
+																<Calendar>
+																	<CalendarHeader>
+																		<CalendarPreviousButton
+																			iconOnly
+																		/>
+																		<CalendarHeading />
+																		<CalendarNextButton
+																			iconOnly
+																		/>
+																	</CalendarHeader>
 
-																<div className="flex gap-4">
-																	<CalendarGrid>
-																		<CalendarGridHeader>
-																			{(
-																				day,
-																			) => (
-																				<CalendarGridHeaderCell>
-																					{
-																						day
-																					}
-																				</CalendarGridHeaderCell>
-																			)}
-																		</CalendarGridHeader>
-																		<CalendarGridBody>
-																			{(
-																				date,
-																			) => (
-																				<>
-																					<CalendarGridBodyCell
-																						date={
-																							date
+																	<div className="flex gap-4">
+																		<CalendarGrid>
+																			<CalendarGridHeader>
+																				{(
+																					day,
+																				) => (
+																					<CalendarGridHeaderCell>
+																						{
+																							day
 																						}
-																					/>
-																				</>
-																			)}
-																		</CalendarGridBody>
-																	</CalendarGrid>
-																</div>
-															</Calendar>
-														</div>
-													</DatePickerDialog>
-												</DatePickerPopover>
-											</FormControl>
-											<FieldDescription>
-												Date of your choice
-											</FieldDescription>
-											<FormMessage />
-										</>
-									)}
-								</DatePicker>
-							</FormItem>
-						)}
-					/>
-					<Button type="submit">Submit</Button>
-				</form>
-			</Form>
+																					</CalendarGridHeaderCell>
+																				)}
+																			</CalendarGridHeader>
+																			<CalendarGridBody>
+																				{(
+																					date,
+																				) => (
+																					<>
+																						<CalendarGridBodyCell
+																							date={
+																								date
+																							}
+																						/>
+																					</>
+																				)}
+																			</CalendarGridBody>
+																		</CalendarGrid>
+																	</div>
+																</Calendar>
+															</div>
+														</DatePickerDialog>
+													</DatePickerPopover>
+												</FormControl>
+												<FieldDescription>
+													Date of your choice
+												</FieldDescription>
+												<FormMessage />
+											</>
+										)}
+									</DatePicker>
+								</FormItem>
+							)}
+						/>
+						<Button type="submit">Submit</Button>
+					</form>
+				</Form>
+			</Preview>
 		</div>
 	);
 }

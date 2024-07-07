@@ -29,11 +29,11 @@ interface UseGalleryOpts {
 }
 
 interface UseGalleryOptsResponsive {
-	"2xl": number;
-	xl: number;
-	lg: number;
-	md: number;
-	sm: number;
+	"2xl"?: number;
+	xl?: number;
+	lg?: number;
+	md?: number;
+	sm?: number;
 }
 
 function useGallery<T extends object | string>(

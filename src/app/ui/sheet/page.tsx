@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,43 +15,47 @@ import {
 
 export default function SheetPage() {
 	return (
-		<div className="flex flex-wrap gap-4">
-			<SheetTrigger>
-				<Button variant="outline">Sheet (Left)</Button>
-				<SheetOverlay>
-					<SheetContent side="left" className="sm:max-w-[425px]">
-						<SheetHeader>
-							<SheetTitle>Edit profile</SheetTitle>
-							<SheetDescription>
-								Make changes to your profile here. Click save
-								when you&apos;re done.
-							</SheetDescription>
-						</SheetHeader>
-						<Content />
-						<SheetFooter>
-							<Button type="submit">Save changes</Button>
-						</SheetFooter>
-					</SheetContent>
-				</SheetOverlay>
-			</SheetTrigger>
-			<SheetTrigger>
-				<Button variant="outline">Sheet (Right)</Button>
-				<SheetOverlay>
-					<SheetContent side="right" className="sm:max-w-[425px]">
-						<SheetHeader>
-							<SheetTitle>Edit profile</SheetTitle>
-							<SheetDescription>
-								Make changes to your profile here. Click save
-								when you&apos;re done.
-							</SheetDescription>
-						</SheetHeader>
-						<Content />
-						<SheetFooter>
-							<Button type="submit">Save changes</Button>
-						</SheetFooter>
-					</SheetContent>
-				</SheetOverlay>
-			</SheetTrigger>
+		<div className="grid gap-4">
+			<Preview>
+				<SheetTrigger>
+					<Button variant="outline">Sheet (Left)</Button>
+					<SheetOverlay>
+						<SheetContent side="left" className="sm:max-w-[425px]">
+							<SheetHeader>
+								<SheetTitle>Edit profile</SheetTitle>
+								<SheetDescription>
+									Make changes to your profile here. Click
+									save when you&apos;re done.
+								</SheetDescription>
+							</SheetHeader>
+							<Content />
+							<SheetFooter>
+								<Button type="submit">Save changes</Button>
+							</SheetFooter>
+						</SheetContent>
+					</SheetOverlay>
+				</SheetTrigger>
+			</Preview>
+			<Preview>
+				<SheetTrigger>
+					<Button variant="outline">Sheet (Right)</Button>
+					<SheetOverlay>
+						<SheetContent side="right" className="sm:max-w-[425px]">
+							<SheetHeader>
+								<SheetTitle>Edit profile</SheetTitle>
+								<SheetDescription>
+									Make changes to your profile here. Click
+									save when you&apos;re done.
+								</SheetDescription>
+							</SheetHeader>
+							<Content />
+							<SheetFooter>
+								<Button type="submit">Save changes</Button>
+							</SheetFooter>
+						</SheetContent>
+					</SheetOverlay>
+				</SheetTrigger>
+			</Preview>
 		</div>
 	);
 }

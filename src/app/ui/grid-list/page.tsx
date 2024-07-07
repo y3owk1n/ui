@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import { Card } from "@/components/ui/card";
 import { GridList, GridListItem } from "@/components/ui/grid-list";
 
@@ -12,38 +13,42 @@ const rows = [
 export default function GridListPage() {
 	return (
 		<div className="grid gap-4">
-			<Card className="p-2">
-				<GridList
-					aria-label="Ice cream flavors (Multiple)"
-					selectionMode="multiple"
-					items={rows}
-					renderEmptyState={() => "No results found."}
-				>
-					{(item) => (
-						<GridListItem key={item.id}>
-							<div className="flex w-full items-center justify-between">
-								{item.name}
-							</div>
-						</GridListItem>
-					)}
-				</GridList>
-			</Card>
-			<Card className="p-2">
-				<GridList
-					aria-label="Ice cream flavors (Multiple)"
-					selectionMode="multiple"
-					items={rows}
-					renderEmptyState={() => "No results found."}
-				>
-					{(item) => (
-						<GridListItem highlightSelected key={item.id}>
-							<div className="flex w-full items-center justify-between">
-								{item.name}
-							</div>
-						</GridListItem>
-					)}
-				</GridList>
-			</Card>
+			<Preview>
+				<Card className="w-full max-w-lg p-2">
+					<GridList
+						aria-label="Ice cream flavors (Multiple)"
+						selectionMode="multiple"
+						items={rows}
+						renderEmptyState={() => "No results found."}
+					>
+						{(item) => (
+							<GridListItem key={item.id}>
+								<div className="flex w-full items-center justify-between">
+									{item.name}
+								</div>
+							</GridListItem>
+						)}
+					</GridList>
+				</Card>
+			</Preview>
+			<Preview>
+				<Card className="w-full max-w-lg p-2">
+					<GridList
+						aria-label="Ice cream flavors (Multiple)"
+						selectionMode="multiple"
+						items={rows}
+						renderEmptyState={() => "No results found."}
+					>
+						{(item) => (
+							<GridListItem highlightSelected key={item.id}>
+								<div className="flex w-full items-center justify-between">
+									{item.name}
+								</div>
+							</GridListItem>
+						)}
+					</GridList>
+				</Card>
+			</Preview>
 		</div>
 	);
 }

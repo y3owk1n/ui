@@ -40,7 +40,7 @@ const SearchFieldInput = React.forwardRef<
 	return (
 		<Group className="relative">
 			<div className="absolute left-0 top-0 grid h-full w-10 place-items-center">
-				<Search className="size-4 stroke-input" />
+				<Search className="size-4 stroke-muted-foreground" />
 			</div>
 			<Input
 				type="search"

@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import { Button } from "@/components/ui/button";
 import {
 	DrawerContent,
@@ -15,37 +16,39 @@ import { ResponsiveDialogDrawer } from "@/components/ui/responsive-dialog-drawer
 
 export default function DrawerPage() {
 	return (
-		<div className="flex flex-wrap gap-4">
-			<DrawerTrigger>
-				<Button variant="outline">Drawer</Button>
-				<DrawerOverlay>
-					<DrawerContent>
-						<div className="mx-auto max-w-[425px]">
-							<DrawerHeader>
-								<DrawerTitle>Edit profile</DrawerTitle>
-								<DrawerDescription>
-									Make changes to your profile here. Click
-									save when you&apos;re done.
-								</DrawerDescription>
-							</DrawerHeader>
-							<Content />
-							<DrawerFooter>
-								<Button type="submit">Save changes</Button>
-							</DrawerFooter>
-						</div>
-					</DrawerContent>
-				</DrawerOverlay>
-			</DrawerTrigger>
+		<Preview>
+			<div className="flex flex-wrap gap-4">
+				<DrawerTrigger>
+					<Button variant="outline">Drawer</Button>
+					<DrawerOverlay>
+						<DrawerContent>
+							<div className="mx-auto max-w-[425px]">
+								<DrawerHeader>
+									<DrawerTitle>Edit profile</DrawerTitle>
+									<DrawerDescription>
+										Make changes to your profile here. Click
+										save when you&apos;re done.
+									</DrawerDescription>
+								</DrawerHeader>
+								<Content />
+								<DrawerFooter>
+									<Button type="submit">Save changes</Button>
+								</DrawerFooter>
+							</div>
+						</DrawerContent>
+					</DrawerOverlay>
+				</DrawerTrigger>
 
-			<ResponsiveDialogDrawer
-				title="Responsive Dialog"
-				description="Resize and see the magic"
-				buttonText="Responsive"
-				buttonStyle="outline"
-			>
-				<Content />
-			</ResponsiveDialogDrawer>
-		</div>
+				<ResponsiveDialogDrawer
+					title="Responsive Dialog"
+					description="Resize and see the magic"
+					buttonText="Responsive"
+					buttonStyle="outline"
+				>
+					<Content />
+				</ResponsiveDialogDrawer>
+			</div>
+		</Preview>
 	);
 }
 

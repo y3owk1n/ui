@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import {
 	ProgressBar,
 	ProgressBarLabel,
@@ -27,73 +28,79 @@ export default function ProgressBarPage() {
 
 	return (
 		<div className="grid gap-4">
-			<ProgressBar
-				aria-label="progress bar"
-				value={progress}
-				className="md:w-[60%]"
-				isIndeterminate
-			>
-				{({ percentage, isIndeterminate, valueText }) => (
-					<>
-						<div className="mb-2">
-							<ProgressBarLabel>
-								Progress: {valueText}
-							</ProgressBarLabel>
-						</div>
-						<ProgressBarTrack>
-							<ProgressBarTrackFill
-								percentage={percentage}
-								isIndeterminate={isIndeterminate}
-							/>
-						</ProgressBarTrack>
-					</>
-				)}
-			</ProgressBar>
-			<ProgressBar
-				aria-label="progress bar"
-				value={progress}
-				className="md:w-[60%]"
-			>
-				{({ percentage, isIndeterminate, valueText }) => (
-					<>
-						<div className="mb-2">
-							<ProgressBarLabel>
-								Progress: {valueText}
-							</ProgressBarLabel>
-						</div>
-						<ProgressBarTrack>
-							<ProgressBarTrackFill
-								percentage={percentage}
-								isIndeterminate={isIndeterminate}
-							/>
-						</ProgressBarTrack>
-					</>
-				)}
-			</ProgressBar>
-			<ProgressBar
-				aria-label="progress bar"
-				value={progress}
-				className="md:w-[60%]"
-				minValue={0}
-				maxValue={1000}
-				valueLabel={`${progress} of 1000GB`}
-			>
-				{({ percentage, isIndeterminate, valueText }) => (
-					<>
-						<div className="mb-2">
-							<ProgressBarLabel>
-								Storage: {valueText}
-							</ProgressBarLabel>
-						</div>
-						<ProgressBarTrack>
-							<ProgressBarTrackFill
-								percentage={percentage}
-								isIndeterminate={isIndeterminate}
-							/>
-						</ProgressBarTrack>
-					</>
-				)}
-			</ProgressBar>
+			<Preview>
+				<ProgressBar
+					aria-label="progress bar"
+					value={progress}
+					className="md:w-[60%]"
+					isIndeterminate
+				>
+					{({ percentage, isIndeterminate, valueText }) => (
+						<>
+							<div className="mb-2">
+								<ProgressBarLabel>
+									Progress: {valueText}
+								</ProgressBarLabel>
+							</div>
+							<ProgressBarTrack>
+								<ProgressBarTrackFill
+									percentage={percentage}
+									isIndeterminate={isIndeterminate}
+								/>
+							</ProgressBarTrack>
+						</>
+					)}
+				</ProgressBar>
+			</Preview>
+			<Preview>
+				<ProgressBar
+					aria-label="progress bar"
+					value={progress}
+					className="md:w-[60%]"
+				>
+					{({ percentage, isIndeterminate, valueText }) => (
+						<>
+							<div className="mb-2">
+								<ProgressBarLabel>
+									Progress: {valueText}
+								</ProgressBarLabel>
+							</div>
+							<ProgressBarTrack>
+								<ProgressBarTrackFill
+									percentage={percentage}
+									isIndeterminate={isIndeterminate}
+								/>
+							</ProgressBarTrack>
+						</>
+					)}
+				</ProgressBar>
+			</Preview>
+			<Preview>
+				<ProgressBar
+					aria-label="progress bar"
+					value={progress}
+					className="md:w-[60%]"
+					minValue={0}
+					maxValue={1000}
+					valueLabel={`${progress} of 1000GB`}
+				>
+					{({ percentage, isIndeterminate, valueText }) => (
+						<>
+							<div className="mb-2">
+								<ProgressBarLabel>
+									Storage: {valueText}
+								</ProgressBarLabel>
+							</div>
+							<ProgressBarTrack>
+								<ProgressBarTrackFill
+									percentage={percentage}
+									isIndeterminate={isIndeterminate}
+								/>
+							</ProgressBarTrack>
+						</>
+					)}
+				</ProgressBar>
+			</Preview>
 		</div>
 	);
 }

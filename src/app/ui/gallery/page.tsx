@@ -1,4 +1,5 @@
 "use client";
+import Preview from "@/components/preview";
 import { Gallery, GalleryItem } from "@/components/ui/gallery";
 
 const images = [
@@ -23,12 +24,14 @@ const images = [
 
 export default function GalleryPage() {
 	return (
-		<div className="">
-			<Gallery images={images}>
-				{(galleryRootItem) => (
-					<>
-						{Array.from({ length: galleryRootItem.columns }).map(
-							(_, rootIndex) => (
+		<div className="grid gap-4">
+			<Preview>
+				<Gallery images={images}>
+					{(galleryRootItem) => (
+						<>
+							{Array.from({
+								length: galleryRootItem.columns,
+							}).map((_, rootIndex) => (
 								<GalleryItem key={rootIndex}>
 									{galleryRootItem.data[rootIndex]?.map(
 										(item, index) => (
@@ -41,11 +44,44 @@ export default function GalleryPage() {
 										),
 									)}
 								</GalleryItem>
-							),
-						)}
-					</>
-				)}
-			</Gallery>
+							))}
+						</>
+					)}
+				</Gallery>
+			</Preview>
+			<Preview>
+				<Gallery
+					opts={{
+						responsive: {
+							lg: 3,
+							md: 2,
+							sm: 1,
+						},
+					}}
+					images={images}
+				>
+					{(galleryRootItem) => (
+						<>
+							{Array.from({
+								length: galleryRootItem.columns,
+							}).map((_, rootIndex) => (
+								<GalleryItem key={rootIndex}>
+									{galleryRootItem.data[rootIndex]?.map(
+										(item, index) => (
+											<img
+												className="h-auto w-auto rounded-md"
+												src={item}
+												key={index}
+												alt=""
+											/>
+										),
+									)}
+								</GalleryItem>
+							))}
+						</>
+					)}
+				</Gallery>
+			</Preview>
 		</div>
 	);
 }

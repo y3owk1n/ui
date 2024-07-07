@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import Preview from "@/components/preview";
 import CarouselBottomThumb from "./carousel-bottom-thumb";
 import CarouselLeftThumb from "./carousel-left-thumb";
 import CarouselNoThumb from "./carousel-no-thumb";
@@ -25,16 +25,16 @@ const images = [
 
 export default function CarouselPage() {
 	return (
-		<div className="flex flex-wrap gap-8">
-			<Card className="h-fit p-4">
+		<div className="grid gap-4">
+			<Preview>
 				<CarouselLeftThumb images={images} />
-			</Card>
-			<Card className="h-fit p-4">
+			</Preview>
+			<Preview>
 				<CarouselBottomThumb images={images} />
-			</Card>
-			<Card className="h-fit p-4">
+			</Preview>
+			<Preview>
 				<CarouselNoThumb images={images} />
-			</Card>
+			</Preview>
 		</div>
 	);
 }
