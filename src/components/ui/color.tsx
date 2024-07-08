@@ -6,13 +6,14 @@ import { cn } from "@/lib/utils";
 import {
 	ColorArea as _ColorArea,
 	type ColorAreaProps as _ColorAreaProps,
+	ColorPicker as _ColorPicker,
 	ColorSlider as _ColorSlider,
 	type ColorSliderProps as _ColorSliderProps,
 	ColorSwatch as _ColorSwatch,
-	type ColorSwatchProps as _ColorSwatchProps,
 	ColorSwatchPicker as _ColorSwatchPicker,
 	ColorSwatchPickerItem as _ColorSwatchPickerItem,
 	type ColorSwatchPickerItemProps as _ColorSwatchPickerItemProps,
+	type ColorSwatchProps as _ColorSwatchProps,
 	ColorThumb as _ColorThumb,
 	type ColorThumbProps as _ColorThumbProps,
 	ColorWheel as _ColorWheel,
@@ -249,6 +250,10 @@ const ColorWheelTrack = React.forwardRef<HTMLDivElement, ColorWheelTrackProps>(
 );
 ColorWheelTrack.displayName = "ColorWheelTrack";
 
+// -------------------------- Color Picker --------------------------
+
+const ColorPicker = _ColorPicker;
+
 // -------------------------- Color Utility --------------------------
 
 const parseColor = _parseColor;
@@ -265,5 +270,6 @@ export {
 	ColorSwatchPickerItem,
 	ColorWheel,
 	ColorWheelTrack,
+	ColorPicker,
 	parseColor,
 };

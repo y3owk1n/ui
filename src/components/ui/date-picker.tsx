@@ -10,7 +10,7 @@ import {
 	type DatePickerRenderProps,
 	type DateRangePickerRenderProps,
 	Group,
-	GroupProps,
+	type GroupProps,
 	DatePicker as _DatePicker,
 	type DatePickerProps as _DatePickerProps,
 	DateRangePicker as _DateRangePicker,

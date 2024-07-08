@@ -32,6 +32,14 @@ const navData: { id: string; name: string }[] = [
 		name: "Checkbox",
 	},
 	{
+		id: "color",
+		name: "Color",
+	},
+	{
+		id: "color-picker",
+		name: "Color Picker",
+	},
+	{
 		id: "combo-box",
 		name: "Combo Box",
 	},

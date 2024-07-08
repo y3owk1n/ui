@@ -14,25 +14,72 @@ import {
 	ColorWheelTrack,
 	parseColor,
 } from "@/components/ui/color";
+import { ColorField } from "@/components/ui/color-field";
+import { FieldDescription } from "@/components/ui/field-description";
+import { FieldError } from "@/components/ui/field-error";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useMemo, useState } from "react";
+import { useLocale } from "react-aria-components";
 
-export default function ColorAreaPage() {
-	const [value, setValue] = useState(parseColor("hsl(0, 100%, 50%)"));
+export default function ColorPage() {
+	const [color, setColor] = useState(parseColor("hsl(0, 100%, 50%)"));
+
+	const { locale } = useLocale();
 
 	const colorChannels = useMemo(() => {
-		return value.getColorChannels();
-	}, [value]);
+		return color.getColorChannels();
+	}, [color]);
 
-	console.log(">>>>>>>>>>>>>>>>>>>>>>>> colorChannels: ", colorChannels);
+	const colorSpace = useMemo(() => {
+		return color.getColorSpace();
+	}, [color]);
 
 	return (
 		<div className="grid gap-4">
 			<Preview>
+				<div className="grid gap-2">
+					<ColorField
+						value={color}
+						onChange={(color) => {
+							if (color) setColor(color);
+						}}
+						className="w-full max-w-lg"
+					>
+						<Label>Background Color</Label>
+						<Input placeholder="#000" />
+						<FieldDescription>
+							Any color that you like
+						</FieldDescription>
+						<FieldError />
+					</ColorField>
+					<div className="flex gap-2">
+						{colorChannels.map((channel) => (
+							<ColorField
+								key={channel}
+								colorSpace={colorSpace}
+								channel={channel}
+								className="w-full max-w-lg"
+								value={color}
+								onChange={(color) => {
+									if (color) setColor(color);
+								}}
+							>
+								<Label>
+									{color.getChannelName(channel, locale)}
+								</Label>
+								<Input />
+								<FieldError />
+							</ColorField>
+						))}
+					</div>
+				</div>
+			</Preview>
+			<Preview>
 				<ColorArea
-					value={value}
-					onChange={setValue}
-					defaultValue={value}
+					value={color}
+					onChange={setColor}
+					defaultValue={color}
 				>
 					<ColorThumb />
 				</ColorArea>
@@ -43,10 +90,10 @@ export default function ColorAreaPage() {
 					{colorChannels.map((channel) => (
 						<ColorSlider
 							key={channel}
-							value={value}
-							onChange={setValue}
+							value={color}
+							onChange={setColor}
 							channel={channel}
-							defaultValue={value}
+							defaultValue={color}
 							orientation="horizontal"
 						>
 							<div className="flex items-center justify-between">
@@ -65,8 +112,8 @@ export default function ColorAreaPage() {
 				<ColorSwatchPicker
 					aria-label="Fill color"
 					className="flex flex-wrap gap-2"
-					value={value}
-					onChange={setValue}
+					value={color}
+					onChange={setColor}
 				>
 					<ColorSwatchPickerItem color="#A00">
 						<ColorSwatch />
@@ -88,7 +135,7 @@ export default function ColorAreaPage() {
 
 			<Preview>
 				<div className="grid gap-2">
-					<ColorWheel value={value} onChange={setValue}>
+					<ColorWheel value={color} onChange={setColor}>
 						<ColorWheelTrack />
 						<ColorThumb />
 					</ColorWheel>
