@@ -6,6 +6,7 @@ import {
 	SliderStateContext,
 	Slider as _Slider,
 	SliderOutput as _SliderOutput,
+	type SliderOutputProps as _SliderOutputProps,
 	type SliderProps as _SliderProps,
 	SliderThumb as _SliderThumb,
 	type SliderThumbProps as _SliderThumbProps,
@@ -42,7 +43,23 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
 );
 Slider.displayName = "Slider";
 
-const SliderOutput = _SliderOutput;
+interface SliderOutputProps extends _SliderOutputProps {}
+
+const SliderOutput = React.forwardRef<HTMLOutputElement, SliderOutputProps>(
+	({ className, ...props }, ref) => (
+		<_SliderOutput
+			ref={ref}
+			className={cn(
+				"text-sm font-medium leading-none",
+				"group-data-[invalid=true]:text-destructive-foreground",
+				"group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=true]:opacity-70",
+				className,
+			)}
+			{...props}
+		/>
+	),
+);
+SliderOutput.displayName = "SliderOutput";
 
 const SliderTrack = React.forwardRef<HTMLDivElement, _SliderTrackProps>(
 	({ className, children, ...props }, ref) => (
