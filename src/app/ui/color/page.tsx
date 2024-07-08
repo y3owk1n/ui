@@ -6,7 +6,10 @@ import {
 	ColorSliderOutput,
 	ColorSliderThumb,
 	ColorSliderTrack,
+	ColorSwatch,
 	ColorThumb,
+	ColorWheel,
+	ColorWheelTrack,
 	parseColor,
 } from "@/components/ui/color";
 import { Label } from "@/components/ui/label";
@@ -18,17 +21,13 @@ export default function ColorAreaPage() {
 	return (
 		<div className="grid gap-4">
 			<Preview>
-				<div className="grid gap-2">
-					<ColorArea
-						value={value}
-						onChange={setValue}
-						defaultValue="hsl(30, 100%, 50%)"
-					>
-						<ColorThumb />
-					</ColorArea>
-
-					<p>Value: {value.toString("hex")}</p>
-				</div>
+				<ColorArea
+					value={value}
+					onChange={setValue}
+					defaultValue={value}
+				>
+					<ColorThumb />
+				</ColorArea>
 			</Preview>
 
 			<Preview>
@@ -37,7 +36,7 @@ export default function ColorAreaPage() {
 						value={value}
 						onChange={setValue}
 						channel="hue"
-						defaultValue="hsl(30, 100%, 50%)"
+						defaultValue={value}
 						orientation="horizontal"
 					>
 						<div className="flex items-center justify-between">
@@ -52,7 +51,7 @@ export default function ColorAreaPage() {
 						value={value}
 						onChange={setValue}
 						channel="saturation"
-						defaultValue="hsl(30, 100%, 50%)"
+						defaultValue={value}
 						orientation="horizontal"
 					>
 						<div className="flex items-center justify-between">
@@ -63,6 +62,21 @@ export default function ColorAreaPage() {
 							<ColorSliderThumb />
 						</ColorSliderTrack>
 					</ColorSlider>
+				</div>
+			</Preview>
+
+			<Preview>
+				<div className="grid gap-2">
+					<ColorSwatch color={value} />
+				</div>
+			</Preview>
+
+			<Preview>
+				<div className="grid gap-2">
+					<ColorWheel value={value} onChange={setValue}>
+						<ColorWheelTrack />
+						<ColorThumb />
+					</ColorWheel>
 				</div>
 			</Preview>
 		</div>

@@ -8,8 +8,14 @@ import {
 	type ColorAreaProps as _ColorAreaProps,
 	ColorSlider as _ColorSlider,
 	type ColorSliderProps as _ColorSliderProps,
+	ColorSwatch as _ColorSwatch,
+	type ColorSwatchProps as _ColorSwatchProps,
 	ColorThumb as _ColorThumb,
 	type ColorThumbProps as _ColorThumbProps,
+	ColorWheel as _ColorWheel,
+	type ColorWheelProps as _ColorWheelProps,
+	ColorWheelTrack as _ColorWheelTrack,
+	type ColorWheelTrackProps as _ColorWheelTrackProps,
 	SliderTrack as _SliderTrack,
 	type SliderTrackProps as _SliderTrackProps,
 	parseColor as _parseColor,
@@ -131,6 +137,86 @@ const ColorSliderThumb = React.forwardRef<
 });
 ColorSliderThumb.displayName = "ColorSliderThumb";
 
+// -------------------------- Color Swatch --------------------------
+
+interface ColorSwatchProps extends _ColorSwatchProps {}
+
+const ColorSwatch = React.forwardRef<HTMLDivElement, ColorSwatchProps>(
+	({ className, ...props }, ref) => {
+		return (
+			<_ColorSwatch
+				className={(values) =>
+					cn(
+						"size-10 rounded-md",
+						typeof className === "function"
+							? className(values)
+							: className,
+					)
+				}
+				style={({ color }) => ({
+					background: `linear-gradient(${color.toString()}, ${color.toString()}),
+          repeating-conic-gradient(#CCC 0% 25%, white 0% 50%) 50% / 16px 16px`,
+				})}
+				ref={ref}
+				{...props}
+			/>
+		);
+	},
+);
+ColorSwatch.displayName = "ColorSwatch";
+
+// -------------------------- Color Wheel --------------------------
+
+interface ColorWheelProps
+	extends Omit<_ColorWheelProps, "outerRadius" | "innerRadius"> {
+	outerRadius?: number;
+	innerRadius?: number;
+}
+
+const ColorWheel = React.forwardRef<HTMLDivElement, ColorWheelProps>(
+	({ className, outerRadius = 100, innerRadius = 74, ...props }, ref) => {
+		return (
+			<_ColorWheel
+				outerRadius={outerRadius}
+				innerRadius={innerRadius}
+				className={(values) =>
+					cn(
+						"",
+						typeof className === "function"
+							? className(values)
+							: className,
+					)
+				}
+				ref={ref}
+				{...props}
+			/>
+		);
+	},
+);
+ColorWheel.displayName = "ColorWheel";
+
+interface ColorWheelTrackProps extends _ColorWheelTrackProps {}
+
+const ColorWheelTrack = React.forwardRef<HTMLDivElement, ColorWheelTrackProps>(
+	({ className, ...props }, ref) => {
+		return (
+			<_ColorWheelTrack
+				className={(values) =>
+					cn(
+						"",
+						typeof className === "function"
+							? className(values)
+							: className,
+					)
+				}
+				ref={ref}
+				{...props}
+			/>
+		);
+	},
+);
+ColorWheelTrack.displayName = "ColorWheelTrack";
+
 // -------------------------- Color Utility --------------------------
 
 const parseColor = _parseColor;
@@ -142,5 +228,8 @@ export {
 	ColorSliderTrack,
 	ColorSliderOutput,
 	ColorSliderThumb,
+	ColorSwatch,
+	ColorWheel,
+	ColorWheelTrack,
 	parseColor,
 };
