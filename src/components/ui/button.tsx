@@ -5,6 +5,7 @@ import * as React from "react";
 
 import {
 	Button as _Button,
+	PressEvent,
 	type ButtonProps as _ButtonProps,
 } from "react-aria-components";
 
@@ -41,6 +42,11 @@ interface ButtonProps
 	extends _ButtonProps,
 		VariantProps<typeof buttonVariants> {
 	isLoading?: boolean;
+	/**
+	 * @deprecated
+	 * Do not use this, this is a temporary compatibility hack. Use onPress instead!
+	 */
+	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -52,10 +58,45 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			variant,
 			size,
 			children,
+			onClick,
+			onPress,
 			...props
 		},
 		ref,
 	) => {
+		// TODO: This can be deleted once radix UI is not needed
+		// A hack to temporarily pass onClick to onPress
+		// This is mainly used for radix UI trigger as child compatibility
+		// Some components are not available in react-aria-components,
+		// so I still need to use radix UI for them
+		function handlePress(e: PressEvent) {
+			if (onClick && e.target instanceof HTMLButtonElement) {
+				const event =
+					e as unknown as React.MouseEvent<HTMLButtonElement>;
+				// Create a synthetic event
+				const syntheticEvent = new MouseEvent("click", {
+					bubbles: true,
+					cancelable: true,
+					view: window,
+				}) as unknown as React.MouseEvent<HTMLButtonElement>;
+
+				// Copy over properties from the original event
+				Object.defineProperty(syntheticEvent, "target", {
+					value: event.target,
+				});
+				Object.defineProperty(syntheticEvent, "currentTarget", {
+					value: event.currentTarget,
+				});
+
+				// Call onClick with the synthetic event
+				onClick(syntheticEvent);
+			}
+
+			if (onPress) {
+				onPress(e);
+			}
+		}
+
 		return (
 			<_Button
 				className={(values) =>
@@ -72,6 +113,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				}
 				ref={ref}
 				isDisabled={isLoading || isDisabled}
+				onPress={handlePress}
 				{...props}
 			>
 				{(values) => (
