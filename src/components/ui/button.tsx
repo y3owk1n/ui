@@ -4,8 +4,8 @@ import { type VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
 
 import {
-	Button as _Button,
 	PressEvent,
+	Button as _Button,
 	type ButtonProps as _ButtonProps,
 } from "react-aria-components";
 
