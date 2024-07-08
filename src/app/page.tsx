@@ -8,6 +8,10 @@ const navData: { id: string; name: string }[] = [
 		name: "Alert",
 	},
 	{
+		id: "avatar",
+		name: "Avatar",
+	},
+	{
 		id: "badge",
 		name: "Badge",
 	},
