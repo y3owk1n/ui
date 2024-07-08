@@ -140,6 +140,10 @@ const navData: { id: string; name: string }[] = [
 		name: "Sheet",
 	},
 	{
+		id: "skeleton",
+		name: "Skeleton",
+	},
+	{
 		id: "slider",
 		name: "Slider",
 	},
