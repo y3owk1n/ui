@@ -200,6 +200,25 @@ const MenuItemRadio = React.forwardRef<
 });
 MenuItemRadio.displayName = "MenuItemRadio";
 
+const Menubar = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+	return (
+		<div
+			role="menubar"
+			tabIndex={0}
+			ref={ref}
+			className={cn(
+				"flex items-center space-x-1 rounded-md border bg-background p-1",
+				className,
+			)}
+			{...props}
+		/>
+	);
+});
+Menubar.displayName = "Menubar";
+
 export {
 	MenuTrigger,
 	SubmenuTrigger,
@@ -215,4 +234,5 @@ export {
 	MenuKeyboard,
 	MenuItemCheckbox,
 	MenuItemRadio,
+	Menubar,
 };
