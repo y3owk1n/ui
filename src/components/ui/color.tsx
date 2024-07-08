@@ -10,6 +10,9 @@ import {
 	type ColorSliderProps as _ColorSliderProps,
 	ColorSwatch as _ColorSwatch,
 	type ColorSwatchProps as _ColorSwatchProps,
+	ColorSwatchPicker as _ColorSwatchPicker,
+	ColorSwatchPickerItem as _ColorSwatchPickerItem,
+	type ColorSwatchPickerItemProps as _ColorSwatchPickerItemProps,
 	ColorThumb as _ColorThumb,
 	type ColorThumbProps as _ColorThumbProps,
 	ColorWheel as _ColorWheel,
@@ -139,6 +142,35 @@ ColorSliderThumb.displayName = "ColorSliderThumb";
 
 // -------------------------- Color Swatch --------------------------
 
+const ColorSwatchPicker = _ColorSwatchPicker;
+
+interface ColorSwatchPickerItemProps extends _ColorSwatchPickerItemProps {}
+
+const ColorSwatchPickerItem = React.forwardRef<
+	HTMLDivElement,
+	ColorSwatchPickerItemProps
+>(({ className, ...props }, ref) => {
+	return (
+		<_ColorSwatchPickerItem
+			className={(values) =>
+				cn(
+					"rounded-md border-2 border-transparent transition-all duration-75",
+					values.isFocused && "outline-none",
+					values.isFocusVisible && "ring-2 ring-ring ring-offset-2",
+					values.isDisabled && "pointer-events-none opacity-50",
+					values.isSelected && "rounded-lg border-muted-foreground",
+					typeof className === "function"
+						? className(values)
+						: className,
+				)
+			}
+			ref={ref}
+			{...props}
+		/>
+	);
+});
+ColorSwatchPickerItem.displayName = "ColorSwatchPickerItem";
+
 interface ColorSwatchProps extends _ColorSwatchProps {}
 
 const ColorSwatch = React.forwardRef<HTMLDivElement, ColorSwatchProps>(
@@ -229,6 +261,8 @@ export {
 	ColorSliderOutput,
 	ColorSliderThumb,
 	ColorSwatch,
+	ColorSwatchPicker,
+	ColorSwatchPickerItem,
 	ColorWheel,
 	ColorWheelTrack,
 	parseColor,
