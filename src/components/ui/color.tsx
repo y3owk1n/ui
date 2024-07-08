@@ -1,16 +1,70 @@
 "use client";
-import { cn } from "@/lib/utils";
 import * as React from "react";
 
+import { cn } from "@/lib/utils";
+
 import {
+	ColorArea as _ColorArea,
+	type ColorAreaProps as _ColorAreaProps,
 	ColorSlider as _ColorSlider,
 	type ColorSliderProps as _ColorSliderProps,
 	ColorThumb as _ColorThumb,
 	type ColorThumbProps as _ColorThumbProps,
 	SliderTrack as _SliderTrack,
 	type SliderTrackProps as _SliderTrackProps,
+	parseColor as _parseColor,
 } from "react-aria-components";
 import { SliderOutput } from "./slider";
+
+// -------------------------- Color Area --------------------------
+
+interface ColorAreaProps extends _ColorAreaProps {}
+
+const ColorArea = React.forwardRef<HTMLDivElement, ColorAreaProps>(
+	({ className, ...props }, ref) => {
+		return (
+			<_ColorArea
+				className={(values) =>
+					cn(
+						"size-32 rounded-md",
+						typeof className === "function"
+							? className(values)
+							: className,
+					)
+				}
+				ref={ref}
+				{...props}
+			/>
+		);
+	},
+);
+ColorArea.displayName = "ColorArea";
+
+interface ColorThumbProps extends _ColorThumbProps {}
+
+const ColorThumb = React.forwardRef<HTMLDivElement, ColorThumbProps>(
+	({ className, ...props }, ref) => {
+		return (
+			<_ColorThumb
+				className={(values) =>
+					cn(
+						"size-6 rounded-full border-2 shadow-md",
+						(values.isFocused || values.isFocusVisible) &&
+							"outline-none ring-2 ring-ring ring-offset-2",
+						typeof className === "function"
+							? className(values)
+							: className,
+					)
+				}
+				ref={ref}
+				{...props}
+			/>
+		);
+	},
+);
+ColorThumb.displayName = "ColorThumb";
+
+// -------------------------- Color Slider --------------------------
 
 interface ColorSliderProps extends _ColorSliderProps {}
 
@@ -61,12 +115,10 @@ const ColorSliderThumb = React.forwardRef<
 	ColorSliderThumbProps
 >(({ className, ...props }, ref) => {
 	return (
-		<_ColorThumb
+		<ColorThumb
 			className={(values) =>
 				cn(
-					"top-1/2 size-6 rounded-full border-2 shadow-md",
-					(values.isFocused || values.isFocusVisible) &&
-						"outline-none ring-2 ring-ring ring-offset-2",
+					"top-1/2",
 					typeof className === "function"
 						? className(values)
 						: className,
@@ -79,10 +131,16 @@ const ColorSliderThumb = React.forwardRef<
 });
 ColorSliderThumb.displayName = "ColorSliderThumb";
 
+// -------------------------- Color Utility --------------------------
+
+const parseColor = _parseColor;
+
 export {
+	ColorArea,
+	ColorThumb,
 	ColorSlider,
-	type ColorSliderProps,
 	ColorSliderTrack,
 	ColorSliderOutput,
 	ColorSliderThumb,
+	parseColor,
 };
