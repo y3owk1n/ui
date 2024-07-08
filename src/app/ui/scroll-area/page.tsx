@@ -1,5 +1,5 @@
 import Preview from "@/components/preview";
-import { ScrollShadow } from "@/components/ui/scroll-shadow";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 function Content(props: React.HTMLAttributes<HTMLDivElement>) {
 	return (
@@ -23,24 +23,42 @@ function Content(props: React.HTMLAttributes<HTMLDivElement>) {
 	);
 }
 
-export default function ScrollShadowPage() {
+export default function ScrollAreaPage() {
 	return (
 		<div className="grid gap-4">
 			<Preview>
-				<ScrollShadow
+				<ScrollArea
 					orientation="vertical"
 					className="h-[400px] w-[300px]"
 				>
 					<Content />
-				</ScrollShadow>
+				</ScrollArea>
 			</Preview>
 			<Preview>
-				<ScrollShadow
+				<ScrollArea
+					showShadow
+					orientation="vertical"
+					className="h-[400px] w-[300px]"
+				>
+					<Content />
+				</ScrollArea>
+			</Preview>
+			<Preview>
+				<ScrollArea
 					orientation="horizontal"
 					className="max-h-[300px] max-w-[400px]"
 				>
 					<Content className="w-[800px]" />
-				</ScrollShadow>
+				</ScrollArea>
+			</Preview>
+			<Preview>
+				<ScrollArea
+					showShadow
+					orientation="horizontal"
+					className="max-h-[300px] max-w-[400px]"
+				>
+					<Content className="w-[800px]" />
+				</ScrollArea>
 			</Preview>
 		</div>
 	);

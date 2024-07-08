@@ -4,6 +4,10 @@ import { ListBox, ListBoxItem } from "@/components/ui/list-box";
 
 const navData: { id: string; name: string }[] = [
 	{
+		id: "accordion",
+		name: "Accordion",
+	},
+	{
 		id: "alert",
 		name: "Alert",
 	},
@@ -124,8 +128,8 @@ const navData: { id: string; name: string }[] = [
 		name: "Radio",
 	},
 	{
-		id: "scroll-shadow",
-		name: "Scroll Shadow",
+		id: "scroll-area",
+		name: "Scroll Area",
 	},
 	{
 		id: "select",

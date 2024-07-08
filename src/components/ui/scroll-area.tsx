@@ -1,5 +1,6 @@
 "use client";
 
+import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -119,26 +120,73 @@ function useScrollShadow({
 	return containerRef;
 }
 
-interface ScrollShadowProps extends React.HTMLAttributes<HTMLDivElement> {
-	orientation?: "horizontal" | "vertical";
-}
+const ScrollArea = React.forwardRef<
+	React.ElementRef<typeof ScrollAreaPrimitive.Root>,
+	React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
+		orientation?: "horizontal" | "vertical";
+		showShadow?: boolean;
+	}
+>(
+	(
+		{
+			className,
+			children,
+			orientation = "vertical",
+			showShadow = false,
+			...props
+		},
+		ref,
+	) => {
+		const containerRef = useScrollShadow({ orientation });
+		return (
+			<ScrollAreaPrimitive.Root
+				ref={ref}
+				className={cn("relative overflow-hidden")}
+				{...props}
+			>
+				<ScrollAreaPrimitive.Viewport
+					ref={containerRef}
+					className={cn(
+						"h-full w-full rounded-[inherit]",
+						showShadow &&
+							"data-[left-scroll=true]:[mask-image:linear-gradient(270deg,#000_calc(100%_-_40px),transparent)] data-[right-scroll=true]:[mask-image:linear-gradient(90deg,#000_calc(100%_-_40px),transparent)] data-[left-right-scroll=true]:[mask-image:linear-gradient(to_right,#000,#000,transparent_0,#000_40px,#000_calc(100%_-_40px),transparent)]",
+						showShadow &&
+							"data-[bottom-scroll=true]:[mask-image:linear-gradient(180deg,#000_calc(100%_-_40px),transparent)] data-[top-scroll=true]:[mask-image:linear-gradient(360deg,#000_calc(100%_-_40px),transparent)] data-[top-bottom-scroll=true]:[mask-image:linear-gradient(to_bottom,#000,#000,transparent_0,#000_40px,#000_calc(100%_-_40px),transparent)]",
+						className,
+					)}
+				>
+					{children}
+				</ScrollAreaPrimitive.Viewport>
+				<ScrollBar orientation={orientation} />
+				<ScrollAreaPrimitive.Corner />
+			</ScrollAreaPrimitive.Root>
+		);
+	},
+);
+ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
 
-function ScrollShadow({ className, orientation, ...props }: ScrollShadowProps) {
-	const ref = useScrollShadow({ orientation });
+const ScrollBar = React.forwardRef<
+	React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
+	React.ComponentPropsWithoutRef<
+		typeof ScrollAreaPrimitive.ScrollAreaScrollbar
+	>
+>(({ className, orientation = "vertical", ...props }, ref) => (
+	<ScrollAreaPrimitive.ScrollAreaScrollbar
+		ref={ref}
+		orientation={orientation}
+		className={cn(
+			"flex touch-none select-none transition-colors",
+			orientation === "vertical" &&
+				"h-full w-2.5 border-l border-l-transparent p-[1px]",
+			orientation === "horizontal" &&
+				"h-2.5 flex-col border-t border-t-transparent p-[1px]",
+			className,
+		)}
+		{...props}
+	>
+		<ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" />
+	</ScrollAreaPrimitive.ScrollAreaScrollbar>
+));
+ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
 
-	return (
-		<div
-			ref={ref}
-			className={cn(
-				orientation === "vertical" && "overflow-y-auto",
-				orientation === "horizontal" && "overflow-x-auto",
-				"data-[left-scroll=true]:[mask-image:linear-gradient(270deg,#000_calc(100%_-_40px),transparent)] data-[right-scroll=true]:[mask-image:linear-gradient(90deg,#000_calc(100%_-_40px),transparent)] data-[left-right-scroll=true]:[mask-image:linear-gradient(to_right,#000,#000,transparent_0,#000_40px,#000_calc(100%_-_40px),transparent)]",
-				"data-[top-scroll=true]:[mask-image:linear-gradient(180deg,#000_calc(100%_-_40px),transparent)] data-[bottom-scroll=true]:[mask-image:linear-gradient(360deg,#000_calc(100%_-_40px),transparent)] data-[top-bottom-scroll=true]:[mask-image:linear-gradient(to_bottom,#000,#000,transparent_0,#000_40px,#000_calc(100%_-_40px),transparent)]",
-				className,
-			)}
-			{...props}
-		/>
-	);
-}
-
-export { ScrollShadow };
+export { ScrollArea, ScrollBar };
