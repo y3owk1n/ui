@@ -164,8 +164,7 @@ export default function CarouselBottomThumb({
 								alt=""
 								className={cn(
 									"aspect-square rounded-md border-2 border-transparent bg-muted object-contain",
-									selectedIndex === index &&
-										"border-destructive-foreground",
+									selectedIndex === index && "border-primary",
 								)}
 							/>
 						</CarouselItem>

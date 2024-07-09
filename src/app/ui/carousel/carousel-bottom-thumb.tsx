@@ -131,7 +131,7 @@ export default function CarouselLeftThumb({ images }: CarouselLeftThumbProps) {
 									className={cn(
 										"aspect-square rounded-md border-2 border-transparent bg-gray-100 bg-muted object-contain",
 										selectedIndex === index &&
-											"border-destructive-foreground",
+											"border-primary",
 									)}
 								/>
 							</CarouselItem>
