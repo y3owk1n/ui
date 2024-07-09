@@ -84,6 +84,10 @@ const navData: { id: string; name: string }[] = [
 		name: "Grid List",
 	},
 	{
+		id: "image-magnifier",
+		name: "Image Magnifier",
+	},
+	{
 		id: "input",
 		name: "Input",
 	},
