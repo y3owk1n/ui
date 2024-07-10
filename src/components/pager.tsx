@@ -1,3 +1,4 @@
+"use client";
 import { type NavItem, type NavItemWithChildren } from "@/types/nav";
 import { type Doc } from "contentlayer/generated";
 import Link from "next/link";
@@ -23,7 +24,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
 			{pager?.prev?.href && (
 				<Link
 					href={pager.prev.href}
-					// className={buttonVariants({ variant: "outline" })}
+					className={buttonVariants({ variant: "outline" })}
 				>
 					<ChevronLeftIcon className="mr-2 h-4 w-4" />
 					{pager.prev.title}
@@ -32,10 +33,10 @@ export function DocsPager({ doc }: DocsPagerProps) {
 			{pager?.next?.href && (
 				<Link
 					href={pager.next.href}
-					// className={cn(
-					// 	buttonVariants({ variant: "outline" }),
-					// 	"ml-auto",
-					// )}
+					className={cn(
+						buttonVariants({ variant: "outline" }),
+						"ml-auto",
+					)}
 				>
 					{pager.next.title}
 					<ChevronRightIcon className="ml-2 h-4 w-4" />

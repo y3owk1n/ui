@@ -1,5 +1,4 @@
-import path from "path";
-import { getHighlighter, loadTheme } from "@shikijs/compat";
+import { type UnistNode, type UnistTree } from "@/types/unist";
 import {
 	type ComputedFields,
 	defineDocumentType,
@@ -10,8 +9,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { codeImport } from "remark-code-import";
-import remarkGfm from "remark-gfm";
-import theme from "tailwindcss/defaultTheme";
+import { type Data } from "unist";
 import { visit } from "unist-util-visit";
 import { rehypeComponent } from "./src/lib/rehype-component";
 import { rehypeNpmCommand } from "./src/lib/rehype-npm-command";
@@ -87,27 +85,27 @@ export default makeSource({
 		rehypePlugins: [
 			rehypeSlug,
 			rehypeComponent,
-			() => (tree) => {
-				visit(tree, (node) => {
+			() => (tree: UnistTree) => {
+				visit(tree, (node: UnistNode) => {
 					if (node?.type === "element" && node?.tagName === "pre") {
-						const [codeEl] = node.children;
-						if (codeEl.tagName !== "code") {
+						const codeEl = node.children?.[0];
+						if (codeEl?.tagName !== "code") {
 							return;
 						}
 
-						if (codeEl.data?.meta) {
+						const data = codeEl.data as
+							| (Data & { meta?: string })
+							| undefined;
+						if (data?.meta) {
 							// Extract event from meta and pass it down the tree.
 							const regex = /event="([^"]*)"/;
-							const match = codeEl.data?.meta.match(regex);
+							const match = data?.meta.match(regex);
 							if (match) {
-								codeEl.data.meta = codeEl.data.meta.replace(
-									regex,
-									"",
-								);
+								data.meta = data.meta.replace(regex, "");
 							}
 						}
 
-						node.__rawString__ = codeEl.children?.[0].value;
+						node.__rawString__ = codeEl.children[0].value;
 						node.__src__ = node.properties?.__src__;
 					}
 				});
@@ -115,55 +113,43 @@ export default makeSource({
 			[
 				rehypePrettyCode,
 				{
-					theme: {
-						dark: async () => {
-							const theme = await loadTheme(
-								path.join(
-									process.cwd(),
-									"src/lib/themes/dark.json",
-								),
-							);
-							return theme;
-						},
-						light: async () => {
-							const theme = await loadTheme(
-								path.join(
-									process.cwd(),
-									"src/lib/themes/dark.json",
-								),
-							);
-							return theme;
-						},
-					},
-					getHighlighter: async () => {
-						const theme = await loadTheme(
-							path.join(
-								process.cwd(),
-								"src/lib/themes/dark.json",
-							),
-						);
-						return await getHighlighter({ theme });
-					},
-					onVisitLine(node) {
+					// theme: {
+					// 	dark: "github-dark-dimmed",
+					// 	light: "github-light",
+					// },
+					// getHighlighter: async () => {
+					// 	const theme = await loadTheme(
+					// 		path.join(
+					// 			process.cwd(),
+					// 			"src/lib/themes/dark.json",
+					// 		),
+					// 	);
+					// 	return await getHighlighter({ theme });
+					// },
+					onVisitLine(node: UnistNode) {
 						// Prevent lines from collapsing in `display: grid` mode, and allow empty
 						// lines to be copy/pasted
 						if (node.children.length === 0) {
 							node.children = [{ type: "text", value: " " }];
 						}
 					},
-					onVisitHighlightedLine(node) {
-						if (!node.properties.className) {
-							node.properties.className = [];
-						}
-						node.properties.className.push("line--highlighted");
-					},
-					onVisitHighlightedWord(node) {
-						node.properties.className = ["word--highlighted"];
-					},
+					// onVisitHighlightedLine(node: UnistNode) {
+					// 	if (node.properties?.className) {
+					// 		node.properties.className = [];
+					// 		(node.properties.className as string[]).push(
+					// 			"line--highlighted",
+					// 		);
+					// 	}
+					// },
+					// onVisitHighlightedWord(node: UnistNode) {
+					// 	if (node.properties?.className) {
+					// 		node.properties.className = ["word--highlighted"];
+					// 	}
+					// },
 				},
 			],
-			() => (tree) => {
-				visit(tree, (node) => {
+			() => (tree: UnistTree) => {
+				visit(tree, (node: UnistNode) => {
 					if (
 						node?.type === "element" &&
 						node?.tagName === "figure"

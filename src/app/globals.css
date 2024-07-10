@@ -109,4 +109,23 @@
       @apply rounded-t-none;
     }
   }
+
+  .step {
+    counter-increment: step;
+  }
+
+  .step:before {
+    @apply absolute bg-background w-9 h-9 border-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-2;
+    @apply ml-[-50px] mt-[-4px];
+    content: counter(step);
+  }
+
+  .chunk-container {
+    @apply shadow-none;
+  }
+
+  .chunk-container::after {
+    content: "";
+    @apply absolute -inset-4 shadow-xl rounded-xl border;
+  }
 }

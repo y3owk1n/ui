@@ -21,6 +21,7 @@ import {
 	AccordionTrigger,
 } from "@/registry/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert";
+import { ScrollArea } from "@/registry/ui/scroll-area";
 // import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio";
 import { Tab, TabList, TabPanel, Tabs } from "@/registry/ui/tabs";
 
@@ -189,17 +190,11 @@ const components = {
 		__withMeta__?: boolean;
 		__src__?: string;
 	} & NpmCommands) => {
-		console.log(
-			">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
-			__src__,
-			__rawString__,
-			__withMeta__,
-		);
 		return (
-			<div>
+			<div className="relative">
 				<pre
 					className={cn(
-						"max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 dark:bg-zinc-900",
+						"mb-4 mt-6 h-full max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
 						className,
 					)}
 					{...props}

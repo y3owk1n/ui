@@ -11,5 +11,5 @@ export function ComponentSource({
 	className,
 	...props
 }: ComponentSourceProps) {
-	return { children };
+	return <>{children}</>;
 }
