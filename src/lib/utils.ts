@@ -12,3 +12,7 @@ export function parseParamsToSet(param: string | null) {
 		return new Set(array);
 	}
 }
+
+export function absoluteUrl(path: string) {
+	return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
+}
