@@ -61,4 +61,52 @@ export const examples: Registry = [
 		registryDependencies: ["avatar"],
 		files: ["example/avatar-size-demo.tsx"],
 	},
+	{
+		name: "badge-demo",
+		type: "components:example",
+		registryDependencies: ["badge"],
+		files: ["example/badge-demo.tsx"],
+	},
+	{
+		name: "badge-destructive-demo",
+		type: "components:example",
+		registryDependencies: ["badge"],
+		files: ["example/badge-destructive-demo.tsx"],
+	},
+	{
+		name: "badge-info-demo",
+		type: "components:example",
+		registryDependencies: ["badge"],
+		files: ["example/badge-info-demo.tsx"],
+	},
+	{
+		name: "badge-outline-demo",
+		type: "components:example",
+		registryDependencies: ["badge"],
+		files: ["example/badge-outline-demo.tsx"],
+	},
+	{
+		name: "badge-secondary-demo",
+		type: "components:example",
+		registryDependencies: ["badge"],
+		files: ["example/badge-secondary-demo.tsx"],
+	},
+	{
+		name: "badge-success-demo",
+		type: "components:example",
+		registryDependencies: ["badge"],
+		files: ["example/badge-success-demo.tsx"],
+	},
+	{
+		name: "badge-unstyled-demo",
+		type: "components:example",
+		registryDependencies: ["badge"],
+		files: ["example/badge-unstyled-demo.tsx"],
+	},
+	{
+		name: "badge-warning-demo",
+		type: "components:example",
+		registryDependencies: ["badge"],
+		files: ["example/badge-warning-demo.tsx"],
+	},
 ];

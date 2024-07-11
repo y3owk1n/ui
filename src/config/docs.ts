@@ -98,16 +98,6 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Alert Dialog",
-					href: "/docs/components/alert-dialog",
-					items: [],
-				},
-				{
-					title: "Aspect Ratio",
-					href: "/docs/components/aspect-ratio",
-					items: [],
-				},
-				{
 					title: "Avatar",
 					href: "/docs/components/avatar",
 					items: [],
