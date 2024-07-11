@@ -14,7 +14,8 @@
 			".gitignore",
 			".npmignore",
 			".DS_store",
-			".eslintignore"
+			".eslintignore",
+			".contentlayer"
 		]
 	},
 	"organizeImports": {
