@@ -1,17 +1,15 @@
-[data-theme="light"] {
-  display: block;
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
 }
-
-[data-theme="dark"] {
-  display: none;
-}
-
-.dark [data-theme="light"] {
-  display: none;
-}
-
-.dark [data-theme="dark"] {
-  display: block;
+ 
+@media (prefers-color-scheme: dark) {
+  .dark code[data-theme*=" "],
+  .dark code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
 }
 
 [data-rehype-pretty-code-figure] {

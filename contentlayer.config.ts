@@ -115,10 +115,10 @@ export default makeSource({
 				rehypePrettyCode,
 				{
 					keepBackground: false,
-					// theme: {
-					// 	dark: "github-dark-dimmed",
-					// 	light: "github-light",
-					// },
+					theme: {
+						dark: "github-dark-dimmed",
+						light: "github-light",
+					},
 					// getHighlighter: async () => {
 					// 	const theme = await loadTheme(
 					// 		path.join(
