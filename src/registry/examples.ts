@@ -7,4 +7,40 @@ export const examples: Registry = [
 		registryDependencies: ["accordion"],
 		files: ["example/accordion-demo.tsx"],
 	},
+	{
+		name: "alert-demo",
+		type: "components:example",
+		registryDependencies: ["alert"],
+		files: ["example/alert-demo.tsx"],
+	},
+	{
+		name: "alert-no-icon-demo",
+		type: "components:example",
+		registryDependencies: ["alert"],
+		files: ["example/alert-no-icon-demo.tsx"],
+	},
+	{
+		name: "alert-error-demo",
+		type: "components:example",
+		registryDependencies: ["alert"],
+		files: ["example/alert-error-demo.tsx"],
+	},
+	{
+		name: "alert-info-demo",
+		type: "components:example",
+		registryDependencies: ["alert"],
+		files: ["example/alert-info-demo.tsx"],
+	},
+	{
+		name: "alert-success-demo",
+		type: "components:example",
+		registryDependencies: ["alert"],
+		files: ["example/alert-success-demo.tsx"],
+	},
+	{
+		name: "alert-warning-demo",
+		type: "components:example",
+		registryDependencies: ["alert"],
+		files: ["example/alert-warning-demo.tsx"],
+	},
 ];

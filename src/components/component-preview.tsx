@@ -13,7 +13,6 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
 	extractClassname?: boolean;
 	extractedClassNames?: string;
 	align?: "center" | "start" | "end";
-	description?: string;
 	hideCode?: boolean;
 }
 
@@ -24,7 +23,6 @@ export function ComponentPreview({
 	extractClassname,
 	extractedClassNames,
 	align = "center",
-	description,
 	hideCode = false,
 	...props
 }: ComponentPreviewProps) {
