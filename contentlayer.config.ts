@@ -114,6 +114,7 @@ export default makeSource({
 			[
 				rehypePrettyCode,
 				{
+					keepBackground: false,
 					// theme: {
 					// 	dark: "github-dark-dimmed",
 					// 	light: "github-light",
