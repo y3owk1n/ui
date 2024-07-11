@@ -41,7 +41,7 @@ code[data-theme*=" "] span {
 }
 
 [data-rehype-pretty-code-figure] [data-highlighted-line] {
-  @apply bg-zinc-700/50;
+  @apply !bg-zinc-700/50;
 }
 
 [data-rehype-pretty-code-figure] [data-highlighted-line] span {
@@ -49,11 +49,11 @@ code[data-theme*=" "] span {
 }
 
 [data-rehype-pretty-code-figure] [data-highlighted-chars] {
-  @apply rounded-md bg-zinc-700/50 border-zinc-700/70 p-1;
+  @apply rounded-md !bg-zinc-700/50 !border-zinc-700/70 p-1;
 }
 
 .dark [data-rehype-pretty-code-figure] [data-highlighted-chars] {
-  @apply bg-zinc-900;
+  @apply !bg-zinc-900;
 }
 
 [data-rehype-pretty-code-title] {
