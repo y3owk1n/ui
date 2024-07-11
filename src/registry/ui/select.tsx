@@ -3,26 +3,38 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+import { Button, type ButtonProps } from "@/registry/ui/button";
+import {
+	ListBox,
+	ListBoxItem,
+	type ListBoxItemProps,
+	type ListBoxProps,
+} from "@/registry/ui/list-box";
+import { Popover, type PopoverProps } from "@/registry/ui/popover";
+import { Separator, type SeparatorProps } from "@/registry/ui/separator";
 import { Check, ChevronsUpDown } from "lucide-react";
 import {
 	Collection,
 	Header,
 	Section,
 	Select as _Select,
+	type SelectProps as _SelectProps,
 	SelectValue as _SelectValue,
 	type SelectValueProps as _SelectValueProps,
 } from "react-aria-components";
-import { Button, type ButtonProps } from "./button";
-import {
-	ListBox,
-	ListBoxItem,
-	type ListBoxItemProps,
-	type ListBoxProps,
-} from "./list-box";
-import { Popover, type PopoverProps } from "./popover";
-import { Separator, type SeparatorProps } from "./separator";
 
-const Select = _Select;
+interface SelectProps<T extends object> extends _SelectProps<T> {
+	className?: string;
+}
+
+function Select<T extends object>({ className, ...props }: SelectProps<T>) {
+	return (
+		<_Select
+			className={cn("group flex flex-col gap-2", className)}
+			{...props}
+		/>
+	);
+}
 
 const SelectSection = Section;
 
