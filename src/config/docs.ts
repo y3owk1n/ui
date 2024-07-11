@@ -16,22 +16,6 @@ export const docsConfig: DocsConfig = {
 			title: "Components",
 			href: "/docs/components/accordion",
 		},
-		{
-			title: "Blocks",
-			href: "/blocks",
-		},
-		{
-			title: "Charts",
-			href: "/charts",
-		},
-		{
-			title: "Themes",
-			href: "/themes",
-		},
-		{
-			title: "Examples",
-			href: "/examples",
-		},
 	],
 	sidebarNav: [
 		{
@@ -45,36 +29,6 @@ export const docsConfig: DocsConfig = {
 				{
 					title: "Installation",
 					href: "/docs/installation",
-					items: [],
-				},
-				{
-					title: "components.json",
-					href: "/docs/components-json",
-					items: [],
-				},
-				{
-					title: "Theming",
-					href: "/docs/theming",
-					items: [],
-				},
-				{
-					title: "Dark mode",
-					href: "/docs/dark-mode",
-					items: [],
-				},
-				{
-					title: "CLI",
-					href: "/docs/cli",
-					items: [],
-				},
-				{
-					title: "Typography",
-					href: "/docs/components/typography",
-					items: [],
-				},
-				{
-					title: "Figma",
-					href: "/docs/figma",
 					items: [],
 				},
 				{
@@ -133,8 +87,8 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Chart",
-					href: "/docs/components/chart",
+					title: "Checkbox Group",
+					href: "/docs/components/checkbox-group",
 					label: "New",
 					items: [],
 				},
@@ -144,28 +98,23 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Collapsible",
-					href: "/docs/components/collapsible",
+					title: "Color Field",
+					href: "/docs/components/color-field",
 					items: [],
 				},
 				{
-					title: "Combobox",
-					href: "/docs/components/combobox",
+					title: "Color",
+					href: "/docs/components/color",
 					items: [],
 				},
 				{
-					title: "Command",
-					href: "/docs/components/command",
+					title: "Combo Box",
+					href: "/docs/components/combo-box",
 					items: [],
 				},
 				{
-					title: "Context Menu",
-					href: "/docs/components/context-menu",
-					items: [],
-				},
-				{
-					title: "Data Table",
-					href: "/docs/components/data-table",
+					title: "Date Field",
+					href: "/docs/components/date-field",
 					items: [],
 				},
 				{
@@ -179,13 +128,18 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Drawer",
-					href: "/docs/components/drawer",
+					title: "Field Description",
+					href: "/docs/components/field-description",
 					items: [],
 				},
 				{
-					title: "Dropdown Menu",
-					href: "/docs/components/dropdown-menu",
+					title: "Field Error",
+					href: "/docs/components/field-error",
+					items: [],
+				},
+				{
+					title: "File Trigger",
+					href: "/docs/components/file-trigger",
 					items: [],
 				},
 				{
@@ -194,8 +148,18 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Hover Card",
-					href: "/docs/components/hover-card",
+					title: "Gallery",
+					href: "/docs/components/gallery",
+					items: [],
+				},
+				{
+					title: "Grid List",
+					href: "/docs/components/grid-list",
+					items: [],
+				},
+				{
+					title: "Image Magnifier",
+					href: "/docs/components/image-magnifier",
 					items: [],
 				},
 				{
@@ -204,8 +168,8 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Input OTP",
-					href: "/docs/components/input-otp",
+					title: "Keyboard",
+					href: "/docs/components/keyboard",
 					items: [],
 				},
 				{
@@ -214,13 +178,28 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Menubar",
-					href: "/docs/components/menubar",
+					title: "List Box",
+					href: "/docs/components/list-box",
 					items: [],
 				},
 				{
-					title: "Navigation Menu",
-					href: "/docs/components/navigation-menu",
+					title: "Menu",
+					href: "/docs/components/menu",
+					items: [],
+				},
+				{
+					title: "Meter",
+					href: "/docs/components/meter",
+					items: [],
+				},
+				{
+					title: "Number Field",
+					href: "/docs/components/number-field",
+					items: [],
+				},
+				{
+					title: "OTP Field",
+					href: "/docs/components/otp-field",
 					items: [],
 				},
 				{
@@ -229,13 +208,23 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
+					title: "Password Field",
+					href: "/docs/components/password-field",
+					items: [],
+				},
+				{
 					title: "Popover",
 					href: "/docs/components/popover",
 					items: [],
 				},
 				{
-					title: "Progress",
-					href: "/docs/components/progress",
+					title: "Progress Bar",
+					href: "/docs/components/progress-bar",
+					items: [],
+				},
+				{
+					title: "Progress Ring",
+					href: "/docs/components/progress-ring",
 					items: [],
 				},
 				{
@@ -244,13 +233,18 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Resizable",
-					href: "/docs/components/resizable",
+					title: "Responsive Dialog Drawer",
+					href: "/docs/components/responsive-dialog-drawer",
 					items: [],
 				},
 				{
 					title: "Scroll Area",
 					href: "/docs/components/scroll-area",
+					items: [],
+				},
+				{
+					title: "Search Field",
+					href: "/docs/components/search-field",
 					items: [],
 				},
 				{
@@ -279,11 +273,6 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Sonner",
-					href: "/docs/components/sonner",
-					items: [],
-				},
-				{
 					title: "Switch",
 					href: "/docs/components/switch",
 					items: [],
@@ -304,95 +293,28 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
+					title: "Text Field",
+					href: "/docs/components/text-field",
+					items: [],
+				},
+				{
+					title: "Time Field",
+					href: "/docs/components/time-field",
+					items: [],
+				},
+				{
 					title: "Toast",
 					href: "/docs/components/toast",
 					items: [],
 				},
 				{
-					title: "Toggle",
-					href: "/docs/components/toggle",
-					items: [],
-				},
-				{
-					title: "Toggle Group",
-					href: "/docs/components/toggle-group",
+					title: "Toggle Button",
+					href: "/docs/components/toggle-button",
 					items: [],
 				},
 				{
 					title: "Tooltip",
 					href: "/docs/components/tooltip",
-					items: [],
-				},
-			],
-		},
-	],
-	chartsNav: [
-		{
-			title: "Getting Started",
-			items: [
-				{
-					title: "Introduction",
-					href: "/docs/charts",
-					items: [],
-				},
-				{
-					title: "Installation",
-					href: "/docs/charts/installation",
-					items: [],
-				},
-				{
-					title: "Theming",
-					href: "/docs/charts/theming",
-					items: [],
-				},
-			],
-		},
-		{
-			title: "Charts",
-			items: [
-				{
-					title: "Area Chart",
-					href: "/docs/charts/area",
-					items: [],
-				},
-				{
-					title: "Bar Chart",
-					href: "/docs/charts/bar",
-					items: [],
-				},
-				{
-					title: "Line Chart",
-					href: "/docs/charts/line",
-					items: [],
-				},
-				{
-					title: "Pie Chart",
-					href: "/docs/charts/pie",
-					items: [],
-				},
-				{
-					title: "Radar Chart",
-					href: "/docs/charts/radar",
-					items: [],
-				},
-				{
-					title: "Radial Chart",
-					href: "/docs/charts/radial",
-					items: [],
-				},
-			],
-		},
-		{
-			title: "Components",
-			items: [
-				{
-					title: "Tooltip",
-					href: "/docs/charts/tooltip",
-					items: [],
-				},
-				{
-					title: "Legend",
-					href: "/docs/charts/legend",
 					items: [],
 				},
 			],
