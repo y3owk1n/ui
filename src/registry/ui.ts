@@ -26,19 +26,17 @@ export const ui: Registry = [
 	{
 		name: "border-group",
 		type: "components:ui",
-		dependencies: ["@radix-ui/react-slot"],
 		files: ["ui/border-group.tsx"],
 	},
 	{
 		name: "button",
 		type: "components:ui",
-		dependencies: ["@radix-ui/react-slot"],
 		files: ["ui/button.tsx"],
 	},
 	{
 		name: "calendar",
 		type: "components:ui",
-		dependencies: ["react-day-picker", "date-fns"],
+		dependencies: ["@internationalized/date"],
 		registryDependencies: ["button"],
 		files: ["ui/calendar.tsx"],
 	},

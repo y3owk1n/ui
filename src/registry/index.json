@@ -23,19 +23,17 @@
 	},
 	{
 		"name": "border-group",
-		"dependencies": ["@radix-ui/react-slot"],
 		"files": ["ui/border-group.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "button",
-		"dependencies": ["@radix-ui/react-slot"],
 		"files": ["ui/button.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "calendar",
-		"dependencies": ["react-day-picker", "date-fns"],
+		"dependencies": ["@internationalized/date"],
 		"registryDependencies": ["button"],
 		"files": ["ui/calendar.tsx"],
 		"type": "components:ui"
