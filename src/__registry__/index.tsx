@@ -854,4 +854,43 @@ export const Index: Record<string, any> = {
 		subcategory: "undefined",
 		chunks: [],
 	},
+	"border-group-demo": {
+		name: "border-group-demo",
+		type: "components:example",
+		registryDependencies: ["border-group", "button", "menu"],
+		component: React.lazy(
+			() => import("@/registry/example/border-group-demo"),
+		),
+		source: "",
+		files: ["src/registry/example/border-group-demo.tsx"],
+		category: "undefined",
+		subcategory: "undefined",
+		chunks: [],
+	},
+	"border-group-horizontal-demo": {
+		name: "border-group-horizontal-demo",
+		type: "components:example",
+		registryDependencies: ["border-group", "button"],
+		component: React.lazy(
+			() => import("@/registry/example/border-group-horizontal-demo"),
+		),
+		source: "",
+		files: ["src/registry/example/border-group-horizontal-demo.tsx"],
+		category: "undefined",
+		subcategory: "undefined",
+		chunks: [],
+	},
+	"border-group-vertical-demo": {
+		name: "border-group-vertical-demo",
+		type: "components:example",
+		registryDependencies: ["border-group", "button"],
+		component: React.lazy(
+			() => import("@/registry/example/border-group-vertical-demo"),
+		),
+		source: "",
+		files: ["src/registry/example/border-group-vertical-demo.tsx"],
+		category: "undefined",
+		subcategory: "undefined",
+		chunks: [],
+	},
 };

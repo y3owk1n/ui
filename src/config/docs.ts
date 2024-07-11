@@ -108,8 +108,8 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Breadcrumb",
-					href: "/docs/components/breadcrumb",
+					title: "Border Group",
+					href: "/docs/components/border-group",
 					items: [],
 				},
 				{

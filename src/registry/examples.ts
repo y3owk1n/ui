@@ -109,4 +109,22 @@ export const examples: Registry = [
 		registryDependencies: ["badge"],
 		files: ["example/badge-warning-demo.tsx"],
 	},
+	{
+		name: "border-group-demo",
+		type: "components:example",
+		registryDependencies: ["border-group", "button", "menu"],
+		files: ["example/border-group-demo.tsx"],
+	},
+	{
+		name: "border-group-horizontal-demo",
+		type: "components:example",
+		registryDependencies: ["border-group", "button"],
+		files: ["example/border-group-horizontal-demo.tsx"],
+	},
+	{
+		name: "border-group-vertical-demo",
+		type: "components:example",
+		registryDependencies: ["border-group", "button"],
+		files: ["example/border-group-vertical-demo.tsx"],
+	},
 ];
