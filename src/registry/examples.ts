@@ -199,4 +199,28 @@ export const examples: Registry = [
 		registryDependencies: ["button"],
 		files: ["example/button-warning-demo.tsx"],
 	},
+	{
+		name: "calendar-demo",
+		type: "components:example",
+		registryDependencies: ["calendar"],
+		files: ["example/calendar-demo.tsx"],
+	},
+	{
+		name: "calendar-invalid-demo",
+		type: "components:example",
+		registryDependencies: ["calendar"],
+		files: ["example/calendar-invalid-demo.tsx"],
+	},
+	{
+		name: "calendar-range-demo",
+		type: "components:example",
+		registryDependencies: ["calendar"],
+		files: ["example/calendar-range-demo.tsx"],
+	},
+	{
+		name: "calendar-multiple-demo",
+		type: "components:example",
+		registryDependencies: ["calendar"],
+		files: ["example/calendar-multiple-demo.tsx"],
+	},
 ];

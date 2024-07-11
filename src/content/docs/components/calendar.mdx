@@ -1,0 +1,101 @@
+---
+title: Calendar
+description: A calendar displays one or more date grids and allows users to select a single or multiple dates.
+featured: true
+component: true
+links:
+  doc: https://react-spectrum.adobe.com/react-aria/Calendar.html
+  api: https://react-spectrum.adobe.com/react-aria/Calendar.html#props
+---
+
+<ComponentPreview name="calendar-demo" />
+
+## Installation
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-aria-components
+```
+
+<Step>Install the optional dependencies for date manipulation:</Step>
+
+```bash
+npm install @internationalized/date
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+## Events
+
+Calendar accepts an onChange prop which is triggered whenever a date is selected by the user. The example below uses onChange to update a separate element with a formatted version of the date in the user's locale. This is done by converting the date to a native JavaScript Date object to pass to the formatter.
+
+## Usage
+
+```tsx
+import {
+	Calendar,
+	CalendarGrid,
+	CalendarGridBody,
+	CalendarGridBodyCell,
+	CalendarGridHeader,
+	CalendarGridHeaderCell,
+	CalendarHeader,
+	CalendarHeading,
+	CalendarNextButton,
+	CalendarPreviousButton,
+	CalendarTextError,
+} from "@/registry/ui/calendar";
+```
+
+```tsx
+<Calendar>
+    <CalendarHeader>
+        <CalendarPreviousButton iconOnly />
+        <CalendarHeading />
+        <CalendarNextButton iconOnly />
+    </CalendarHeader>
+
+    <CalendarGrid>
+        <CalendarGridHeader>
+            {(day) => (
+                <CalendarGridHeaderCell>{day}</CalendarGridHeaderCell>
+            )}
+        </CalendarGridHeader>
+        <CalendarGridBody>
+            {(date) => <CalendarGridBodyCell date={date} />}
+        </CalendarGridBody>
+    </CalendarGrid>
+    <CalendarTextError />
+</Calendar>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="calendar-demo" />
+
+### Invalid Selection
+
+In this example, selecting weekend will show invalid state
+
+<ComponentPreview name="calendar-invalid-demo" />
+
+### Range Calendar
+
+Just swap the `<Calendar />` with `<RangeCalendar />`
+
+<ComponentPreview name="calendar-range-demo" />
+
+### Multiple Calendar
+
+<ComponentPreview name="calendar-multiple-demo" />
