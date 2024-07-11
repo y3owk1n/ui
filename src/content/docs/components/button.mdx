@@ -32,6 +32,12 @@ npm install react-aria-components
 
 </Steps>
 
+## Events
+
+Button supports user interactions via mouse, keyboard, and touch. You can handle all of these via the onPress prop. This is similar to the standard onClick event, but normalized to support all interaction methods equally. In addition, the onPressStart, onPressEnd, and onPressChange events are fired as the user interacts with the button.
+
+Each of these handlers receives a `PressEvent`, which exposes information about the target and the type of event that triggered the interaction. See [usePress](https://react-spectrum.adobe.com/react-aria/usePress.html) for more details.
+
 ## Usage
 
 ```tsx
@@ -44,7 +50,7 @@ import { Button } from "@/components/ui/button"
 
 ## Link
 
-You can use the `buttonVariants` helper to create a link that looks like a button. Note that it only works in client component!
+The Button component always represents a button semantically. To create a link that visually looks like a button, you can use the `buttonVariants` helper to create a link that looks like a button. Note that it only works in client component!
 
 ```tsx
 import { buttonVariants } from "@/components/ui/button"
