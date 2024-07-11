@@ -223,4 +223,16 @@ export const examples: Registry = [
 		registryDependencies: ["calendar"],
 		files: ["example/calendar-multiple-demo.tsx"],
 	},
+	{
+		name: "card-demo",
+		type: "components:example",
+		registryDependencies: ["card"],
+		files: ["example/card-demo.tsx"],
+	},
+	{
+		name: "card-two-demo",
+		type: "components:example",
+		registryDependencies: ["card"],
+		files: ["example/card-two-demo.tsx"],
+	},
 ];
