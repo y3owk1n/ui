@@ -7,7 +7,6 @@ import Link from "next/link";
 import * as React from "react";
 
 import { Callout } from "@/components/callout";
-// import { CodeBlockWrapper } from "@/components/code-block-wrapper";
 import { ComponentExample } from "@/components/component-example";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
@@ -21,7 +20,6 @@ import {
 	AccordionTrigger,
 } from "@/registry/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert";
-import { ScrollArea } from "@/registry/ui/scroll-area";
 // import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio";
 import { Tab, TabList, TabPanel, Tabs } from "@/registry/ui/tabs";
 
@@ -244,9 +242,6 @@ const components = {
 	ComponentExample,
 	ComponentSource,
 	// AspectRatio,
-	CodeBlockWrapper: ({ ...props }) => (
-		<div className="rounded-md border" {...props} />
-	),
 	Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
 		<h3
 			className={cn(

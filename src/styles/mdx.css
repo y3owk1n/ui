@@ -50,11 +50,11 @@
   @apply relative;
 }
 
-[data-rehype-pretty-code-figure] .word--highlighted {
+[data-rehype-pretty-code-figure] [data-highlighted-chars] {
   @apply rounded-md bg-zinc-700/50 border-zinc-700/70 p-1;
 }
 
-.dark [data-rehype-pretty-code-figure] .word--highlighted {
+.dark [data-rehype-pretty-code-figure] [data-highlighted-chars] {
   @apply bg-zinc-900;
 }
 
