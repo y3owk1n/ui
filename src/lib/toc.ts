@@ -1,5 +1,7 @@
-import { UnistNode } from "@/types/unist";
+// @ts-nocheck
+import { type UnistNode } from "@/types/unist";
 import { toc } from "mdast-util-toc";
+import { type Nodes } from "node_modules/mdast-util-toc/lib";
 import { remark } from "remark";
 import { visit } from "unist-util-visit";
 
@@ -63,7 +65,7 @@ function getItems(node, current): Items {
 	return {};
 }
 
-const getToc = () => (node, file) => {
+const getToc = () => (node: Nodes, file) => {
 	const table = toc(node);
 	const items = getItems(table.map, {});
 

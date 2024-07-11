@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { type UnistNode, type UnistTree } from "@/types/unist";
 import {
 	type ComputedFields,

@@ -1,10 +1,9 @@
-import { promises as fs, existsSync, readFileSync } from "fs";
+import { promises as fs, existsSync } from "fs";
 import { tmpdir } from "os";
-import path, { basename } from "path";
-import template from "lodash.template";
+import path from "path";
 import { cwd } from "process";
 import { rimraf } from "rimraf";
-import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph";
+import { Project, ScriptKind, SyntaxKind } from "ts-morph";
 
 import { registry } from "../registry/registry";
 import { Registry, registrySchema } from "../registry/schema";
