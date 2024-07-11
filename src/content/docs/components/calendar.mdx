@@ -17,13 +17,7 @@ links:
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install react-aria-components
-```
-
-<Step>Install the optional dependencies for date manipulation:</Step>
-
-```bash
-npm install @internationalized/date
+npm install react-aria-components @internationalized/date
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -36,7 +30,22 @@ npm install @internationalized/date
 
 ## Events
 
-Calendar accepts an onChange prop which is triggered whenever a date is selected by the user. The example below uses onChange to update a separate element with a formatted version of the date in the user's locale. This is done by converting the date to a native JavaScript Date object to pass to the formatter.
+Calendar accepts an onChange prop which is triggered whenever a date is selected by the user. You can use `onChange` to update a separate element with a formatted version of the date in the user's locale. This is done by converting the date to a native JavaScript Date object to pass to the formatter.
+
+```tsx
+import { getLocalTimeZone, today } from "@internationalized/date";
+import * as React from "react";
+import { useLocale } from "react-aria-components";
+
+const [date, setDate] = React.useState(today(getLocalTimeZone()));
+const { locale } = useLocale();
+```
+
+```tsx
+<Calendar value={date} onChange={setDate} isInvalid={isInvalid}>
+        {...restOfComponent}
+</Calendar>
+```
 
 ## Usage
 
