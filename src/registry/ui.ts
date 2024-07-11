@@ -16,7 +16,6 @@ export const ui: Registry = [
 	{
 		name: "avatar",
 		type: "components:ui",
-		dependencies: ["@radix-ui/react-avatar"],
 		files: ["ui/avatar.tsx"],
 	},
 	{

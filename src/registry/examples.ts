@@ -43,4 +43,22 @@ export const examples: Registry = [
 		registryDependencies: ["alert"],
 		files: ["example/alert-warning-demo.tsx"],
 	},
+	{
+		name: "avatar-demo",
+		type: "components:example",
+		registryDependencies: ["avatar"],
+		files: ["example/avatar-demo.tsx"],
+	},
+	{
+		name: "avatar-fallback-demo",
+		type: "components:example",
+		registryDependencies: ["avatar"],
+		files: ["example/avatar-fallback-demo.tsx"],
+	},
+	{
+		name: "avatar-size-demo",
+		type: "components:example",
+		registryDependencies: ["avatar"],
+		files: ["example/avatar-size-demo.tsx"],
+	},
 ];
