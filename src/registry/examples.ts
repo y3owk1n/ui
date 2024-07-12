@@ -235,4 +235,28 @@ export const examples: Registry = [
 		registryDependencies: ["card"],
 		files: ["example/card-two-demo.tsx"],
 	},
+	{
+		name: "carousel-demo",
+		type: "components:example",
+		registryDependencies: ["carousel"],
+		files: ["example/carousel-demo.tsx"],
+	},
+	{
+		name: "carousel-left-thumb-demo",
+		type: "components:example",
+		registryDependencies: ["carousel"],
+		files: ["example/carousel-left-thumb-demo.tsx"],
+	},
+	{
+		name: "carousel-bottom-thumb-demo",
+		type: "components:example",
+		registryDependencies: ["carousel"],
+		files: ["example/carousel-bottom-thumb-demo.tsx"],
+	},
+	{
+		name: "carousel-magnifier-demo",
+		type: "components:example",
+		registryDependencies: ["carousel"],
+		files: ["example/carousel-magnifier-demo.tsx"],
+	},
 ];

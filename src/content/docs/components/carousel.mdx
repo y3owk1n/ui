@@ -1,0 +1,130 @@
+---
+title: Carousel
+description: A carousel with motion and swipe built using Embla.
+component: true
+links:
+  doc: https://www.embla-carousel.com/get-started/react
+  api: https://www.embla-carousel.com/api
+---
+
+<ComponentPreview name="carousel-demo" />
+
+## About
+
+The carousel component is built using the [Embla Carousel](https://www.embla-carousel.com/) library.
+
+## Installation
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install embla-carousel-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="carousel" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+## Usage
+
+```tsx
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+```
+
+```tsx
+<Carousel>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>
+```
+
+## Events
+
+You can listen to events using the api instance from `setApi`.
+
+```tsx showLineNumbers {1,4-14,16}
+import { type CarouselApi } from "@/components/ui/carousel"
+
+export function Example() {
+  const [api, setApi] = React.useState<CarouselApi>()
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    api.on("select", () => {
+      // Do something on select.
+    })
+  }, [api])
+
+  return (
+    <Carousel setApi={setApi}>
+      <CarouselContent>
+        <CarouselItem>...</CarouselItem>
+        <CarouselItem>...</CarouselItem>
+        <CarouselItem>...</CarouselItem>
+      </CarouselContent>
+    </Carousel>
+  )
+}
+```
+
+See the [Embla Carousel docs](https://www.embla-carousel.com/api/events/) for more information on using events.
+
+## Examples
+
+### With Left Thumbnail
+
+<ComponentPreview name="carousel-left-thumb-demo" />
+
+### With Bottom Thumbnail
+
+<ComponentPreview name="carousel-bottom-thumb-demo" />
+
+### With Magnifier
+
+Refer to the [docs](/docs/components/image-magnifier) for `ImageMagnifier`.
+
+<ComponentPreview name="carousel-magnifier-demo" />
+
+## Plugins
+
+You can use the `plugins` prop to add plugins to the carousel.
+
+```ts showLineNumbers {1,6-10}
+import Autoplay from "embla-carousel-autoplay"
+
+export function Example() {
+  return (
+    <Carousel
+      plugins={[
+        Autoplay({
+          delay: 2000,
+        }),
+      ]}
+    >
+      // ...
+    </Carousel>
+  )
+}
+```
+
+See the [Embla Carousel docs](https://www.embla-carousel.com/api/plugins/) for more information on using plugins.
