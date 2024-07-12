@@ -259,4 +259,37 @@ export const examples: Registry = [
 		registryDependencies: ["carousel"],
 		files: ["example/carousel-magnifier-demo.tsx"],
 	},
+	{
+		name: "checkbox-group-demo",
+		type: "components:example",
+		registryDependencies: [
+			"checkbox-group",
+			"checkbox",
+			"label",
+			"field-error",
+		],
+		files: ["example/checkbox-group-demo.tsx"],
+	},
+	{
+		name: "checkbox-group-invalid-demo",
+		type: "components:example",
+		registryDependencies: [
+			"checkbox-group",
+			"checkbox",
+			"label",
+			"field-error",
+		],
+		files: ["example/checkbox-group-invalid-demo.tsx"],
+	},
+	{
+		name: "checkbox-group-disabled-demo",
+		type: "components:example",
+		registryDependencies: [
+			"checkbox-group",
+			"checkbox",
+			"label",
+			"field-error",
+		],
+		files: ["example/checkbox-group-disabled-demo.tsx"],
+	},
 ];

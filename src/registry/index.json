@@ -52,8 +52,12 @@
 	},
 	{
 		"name": "checkbox-group",
-		"dependencies": ["recharts", "lucide-react"],
-		"registryDependencies": ["card"],
+		"registryDependencies": [
+			"checkbox-group",
+			"checkbox",
+			"label",
+			"field-error"
+		],
 		"files": ["ui/checkbox-group.tsx"],
 		"type": "components:ui"
 	},

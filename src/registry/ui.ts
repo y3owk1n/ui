@@ -56,8 +56,12 @@ export const ui: Registry = [
 		name: "checkbox-group",
 		type: "components:ui",
 		files: ["ui/checkbox-group.tsx"],
-		registryDependencies: ["card"],
-		dependencies: ["recharts", "lucide-react"],
+		registryDependencies: [
+			"checkbox-group",
+			"checkbox",
+			"label",
+			"field-error",
+		],
 	},
 	{
 		name: "checkbox",
