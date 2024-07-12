@@ -5,11 +5,12 @@ import {
 	defineDocumentType,
 	defineNestedType,
 	makeSource,
-} from "contentlayer/source-files";
+} from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { codeImport } from "remark-code-import";
+import remarkGfm from "remark-gfm";
 import { type Data } from "unist";
 import { visit } from "unist-util-visit";
 import { rehypeComponent } from "./src/lib/rehype-component";
@@ -82,7 +83,7 @@ export default makeSource({
 	contentDirPath: "./src/content",
 	documentTypes: [Doc],
 	mdx: {
-		remarkPlugins: [codeImport],
+		remarkPlugins: [remarkGfm, codeImport],
 		rehypePlugins: [
 			rehypeSlug,
 			rehypeComponent,
