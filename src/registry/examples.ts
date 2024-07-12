@@ -292,4 +292,16 @@ export const examples: Registry = [
 		],
 		files: ["example/checkbox-group-disabled-demo.tsx"],
 	},
+	{
+		name: "checkbox-group-form-demo",
+		type: "components:example",
+		registryDependencies: [
+			"toast",
+			"checkbox",
+			"checkbox-group",
+			"form",
+			"button",
+		],
+		files: ["example/checkbox-group-form-demo.tsx"],
+	},
 ];

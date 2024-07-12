@@ -5,8 +5,8 @@ import { ModeToggle } from "@/components/dark-mode-toggle";
 import { QueryClientProvider } from "@/components/query-client-provider";
 import { RouterProvider } from "@/components/router-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ToastProvider } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
+import { ToastProvider } from "@/registry/ui/toast";
 
 const fontSans = FontSans({
 	subsets: ["latin"],

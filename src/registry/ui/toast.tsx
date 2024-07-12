@@ -17,6 +17,7 @@ import {
 } from "@react-aria/toast";
 
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/ui/button";
 import { type VariantProps, cva } from "class-variance-authority";
 import {
 	AlertCircle,
@@ -27,7 +28,6 @@ import {
 } from "lucide-react";
 import { createPortal } from "react-dom";
 import { useQuery } from "react-query";
-import { Button } from "./button";
 
 type ToastType = "default" | "success" | "destructive" | "info" | "warning";
 

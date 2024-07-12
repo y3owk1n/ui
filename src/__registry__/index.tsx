@@ -1228,4 +1228,23 @@ export const Index: Record<string, any> = {
 		subcategory: "undefined",
 		chunks: [],
 	},
+	"checkbox-group-form-demo": {
+		name: "checkbox-group-form-demo",
+		type: "components:example",
+		registryDependencies: [
+			"toast",
+			"checkbox",
+			"checkbox-group",
+			"form",
+			"button",
+		],
+		component: React.lazy(
+			() => import("@/registry/example/checkbox-group-form-demo"),
+		),
+		source: "",
+		files: ["src/registry/example/checkbox-group-form-demo.tsx"],
+		category: "undefined",
+		subcategory: "undefined",
+		chunks: [],
+	},
 };
