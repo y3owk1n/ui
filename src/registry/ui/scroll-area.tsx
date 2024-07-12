@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 interface UseScrollShadowProps {
 	deps?: React.DependencyList | undefined;
-	orientation?: "horizontal" | "vertical";
+	orientation?: "horizontal" | "vertical" | "both";
 }
 
 function useScrollShadow({
@@ -30,7 +30,7 @@ function useScrollShadow({
 				Math.round(container.clientHeight) +
 					Math.round(container.scrollTop);
 
-			if (orientation === "horizontal") {
+			if (orientation === "horizontal" || orientation === "both") {
 				const isMiddleHorizontal = isMostLeft && isMostRight;
 				if (isMiddleHorizontal) {
 					if (
@@ -67,7 +67,7 @@ function useScrollShadow({
 				}
 			}
 
-			if (orientation === "vertical") {
+			if (orientation === "vertical" || orientation === "both") {
 				const isMiddleVertical = isMostTop && isMostBottom;
 				if (isMiddleVertical) {
 					if (
@@ -123,7 +123,7 @@ function useScrollShadow({
 const ScrollArea = React.forwardRef<
 	React.ElementRef<typeof ScrollAreaPrimitive.Root>,
 	React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
-		orientation?: "horizontal" | "vertical";
+		orientation?: "horizontal" | "vertical" | "both";
 		showShadow?: boolean;
 	}
 >(
@@ -157,7 +157,14 @@ const ScrollArea = React.forwardRef<
 				>
 					{children}
 				</ScrollAreaPrimitive.Viewport>
-				<ScrollBar orientation={orientation} />
+				{orientation === "both" ? (
+					<>
+						<ScrollBar orientation="vertical" />
+						<ScrollBar orientation="horizontal" />
+					</>
+				) : (
+					<ScrollBar orientation={orientation} />
+				)}
 				<ScrollAreaPrimitive.Corner />
 			</ScrollAreaPrimitive.Root>
 		);

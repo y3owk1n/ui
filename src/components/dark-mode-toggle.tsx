@@ -4,9 +4,9 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/ui/button";
 
-import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/components/ui/menu";
+import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/registry/ui/menu";
 
 export function ModeToggle() {
 	const { setTheme } = useTheme();

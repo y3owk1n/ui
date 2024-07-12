@@ -14,14 +14,12 @@ export interface DocsSidebarNavProps {
 export function DocsSidebarNav({ config }: DocsSidebarNavProps) {
 	const pathname = usePathname();
 
-	const items = pathname?.startsWith("/charts")
-		? config.chartsNav
-		: config.sidebarNav;
+	const items = config.sidebarNav;
 
 	return items.length ? (
-		<div className="w-full">
+		<div className="grid w-full gap-4">
 			{items.map((item, index) => (
-				<div key={index} className={cn("pb-4")}>
+				<div key={index} className={cn("")}>
 					<h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
 						{item.title}
 					</h4>

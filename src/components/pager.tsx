@@ -1,12 +1,12 @@
 "use client";
 import { type NavItem, type NavItemWithChildren } from "@/types/nav";
-import { type Doc } from "contentlayer/generated";
 import Link from "next/link";
+import { type Doc } from "velite/generated";
 
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/registry/ui/button";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { Button, buttonVariants } from "./ui/button";
 
 interface DocsPagerProps {
 	doc: Doc;
@@ -47,9 +47,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
 }
 
 export function getPagerForDoc(doc: Doc) {
-	const nav = doc.slug.startsWith("/docs/charts")
-		? docsConfig.chartsNav
-		: docsConfig.sidebarNav;
+	const nav = docsConfig.sidebarNav;
 	const flattenedLinks = [null, ...flatten(nav), null];
 	const activeIndex = flattenedLinks.findIndex(
 		(link) => doc.slug === link?.href,

@@ -1,7 +1,7 @@
 "use client";
 import Preview from "@/components/preview";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/toast";
+import { useToast } from "@/registry/ui/toast";
 import { Sun } from "lucide-react";
 
 const promise: () => Promise<{ name: string }> = () =>

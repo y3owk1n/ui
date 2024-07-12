@@ -1,5 +1,5 @@
-import { allDocs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
+import { docs as allDocs } from "velite/generated";
 
 import "@/styles/mdx.css";
 import type { Metadata } from "next";
@@ -12,7 +12,6 @@ import { DashboardTableOfContents } from "@/components/toc";
 import { badgeVariants } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { siteConfig } from "@/config/site";
-import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
 
@@ -84,8 +83,6 @@ export default async function DocPage({ params }: DocPageProps) {
 		notFound();
 	}
 
-	const toc = await getTableOfContents(doc.body.raw);
-
 	return (
 		<main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
 			<div className="mx-auto w-full min-w-0">
@@ -141,17 +138,15 @@ export default async function DocPage({ params }: DocPageProps) {
 					</div>
 				) : null}
 				<div className="pb-12 pt-8">
-					<Mdx code={doc.body.code} />
+					<Mdx code={doc.content} />
 				</div>
 				<DocsPager doc={doc} />
 			</div>
 			{doc.toc && (
 				<div className="hidden text-sm xl:block">
-					<div className="sticky top-16 -mt-10 pt-4">
-						<ScrollArea className="pb-10">
-							<div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
-								<DashboardTableOfContents toc={toc} />
-							</div>
+					<div className="sticky top-14 mb-4 py-6 lg:py-8">
+						<ScrollArea showShadow className="h-[calc(100vh-7rem)]">
+							<DashboardTableOfContents toc={doc.toc} />
 						</ScrollArea>
 					</div>
 				</div>

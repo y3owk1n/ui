@@ -1,7 +1,7 @@
 "use client";
 
-import { allDocs } from "contentlayer/generated";
 import * as React from "react";
+import { docs as allDocs } from "velite/generated";
 
 import { Mdx } from "./mdx-components";
 
@@ -18,5 +18,5 @@ export function FrameworkDocs({ ...props }: FrameworkDocsProps) {
 		return null;
 	}
 
-	return <Mdx code={frameworkDoc.body.code} />;
+	return <Mdx code={frameworkDoc.content} />;
 }

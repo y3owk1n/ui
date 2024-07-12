@@ -8,6 +8,6 @@
 		"esModuleInterop": true,
 		"isolatedModules": false
 	},
-	"include": [".contentlayer/generated", "src/scripts/**/*.ts"],
+	"include": [".velite", "src/scripts/**/*.ts"],
 	"exclude": ["node_modules"]
 }

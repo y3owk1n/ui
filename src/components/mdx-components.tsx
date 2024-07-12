@@ -1,10 +1,10 @@
 "use client";
 
 import { type NpmCommands } from "@/types/unist";
-import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import * as runtime from "react/jsx-runtime";
 
 import { Callout } from "@/components/callout";
 import { ComponentExample } from "@/components/component-example";
@@ -20,6 +20,7 @@ import {
 	AccordionTrigger,
 } from "@/registry/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert";
+import { ScrollArea } from "@/registry/ui/scroll-area";
 // import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio";
 import { Tab, TabList, TabPanel, Tabs } from "@/registry/ui/tabs";
 
@@ -189,14 +190,13 @@ const components = {
 		__src__?: string;
 	} & NpmCommands) => {
 		return (
-			<div className="relative">
-				<pre
-					className={cn(
-						"mb-4 mt-6 h-full max-h-[650px] overflow-x-auto rounded-lg border py-4",
-						className,
-					)}
-					{...props}
-				/>
+			<div className="relative mb-4 mt-6">
+				<ScrollArea
+					orientation="both"
+					className="h-full max-h-[650px] rounded-lg border"
+				>
+					<pre className={cn("py-4", className)} {...props} />
+				</ScrollArea>
 				{__rawString__ && !__npmCommand__ && (
 					<CopyButton
 						value={__rawString__}
@@ -324,6 +324,14 @@ const components = {
 
 interface MdxProps {
 	code: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function useMDXComponent(code: string): React.ComponentType<any> {
+	// eslint-disable-next-line
+	const fn = new Function(code);
+	// eslint-disable-next-line
+	return fn({ ...runtime }).default;
 }
 
 export function Mdx({ code }: MdxProps) {

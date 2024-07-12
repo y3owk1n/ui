@@ -29,7 +29,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"],
-			"contentlayer/generated": ["./.contentlayer/generated"]
+			"velite/generated": ["./.velite"]
 		}
 	},
 	"include": [
@@ -40,8 +40,8 @@
 		"**/*.cjs",
 		// "**/*.js",
 		".next/types/**/*.ts",
-		".contentlayer/generated",
-		"contentlayer.config.ts"
+		".velite",
+		"velite.config.ts"
 	],
 	"exclude": ["node_modules"]
 }

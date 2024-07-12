@@ -15,7 +15,7 @@
 			".npmignore",
 			".DS_store",
 			".eslintignore",
-			".contentlayer"
+			".velite"
 		]
 	},
 	"organizeImports": {

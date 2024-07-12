@@ -5,8 +5,8 @@ import { CheckIcon, ClipboardIcon } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { Button, type ButtonProps } from "./ui/button";
-import { Menu, MenuItem, MenuPopover, MenuTrigger } from "./ui/menu";
+import { Button, type ButtonProps } from "@/registry/ui/button";
+import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/registry/ui/menu";
 
 interface CopyButtonProps extends ButtonProps {
 	value: string;
