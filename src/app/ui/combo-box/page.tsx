@@ -10,7 +10,7 @@ import {
 	ComboBoxPopover,
 	ComboBoxSection,
 	ComboBoxTrigger,
-} from "@/components/ui/combo-box";
+} from "@/registry/ui/combo-box";
 
 const rows = [
 	{ id: 1, name: "Chocolate" },

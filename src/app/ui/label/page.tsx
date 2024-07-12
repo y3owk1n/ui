@@ -1,5 +1,5 @@
 import Preview from "@/components/preview";
-import { Label } from "@/components/ui/label";
+import { Label } from "@/registry/ui/label";
 
 export default function LabelPage() {
 	return (

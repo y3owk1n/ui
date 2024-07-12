@@ -1,5 +1,5 @@
 import Preview from "@/components/preview";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/registry/ui/skeleton";
 
 export default function LabelPage() {
 	return (

@@ -1,6 +1,6 @@
 "use client";
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/ui/button";
 import { useToast } from "@/registry/ui/toast";
 import { Sun } from "lucide-react";
 

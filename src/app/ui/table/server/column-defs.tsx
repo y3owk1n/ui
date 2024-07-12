@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/components/ui/menu";
-import { type TableColumnDefs } from "@/components/ui/table";
+import { Button } from "@/registry/ui/button";
+import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/registry/ui/menu";
+import { type TableColumnDefs } from "@/registry/ui/table";
 import { MoreHorizontal } from "lucide-react";
 
 export interface CharacterRes {

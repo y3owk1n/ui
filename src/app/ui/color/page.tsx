@@ -13,12 +13,12 @@ import {
 	ColorWheel,
 	ColorWheelTrack,
 	parseColor,
-} from "@/components/ui/color";
-import { ColorField } from "@/components/ui/color-field";
-import { FieldDescription } from "@/components/ui/field-description";
-import { FieldError } from "@/components/ui/field-error";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/registry/ui/color";
+import { ColorField } from "@/registry/ui/color-field";
+import { FieldDescription } from "@/registry/ui/field-description";
+import { FieldError } from "@/registry/ui/field-error";
+import { Input } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
 import { useMemo, useState } from "react";
 import { useLocale } from "react-aria-components";
 

@@ -1,7 +1,7 @@
 import Preview from "@/components/preview";
-import { Checkbox } from "@/components/ui/checkbox";
-import { CheckboxGroup } from "@/components/ui/checkbox-group";
-import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/registry/ui/checkbox";
+import { CheckboxGroup } from "@/registry/ui/checkbox-group";
+import { Label } from "@/registry/ui/label";
 
 export default function CheckboxPage() {
 	return (

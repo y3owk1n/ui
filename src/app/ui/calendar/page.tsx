@@ -13,7 +13,7 @@ import {
 	CalendarPreviousButton,
 	CalendarTextError,
 	RangeCalendar,
-} from "@/components/ui/calendar";
+} from "@/registry/ui/calendar";
 import { getLocalTimeZone, isWeekend, today } from "@internationalized/date";
 import { useState } from "react";
 import { useLocale } from "react-aria-components";

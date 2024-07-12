@@ -4,7 +4,7 @@ import {
 	ImageMagnifier,
 	ImageMagnifierSource,
 	ImageMagnifierTarget,
-} from "@/components/ui/image-magnifier";
+} from "@/registry/ui/image-magnifier";
 
 const imageUrl =
 	"https://images.unsplash.com/photo-1720072480814-e1e5bf1937ca?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8";

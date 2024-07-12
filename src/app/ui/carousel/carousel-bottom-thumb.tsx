@@ -1,5 +1,6 @@
 "use client";
-import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { Badge } from "@/registry/ui/badge";
 import {
 	Carousel,
 	type CarouselApi,
@@ -9,8 +10,7 @@ import {
 	CarouselNextItem,
 	CarouselPrevious,
 	CarouselPreviousItem,
-} from "@/components/ui/carousel";
-import { cn } from "@/lib/utils";
+} from "@/registry/ui/carousel";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 interface CarouselLeftThumbProps {

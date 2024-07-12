@@ -9,7 +9,7 @@ import {
 	PaginationNext,
 	PaginationPrevious,
 	PaginationText,
-} from "@/components/ui/pagination";
+} from "@/registry/ui/pagination";
 import {
 	Table,
 	TableBody,
@@ -18,16 +18,16 @@ import {
 	TableColumn,
 	TableHeader,
 	TableRow,
-} from "@/components/ui/table";
+} from "@/registry/ui/table";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { GridList, GridListItem } from "@/components/ui/grid-list";
-import { Popover, PopoverTrigger } from "@/components/ui/popover";
-import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useTable } from "@/hooks/use-table";
+import { Button } from "@/registry/ui/button";
+import { Card } from "@/registry/ui/card";
+import { GridList, GridListItem } from "@/registry/ui/grid-list";
+import { Popover, PopoverTrigger } from "@/registry/ui/popover";
+import { SearchField, SearchFieldInput } from "@/registry/ui/search-field";
 import { Settings2 } from "lucide-react";
 import { useMemo } from "react";
 import { type CharacterWithId, columns } from "./column-defs";

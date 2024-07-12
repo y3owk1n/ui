@@ -1,7 +1,7 @@
 "use client";
 
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/ui/button";
 import {
 	Calendar,
 	CalendarGrid,
@@ -13,15 +13,15 @@ import {
 	CalendarHeading,
 	CalendarNextButton,
 	CalendarPreviousButton,
-} from "@/components/ui/calendar";
-import { DateField, DateInput, DateSegment } from "@/components/ui/date-field";
+} from "@/registry/ui/calendar";
+import { DateField, DateInput, DateSegment } from "@/registry/ui/date-field";
 import {
 	DatePicker,
 	DatePickerButton,
 	DatePickerDialog,
 	DatePickerPopover,
-} from "@/components/ui/date-picker";
-import { FieldDescription } from "@/components/ui/field-description";
+} from "@/registry/ui/date-picker";
+import { FieldDescription } from "@/registry/ui/field-description";
 import {
 	Form,
 	FormControl,
@@ -29,15 +29,15 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/registry/ui/form";
+import { Input } from "@/registry/ui/input";
 import {
 	OtpField,
 	OtpFieldGroup,
 	OtpFieldGroupRoot,
 	OtpFieldInput,
-} from "@/components/ui/otp-field";
-import { TextField } from "@/components/ui/text-field";
+} from "@/registry/ui/otp-field";
+import { TextField } from "@/registry/ui/text-field";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
 	type DateValue,

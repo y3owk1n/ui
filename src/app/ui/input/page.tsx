@@ -1,33 +1,33 @@
 "use client";
 import Preview from "@/components/preview";
-import { BorderGroup } from "@/components/ui/border-group";
-import { ColorField } from "@/components/ui/color-field";
-import { DateField, DateInput, DateSegment } from "@/components/ui/date-field";
-import { FieldDescription } from "@/components/ui/field-description";
-import { FieldError } from "@/components/ui/field-error";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { BorderGroup } from "@/registry/ui/border-group";
+import { ColorField } from "@/registry/ui/color-field";
+import { DateField, DateInput, DateSegment } from "@/registry/ui/date-field";
+import { FieldDescription } from "@/registry/ui/field-description";
+import { FieldError } from "@/registry/ui/field-error";
+import { Input } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
 import {
 	NumberField,
 	NumberInput,
 	NumberMinusButton,
 	NumberPlusButton,
-} from "@/components/ui/number-field";
+} from "@/registry/ui/number-field";
 import {
 	OtpField,
 	OtpFieldGroup,
 	OtpFieldGroupRoot,
 	OtpFieldGroupSeparator,
 	OtpFieldInput,
-} from "@/components/ui/otp-field";
+} from "@/registry/ui/otp-field";
 import {
 	PasswordField,
 	PasswordFieldInput,
-} from "@/components/ui/password-field";
-import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
-import { TextArea } from "@/components/ui/text-area";
-import { TextField } from "@/components/ui/text-field";
-import { TimeField, TimeInput, TimeSegment } from "@/components/ui/time-field";
+} from "@/registry/ui/password-field";
+import { SearchField, SearchFieldInput } from "@/registry/ui/search-field";
+import { TextArea } from "@/registry/ui/text-area";
+import { TextField } from "@/registry/ui/text-field";
+import { TimeField, TimeInput, TimeSegment } from "@/registry/ui/time-field";
 
 export default function InputPage() {
 	return (

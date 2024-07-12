@@ -1,5 +1,5 @@
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/ui/button";
 
 export default function ButtonPage() {
 	return (

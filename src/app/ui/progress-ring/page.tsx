@@ -6,7 +6,7 @@ import {
 	ProgressRingInnerFill,
 	ProgressRingLabel,
 	ProgressRingOuter,
-} from "@/components/ui/progress-ring";
+} from "@/registry/ui/progress-ring";
 import { useEffect, useState } from "react";
 
 export default function ProgressRingPage() {

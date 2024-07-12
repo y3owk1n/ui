@@ -1,6 +1,6 @@
 "use client";
-import { Card } from "@/components/ui/card";
-import { ListBox, ListBoxItem } from "@/components/ui/list-box";
+import { Card } from "@/registry/ui/card";
+import { ListBox, ListBoxItem } from "@/registry/ui/list-box";
 
 const navData: { id: string; name: string }[] = [
 	{

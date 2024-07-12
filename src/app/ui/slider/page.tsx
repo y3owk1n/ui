@@ -1,12 +1,12 @@
 "use client";
 import Preview from "@/components/preview";
-import { Label } from "@/components/ui/label";
+import { Label } from "@/registry/ui/label";
 import {
 	Slider,
 	SliderOutput,
 	SliderThumb,
 	SliderTrack,
-} from "@/components/ui/slider";
+} from "@/registry/ui/slider";
 
 export default function SliderPage() {
 	return (

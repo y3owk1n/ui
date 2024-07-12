@@ -1,13 +1,13 @@
 "use client";
 import Preview from "@/components/preview";
-import { Card } from "@/components/ui/card";
+import { Card } from "@/registry/ui/card";
 import {
 	ListBox,
 	ListBoxCollection,
 	ListBoxHeader,
 	ListBoxItem,
 	ListBoxSection,
-} from "@/components/ui/list-box";
+} from "@/registry/ui/list-box";
 
 const rows = [
 	{ id: 1, name: "Chocolate" },

@@ -1,5 +1,5 @@
 import Preview from "@/components/preview";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/registry/ui/scroll-area";
 
 function Content(props: React.HTMLAttributes<HTMLDivElement>) {
 	return (

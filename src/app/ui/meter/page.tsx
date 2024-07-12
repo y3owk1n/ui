@@ -5,7 +5,7 @@ import {
 	MeterLabel,
 	MeterTrack,
 	MeterTrackFill,
-} from "@/components/ui/meter";
+} from "@/registry/ui/meter";
 import { useEffect, useState } from "react";
 
 export default function MeterPage() {

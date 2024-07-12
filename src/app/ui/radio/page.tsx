@@ -1,6 +1,6 @@
 import Preview from "@/components/preview";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/registry/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/registry/ui/radio-group";
 
 export default function RadioPage() {
 	return (

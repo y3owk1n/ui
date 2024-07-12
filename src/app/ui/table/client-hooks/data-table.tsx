@@ -8,7 +8,7 @@ import {
 	PaginationLast,
 	PaginationNext,
 	PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "@/registry/ui/pagination";
 import {
 	Table,
 	TableBody,
@@ -17,14 +17,16 @@ import {
 	TableColumn,
 	TableHeader,
 	TableRow,
-} from "@/components/ui/table";
+} from "@/registry/ui/table";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { GridList, GridListItem } from "@/components/ui/grid-list";
-import { Popover, PopoverTrigger } from "@/components/ui/popover";
-import { SearchField, SearchFieldInput } from "@/components/ui/search-field";
+import { useTable } from "@/hooks/use-table";
+import { parseParamsToSet } from "@/lib/utils";
+import { Badge } from "@/registry/ui/badge";
+import { Button } from "@/registry/ui/button";
+import { Card } from "@/registry/ui/card";
+import { GridList, GridListItem } from "@/registry/ui/grid-list";
+import { Popover, PopoverTrigger } from "@/registry/ui/popover";
+import { SearchField, SearchFieldInput } from "@/registry/ui/search-field";
 import {
 	Select,
 	SelectContent,
@@ -32,10 +34,8 @@ import {
 	SelectPopover,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { useTable } from "@/hooks/use-table";
-import { parseParamsToSet } from "@/lib/utils";
+} from "@/registry/ui/select";
+import { Separator } from "@/registry/ui/separator";
 import { PlusCircle, Settings2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";

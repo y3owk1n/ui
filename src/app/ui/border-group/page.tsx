@@ -1,8 +1,8 @@
 "use client";
 import Preview from "@/components/preview";
-import { BorderGroup } from "@/components/ui/border-group";
-import { Button } from "@/components/ui/button";
-import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/components/ui/menu";
+import { BorderGroup } from "@/registry/ui/border-group";
+import { Button } from "@/registry/ui/button";
+import { Menu, MenuItem, MenuPopover, MenuTrigger } from "@/registry/ui/menu";
 import { ChevronDown } from "lucide-react";
 
 export default function BorderGroupPage() {

@@ -10,7 +10,7 @@ import {
 	SelectSection,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select";
+} from "@/registry/ui/select";
 
 const rows = [
 	{ id: 1, name: "Chocolate" },

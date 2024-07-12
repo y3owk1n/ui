@@ -1,5 +1,5 @@
 import Preview from "@/components/preview";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert";
 import { AlertCircle, Terminal } from "lucide-react";
 
 export default function AlertPage() {

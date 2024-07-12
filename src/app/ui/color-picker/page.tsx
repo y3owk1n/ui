@@ -1,6 +1,6 @@
 "use client";
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/ui/button";
 import {
 	ColorArea,
 	ColorPicker,
@@ -11,13 +11,13 @@ import {
 	ColorSwatch,
 	ColorThumb,
 	parseColor,
-} from "@/components/ui/color";
-import { ColorField } from "@/components/ui/color-field";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { FieldError } from "@/components/ui/field-error";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Popover } from "@/components/ui/popover";
+} from "@/registry/ui/color";
+import { ColorField } from "@/registry/ui/color-field";
+import { Dialog, DialogTrigger } from "@/registry/ui/dialog";
+import { FieldError } from "@/registry/ui/field-error";
+import { Input } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
+import { Popover } from "@/registry/ui/popover";
 import { useMemo, useState } from "react";
 
 export default function ColorPickerPage() {

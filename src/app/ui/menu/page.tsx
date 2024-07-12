@@ -1,6 +1,6 @@
 "use client";
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/ui/button";
 
 import {
 	Menu,
@@ -16,7 +16,7 @@ import {
 	MenuTrigger,
 	Menubar,
 	SubmenuTrigger,
-} from "@/components/ui/menu";
+} from "@/registry/ui/menu";
 import {
 	ChevronRight,
 	Cloud,

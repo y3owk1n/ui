@@ -1,5 +1,5 @@
 import Preview from "@/components/preview";
-import { Keyboard } from "@/components/ui/keyboard";
+import { Keyboard } from "@/registry/ui/keyboard";
 
 export default function KeyboardPage() {
 	return (

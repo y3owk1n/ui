@@ -1,5 +1,5 @@
 import Preview from "@/components/preview";
-import { ToggleButton } from "@/components/ui/toggle-button";
+import { ToggleButton } from "@/registry/ui/toggle-button";
 import { Bold } from "lucide-react";
 
 export default function ToggleButtonPage() {

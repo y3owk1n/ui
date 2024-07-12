@@ -5,7 +5,7 @@ import {
 	ProgressBarLabel,
 	ProgressBarTrack,
 	ProgressBarTrackFill,
-} from "@/components/ui/progress-bar";
+} from "@/registry/ui/progress-bar";
 import { useEffect, useState } from "react";
 
 export default function ProgressBarPage() {

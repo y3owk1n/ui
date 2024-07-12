@@ -1,6 +1,6 @@
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/registry/ui/button";
+import { Tooltip, TooltipTrigger } from "@/registry/ui/tooltip";
 import { Pencil } from "lucide-react";
 
 export default function TooltipPage() {

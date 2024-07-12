@@ -1,14 +1,14 @@
 "use client";
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/ui/button";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
-import { FileItems, FileTrigger } from "@/components/ui/file-trigger";
+} from "@/registry/ui/card";
+import { FileItems, FileTrigger } from "@/registry/ui/file-trigger";
 
 export default function FileTriggerPage() {
 	return (

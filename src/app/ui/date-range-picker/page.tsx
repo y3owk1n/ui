@@ -11,7 +11,7 @@ import {
 	CalendarNextButton,
 	CalendarPreviousButton,
 	RangeCalendar,
-} from "@/components/ui/calendar";
+} from "@/registry/ui/calendar";
 import {
 	DatePickerDialog,
 	DatePickerPopover,
@@ -19,8 +19,8 @@ import {
 	DatePickerPresetButton,
 	DateRangePicker,
 	DateRangePickerButton,
-} from "@/components/ui/date-picker";
-import { Label } from "@/components/ui/label";
+} from "@/registry/ui/date-picker";
+import { Label } from "@/registry/ui/label";
 import { getLocalTimeZone, isWeekend, today } from "@internationalized/date";
 import { useState } from "react";
 import { FieldError, useLocale } from "react-aria-components";

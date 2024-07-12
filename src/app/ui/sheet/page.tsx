@@ -1,8 +1,8 @@
 "use client";
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/registry/ui/button";
+import { Input } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
 import {
 	SheetContent,
 	SheetDescription,
@@ -11,7 +11,7 @@ import {
 	SheetOverlay,
 	SheetTitle,
 	SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@/registry/ui/sheet";
 
 export default function SheetPage() {
 	return (

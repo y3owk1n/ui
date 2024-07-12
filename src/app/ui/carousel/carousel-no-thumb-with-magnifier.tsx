@@ -1,5 +1,5 @@
 "use client";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/registry/ui/badge";
 import {
 	Carousel,
 	type CarouselApi,
@@ -7,12 +7,12 @@ import {
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/registry/ui/carousel";
 import {
 	ImageMagnifier,
 	ImageMagnifierSource,
 	ImageMagnifierTarget,
-} from "@/components/ui/image-magnifier";
+} from "@/registry/ui/image-magnifier";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 interface CarouselLeftThumbProps {

@@ -1,7 +1,7 @@
 "use client";
 import Preview from "@/components/preview";
-import { Card } from "@/components/ui/card";
-import { GridList, GridListItem } from "@/components/ui/grid-list";
+import { Card } from "@/registry/ui/card";
+import { GridList, GridListItem } from "@/registry/ui/grid-list";
 
 const rows = [
 	{ id: 1, name: "Chocolate" },

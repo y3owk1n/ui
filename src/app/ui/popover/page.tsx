@@ -1,8 +1,8 @@
 import Preview from "@/components/preview";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Popover, PopoverTrigger } from "@/components/ui/popover";
+import { Button } from "@/registry/ui/button";
+import { Input } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
+import { Popover, PopoverTrigger } from "@/registry/ui/popover";
 
 export default function PopoverPage() {
 	return (

@@ -9,10 +9,10 @@ import Balancer from "react-wrap-balancer";
 import { Mdx } from "@/components/mdx-components";
 import { DocsPager } from "@/components/pager";
 import { DashboardTableOfContents } from "@/components/toc";
-import { badgeVariants } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl, cn } from "@/lib/utils";
+import { badgeVariants } from "@/registry/ui/badge";
+import { ScrollArea } from "@/registry/ui/scroll-area";
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
 
 interface DocPageProps {
