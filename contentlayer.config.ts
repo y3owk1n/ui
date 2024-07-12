@@ -116,8 +116,8 @@ export default makeSource({
 				{
 					keepBackground: false,
 					theme: {
-						dark: "github-dark-dimmed",
-						light: "github-light",
+						dark: "catppuccin-macchiato",
+						light: "catppuccin-latte",
 					},
 					// getHighlighter: async () => {
 					// 	const theme = await loadTheme(
