@@ -88,7 +88,7 @@ export const docsConfig: DocsConfig = {
 				{
 					title: "Checkbox Group",
 					href: "/docs/components/checkbox-group",
-					label: "New",
+					// label: "New",
 					items: [],
 				},
 				{
@@ -97,13 +97,13 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Color Field",
-					href: "/docs/components/color-field",
+					title: "Color",
+					href: "/docs/components/color",
 					items: [],
 				},
 				{
-					title: "Color",
-					href: "/docs/components/color",
+					title: "Color Picker",
+					href: "/docs/components/color-picker",
 					items: [],
 				},
 				{

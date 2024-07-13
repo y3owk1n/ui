@@ -3,6 +3,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+import { SliderOutput } from "@/registry/ui/slider";
 import {
 	ColorArea as _ColorArea,
 	type ColorAreaProps as _ColorAreaProps,
@@ -24,7 +25,6 @@ import {
 	type SliderTrackProps as _SliderTrackProps,
 	parseColor as _parseColor,
 } from "react-aria-components";
-import { SliderOutput } from "./slider";
 
 // -------------------------- Color Area --------------------------
 

@@ -52,31 +52,25 @@
 	},
 	{
 		"name": "checkbox-group",
-		"registryDependencies": [
-			"checkbox-group",
-			"checkbox",
-			"label",
-			"field-error"
-		],
+		"registryDependencies": ["checkbox", "label", "field-error"],
 		"files": ["ui/checkbox-group.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "checkbox",
-		"dependencies": ["checkbox"],
 		"files": ["ui/checkbox.tsx"],
 		"type": "components:ui"
 	},
 	{
-		"name": "color-field",
-		"dependencies": ["@radix-ui/react-collapsible"],
-		"files": ["ui/color-field.tsx"],
+		"name": "color",
+		"dependencies": ["slider"],
+		"registryDependencies": ["slider"],
+		"files": ["ui/color.tsx"],
 		"type": "components:ui"
 	},
 	{
-		"name": "color",
-		"dependencies": ["cmdk"],
-		"files": ["ui/color.tsx"],
+		"name": "color-field",
+		"files": ["ui/color-field.tsx"],
 		"type": "components:ui"
 	},
 	{
