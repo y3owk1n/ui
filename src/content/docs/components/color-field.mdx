@@ -1,0 +1,171 @@
+---
+title: Color Field
+description: A color field allows users to edit a hex color or individual color channel value.
+component: true
+links:
+  doc: https://react-spectrum.adobe.com/react-aria/ColorField.html
+  api: https://react-spectrum.adobe.com/react-aria/ColorField.html#props
+---
+
+<ComponentPreview name="color-field-demo" />
+
+## Installation
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-aria-components
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="color-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+## Usage
+
+```tsx
+import { ColorField } from "@/registry/ui/color-field";
+import { FieldDescription } from "@/registry/ui/field-description";
+import { FieldError } from "@/registry/ui/field-error";
+import { Input } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
+```
+
+```tsx
+<ColorField>
+    <Label>Background Color</Label>
+    <Input placeholder="#000" />
+    <FieldDescription>Any color that you like</FieldDescription>
+    <FieldError />
+</ColorField>
+```
+
+## Examples
+
+### With Form
+
+<ComponentPreview name="color-field-with-form-demo" />
+
+Note that there are some customisation needed to make it work with form.
+
+<Steps>
+
+<Step>By default the field is controlled by `Color` type, to make thing easier with zod, we can parse it as string.</Step>
+
+```tsx {2}
+const FormSchema = z.object({
+	color: z.string(),
+});
+```
+
+<Step>We can then initiate a default value for the string color.</Step>
+
+```tsx {4}
+const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+        color: "hsl(0, 100%, 50%)",
+    },
+});
+```
+
+<Step>Parse the color to use for any other color operation.</Step>
+
+Please be aware that `parseColor` function will throw an error if it's not a valid color. Follow next few steps to make it work properly.
+
+```tsx
+const color = parseColor(form.watch("color"));
+```
+
+<Step>Update onChange for color input, and only update the string value as needed.</Step>
+
+```tsx {8-13}
+<FormField
+    control={form.control}
+    name="color"
+    render={({ field, fieldState }) => (
+        <FormItem>
+            <ColorField
+                {...field}
+                onChange={(e) => {
+                    const colorString = e?.toString();
+                    if (colorString) {
+                        field.onChange(colorString);
+                    }
+                }}
+                colorSpace={colorSpace}
+                isDisabled={field.disabled}
+                isInvalid={fieldState.invalid}
+                className="w-full max-w-lg"
+            >
+                <FormLabel>Background Color</FormLabel>
+
+                <FormControl>
+                    <Input placeholder="#000" />
+                </FormControl>
+                <FormDescription>
+                    Any color that you like
+                </FormDescription>
+                <FormMessage />
+            </ColorField>
+        </FormItem>
+    )}
+/>
+```
+
+<Step>Do the same for color channels input</Step>
+
+But this time we will also need to check if the input are valid, by using `e.toHexInt()`. If it's 0, then it's not valid, we can then reset the form.
+
+```tsx {11-19}
+{colorChannels.map((channel) => (
+    <FormField
+        key={channel}
+        control={form.control}
+        name="color"
+        render={({ field, fieldState }) => (
+            <FormItem>
+                <ColorField
+                    {...field}
+                    onChange={(e) => {
+                        const hexInt = e?.toHexInt();
+                        if (hexInt === 0) {
+                            form.resetField("color");
+                            return;
+                        }
+                        const colorString = e?.toString();
+                        if (colorString) {
+                            field.onChange(colorString);
+                        }
+                    }}
+                    colorSpace={colorSpace}
+                    channel={channel}
+                    isDisabled={field.disabled}
+                    isInvalid={fieldState.invalid}
+                    className="w-full max-w-lg"
+                >
+                    <FormLabel>
+                        {color.getChannelName(
+                            channel,
+                            locale,
+                        )}
+                    </FormLabel>
+                    <FormControl>
+                        <Input />
+                    </FormControl>
+                    <FormMessage />
+                </ColorField>
+            </FormItem>
+        )}
+    />
+))}
+```
+
+</Steps>
+

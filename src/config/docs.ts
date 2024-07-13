@@ -97,13 +97,13 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
-					title: "Color",
-					href: "/docs/components/color",
+					title: "Color Field",
+					href: "/docs/components/color-field",
 					items: [],
 				},
 				{
-					title: "Color Picker",
-					href: "/docs/components/color-picker",
+					title: "Color",
+					href: "/docs/components/color",
 					items: [],
 				},
 				{

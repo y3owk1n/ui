@@ -64,16 +64,16 @@ export const ui: Registry = [
 		files: ["ui/checkbox.tsx"],
 	},
 	{
+		name: "color-field",
+		type: "components:ui",
+		files: ["ui/color-field.tsx"],
+	},
+	{
 		name: "color",
 		type: "components:ui",
 		dependencies: ["slider"],
 		registryDependencies: ["slider"],
 		files: ["ui/color.tsx"],
-	},
-	{
-		name: "color-field",
-		type: "components:ui",
-		files: ["ui/color-field.tsx"],
 	},
 	{
 		name: "combo-box",

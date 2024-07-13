@@ -21,7 +21,7 @@ export default function ColorFieldDemo() {
 	}, [color]);
 
 	return (
-		<div className="grid gap-2">
+		<div className="grid max-w-[400px] gap-2">
 			<ColorField
 				value={color}
 				onChange={(color) => {

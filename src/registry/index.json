@@ -62,15 +62,15 @@
 		"type": "components:ui"
 	},
 	{
+		"name": "color-field",
+		"files": ["ui/color-field.tsx"],
+		"type": "components:ui"
+	},
+	{
 		"name": "color",
 		"dependencies": ["slider"],
 		"registryDependencies": ["slider"],
 		"files": ["ui/color.tsx"],
-		"type": "components:ui"
-	},
-	{
-		"name": "color-field",
-		"files": ["ui/color-field.tsx"],
 		"type": "components:ui"
 	},
 	{

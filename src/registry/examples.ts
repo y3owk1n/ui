@@ -360,6 +360,19 @@ export const examples: Registry = [
 		files: ["example/color-field-demo.tsx"],
 	},
 	{
+		name: "color-field-with-form-demo",
+		type: "components:example",
+		registryDependencies: [
+			"toast",
+			"color",
+			"color-field",
+			"input",
+			"form",
+			"button",
+		],
+		files: ["example/color-field-with-form-demo.tsx"],
+	},
+	{
 		name: "color-picker-demo",
 		type: "components:example",
 		registryDependencies: [
