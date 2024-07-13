@@ -179,6 +179,7 @@ ComboBoxPopover.displayName = "SelectPopover";
 
 export {
 	ComboBox,
+	type ComboBoxProps,
 	ComboBoxLabel,
 	ComboBoxContent,
 	ComboBoxTrigger,

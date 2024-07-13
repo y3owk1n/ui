@@ -179,7 +179,7 @@ const navData: { id: string; name: string }[] = [
 
 export default function Home() {
 	return (
-		<main className="container my-8">
+		<>
 			<h1 className="font-heading mb-4 scroll-m-20 text-2xl font-semibold tracking-tight">
 				UI Navigations
 			</h1>
@@ -197,6 +197,6 @@ export default function Home() {
 					)}
 				</ListBox>
 			</Card>
-		</main>
+		</>
 	);
 }

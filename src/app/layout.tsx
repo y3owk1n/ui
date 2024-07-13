@@ -4,6 +4,8 @@ import "./globals.css";
 import { ModeToggle } from "@/components/dark-mode-toggle";
 import { QueryClientProvider } from "@/components/query-client-provider";
 import { RouterProvider } from "@/components/router-provider";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { ToastProvider } from "@/registry/ui/toast";
@@ -40,12 +42,9 @@ export default function RootLayout({
 					>
 						<RouterProvider>
 							<ToastProvider>
-								<main>
-									<div className="container pt-8">
-										<ModeToggle />
-									</div>
-									{children}
-								</main>
+								<SiteHeader />
+								<main>{children}</main>
+								<SiteFooter />
 							</ToastProvider>
 						</RouterProvider>
 					</ThemeProvider>
