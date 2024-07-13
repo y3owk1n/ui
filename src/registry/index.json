@@ -63,7 +63,7 @@
 	},
 	{
 		"name": "checkbox",
-		"dependencies": ["@radix-ui/react-checkbox"],
+		"dependencies": ["checkbox"],
 		"files": ["ui/checkbox.tsx"],
 		"type": "components:ui"
 	},

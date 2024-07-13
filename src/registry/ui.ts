@@ -66,7 +66,7 @@ export const ui: Registry = [
 	{
 		name: "checkbox",
 		type: "components:ui",
-		dependencies: ["@radix-ui/react-checkbox"],
+		dependencies: ["checkbox"],
 		files: ["ui/checkbox.tsx"],
 	},
 	{
