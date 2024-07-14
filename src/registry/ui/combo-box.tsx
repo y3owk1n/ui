@@ -3,6 +3,17 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+import { Button } from "@/registry/ui/button";
+import { Input, type InputProps } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
+import {
+	ListBox,
+	ListBoxItem,
+	type ListBoxItemProps,
+	type ListBoxProps,
+} from "@/registry/ui/list-box";
+import { Popover, type PopoverProps } from "@/registry/ui/popover";
+import { Separator, type SeparatorProps } from "@/registry/ui/separator";
 import { Check, ChevronsUpDown } from "lucide-react";
 import {
 	Collection,
@@ -12,19 +23,8 @@ import {
 	ComboBox as _ComboBox,
 	type ComboBoxProps as _ComboBoxProps,
 } from "react-aria-components";
-import { Button } from "./button";
-import { Input, type InputProps } from "./input";
-import { Label } from "./label";
-import {
-	ListBox,
-	ListBoxItem,
-	type ListBoxItemProps,
-	type ListBoxProps,
-} from "./list-box";
-import { Popover, type PopoverProps } from "./popover";
-import { Separator, type SeparatorProps } from "./separator";
 
-interface ComboBoxProps<T extends object> extends _ComboBoxProps<T> {}
+type ComboBoxProps<T extends object> = _ComboBoxProps<T>;
 
 function ComboBox<T extends object>({ className, ...props }: ComboBoxProps<T>) {
 	return (

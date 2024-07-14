@@ -75,7 +75,14 @@
 	},
 	{
 		"name": "combo-box",
-		"dependencies": ["@radix-ui/react-context-menu"],
+		"registryDependencies": [
+			"button",
+			"input",
+			"label",
+			"list-box",
+			"popover",
+			"separator"
+		],
 		"files": ["ui/combo-box.tsx"],
 		"type": "components:ui"
 	},

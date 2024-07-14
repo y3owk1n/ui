@@ -78,8 +78,15 @@ export const ui: Registry = [
 	{
 		name: "combo-box",
 		type: "components:ui",
-		dependencies: ["@radix-ui/react-context-menu"],
 		files: ["ui/combo-box.tsx"],
+		registryDependencies: [
+			"button",
+			"input",
+			"label",
+			"list-box",
+			"popover",
+			"separator",
+		],
 	},
 	{
 		name: "date-field",

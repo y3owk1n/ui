@@ -388,4 +388,34 @@ export const examples: Registry = [
 		],
 		files: ["example/color-picker-demo.tsx"],
 	},
+	{
+		name: "combo-box-demo",
+		type: "components:example",
+		registryDependencies: ["combo-box"],
+		files: ["example/combo-box-demo.tsx"],
+	},
+	{
+		name: "combo-box-section-demo",
+		type: "components:example",
+		registryDependencies: ["combo-box"],
+		files: ["example/combo-box-section-demo.tsx"],
+	},
+	{
+		name: "combo-box-async-demo",
+		type: "components:example",
+		registryDependencies: ["combo-box"],
+		files: ["example/combo-box-async-demo.tsx"],
+	},
+	{
+		name: "combo-box-disabled-demo",
+		type: "components:example",
+		registryDependencies: ["combo-box"],
+		files: ["example/combo-box-disabled-demo.tsx"],
+	},
+	{
+		name: "combo-box-with-form-demo",
+		type: "components:example",
+		registryDependencies: ["combo-box", "toast", "form", "button"],
+		files: ["example/combo-box-with-form-demo.tsx"],
+	},
 ];
