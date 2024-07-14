@@ -14,19 +14,21 @@ import { Input } from "@/registry/ui/input";
 import { useToast } from "@/registry/ui/toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as React from "react";
-import { useLocale } from "react-aria-components";
+import { type Color, useLocale } from "react-aria-components";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const FormSchema = z.object({
-	color: z.string(),
+	color: z.custom<Color>().refine((color) => color.toHexInt() > 0, {
+		message: "Please enter color",
+	}),
 });
 
 export default function ColorFieldWithFormDemo() {
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
-			color: "hsl(0, 100%, 50%)",
+			color: parseColor("hsl(0, 100%, 50%)"),
 		},
 	});
 
@@ -42,7 +44,7 @@ export default function ColorFieldWithFormDemo() {
 		});
 	}
 
-	const color = parseColor(form.watch("color"));
+	const color = form.watch("color");
 
 	const { locale } = useLocale();
 
@@ -65,12 +67,6 @@ export default function ColorFieldWithFormDemo() {
 							<FormItem>
 								<ColorField
 									{...field}
-									onChange={(e) => {
-										const colorString = e?.toString();
-										if (colorString) {
-											field.onChange(colorString);
-										}
-									}}
 									colorSpace={colorSpace}
 									isDisabled={field.disabled}
 									isInvalid={fieldState.invalid}
@@ -105,11 +101,7 @@ export default function ColorFieldWithFormDemo() {
 													form.resetField("color");
 													return;
 												}
-												const colorString =
-													e?.toString();
-												if (colorString) {
-													field.onChange(colorString);
-												}
+												field.onChange(e);
 											}}
 											colorSpace={colorSpace}
 											channel={channel}
@@ -124,7 +116,12 @@ export default function ColorFieldWithFormDemo() {
 												)}
 											</FormLabel>
 											<FormControl>
-												<Input />
+												<Input
+													placeholder={color.getChannelName(
+														channel,
+														locale,
+													)}
+												/>
 											</FormControl>
 											<FormMessage />
 										</ColorField>
