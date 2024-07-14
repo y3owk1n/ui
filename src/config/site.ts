@@ -1,9 +1,9 @@
 export const siteConfig = {
-	name: "y3owk1n/ui",
+	name: "Mine UI",
 	url: "https://ui.kylewong.com",
 	ogImage: "https://ui.kylewong.com/og.jpg",
 	description:
-		"Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+		"My own implementation for Shadcn UI on top of react-aria + some other components that I used in my projects.",
 	links: {
 		twitter: "https://twitter.com/wongyeowkin",
 		github: "https://github.com/y3owk1n/ui",

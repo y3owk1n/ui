@@ -1,202 +1,53 @@
 "use client";
-import { Card } from "@/registry/ui/card";
-import { ListBox, ListBoxItem } from "@/registry/ui/list-box";
-
-const navData: { id: string; name: string }[] = [
-	{
-		id: "accordion",
-		name: "Accordion",
-	},
-	{
-		id: "alert",
-		name: "Alert",
-	},
-	{
-		id: "avatar",
-		name: "Avatar",
-	},
-	{
-		id: "badge",
-		name: "Badge",
-	},
-	{
-		id: "border-group",
-		name: "Border Group",
-	},
-	{
-		id: "button",
-		name: "Button",
-	},
-	{
-		id: "calendar",
-		name: "Calendar",
-	},
-	{
-		id: "carousel",
-		name: "Carousel",
-	},
-	{
-		id: "checkbox",
-		name: "Checkbox",
-	},
-	{
-		id: "color",
-		name: "Color",
-	},
-	{
-		id: "color-picker",
-		name: "Color Picker",
-	},
-	{
-		id: "combo-box",
-		name: "Combo Box",
-	},
-	{
-		id: "date-picker",
-		name: "Date Picker",
-	},
-	{
-		id: "date-range-picker",
-		name: "Date Range Picker",
-	},
-	{
-		id: "dialog",
-		name: "Dialog",
-	},
-	{
-		id: "drawer",
-		name: "Drawer",
-	},
-	{
-		id: "file-trigger",
-		name: "File Trigger",
-	},
-	{
-		id: "form",
-		name: "Form",
-	},
-	{
-		id: "gallery",
-		name: "Gallery",
-	},
-	{
-		id: "grid-list",
-		name: "Grid List",
-	},
-	{
-		id: "image-magnifier",
-		name: "Image Magnifier",
-	},
-	{
-		id: "input",
-		name: "Input",
-	},
-	{
-		id: "keyboard",
-		name: "Keyboard",
-	},
-	{
-		id: "label",
-		name: "Label",
-	},
-	{
-		id: "list-box",
-		name: "List Box",
-	},
-	{
-		id: "menu",
-		name: "Menu",
-	},
-	{
-		id: "meter",
-		name: "Meter",
-	},
-	{
-		id: "pagination",
-		name: "Pagination",
-	},
-	{
-		id: "popover",
-		name: "Popover",
-	},
-	{
-		id: "progress-bar",
-		name: "Progress Bar",
-	},
-	{
-		id: "progress-ring",
-		name: "Progress Ring",
-	},
-	{
-		id: "radio",
-		name: "Radio",
-	},
-	{
-		id: "scroll-area",
-		name: "Scroll Area",
-	},
-	{
-		id: "select",
-		name: "Select",
-	},
-	{
-		id: "sheet",
-		name: "Sheet",
-	},
-	{
-		id: "skeleton",
-		name: "Skeleton",
-	},
-	{
-		id: "slider",
-		name: "Slider",
-	},
-	{
-		id: "switch",
-		name: "Switch",
-	},
-	{
-		id: "table",
-		name: "Table",
-	},
-	{
-		id: "tabs",
-		name: "Tabs",
-	},
-	{
-		id: "toast",
-		name: "Toast",
-	},
-	{
-		id: "toggle-button",
-		name: "Toggle Button",
-	},
-	{
-		id: "tooltip",
-		name: "Tooltip",
-	},
-];
+import Ripple from "@/components/ripple";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/registry/ui/button";
+import { Link } from "react-aria-components";
 
 export default function Home() {
 	return (
-		<>
-			<h1 className="font-heading mb-4 scroll-m-20 text-2xl font-semibold tracking-tight">
-				UI Navigations
-			</h1>
-			<Card className="w-full p-2 sm:max-w-[300px]">
-				<ListBox
-					aria-label="Links"
-					// selectionMode="multiple"
-					// selectionBehavior="replace"
-					items={navData}
-				>
-					{(item) => (
-						<ListBoxItem key={item.id} href={`/ui/${item.id}`}>
-							{item.name}
-						</ListBoxItem>
-					)}
-				</ListBox>
-			</Card>
-		</>
+		<div className="relative grid h-[calc(100vh-5rem-3.5rem)] place-items-center overflow-hidden">
+			<Ripple />
+			<div className="container isolate px-6 lg:px-8">
+				<div className="mx-auto max-w-2xl">
+					<div className="text-center">
+						<h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+							Mine UI.
+						</h1>
+						<p className="mt-6 text-lg leading-8 text-muted-foreground">
+							My own implementation for Shadcn UI on top of
+							react-aria + some other components that I used in my
+							projects.
+						</p>
+						<div className="mt-10 flex items-center justify-center gap-x-4">
+							<Link
+								href="/docs"
+								className={cn(
+									buttonVariants({
+										size: "sm",
+									}),
+								)}
+							>
+								Get Started
+							</Link>
+							<Link
+								href={siteConfig.links.github}
+								target="_blank"
+								rel="noreferrer"
+								className={cn(
+									buttonVariants({
+										variant: "link",
+										size: "sm",
+									}),
+								)}
+							>
+								Github
+							</Link>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	);
 }

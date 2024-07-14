@@ -1,7 +1,5 @@
 "use client";
 
-// import { CommandMenu } from "@/components/command-menu"
-// import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { siteConfig } from "@/config/site";

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import { ModeToggle } from "@/components/dark-mode-toggle";
 import { QueryClientProvider } from "@/components/query-client-provider";
 import { RouterProvider } from "@/components/router-provider";
 import { SiteFooter } from "@/components/site-footer";
