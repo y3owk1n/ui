@@ -1,0 +1,63 @@
+---
+title: Date Field
+description: A date field allows users to enter and edit date and time values using a keyboard. Each part of a date value is displayed in an individually editable segment.
+component: true
+links:
+  doc: https://react-spectrum.adobe.com/react-aria/DateField.html
+  api: https://react-spectrum.adobe.com/react-aria/DateField.html#props
+---
+
+<ComponentPreview name="date-field-demo" />
+
+## Installation
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-aria-components
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="date-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+## Usage
+
+```tsx
+import { DateField, DateInput, DateSegment } from "@/components/ui/date-field";
+```
+
+```tsx
+<DateField>
+    <Label />
+    <DateInput>
+        {(segment) => <DateSegment segment={segment} />}
+    </DateInput>
+    <FieldDescription>Date of your choice</FieldDescription>
+    <FieldError />
+</DateField>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="date-field-demo" />
+
+### Invalid
+
+<ComponentPreview name="date-field-invalid-demo" />
+
+### Disabled
+
+<ComponentPreview name="date-field-disabled-demo" />
+
+### With Form
+
+<ComponentPreview name="date-field-with-form-demo" />

@@ -31,7 +31,6 @@ const rows = [
 const enumMap = rows.map((item) => item.name) as [string, ...string[]];
 
 const FormSchema = z.object({
-	// item: z.enum(enumMap),
 	item: z.enum(enumMap),
 });
 

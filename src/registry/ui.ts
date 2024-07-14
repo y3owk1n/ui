@@ -91,7 +91,6 @@ export const ui: Registry = [
 	{
 		name: "date-field",
 		type: "components:ui",
-		dependencies: ["@radix-ui/react-dialog"],
 		files: ["ui/date-field.tsx"],
 	},
 	{

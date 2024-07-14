@@ -418,4 +418,43 @@ export const examples: Registry = [
 		registryDependencies: ["combo-box", "toast", "form", "button"],
 		files: ["example/combo-box-with-form-demo.tsx"],
 	},
+	{
+		name: "date-field-demo",
+		type: "components:example",
+		registryDependencies: [
+			"label",
+			"date-field",
+			"field-description",
+			"field-error",
+		],
+		files: ["example/date-field-demo.tsx"],
+	},
+	{
+		name: "date-field-invalid-demo",
+		type: "components:example",
+		registryDependencies: [
+			"label",
+			"date-field",
+			"field-description",
+			"field-error",
+		],
+		files: ["example/date-field-invalid-demo.tsx"],
+	},
+	{
+		name: "date-field-disabled-demo",
+		type: "components:example",
+		registryDependencies: [
+			"label",
+			"date-field",
+			"field-description",
+			"field-error",
+		],
+		files: ["example/date-field-disabled-demo.tsx"],
+	},
+	{
+		name: "date-field-with-form-demo",
+		type: "components:example",
+		registryDependencies: ["date-field", "toast", "form", "button"],
+		files: ["example/date-field-with-form-demo.tsx"],
+	},
 ];

@@ -88,7 +88,6 @@
 	},
 	{
 		"name": "date-field",
-		"dependencies": ["@radix-ui/react-dialog"],
 		"files": ["ui/date-field.tsx"],
 		"type": "components:ui"
 	},
