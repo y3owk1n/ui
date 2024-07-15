@@ -102,8 +102,8 @@ export const ui: Registry = [
 	{
 		name: "dialog",
 		type: "components:ui",
-		dependencies: ["@radix-ui/react-dialog"],
 		files: ["ui/dialog.tsx"],
+		registryDependencies: ["button"],
 	},
 	{
 		name: "drawer",

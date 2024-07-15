@@ -517,4 +517,28 @@ export const examples: Registry = [
 		],
 		files: ["example/date-picker-range-with-form-demo.tsx"],
 	},
+	{
+		name: "dialog-demo",
+		type: "components:example",
+		registryDependencies: ["dialog", "button", "input", "label"],
+		files: ["example/dialog-demo.tsx"],
+	},
+	{
+		name: "dialog-non-dismissable-demo",
+		type: "components:example",
+		registryDependencies: ["dialog", "button", "input", "label"],
+		files: ["example/dialog-non-dismissable-demo.tsx"],
+	},
+	{
+		name: "dialog-alert-demo",
+		type: "components:example",
+		registryDependencies: ["dialog", "button"],
+		files: ["example/dialog-alert-demo.tsx"],
+	},
+	{
+		name: "dialog-menu-demo",
+		type: "components:example",
+		registryDependencies: ["dialog", "menu", "button"],
+		files: ["example/dialog-menu-demo.tsx"],
+	},
 ];

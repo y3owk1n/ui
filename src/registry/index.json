@@ -99,7 +99,7 @@
 	},
 	{
 		"name": "dialog",
-		"dependencies": ["@radix-ui/react-dialog"],
+		"registryDependencies": ["button"],
 		"files": ["ui/dialog.tsx"],
 		"type": "components:ui"
 	},

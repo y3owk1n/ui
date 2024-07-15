@@ -3,6 +3,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+import { Button } from "@/registry/ui/button";
 import { X } from "lucide-react";
 import {
 	Heading,
@@ -14,9 +15,8 @@ import {
 	type DialogProps as _DialogProps,
 	DialogTrigger as _DialogTrigger,
 } from "react-aria-components";
-import { Button } from "./button";
 
-interface DialogProps extends _DialogProps {}
+type DialogProps = _DialogProps;
 
 const Dialog = _Dialog;
 
