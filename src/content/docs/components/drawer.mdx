@@ -1,0 +1,72 @@
+---
+title: Drawer
+description: A drawer component for React.
+component: true
+---
+
+<ComponentPreview name="drawer-demo" />
+
+## Installation
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-aria-components
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="drawer" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+## Usage
+
+```tsx
+import { Button } from "@/registry/ui/button";
+import {
+ DrawerContent,
+ DrawerDescription,
+ DrawerFooter,
+ DrawerHeader,
+ DrawerOverlay,
+ DrawerTitle,
+ DrawerTrigger,
+} from "@/registry/ui/drawer";
+```
+
+```tsx
+<DrawerTrigger>
+    <Button />
+    <DrawerOverlay>
+        <DrawerContent>
+            <div className="mx-auto max-w-[425px]">
+                <DrawerHeader>
+                    <DrawerTitle />
+                    <DrawerDescription />
+                </DrawerHeader>
+                    ...content
+                <DrawerFooter />
+                    <Button type="submit" />
+                </DrawerFooter>
+            </div>
+        </DrawerContent>
+    </DrawerOverlay>
+</DrawerTrigger>
+```
+
+## Examples
+
+### Long Content
+
+<ComponentPreview name="drawer-long-content-demo" />
+
+### Responsive Drawer Dialog
+
+Go to Responsive Drawer Dialog's [docs](/docs/components/responsive-dialog-drawer) and follow the steps to set up.
+
+<ComponentPreview name="drawer-responsive-demo" />

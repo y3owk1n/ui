@@ -541,4 +541,22 @@ export const examples: Registry = [
 		registryDependencies: ["dialog", "menu", "button"],
 		files: ["example/dialog-menu-demo.tsx"],
 	},
+	{
+		name: "drawer-demo",
+		type: "components:example",
+		registryDependencies: ["dialog", "button"],
+		files: ["example/drawer-demo.tsx"],
+	},
+	{
+		name: "drawer-long-content-demo",
+		type: "components:example",
+		registryDependencies: ["dialog", "button"],
+		files: ["example/drawer-long-content-demo.tsx"],
+	},
+	{
+		name: "drawer-responsive-demo",
+		type: "components:example",
+		registryDependencies: ["responsive-dialog-drawer"],
+		files: ["example/drawer-responsive-demo.tsx"],
+	},
 ];

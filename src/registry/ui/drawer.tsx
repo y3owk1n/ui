@@ -1,4 +1,11 @@
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/ui/button";
+import {
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from "@/registry/ui/dialog";
 import {
 	AnimatePresence,
 	animate,
@@ -18,13 +25,6 @@ import {
 	type DialogProps as _DialogProps,
 	DialogTrigger as _DialogTrigger,
 } from "react-aria-components";
-import { Button } from "./button";
-import {
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-} from "./dialog";
 
 // Wrap React Aria modal components so they support framer-motion values.
 const MotionModal = motion(Modal);
@@ -65,7 +65,7 @@ const DrawerOverlay = React.forwardRef<
 					}}
 					className={(values) =>
 						cn(
-							"fixed inset-0 z-10",
+							"fixed inset-0 z-50",
 							typeof className === "function"
 								? className(values)
 								: className,
@@ -119,26 +119,21 @@ const DrawerContent = React.forwardRef<
 	useMotionValueEvent(
 		bodyScale,
 		"change",
-		(v) =>
-			((
-				document.querySelector("body > main") as HTMLElement
-			).style.scale = `${v}`),
+		(v) => (document.querySelector("body > main")!.style.scale = `${v}`),
 	);
 	useMotionValueEvent(
 		bodyTranslate,
 		"change",
 		(v) =>
-			((
-				document.querySelector("body > main") as HTMLElement
-			).style.translate = `0 ${v}px`),
+			(document.querySelector("body > main")!.style.translate =
+				`0 ${v}px`),
 	);
 	useMotionValueEvent(
 		bodyBorderRadius,
 		"change",
 		(v) =>
-			((
-				document.querySelector("body > main") as HTMLElement
-			).style.borderRadius = `${v}px`),
+			(document.querySelector("body > main")!.style.borderRadius =
+				`${v}px`),
 	);
 
 	return (
