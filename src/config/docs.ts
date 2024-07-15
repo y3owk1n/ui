@@ -127,6 +127,11 @@ export const docsConfig: DocsConfig = {
 					items: [],
 				},
 				{
+					title: "Drawer",
+					href: "/docs/components/drawer",
+					items: [],
+				},
+				{
 					title: "Field Description",
 					href: "/docs/components/field-description",
 					items: [],
