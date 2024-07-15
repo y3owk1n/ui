@@ -96,8 +96,8 @@ export const ui: Registry = [
 	{
 		name: "date-picker",
 		type: "components:ui",
-		dependencies: ["@radix-ui/react-dialog"],
 		files: ["ui/date-picker.tsx"],
+		registryDependencies: ["button", "dialog", "popover"],
 	},
 	{
 		name: "dialog",

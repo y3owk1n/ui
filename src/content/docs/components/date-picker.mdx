@@ -1,0 +1,134 @@
+---
+title: Date Picker
+description: A date picker combines a DateField and a Calendar popover to allow users to enter or select a date and time value.
+component: true
+links:
+  doc: https://react-spectrum.adobe.com/react-aria/DatePicker.html
+  api: https://react-spectrum.adobe.com/react-aria/DatePicker.html#props
+---
+
+<ComponentPreview name="date-picker-demo" />
+
+## Installation
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-aria-components @internationalized/date
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="date-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+## Usage
+
+```tsx
+import {
+ DatePicker,
+ DatePickerButton,
+ DatePickerDialog,
+ DatePickerPopover,
+} from "@/registry/ui/date-picker";
+import {
+ Calendar,
+ CalendarGrid,
+ CalendarGridBody,
+ CalendarGridBodyCell,
+ CalendarGridHeader,
+ CalendarGridHeaderCell,
+ CalendarHeader,
+ CalendarHeading,
+ CalendarNextButton,
+ CalendarPreviousButton,
+} from "@/registry/ui/calendar";
+```
+
+```tsx
+<DatePicker>
+    {(date) => (
+        <>
+            <Label>Date Picker</Label>
+            <DatePickerButton {...date} />
+            <DatePickerPopover>
+                <DatePickerDialog>
+                    <div className="w-fit rounded-md border p-4">
+                        <Calendar>
+                            <CalendarHeader>
+                                <CalendarPreviousButton iconOnly />
+                                <CalendarHeading />
+                                <CalendarNextButton iconOnly />
+                            </CalendarHeader>
+
+                            <div className="flex flex-col gap-4 md:flex-row">
+                                <CalendarGrid>
+                                    <CalendarGridHeader>
+                                        {(day) => (
+                                            <CalendarGridHeaderCell>
+                                                {day}
+                                            </CalendarGridHeaderCell>
+                                        )}
+                                    </CalendarGridHeader>
+                                    <CalendarGridBody>
+                                        {(date) => (
+                                            <>
+                                                <CalendarGridBodyCell
+                                                    date={date}
+                                                />
+                                            </>
+                                        )}
+                                    </CalendarGridBody>
+                                </CalendarGrid>
+                            </div>
+                        </Calendar>
+                    </div>
+                </DatePickerDialog>
+            </DatePickerPopover>
+        </>
+    )}
+</DatePicker>
+```
+
+## Examples
+
+### Date Picker
+
+<ComponentPreview name="date-picker-demo" />
+
+### Unavailable Dates
+
+In this example, weekend are not all disabled.
+
+<ComponentPreview name="date-picker-unavailable-dates-demo" />
+
+### Pick Date Error
+
+In this example, picking any weekend date will make the calendar invalid.
+
+<ComponentPreview name="date-picker-pick-date-error-demo" />
+
+### Invalid
+
+<ComponentPreview name="date-picker-invalid-demo" />
+
+### Disabled
+
+<ComponentPreview name="date-picker-disabled-demo" />
+
+### Range
+
+<ComponentPreview name="date-picker-range-demo" />
+
+### With Form
+
+<ComponentPreview name="date-picker-with-form-demo" />
+
+### Range With Form
+
+<ComponentPreview name="date-picker-range-with-form-demo" />

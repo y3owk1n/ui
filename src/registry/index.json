@@ -93,7 +93,7 @@
 	},
 	{
 		"name": "date-picker",
-		"dependencies": ["@radix-ui/react-dialog"],
+		"registryDependencies": ["button", "dialog", "popover"],
 		"files": ["ui/date-picker.tsx"],
 		"type": "components:ui"
 	},

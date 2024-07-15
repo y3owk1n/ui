@@ -4,6 +4,9 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+import { Button } from "@/registry/ui/button";
+import { Dialog } from "@/registry/ui/dialog";
+import { Popover } from "@/registry/ui/popover";
 import { type DateValue } from "@internationalized/date";
 import { Calendar } from "lucide-react";
 import {
@@ -17,11 +20,8 @@ import {
 	type DateRangePickerProps as _DateRangePickerProps,
 	useLocale,
 } from "react-aria-components";
-import { Button } from "./button";
-import { Dialog } from "./dialog";
-import { Popover } from "./popover";
 
-interface DatePickerProps<T extends DateValue> extends _DatePickerProps<T> {}
+type DatePickerProps<T extends DateValue> = _DatePickerProps<T>;
 
 function DatePicker<T extends DateValue>({
 	className,
@@ -42,8 +42,7 @@ function DatePicker<T extends DateValue>({
 	);
 }
 
-interface DateRangePickerProps<T extends DateValue>
-	extends _DateRangePickerProps<T> {}
+type DateRangePickerProps<T extends DateValue> = _DateRangePickerProps<T>;
 
 function DateRangePicker<T extends DateValue>({
 	className,
@@ -91,7 +90,7 @@ const DatePickerButton = ({
 			<Button
 				variant={variant}
 				className={cn(
-					"flex gap-2",
+					"flex w-full justify-start gap-2 text-left",
 					!date && "text-muted-foreground",
 					isInvalid && "border-destructive-foreground outline-none",
 					className,
@@ -135,7 +134,7 @@ const DateRangePickerButton = ({
 			<Button
 				variant={variant}
 				className={cn(
-					"flex gap-2",
+					"flex w-full justify-start gap-2 text-left",
 					!date?.end && "text-muted-foreground",
 					isInvalid && "border-destructive-foreground outline-none",
 					className,
