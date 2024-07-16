@@ -56,7 +56,7 @@ const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
 			>
 				<Sheet
 					className={cn(
-						"h-full max-h-[calc(100vh-10rem)] overflow-y-auto p-4 outline-none",
+						"h-full max-h-[calc(100dvh-2rem)] overflow-y-auto p-4 outline-none",
 					)}
 				>
 					{(values) => (
