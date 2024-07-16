@@ -119,20 +119,20 @@ const DrawerContent = React.forwardRef<
 	useMotionValueEvent(
 		bodyScale,
 		"change",
-		(v) => (document.querySelector("body > main")!.style.scale = `${v}`),
+		(v) => (document.querySelector("body > div")!.style.scale = `${v}`),
 	);
 	useMotionValueEvent(
 		bodyTranslate,
 		"change",
 		(v) =>
-			(document.querySelector("body > main")!.style.translate =
+			(document.querySelector("body > div")!.style.translate =
 				`0 ${v}px`),
 	);
 	useMotionValueEvent(
 		bodyBorderRadius,
 		"change",
 		(v) =>
-			(document.querySelector("body > main")!.style.borderRadius =
+			(document.querySelector("body > div")!.style.borderRadius =
 				`${v}px`),
 	);
 

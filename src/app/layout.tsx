@@ -50,9 +50,11 @@ export default function RootLayout({
 					>
 						<RouterProvider>
 							<ToastProvider>
-								<SiteHeader />
-								<main>{children}</main>
-								<SiteFooter />
+								<div>
+									<SiteHeader />
+									<main>{children}</main>
+									<SiteFooter />
+								</div>
 							</ToastProvider>
 						</RouterProvider>
 					</ThemeProvider>
