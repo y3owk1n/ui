@@ -65,7 +65,7 @@ const DrawerOverlay = React.forwardRef<
 					}}
 					className={(values) =>
 						cn(
-							"fixed inset-0 z-50",
+							"fixed inset-0 z-50 h-[var(--visual-viewport-height)]",
 							typeof className === "function"
 								? className(values)
 								: className,
@@ -128,11 +128,19 @@ const DrawerContent = React.forwardRef<
 				`${v}px`),
 	);
 
+	React.useLayoutEffect(() => {
+		const originalStyle = window.getComputedStyle(document.body).overflow;
+		document.body.style.overflow = "hidden";
+		return () => {
+			document.body.style.overflow = originalStyle;
+		};
+	}, []);
+
 	return (
 		<MotionModal
 			ref={modalRef}
 			className={cn(
-				"fixed inset-x-0 bottom-0 w-full rounded-t-xl bg-background shadow-lg will-change-transform",
+				"absolute inset-x-0 bottom-0 w-full rounded-t-xl bg-background shadow-lg will-change-transform",
 				className,
 			)}
 			initial={{ y: h }}
@@ -145,7 +153,7 @@ const DrawerContent = React.forwardRef<
 			drag="y"
 			dragConstraints={{ top: 0 }}
 			onDragEnd={async (e, { offset, velocity }) => {
-				if (offset.y > window.innerHeight * 0.75 || velocity.y > 10) {
+				if (offset.y > modalRef.current!.clientHeight * 0.25) {
 					state.close();
 				} else {
 					await animate(y, 0, {
