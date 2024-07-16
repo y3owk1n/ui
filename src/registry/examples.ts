@@ -582,4 +582,28 @@ export const examples: Registry = [
 		],
 		files: ["example/field-error-demo.tsx"],
 	},
+	{
+		name: "file-trigger-demo",
+		type: "components:example",
+		registryDependencies: ["file-trigger", "button"],
+		files: ["example/file-trigger-demo.tsx"],
+	},
+	{
+		name: "file-trigger-directory-demo",
+		type: "components:example",
+		registryDependencies: ["file-trigger", "button"],
+		files: ["example/file-trigger-directory-demo.tsx"],
+	},
+	{
+		name: "file-trigger-multiple-demo",
+		type: "components:example",
+		registryDependencies: ["file-trigger", "button"],
+		files: ["example/file-trigger-multiple-demo.tsx"],
+	},
+	{
+		name: "file-trigger-media-capture-demo",
+		type: "components:example",
+		registryDependencies: ["file-trigger", "button"],
+		files: ["example/file-trigger-media-capture-demo.tsx"],
+	},
 ];

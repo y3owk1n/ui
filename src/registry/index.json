@@ -28,12 +28,13 @@
 	},
 	{
 		"name": "button",
+		"dependencies": ["react-aria-components"],
 		"files": ["ui/button.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "calendar",
-		"dependencies": ["@internationalized/date"],
+		"dependencies": ["react-aria-components", "@internationalized/date"],
 		"registryDependencies": ["button"],
 		"files": ["ui/calendar.tsx"],
 		"type": "components:ui"
@@ -52,29 +53,33 @@
 	},
 	{
 		"name": "checkbox-group",
+		"dependencies": ["react-aria-components"],
 		"registryDependencies": ["checkbox", "label", "field-error"],
 		"files": ["ui/checkbox-group.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "checkbox",
+		"dependencies": ["react-aria-components"],
 		"files": ["ui/checkbox.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "color-field",
+		"dependencies": ["react-aria-components"],
 		"files": ["ui/color-field.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "color",
-		"dependencies": ["slider"],
+		"dependencies": ["react-aria-components"],
 		"registryDependencies": ["slider"],
 		"files": ["ui/color.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "combo-box",
+		"dependencies": ["react-aria-components"],
 		"registryDependencies": [
 			"button",
 			"input",
@@ -88,40 +93,45 @@
 	},
 	{
 		"name": "date-field",
+		"dependencies": ["react-aria-components"],
 		"files": ["ui/date-field.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "date-picker",
+		"dependencies": ["react-aria-components"],
 		"registryDependencies": ["button", "dialog", "popover"],
 		"files": ["ui/date-picker.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "dialog",
+		"dependencies": ["react-aria-components"],
 		"registryDependencies": ["button"],
 		"files": ["ui/dialog.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "drawer",
-		"dependencies": ["vaul", "@radix-ui/react-dialog"],
+		"dependencies": ["react-aria-components"],
 		"files": ["ui/drawer.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "field-description",
+		"dependencies": ["react-aria-components"],
 		"files": ["ui/field-description.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "field-error",
+		"dependencies": ["react-aria-components"],
 		"files": ["ui/field-error.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "file-trigger",
-		"dependencies": ["vaul", "@radix-ui/react-dialog"],
+		"dependencies": ["react-aria-components"],
 		"files": ["ui/file-trigger.tsx"],
 		"type": "components:ui"
 	},

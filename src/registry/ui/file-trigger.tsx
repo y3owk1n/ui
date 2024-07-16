@@ -8,29 +8,38 @@ import {
 } from "react-aria-components";
 
 interface FileTriggerContextType {
-	files: string[];
+	files: UploadedFile[];
 }
 
 const FileTriggerContext = React.createContext<
 	FileTriggerContextType | undefined
 >(undefined);
 
-interface FileTriggerProps extends _FileTriggerProps {}
+type FileTriggerProps = _FileTriggerProps;
+
+type UploadedFile = {
+	path: string;
+	size: number;
+	type: string;
+};
 
 const FileTrigger = React.forwardRef<HTMLInputElement, FileTriggerProps>(
 	(props, ref) => {
-		const [files, setFiles] = React.useState<string[]>([]);
+		const [files, setFiles] = React.useState<UploadedFile[]>([]);
 
 		return (
 			<FileTriggerContext.Provider value={{ files }}>
 				<_FileTrigger
 					onSelect={(e) => {
 						if (e) {
-							const fileList = [...e].map((file) =>
-								file.webkitRelativePath !== ""
-									? file.webkitRelativePath
-									: file.name,
-							);
+							const fileList = [...e].map((file) => ({
+								path:
+									file.webkitRelativePath !== ""
+										? file.webkitRelativePath
+										: file.name,
+								size: file.size,
+								type: file.type,
+							}));
 							setFiles(fileList);
 						}
 					}}
@@ -46,7 +55,7 @@ FileTrigger.displayName = "FileTrigger";
 const FileItems = React.forwardRef<
 	HTMLDivElement,
 	Omit<React.HTMLAttributes<HTMLDivElement>, "children"> & {
-		children: (files: string[]) => JSX.Element;
+		children: (files: UploadedFile[]) => JSX.Element;
 	}
 >(({ className, children, ...props }, ref) => {
 	const context = React.useContext(FileTriggerContext);

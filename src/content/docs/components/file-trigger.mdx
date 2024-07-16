@@ -1,0 +1,64 @@
+---
+title: File Trigger
+description: A FileTrigger allows a user to access the file system with any pressable component.
+component: true
+links:
+  doc: https://react-spectrum.adobe.com/react-aria/FileTrigger.html
+  api: https://react-spectrum.adobe.com/react-aria/FileTrigger.html#props
+---
+
+<ComponentPreview name="file-trigger-demo" />
+
+## Installation
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-aria-components
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="file-trigger" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+## Usage
+
+```tsx
+import { FileItems, FileTrigger } from "@/registry/ui/file-trigger";
+import { Button } from "@/registry/ui/button";
+```
+
+```tsx
+<FileTrigger>
+    <Button>Upload image</Button>
+    <FileItems>
+        {(files) => (
+            <Content files={files} />
+        )}
+    </FileItems>
+</FileTrigger>
+```
+
+## Examples
+
+### Multiple files
+
+<ComponentPreview name="file-trigger-multiple-demo" />
+
+### Directory
+
+<ComponentPreview name="file-trigger-directory-demo" />
+
+### Media Capture
+
+To specify the media capture mechanism to capture media on the spot, pass user for the user-facing camera or environment for the outward-facing camera via the defaultCamera prop.
+
+This behavior only works on mobile devices. On desktop devices, it will open the file system like normal. [Read more about capture](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/capture).
+
+<ComponentPreview name="file-trigger-media-capture-demo" />
