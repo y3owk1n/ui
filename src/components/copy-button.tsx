@@ -13,8 +13,25 @@ interface CopyButtonProps extends ButtonProps {
 	src?: string;
 }
 
+function oldSchoolCopy(text: string) {
+	const tempTextArea = document.createElement("textarea");
+	tempTextArea.value = text;
+	document.body.appendChild(tempTextArea);
+	tempTextArea.select();
+	document.execCommand("copy");
+	document.body.removeChild(tempTextArea);
+}
+
 export async function copyToClipboardWithMeta(value: string) {
-	await navigator.clipboard.writeText(value);
+	try {
+		if (navigator.clipboard.writeText) {
+			await navigator.clipboard.writeText(value);
+		} else {
+			throw new Error("writeText not supported");
+		}
+	} catch (error) {
+		oldSchoolCopy(value);
+	}
 }
 
 export function CopyButton({
@@ -36,10 +53,7 @@ export function CopyButton({
 		<Button
 			size="icon"
 			variant={variant}
-			className={cn(
-				"relative z-10 h-6 w-6 [&_svg]:h-3 [&_svg]:w-3",
-				className,
-			)}
+			className={cn("relative z-10 h-6 w-6", className)}
 			onPress={async () => {
 				await copyToClipboardWithMeta(value);
 				setHasCopied(true);
@@ -47,7 +61,11 @@ export function CopyButton({
 			{...props}
 		>
 			<span className="sr-only">Copy</span>
-			{hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+			{hasCopied ? (
+				<CheckIcon className="h-3 w-3" />
+			) : (
+				<ClipboardIcon className="h-3 w-3" />
+			)}
 		</Button>
 	);
 }

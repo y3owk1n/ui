@@ -4,7 +4,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
 
 import {
-	PressEvent,
+	type PressEvent,
 	Button as _Button,
 	type ButtonProps as _ButtonProps,
 } from "react-aria-components";
@@ -14,7 +14,7 @@ import { baseVariant, linkVariant, unstyledVariant } from "@/lib/variants";
 import { Loader } from "lucide-react";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2 group-data-[empty]:hidden",
+	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium text-primary ring-offset-background transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2 group-data-[empty]:hidden",
 	{
 		variants: {
 			variant: {

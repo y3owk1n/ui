@@ -12,7 +12,7 @@ const baseVariant = {
 		"border border-input bg-background data-[hovered]:bg-accent data-[pressed]:bg-accent/70 data-[hovered]:text-accent-foreground",
 	secondary:
 		"bg-secondary text-secondary-foreground data-[hovered]:bg-secondary/80 data-[pressed]:bg-secondary/70",
-	ghost: "data-[hovered]:bg-accent data-[pressed]:bg-accent/70 data-[hovered]:text-accent-foreground",
+	ghost: "bg-background data-[hovered]:bg-accent data-[pressed]:bg-accent/70 data-[hovered]:text-accent-foreground",
 };
 
 const linkVariant = {
