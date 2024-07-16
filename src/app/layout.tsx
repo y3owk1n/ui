@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { QueryClientProvider } from "@/components/query-client-provider";
@@ -13,6 +13,15 @@ const fontSans = FontSans({
 	subsets: ["latin"],
 	variable: "--font-sans",
 });
+
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	maximumScale: 1,
+	userScalable: false,
+	// Also supported by less commonly used
+	// interactiveWidget: 'resizes-visual',
+};
 
 export const metadata: Metadata = {
 	title: "Create Next App",
