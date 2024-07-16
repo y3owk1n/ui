@@ -559,4 +559,10 @@ export const examples: Registry = [
 		registryDependencies: ["responsive-dialog-drawer"],
 		files: ["example/drawer-responsive-demo.tsx"],
 	},
+	{
+		name: "field-description-demo",
+		type: "components:example",
+		registryDependencies: ["text-field", "input", "label"],
+		files: ["example/field-description-demo.tsx"],
+	},
 ];

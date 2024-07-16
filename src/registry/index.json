@@ -111,13 +111,11 @@
 	},
 	{
 		"name": "field-description",
-		"dependencies": ["vaul", "@radix-ui/react-dialog"],
 		"files": ["ui/field-description.tsx"],
 		"type": "components:ui"
 	},
 	{
 		"name": "field-error",
-		"dependencies": ["vaul", "@radix-ui/react-dialog"],
 		"files": ["ui/field-error.tsx"],
 		"type": "components:ui"
 	},

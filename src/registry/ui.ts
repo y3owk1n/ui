@@ -114,13 +114,11 @@ export const ui: Registry = [
 	{
 		name: "field-description",
 		type: "components:ui",
-		dependencies: ["vaul", "@radix-ui/react-dialog"],
 		files: ["ui/field-description.tsx"],
 	},
 	{
 		name: "field-error",
 		type: "components:ui",
-		dependencies: ["vaul", "@radix-ui/react-dialog"],
 		files: ["ui/field-error.tsx"],
 	},
 	{

@@ -1737,4 +1737,17 @@ export const Index: Record<string, any> = {
 		subcategory: "undefined",
 		chunks: [],
 	},
+	"field-description-demo": {
+		name: "field-description-demo",
+		type: "components:example",
+		registryDependencies: ["text-field", "input", "label"],
+		component: React.lazy(
+			() => import("@/registry/example/field-description-demo"),
+		),
+		source: "",
+		files: ["src/registry/example/field-description-demo.tsx"],
+		category: "undefined",
+		subcategory: "undefined",
+		chunks: [],
+	},
 };
