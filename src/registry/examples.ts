@@ -562,7 +562,24 @@ export const examples: Registry = [
 	{
 		name: "field-description-demo",
 		type: "components:example",
-		registryDependencies: ["text-field", "input", "label"],
+		registryDependencies: [
+			"text-field",
+			"input",
+			"label",
+			"field-description",
+		],
 		files: ["example/field-description-demo.tsx"],
+	},
+	{
+		name: "field-error-demo",
+		type: "components:example",
+		registryDependencies: [
+			"text-field",
+			"input",
+			"label",
+			"field-description",
+			"field-error",
+		],
+		files: ["example/field-error-demo.tsx"],
 	},
 ];

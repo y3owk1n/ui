@@ -1740,12 +1740,36 @@ export const Index: Record<string, any> = {
 	"field-description-demo": {
 		name: "field-description-demo",
 		type: "components:example",
-		registryDependencies: ["text-field", "input", "label"],
+		registryDependencies: [
+			"text-field",
+			"input",
+			"label",
+			"field-description",
+		],
 		component: React.lazy(
 			() => import("@/registry/example/field-description-demo"),
 		),
 		source: "",
 		files: ["src/registry/example/field-description-demo.tsx"],
+		category: "undefined",
+		subcategory: "undefined",
+		chunks: [],
+	},
+	"field-error-demo": {
+		name: "field-error-demo",
+		type: "components:example",
+		registryDependencies: [
+			"text-field",
+			"input",
+			"label",
+			"field-description",
+			"field-error",
+		],
+		component: React.lazy(
+			() => import("@/registry/example/field-error-demo"),
+		),
+		source: "",
+		files: ["src/registry/example/field-error-demo.tsx"],
 		category: "undefined",
 		subcategory: "undefined",
 		chunks: [],
