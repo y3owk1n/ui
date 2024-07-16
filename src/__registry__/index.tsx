@@ -1586,6 +1586,19 @@ export const Index: Record<string, any> = {
 		subcategory: "undefined",
 		chunks: [],
 	},
+	"date-picker-presets-demo": {
+		name: "date-picker-presets-demo",
+		type: "components:example",
+		registryDependencies: ["date-picker", "calendar", "label"],
+		component: React.lazy(
+			() => import("@/registry/example/date-picker-presets-demo"),
+		),
+		source: "",
+		files: ["src/registry/example/date-picker-presets-demo.tsx"],
+		category: "undefined",
+		subcategory: "undefined",
+		chunks: [],
+	},
 	"date-picker-pick-date-error-demo": {
 		name: "date-picker-pick-date-error-demo",
 		type: "components:example",

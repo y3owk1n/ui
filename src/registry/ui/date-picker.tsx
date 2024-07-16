@@ -168,7 +168,7 @@ const DatePickerPreset = ({
 			{...props}
 		>
 			<span className="text-sm font-bold">Presets</span>
-			{children}
+			<div className="grid grid-cols-2 gap-2">{children}</div>
 		</Group>
 	);
 };

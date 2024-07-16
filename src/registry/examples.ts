@@ -482,6 +482,12 @@ export const examples: Registry = [
 		files: ["example/date-picker-unavailable-dates-demo.tsx"],
 	},
 	{
+		name: "date-picker-presets-demo",
+		type: "components:example",
+		registryDependencies: ["date-picker", "calendar", "label"],
+		files: ["example/date-picker-presets-demo.tsx"],
+	},
+	{
 		name: "date-picker-pick-date-error-demo",
 		type: "components:example",
 		registryDependencies: ["date-picker", "calendar", "label"],
