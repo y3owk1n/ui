@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 	maximumScale: 1,
 	userScalable: false,
 	// Also supported by less commonly used
-	// interactiveWidget: 'resizes-visual',
+	interactiveWidget: "resizes-visual",
 };
 
 export const metadata: Metadata = {

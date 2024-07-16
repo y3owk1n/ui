@@ -96,11 +96,7 @@ const DrawerContent = React.forwardRef<
 	const y = useMotionValue(h);
 
 	// Scale the body down and adjust the border radius when the sheet is open.
-	const bodyScale = useTransform(
-		y,
-		[0, h],
-		[(window.innerWidth - SHEET_MARGIN) / window.innerWidth, 1],
-	);
+	const bodyScale = useTransform(y, [0, h], [h / window.innerHeight, 1]);
 	const bodyTranslate = useTransform(
 		y,
 		[0, h],
@@ -116,18 +112,14 @@ const DrawerContent = React.forwardRef<
 		}
 	});
 
-	useMotionValueEvent(
-		bodyScale,
-		"change",
-		(v) => (document.querySelector("body > div")!.style.scale = `${v}`),
-	);
-	useMotionValueEvent(
-		bodyTranslate,
-		"change",
-		(v) =>
-			(document.querySelector("body > div")!.style.translate =
-				`0 ${v}px`),
-	);
+	useMotionValueEvent(bodyScale, "change", (v) => {
+		document.querySelector("body > div")!.style.transformOrigin =
+			"center top";
+		document.querySelector("body > div")!.style.transform = `scale(${v})`;
+	});
+	useMotionValueEvent(bodyTranslate, "change", (v) => {
+		document.querySelector("body > div")!.style.translate = `0 ${v}px`;
+	});
 	useMotionValueEvent(
 		bodyBorderRadius,
 		"change",
@@ -140,7 +132,7 @@ const DrawerContent = React.forwardRef<
 		<MotionModal
 			ref={modalRef}
 			className={cn(
-				"fixed inset-x-0 bottom-0 max-h-fit w-full rounded-t-xl bg-background shadow-lg will-change-transform",
+				"fixed inset-x-0 bottom-0 w-full rounded-t-xl bg-background shadow-lg will-change-transform",
 				className,
 			)}
 			initial={{ y: h }}
@@ -149,9 +141,6 @@ const DrawerContent = React.forwardRef<
 			transition={staticTransition}
 			style={{
 				y,
-				// top: SHEET_MARGIN,
-				// Extra padding at the bottom to account for rubber band scrolling.
-				// paddingBottom: window.screen.height,
 			}}
 			drag="y"
 			dragConstraints={{ top: 0 }}
