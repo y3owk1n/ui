@@ -107,26 +107,30 @@ const DrawerContent = React.forwardRef<
 	const bgOpacity = useTransform(y, [0, h], [0.8, 0]);
 
 	useMotionValueEvent(bgOpacity, "change", (v) => {
-		if (modalRef.current && modalRef.current.parentElement) {
+		if (modalRef.current?.parentElement) {
 			modalRef.current.parentElement.style.backgroundColor = `rgba(0, 0, 0, ${v})`;
 		}
 	});
 
 	useMotionValueEvent(bodyScale, "change", (v) => {
-		document.querySelector("body > div")!.style.transformOrigin =
-			"center top";
-		document.querySelector("body > div")!.style.transform = `scale(${v})`;
+		const bodyDiv: HTMLElement | null =
+			document.querySelector("body > div");
+		if (!bodyDiv) return;
+		bodyDiv.style.transformOrigin = "center top";
+		bodyDiv.style.transform = `scale(${v})`;
 	});
 	useMotionValueEvent(bodyTranslate, "change", (v) => {
-		document.querySelector("body > div")!.style.translate = `0 ${v}px`;
+		const bodyDiv: HTMLElement | null =
+			document.querySelector("body > div");
+		if (!bodyDiv) return;
+		bodyDiv.style.translate = `0 ${v}px`;
 	});
-	useMotionValueEvent(
-		bodyBorderRadius,
-		"change",
-		(v) =>
-			(document.querySelector("body > div")!.style.borderRadius =
-				`${v}px`),
-	);
+	useMotionValueEvent(bodyBorderRadius, "change", (v) => {
+		const bodyDiv: HTMLElement | null =
+			document.querySelector("body > div");
+		if (!bodyDiv) return;
+		bodyDiv.style.borderRadius = `${v}px`;
+	});
 
 	React.useLayoutEffect(() => {
 		const originalStyle = window.getComputedStyle(document.body).overflow;
