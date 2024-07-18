@@ -124,10 +124,7 @@ export function CommandMenu() {
 							className="mb-4"
 							aria-label="search docs"
 						>
-							<SearchFieldInput
-								autoFocus
-								placeholder="Search Docs..."
-							/>
+							<SearchFieldInput placeholder="Search Docs..." />
 						</SearchField>
 						<ScrollArea
 							showShadow
