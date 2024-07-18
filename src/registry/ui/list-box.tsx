@@ -13,7 +13,7 @@ import {
 	type ListBoxProps as _ListBoxProps,
 } from "react-aria-components";
 
-interface ListBoxProps<T> extends _ListBoxProps<T> {}
+type ListBoxProps<T> = _ListBoxProps<T>;
 
 function ListBox<T extends object>({ className, ...props }: ListBoxProps<T>) {
 	return (
@@ -31,7 +31,7 @@ function ListBox<T extends object>({ className, ...props }: ListBoxProps<T>) {
 	);
 }
 
-interface ListBoxItemProps extends _ListBoxItemProps {}
+type ListBoxItemProps = _ListBoxItemProps;
 
 const ListBoxItem = React.forwardRef<HTMLDivElement, ListBoxItemProps>(
 	({ className, ...props }, ref) => {

@@ -11,7 +11,7 @@ import {
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
 
-interface SearchFieldProps extends _SearchFieldProps {}
+type SearchFieldProps = _SearchFieldProps;
 
 const SearchField = React.forwardRef<HTMLDivElement, SearchFieldProps>(
 	({ className, ...props }, ref) => {
