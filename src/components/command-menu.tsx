@@ -4,14 +4,14 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 
 import { docsConfig } from "@/config/docs";
-import { ScrollArea } from "@/registry/ui/scroll-area";
-import { Button } from "@/registry/ui/button";
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/ui/button";
 import {
 	DialogContent,
 	DialogOverlay,
 	DialogTrigger,
 } from "@/registry/ui/dialog";
+import { Keyboard } from "@/registry/ui/keyboard";
 import {
 	ListBox,
 	ListBoxCollection,
@@ -19,8 +19,10 @@ import {
 	ListBoxItem,
 	ListBoxSection,
 } from "@/registry/ui/list-box";
-import { type Selection } from "react-stately";
+import { ScrollArea } from "@/registry/ui/scroll-area";
 import { SearchField, SearchFieldInput } from "@/registry/ui/search-field";
+import { Separator } from "@/registry/ui/separator";
+import { type Selection } from "react-stately";
 
 const sidebarRows = docsConfig.sidebarNav
 	.filter((item) => item.title.toLowerCase() === "components")
@@ -42,6 +44,8 @@ export function CommandMenu() {
 	const [selected] = React.useState<Selection>();
 
 	const [currentSearchTerm, setCurrentSearchTerm] = React.useState("");
+
+	const [isCollectionFocused, setIsCollectionFocused] = React.useState(false);
 
 	const hasSearchFilter = Boolean(currentSearchTerm);
 
@@ -82,6 +86,8 @@ export function CommandMenu() {
 				}
 
 				e.preventDefault();
+				setCurrentSearchTerm("");
+				setIsCollectionFocused(false);
 				setOpen((open) => !open);
 			}
 		};
@@ -97,7 +103,14 @@ export function CommandMenu() {
 
 	return (
 		<>
-			<DialogTrigger isOpen={open} onOpenChange={setOpen}>
+			<DialogTrigger
+				isOpen={open}
+				onOpenChange={() => {
+					setCurrentSearchTerm("");
+					setIsCollectionFocused(false);
+					setOpen((open) => !open);
+				}}
+			>
 				<Button
 					variant="outline"
 					className={cn(
@@ -111,9 +124,12 @@ export function CommandMenu() {
 						Search documentation...
 					</span>
 					<span className="inline-flex lg:hidden">Search...</span>
-					<kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-						<span className="text-xs">⌘</span>K
-					</kbd>
+					<Keyboard
+						className="absolute right-[0.3rem] top-[0.3rem] hidden sm:flex"
+						modifier="⌘"
+					>
+						K
+					</Keyboard>
 				</Button>
 				<DialogOverlay>
 					<DialogContent closeButton={false}>
@@ -127,11 +143,16 @@ export function CommandMenu() {
 							<SearchFieldInput placeholder="Search Docs..." />
 						</SearchField>
 						<ScrollArea
-							showShadow
 							orientation="vertical"
 							className="max-h-[400px]"
 						>
 							<ListBox
+								onFocus={() => {
+									setIsCollectionFocused(true);
+								}}
+								onBlur={() => {
+									setIsCollectionFocused(false);
+								}}
 								renderEmptyState={() => "No results found."}
 								dependencies={filteredData}
 								key={filteredData.length}
@@ -172,6 +193,25 @@ export function CommandMenu() {
 								)}
 							</ListBox>
 						</ScrollArea>
+						<Separator className="my-4" />
+						<div className="flex gap-4 text-xs text-muted-foreground">
+							<div className="flex items-center gap-2">
+								<Keyboard>TAB</Keyboard>
+								Cycle focus
+							</div>
+							{isCollectionFocused ? (
+								<>
+									<div className="flex items-center gap-2">
+										<Keyboard modifier="⬆⬇" />
+										Up & Down
+									</div>
+									<div className="flex items-center gap-2">
+										<Keyboard modifier="↵" />
+										Open link
+									</div>
+								</>
+							) : null}
+						</div>
 					</DialogContent>
 				</DialogOverlay>
 			</DialogTrigger>
