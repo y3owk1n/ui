@@ -131,8 +131,11 @@ export function CommandMenu() {
 						K
 					</Keyboard>
 				</Button>
-				<DialogOverlay>
-					<DialogContent closeButton={false}>
+				<DialogOverlay className="h-[var(--visual-viewport-height)]">
+					<DialogContent
+						className="h-auto max-h-[80%] overflow-hidden"
+						closeButton={false}
+					>
 						<SearchField
 							autoFocus
 							value={currentSearchTerm}
